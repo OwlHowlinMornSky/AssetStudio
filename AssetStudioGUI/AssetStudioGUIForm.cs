@@ -2049,7 +2049,11 @@ namespace AssetStudioGUI
             logger.ShowErrorMessage = toolStripMenuItem15.Checked;
         }
 
-        private void glControl1_MouseWheel(object sender, MouseEventArgs e)
+		private void exportWithStructure0x0ToolStripMenuItem_Click(object sender, EventArgs e) {
+
+		}
+
+		private void glControl1_MouseWheel(object sender, MouseEventArgs e)
         {
             if (glControl1.Visible)
             {
