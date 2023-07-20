@@ -15,8 +15,9 @@ namespace AssetStudioGUI
         public string InfoText;
         public string UniqueID;
         public GameObjectTreeNode TreeNode;
+		public int ID;
 
-        public AssetItem(Object asset)
+		public AssetItem(Object asset)
         {
             Asset = asset;
             SourceFile = asset.assetsFile;

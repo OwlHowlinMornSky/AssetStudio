@@ -2,14 +2,31 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net472;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net472</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ApplicationIcon>Resources\as.ico</ApplicationIcon>
-		<Version>0.16.0.0</Version>
-		<AssemblyVersion>0.16.0.0</AssemblyVersion>
-		<FileVersion>0.16.0.0</FileVersion>
-		<Copyright>Copyright © Perfare 2018-2022</Copyright>
+		<Version>1.0.0</Version>
+		<AssemblyVersion>1.0.0.1</AssemblyVersion>
+		<FileVersion>1.0.0.1</FileVersion>
+		<Copyright></Copyright>
 		<DebugType>embedded</DebugType>
+		<StartupObject>AssetStudioGUI.Program</StartupObject>
+		<SignAssembly>False</SignAssembly>
+		<Authors>Perfare, Tyler Parret True</Authors>
+		<Company>$(AssemblyName)</Company>
+		<Title>$(AssemblyName)</Title>
+		<RepositoryUrl></RepositoryUrl>
+		<AnalysisLevel>none</AnalysisLevel>
+		<PackageId>$(AssemblyName)</PackageId>
+		<AssemblyName>$(MSBuildProjectName)-OHMS</AssemblyName>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
+	  <DebugType>embedded</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|AnyCPU'">
+	  <DebugType>embedded</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>
