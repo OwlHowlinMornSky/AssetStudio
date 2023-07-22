@@ -1385,7 +1385,15 @@ namespace AssetStudioGUI {
 		}
 
 		private bool GetANewFolder(string iDir, out string oDir) {
-			oDir = Path.Combine(iDir, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+			if(assetsManager.m_lastOpenPaths.Length == 1) {
+				oDir = Path.Combine(iDir, Path.GetFileName(assetsManager.m_lastOpenPaths[0]));
+				if (Directory.Exists(oDir)) {
+					oDir += DateTime.Now.ToString(" yyyyMMdd-HHmmss");
+				}
+			}
+			else {
+				oDir = Path.Combine(iDir, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+			}
 			if (Directory.Exists(oDir)) {
 				oDir += " #";
 				string t = null;
