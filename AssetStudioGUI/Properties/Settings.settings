@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="displayAll" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="enablePreview" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -12,10 +12,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="openAfterExport" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="assetGroupOption" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="convertTexture" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -60,7 +60,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="restoreExtensionName" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="exportAllUvsAsDiffuseMaps" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
