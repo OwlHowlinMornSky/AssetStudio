@@ -5,9 +5,9 @@
 		<TargetFrameworks>net472</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ApplicationIcon>Resources\as.ico</ApplicationIcon>
-		<Version>1.0.0</Version>
-		<AssemblyVersion>1.0.0.1</AssemblyVersion>
-		<FileVersion>1.0.0.1</FileVersion>
+		<Version>1.1.0.1</Version>
+		<AssemblyVersion>1.1.0.1</AssemblyVersion>
+		<FileVersion>1.1.0.1</FileVersion>
 		<Copyright></Copyright>
 		<DebugType>embedded</DebugType>
 		<StartupObject>AssetStudioGUI.Program</StartupObject>
@@ -18,7 +18,7 @@
 		<RepositoryUrl></RepositoryUrl>
 		<AnalysisLevel>none</AnalysisLevel>
 		<PackageId>$(AssemblyName)</PackageId>
-		<AssemblyName>$(MSBuildProjectName)-OHMS</AssemblyName>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
@@ -43,6 +43,11 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Settings.settings</DependentUpon>
 			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+		</Compile>
+		<Compile Update="Properties\Settings1.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Settings1.settings</DependentUpon>
 		</Compile>
 	</ItemGroup>
 
@@ -83,6 +88,13 @@
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Properties\Settings1.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+	  </None>
 	</ItemGroup>
 
 	<Target Name="CopyExtraFiles" AfterTargets="AfterBuild">

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace AssetStudio
-{
-    public class TypeTree
-    {
-        public List<TypeTreeNode> m_Nodes;
-        public byte[] m_StringBuffer;
-    }
+namespace AssetStudio {
+	public class TypeTree {
+		public List<TypeTreeNode> m_Nodes;
+		public byte[] m_StringBuffer;
+	}
 }

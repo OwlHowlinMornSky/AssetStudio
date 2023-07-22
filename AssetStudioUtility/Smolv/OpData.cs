@@ -1,9 +1,6 @@
-namespace Smolv
-{
-	public struct OpData
-	{
-		public OpData(byte hasResult, byte hasType, sbyte deltaFromResult, byte varrest)
-		{
+namespace Smolv {
+	public struct OpData {
+		public OpData(byte hasResult, byte hasType, sbyte deltaFromResult, byte varrest) {
 			this.hasResult = hasResult;
 			this.hasType = hasType;
 			this.deltaFromResult = deltaFromResult;

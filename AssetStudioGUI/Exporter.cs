@@ -221,7 +221,7 @@ namespace AssetStudioGUI {
 
 		private static bool TryExportFile(string dir, AssetItem item, string extension, out string fullPath) {
 			var fileName = FixFileName(item.Text);
-			if(g_ohms_export_with_structure) {
+			if (g_ohms_export_with_structure) {
 				fullPath = Path.Combine(dir, item.ID + ".ttbin");
 				if (!File.Exists(fullPath)) {
 					Directory.CreateDirectory(dir);
@@ -304,6 +304,22 @@ namespace AssetStudioGUI {
 			return false;
 		}
 
+		public static bool ExportDumpFileJson(AssetItem item, string exportPath) {
+			if (!TryExportFile(exportPath, item, ".json", out var exportFullPath))
+				return false;
+			var type = item.Asset.ToType();
+			if (type == null && item.Asset is MonoBehaviour m_MonoBehaviour) {
+				var m_Type = Studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
+				type = m_MonoBehaviour.ToType(m_Type);
+			}
+			var str = JsonConvert.SerializeObject(type, Formatting.Indented);
+			if (str != null) {
+				File.WriteAllText(exportFullPath, str);
+				return true;
+			}
+			return false;
+		}
+
 		public static bool ExportConvertFile(AssetItem item, string exportPath) {
 			switch (item.Type) {
 			case ClassIDType.Texture2D:
@@ -335,7 +351,7 @@ namespace AssetStudioGUI {
 			}
 		}
 
-		public static bool ExportConvertFileWithStructure(AssetItem item, string exportPath) {
+		public static bool ExportConvertFileOHMS(AssetItem item, string exportPath) {
 			switch (item.Type) {
 			case ClassIDType.Texture2D:
 				return ExportTexture2D(item, exportPath);
@@ -356,13 +372,13 @@ namespace AssetStudioGUI {
 			case ClassIDType.MovieTexture:
 				return ExportMovieTexture(item, exportPath);
 			case ClassIDType.Sprite:
-				return ExportSprite(item, exportPath);
+				return ExportDumpFileJson(item, exportPath); //ExportSprite(item, exportPath);
 			case ClassIDType.Animator:
 				return false;
 			case ClassIDType.AnimationClip:
 				return false;
 			default:
-				return ExportDumpFile(item, exportPath);
+				return ExportDumpFileJson(item, exportPath); //ExportDumpFile(item, exportPath);
 			}
 		}
 

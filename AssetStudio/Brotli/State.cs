@@ -3,10 +3,8 @@
 Distributed under MIT license.
 See file LICENSE for detail or copy at https://opensource.org/licenses/MIT
 */
-namespace Org.Brotli.Dec
-{
-	internal sealed class State
-	{
+namespace Org.Brotli.Dec {
+	internal sealed class State {
 		internal int runningState = Org.Brotli.Dec.RunningState.Uninitialized;
 
 		internal int nextRunningState;
@@ -113,20 +111,16 @@ namespace Org.Brotli.Dec
 
 		// Current meta-block header information.
 		// TODO: Update to current spec.
-		private static int DecodeWindowBits(Org.Brotli.Dec.BitReader br)
-		{
-			if (Org.Brotli.Dec.BitReader.ReadBits(br, 1) == 0)
-			{
+		private static int DecodeWindowBits(Org.Brotli.Dec.BitReader br) {
+			if (Org.Brotli.Dec.BitReader.ReadBits(br, 1) == 0) {
 				return 16;
 			}
 			int n = Org.Brotli.Dec.BitReader.ReadBits(br, 3);
-			if (n != 0)
-			{
+			if (n != 0) {
 				return 17 + n;
 			}
 			n = Org.Brotli.Dec.BitReader.ReadBits(br, 3);
-			if (n != 0)
-			{
+			if (n != 0) {
 				return 8 + n;
 			}
 			return 17;
@@ -135,16 +129,13 @@ namespace Org.Brotli.Dec
 		/// <summary>Associate input with decoder state.</summary>
 		/// <param name="state">uninitialized state without associated input</param>
 		/// <param name="input">compressed data source</param>
-		internal static void SetInput(Org.Brotli.Dec.State state, System.IO.Stream input)
-		{
-			if (state.runningState != Org.Brotli.Dec.RunningState.Uninitialized)
-			{
+		internal static void SetInput(Org.Brotli.Dec.State state, System.IO.Stream input) {
+			if (state.runningState != Org.Brotli.Dec.RunningState.Uninitialized) {
 				throw new System.InvalidOperationException("State MUST be uninitialized");
 			}
 			Org.Brotli.Dec.BitReader.Init(state.br, input);
 			int windowBits = DecodeWindowBits(state.br);
-			if (windowBits == 9)
-			{
+			if (windowBits == 9) {
 				/* Reserved case for future expansion. */
 				throw new Org.Brotli.Dec.BrotliRuntimeException("Invalid 'windowBits' code");
 			}
@@ -154,14 +145,11 @@ namespace Org.Brotli.Dec
 		}
 
 		/// <exception cref="System.IO.IOException"/>
-		internal static void Close(Org.Brotli.Dec.State state)
-		{
-			if (state.runningState == Org.Brotli.Dec.RunningState.Uninitialized)
-			{
+		internal static void Close(Org.Brotli.Dec.State state) {
+			if (state.runningState == Org.Brotli.Dec.RunningState.Uninitialized) {
 				throw new System.InvalidOperationException("State MUST be initialized");
 			}
-			if (state.runningState == Org.Brotli.Dec.RunningState.Closed)
-			{
+			if (state.runningState == Org.Brotli.Dec.RunningState.Closed) {
 				return;
 			}
 			state.runningState = Org.Brotli.Dec.RunningState.Closed;

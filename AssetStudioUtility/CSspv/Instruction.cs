@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 
-namespace SpirV
-{
-	public enum OperandQuantifier
-	{
+namespace SpirV {
+	public enum OperandQuantifier {
 		/// <summary>
 		/// 1
 		/// </summary>
@@ -18,10 +16,8 @@ namespace SpirV
 		Varying
 	}
 
-	public class Operand
-	{
-		public Operand(OperandType kind, string name, OperandQuantifier quantifier)
-		{
+	public class Operand {
+		public Operand(OperandType kind, string name, OperandQuantifier quantifier) {
 			Name = name;
 			Type = kind;
 			Quantifier = quantifier;
@@ -32,15 +28,12 @@ namespace SpirV
 		public OperandQuantifier Quantifier { get; }
 	}
 
-	public class Instruction
-	{
-		public Instruction (string name)
-			: this (name, new List<Operand> ())
-		{
+	public class Instruction {
+		public Instruction(string name)
+			: this(name, new List<Operand>()) {
 		}
 
-		public Instruction (string name, IReadOnlyList<Operand> operands)
-		{
+		public Instruction(string name, IReadOnlyList<Operand> operands) {
 			Operands = operands;
 			Name = name;
 		}

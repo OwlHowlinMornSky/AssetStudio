@@ -3,16 +3,14 @@
 Distributed under MIT license.
 See file LICENSE for detail or copy at https://opensource.org/licenses/MIT
 */
-namespace Org.Brotli.Dec
-{
+namespace Org.Brotli.Dec {
 	/// <summary>Enumeration of all possible word transformations.</summary>
 	/// <remarks>
 	/// Enumeration of all possible word transformations.
 	/// <p>There are two simple types of transforms: omit X first/last symbols, two character-case
 	/// transforms and the identity transform.
 	/// </remarks>
-	internal sealed class WordTransformType
-	{
+	internal sealed class WordTransformType {
 		internal const int Identity = 0;
 
 		internal const int OmitLast1 = 1;
@@ -55,13 +53,11 @@ namespace Org.Brotli.Dec
 
 		internal const int OmitFirst9 = 20;
 
-		internal static int GetOmitFirst(int type)
-		{
+		internal static int GetOmitFirst(int type) {
 			return type >= OmitFirst1 ? (type - OmitFirst1 + 1) : 0;
 		}
 
-		internal static int GetOmitLast(int type)
-		{
+		internal static int GetOmitLast(int type) {
 			return type <= OmitLast9 ? (type - OmitLast1 + 1) : 0;
 		}
 	}

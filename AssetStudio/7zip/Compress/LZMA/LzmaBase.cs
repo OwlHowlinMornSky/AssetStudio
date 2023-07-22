@@ -1,9 +1,7 @@
 // LzmaBase.cs
 
-namespace SevenZip.Compression.LZMA
-{
-	internal abstract class Base
-	{
+namespace SevenZip.Compression.LZMA {
+	internal abstract class Base {
 		public const uint kNumRepDistances = 4;
 		public const uint kNumStates = 12;
 
@@ -12,12 +10,10 @@ namespace SevenZip.Compression.LZMA
 		// static byte []kRepNextStates      = {8, 8, 8, 8, 8, 8, 8, 11, 11, 11, 11, 11};
 		// static byte []kShortRepNextStates = {9, 9, 9, 9, 9, 9, 9, 11, 11, 11, 11, 11};
 
-		public struct State
-		{
+		public struct State {
 			public uint Index;
 			public void Init() { Index = 0; }
-			public void UpdateChar()
-			{
+			public void UpdateChar() {
 				if (Index < 4) Index = 0;
 				else if (Index < 10) Index -= 3;
 				else Index -= 6;
@@ -38,8 +34,7 @@ namespace SevenZip.Compression.LZMA
 
 		public const uint kMatchMinLen = 2;
 
-		public static uint GetLenToPosState(uint len)
-		{
+		public static uint GetLenToPosState(uint len) {
 			len -= kMatchMinLen;
 			if (len < kNumLenToPosStates)
 				return len;

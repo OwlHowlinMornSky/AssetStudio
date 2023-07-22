@@ -2,26 +2,22 @@
 
 using System;
 
-namespace SevenZip
-{
+namespace SevenZip {
 	/// <summary>
 	/// The exception that is thrown when an error in input stream occurs during decoding.
 	/// </summary>
-	class DataErrorException : ApplicationException
-	{
-		public DataErrorException(): base("Data Error") { }
+	class DataErrorException : ApplicationException {
+		public DataErrorException() : base("Data Error") { }
 	}
 
 	/// <summary>
 	/// The exception that is thrown when the value of an argument is outside the allowable range.
 	/// </summary>
-	class InvalidParamException : ApplicationException
-	{
-		public InvalidParamException(): base("Invalid Parameter") { }
+	class InvalidParamException : ApplicationException {
+		public InvalidParamException() : base("Invalid Parameter") { }
 	}
 
-	public interface ICodeProgress
-	{
+	public interface ICodeProgress {
 		/// <summary>
 		/// Callback progress.
 		/// </summary>
@@ -34,8 +30,7 @@ namespace SevenZip
 		void SetProgress(Int64 inSize, Int64 outSize);
 	};
 
-	public interface ICoder
-	{
+	public interface ICoder {
 		/// <summary>
 		/// Codes streams.
 		/// </summary>
@@ -75,8 +70,7 @@ namespace SevenZip
 	/// <summary>
 	/// Provides the fields that represent properties idenitifiers for compressing.
 	/// </summary>
-	public enum CoderPropID
-	{
+	public enum CoderPropID {
 		/// <summary>
 		/// Specifies default property.
 		/// </summary>
@@ -140,18 +134,15 @@ namespace SevenZip
 	};
 
 
-	public interface ISetCoderProperties
-	{
+	public interface ISetCoderProperties {
 		void SetCoderProperties(CoderPropID[] propIDs, object[] properties);
 	};
 
-	public interface IWriteCoderProperties
-	{
+	public interface IWriteCoderProperties {
 		void WriteCoderProperties(System.IO.Stream outStream);
 	}
 
-	public interface ISetDecoderProperties
-	{
+	public interface ISetDecoderProperties {
 		void SetDecoderProperties(byte[] properties);
 	}
 }

@@ -15,7 +15,8 @@ namespace AssetStudioGUI {
 	internal enum ExportType {
 		Convert,
 		Raw,
-		Dump
+		Dump,
+		ConvertOHMS
 	}
 
 	internal enum ExportFilter {
@@ -369,6 +370,11 @@ namespace AssetStudioGUI {
 								exportedCount++;
 							}
 							break;
+						case ExportType.ConvertOHMS:
+							if (ExportConvertFileOHMS(asset, exportPath)) {
+								exportedCount++;
+							}
+							break;
 						}
 					}
 					catch (Exception ex) {
@@ -433,7 +439,7 @@ namespace AssetStudioGUI {
 			});
 		}
 
-		public static void ExportAssetsWithStructure(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+		public static void ExportAssetsStructured(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
 			ThreadPool.QueueUserWorkItem(state => {
 				Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
@@ -468,7 +474,7 @@ namespace AssetStudioGUI {
 					exportPath += Path.DirectorySeparatorChar;
 					StatusStripUpdate($"[{exportedCount}/{toExportCount}] Exporting {asset.TypeString}: {asset.Text}");
 					try {
-						if (ExportConvertFileWithStructure(asset, exportPath)) {
+						if (ExportConvertFileOHMS(asset, exportPath)) {
 							++exportedCount;
 						}
 					}
@@ -487,7 +493,16 @@ namespace AssetStudioGUI {
 					var doc = new XDocument(
 							new XElement("Assets",
 								//new XAttribute("filename", filename),
-								new XAttribute("createdAt", DateTime.UtcNow.ToString("s")),
+								new XAttribute("CreatedAt", DateTime.Now.ToString("s")),
+								new XAttribute("CreatedAtUTC", DateTime.UtcNow.ToString("s")),
+								new XElement("SourceFiles",
+								new XAttribute("OpenType", assetsManager.m_lastLoadType.ToString()),
+								assetsManager.m_lastOpenPaths.Select(
+									x => new XElement("File",
+									new XElement("Path", x)
+										)
+									)
+								),
 								toExportAssets.Select(
 									asset => new XElement("Asset",
 										new XAttribute("id", asset.ID),

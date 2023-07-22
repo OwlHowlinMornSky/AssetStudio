@@ -2,10 +2,8 @@
 
 using System;
 
-namespace SevenZip.Compression.LZ
-{
-	interface IInWindowStream
-	{
+namespace SevenZip.Compression.LZ {
+	interface IInWindowStream {
 		void SetStream(System.IO.Stream inStream);
 		void Init();
 		void ReleaseStream();
@@ -14,8 +12,7 @@ namespace SevenZip.Compression.LZ
 		UInt32 GetNumAvailableBytes();
 	}
 
-	interface IMatchFinder : IInWindowStream
-	{
+	interface IMatchFinder : IInWindowStream {
 		void Create(UInt32 historySize, UInt32 keepAddBufferBefore,
 				UInt32 matchMaxLen, UInt32 keepAddBufferAfter);
 		UInt32 GetMatches(UInt32[] distances);

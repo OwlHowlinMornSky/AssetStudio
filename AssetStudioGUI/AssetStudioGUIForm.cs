@@ -89,24 +89,34 @@ namespace AssetStudioGUI {
 
 		private GUILogger logger;
 
+		private string TextBase; // OHMS
+
 		[DllImport("gdi32.dll")]
 		private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
 
 		public AssetStudioGUIForm() {
 			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 			InitializeComponent();
-			Text = $"AssetStudio v0.16.47-OHMS-v{Application.ProductVersion}";
+
+			this.TextBase = $"AssetStudio v0.16.47-OHMS-v{Application.ProductVersion}";
+
+			Text = this.TextBase;
 			delayTimer = new System.Timers.Timer(800);
 			delayTimer.Elapsed += new ElapsedEventHandler(delayTimer_Elapsed);
 			displayAll.Checked = Properties.Settings.Default.displayAll;
 			displayInfo.Checked = Properties.Settings.Default.displayInfo;
 			enablePreview.Checked = Properties.Settings.Default.enablePreview;
+			createANewFolderToolStripMenuItem.Checked = Properties.Settings1.Default.ohmsCreateNew;
+
 			FMODinit();
 
 			logger = new GUILogger(StatusStripUpdate);
 			Logger.Default = logger;
 			Progress.Default = new Progress<int>(SetProgressBarValue);
 			Studio.StatusStripUpdate = StatusStripUpdate;
+		}
+		~AssetStudioGUIForm() {
+			Properties.Settings1.Default.Save();
 		}
 
 		private void AssetStudioGUIForm_DragEnter(object sender, DragEventArgs e) {
@@ -190,10 +200,12 @@ namespace AssetStudioGUI {
 			var typeMap = await Task.Run(() => BuildClassStructure());
 
 			if (!string.IsNullOrEmpty(productName)) {
-				Text = $"AssetStudioGUI v{Application.ProductVersion} - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
+				Text = this.TextBase + $" - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
+				//Text = $"AssetStudioGUI v{Application.ProductVersion} - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 			else {
-				Text = $"AssetStudioGUI v{Application.ProductVersion} - no productName - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
+				Text = this.TextBase + $" - no productName - { assetsManager.assetsFileList[0].unityVersion} - { assetsManager.assetsFileList[0].m_TargetPlatform}";
+				//Text = $"AssetStudioGUI v{Application.ProductVersion} - no productName - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 
 			assetListView.VirtualListSize = visibleAssets.Count;
@@ -1049,7 +1061,7 @@ namespace AssetStudioGUI {
 		}
 
 		private void ResetForm() {
-			Text = $"AssetStudioGUI v{Application.ProductVersion}";
+			Text = this.TextBase;//$"AssetStudioGUI v{Application.ProductVersion}";
 			assetsManager.Clear();
 			assemblyLoader.Clear();
 			exportableAssets.Clear();
@@ -1372,13 +1384,46 @@ namespace AssetStudioGUI {
 			}
 		}
 
-		private void ExportAssetsWithStructure(ExportFilter type) {
+		private bool GetANewFolder(string iDir, out string oDir) {
+			oDir = Path.Combine(iDir, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+			if (Directory.Exists(oDir)) {
+				oDir += " #";
+				string t = null;
+				for (uint i = 0; i < 1024; ++i) {
+					var tt = oDir + i;
+					if (!Directory.Exists(tt)) {
+						t = tt;
+					}
+				}
+				if (t == null) {
+					StatusStripUpdate("Cannot create directory.");
+					MessageBox.Show("Please check directory.\n");
+					return false;
+				}
+				oDir = t;
+			}
+			return true;
+		}
+
+		private void ExportAssetsStructured(ExportFilter type) {
 			if (exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = saveDirectoryBackup;
+				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					timer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
+					Properties.Settings1.Default.ohmsLastFolder = saveFolderDialog.Folder;
+
+					string outdir;
+					if (Properties.Settings1.Default.ohmsCreateNew) {
+						if(!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+							return;
+						}
+					}
+					else {
+						outdir = saveFolderDialog.Folder;
+					}
+
 					List<AssetItem> toExportAssets = null;
 					switch (type) {
 					case ExportFilter.All:
@@ -1391,7 +1436,7 @@ namespace AssetStudioGUI {
 						toExportAssets = visibleAssets;
 						break;
 					}
-					Studio.ExportAssetsWithStructure(saveFolderDialog.Folder, toExportAssets, ExportListType.XML);
+					Studio.ExportAssetsStructured(outdir, toExportAssets, ExportListType.XML);
 				}
 			}
 			else {
@@ -1402,10 +1447,22 @@ namespace AssetStudioGUI {
 		private void ExportAssetsSprites(ExportFilter type) {
 			if (exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = saveDirectoryBackup;
+				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					timer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
+					Properties.Settings1.Default.ohmsLastFolder = saveFolderDialog.Folder;
+
+					string outdir;
+					if (Properties.Settings1.Default.ohmsCreateNew) {
+						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+							return;
+						}
+					}
+					else {
+						outdir = saveFolderDialog.Folder;
+					}
+
 					List<AssetItem> toExportAssets = null;
 					switch (type) {
 					case ExportFilter.All:
@@ -1418,7 +1475,46 @@ namespace AssetStudioGUI {
 						toExportAssets = visibleAssets.Where(x => x.Type == ClassIDType.Sprite).ToList();
 						break;
 					}
-					Studio.ExportAssets(saveFolderDialog.Folder, toExportAssets, ExportType.Convert);
+					Studio.ExportAssets(outdir, toExportAssets, ExportType.Convert);
+				}
+			}
+			else {
+				StatusStripUpdate("No exportable assets loaded");
+			}
+		}
+
+		private void ExportAssetsOHMS(ExportFilter type) {
+			if (exportableAssets.Count > 0) {
+				var saveFolderDialog = new OpenFolderDialog();
+				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
+				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
+					timer.Stop();
+					saveDirectoryBackup = saveFolderDialog.Folder;
+					Properties.Settings1.Default.ohmsLastFolder = saveFolderDialog.Folder;
+
+					string outdir;
+					if (Properties.Settings1.Default.ohmsCreateNew) {
+						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+							return;
+						}
+					}
+					else {
+						outdir = saveFolderDialog.Folder;
+					}
+
+					List<AssetItem> toExportAssets = null;
+					switch (type) {
+					case ExportFilter.All:
+						toExportAssets = exportableAssets;
+						break;
+					case ExportFilter.Selected:
+						toExportAssets = GetSelectedAssets();
+						break;
+					case ExportFilter.Filtered:
+						toExportAssets = visibleAssets;
+						break;
+					}
+					Studio.ExportAssets(outdir, toExportAssets, ExportType.ConvertOHMS);
 				}
 			}
 			else {
@@ -1806,27 +1902,36 @@ namespace AssetStudioGUI {
 		}
 
 		private void allToolStripMenuItem1_Click(object sender, EventArgs e) {
-			ExportAssetsWithStructure(ExportFilter.All);
+			ExportAssetsStructured(ExportFilter.All);
 		}
 
 		private void selectedToolStripMenuItem_Click(object sender, EventArgs e) {
-			ExportAssetsWithStructure(ExportFilter.Selected);
+			ExportAssetsStructured(ExportFilter.Selected);
 		}
 
 		private void filteredToolStripMenuItem_Click(object sender, EventArgs e) {
-			ExportAssetsWithStructure(ExportFilter.Filtered);
+			ExportAssetsStructured(ExportFilter.Filtered);
+		}
+
+		private void createANewFolderToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
+			Properties.Settings1.Default.ohmsCreateNew = createANewFolderToolStripMenuItem.Checked;
+			Properties.Settings1.Default.Save();
+		}
+
+		private void clearToolStripMenuItem_Click(object sender, EventArgs e) {
+			ResetForm();
 		}
 
 		private void allToolStripMenuItem2_Click(object sender, EventArgs e) {
-			ExportAssetsSprites(ExportFilter.All);
+			ExportAssetsOHMS(ExportFilter.All);
 		}
 
 		private void selectedToolStripMenuItem1_Click(object sender, EventArgs e) {
-			ExportAssetsSprites(ExportFilter.Selected);
+			ExportAssetsOHMS(ExportFilter.Selected);
 		}
 
 		private void displayedToolStripMenuItem_Click(object sender, EventArgs e) {
-			ExportAssetsSprites(ExportFilter.Filtered);
+			ExportAssetsOHMS(ExportFilter.Filtered);
 		}
 
 		private void glControl1_MouseWheel(object sender, MouseEventArgs e) {

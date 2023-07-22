@@ -3,8 +3,7 @@
 Distributed under MIT license.
 See file LICENSE for detail or copy at https://opensource.org/licenses/MIT
 */
-namespace Org.Brotli.Dec
-{
+namespace Org.Brotli.Dec {
 	/// <summary>Lookup tables to map prefix codes to value ranges.</summary>
 	/// <remarks>
 	/// Lookup tables to map prefix codes to value ranges.
@@ -12,8 +11,7 @@ namespace Org.Brotli.Dec
 	/// lengths.
 	/// <p> Range represents values: [offset, offset + 2 ^ n_bits)
 	/// </remarks>
-	internal sealed class Prefix
-	{
+	internal sealed class Prefix {
 		internal static readonly int[] BlockLengthOffset = new int[] { 1, 5, 9, 13, 17, 25, 33, 41, 49, 65, 81, 97, 113, 145, 177, 209, 241, 305, 369, 497, 753, 1265, 2289, 4337, 8433, 16625 };
 
 		internal static readonly int[] BlockLengthNBits = new int[] { 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 7, 8, 9, 10, 11, 12, 13, 24 };

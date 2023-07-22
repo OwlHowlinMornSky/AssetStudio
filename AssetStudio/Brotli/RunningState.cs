@@ -3,11 +3,9 @@
 Distributed under MIT license.
 See file LICENSE for detail or copy at https://opensource.org/licenses/MIT
 */
-namespace Org.Brotli.Dec
-{
+namespace Org.Brotli.Dec {
 	/// <summary>Enumeration of decoding state-machine.</summary>
-	internal sealed class RunningState
-	{
+	internal sealed class RunningState {
 		internal const int Uninitialized = 0;
 
 		internal const int BlockStart = 1;

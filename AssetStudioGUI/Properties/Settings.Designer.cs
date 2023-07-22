@@ -274,5 +274,6 @@ namespace AssetStudioGUI.Properties {
                 this["exportAllUvsAsDiffuseMaps"] = value;
             }
         }
-    }
+
+	}
 }

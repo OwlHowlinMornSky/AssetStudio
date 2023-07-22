@@ -2,8 +2,8 @@
 
 ## Changes
 
-* New feature: Export with structure.
-* New feature: Export sprites directly.
+* New feature: Special export.
+* New feature: Export structured.
 
 [日志](./doc/changes.zh.md)
 

@@ -1,7 +1,5 @@
-namespace Smolv
-{
-	public enum SpvOp
-	{
+namespace Smolv {
+	public enum SpvOp {
 		Nop = 0,
 		Undef = 1,
 		SourceContinued = 2,
@@ -314,46 +312,36 @@ namespace Smolv
 		KnownOpsCount,
 	}
 
-	public static class SpvOpExtensions
-	{
-		public static bool OpHasResult(this SpvOp _this)
-		{
-			if (_this < 0 || _this >= SpvOp.KnownOpsCount)
-			{
+	public static class SpvOpExtensions {
+		public static bool OpHasResult(this SpvOp _this) {
+			if (_this < 0 || _this >= SpvOp.KnownOpsCount) {
 				return false;
 			}
 			return OpData.SpirvOpData[(int)_this].hasResult != 0;
 		}
 
-		public static bool OpHasType(this SpvOp _this)
-		{
-			if (_this < 0 || _this >= SpvOp.KnownOpsCount)
-			{
+		public static bool OpHasType(this SpvOp _this) {
+			if (_this < 0 || _this >= SpvOp.KnownOpsCount) {
 				return false;
 			}
 			return OpData.SpirvOpData[(int)_this].hasType != 0;
 		}
 
-		public static int OpDeltaFromResult(this SpvOp _this)
-		{
-			if (_this < 0 || _this >= SpvOp.KnownOpsCount)
-			{
+		public static int OpDeltaFromResult(this SpvOp _this) {
+			if (_this < 0 || _this >= SpvOp.KnownOpsCount) {
 				return 0;
 			}
 			return OpData.SpirvOpData[(int)_this].deltaFromResult;
 		}
 
-		public static bool OpVarRest(this SpvOp _this)
-		{
-			if (_this < 0 || _this >= SpvOp.KnownOpsCount)
-			{
+		public static bool OpVarRest(this SpvOp _this) {
+			if (_this < 0 || _this >= SpvOp.KnownOpsCount) {
 				return false;
 			}
 			return OpData.SpirvOpData[(int)_this].varrest != 0;
 		}
 
-		public static bool OpDebugInfo(this SpvOp _this)
-		{
+		public static bool OpDebugInfo(this SpvOp _this) {
 			return
 				_this == SpvOp.SourceContinued ||
 				_this == SpvOp.Source ||

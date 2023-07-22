@@ -1,11 +1,9 @@
 # 改动
 
-## 0x0. Export with strcture. [按结构导出]
+## 0x0. Special export. [特殊导出]
 
-添加在 Menu/[OHMS]Export/With structure 中。
+添加在 Menu/[OHMS]Export 中。
 
+## 0x1. Export with strcture. [按结构导出]
 
-## 0x1. Export sprites. [导出sprites]
-
-添加在 Menu/[OHMS]Export/Sprites 中。
-
+添加在 Menu/[OHMS]Export/Structured 中。
