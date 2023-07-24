@@ -1,4 +1,6 @@
 ﻿using AssetStudio;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,7 +18,8 @@ namespace AssetStudioGUI {
 		Convert,
 		Raw,
 		Dump,
-		ConvertOHMS
+		ConvertOHMS,
+		DumpJson
 	}
 
 	internal enum ExportFilter {
@@ -26,7 +29,8 @@ namespace AssetStudioGUI {
 	}
 
 	internal enum ExportListType {
-		XML
+		XML,
+		JSON
 	}
 
 	internal static class Studio {
@@ -375,6 +379,11 @@ namespace AssetStudioGUI {
 								exportedCount++;
 							}
 							break;
+						case ExportType.DumpJson:
+							if (ExportDumpFileJson(asset, exportPath)) {
+								exportedCount++;
+							}
+							break;
 						}
 					}
 					catch (Exception ex) {
@@ -405,7 +414,7 @@ namespace AssetStudioGUI {
 				Progress.Reset();
 
 				switch (exportListType) {
-				case ExportListType.XML:
+				case ExportListType.XML: {
 					var filename = Path.Combine(savePath, "assets.xml");
 					var doc = new XDocument(
 							new XElement("Assets",
@@ -427,6 +436,37 @@ namespace AssetStudioGUI {
 					doc.Save(filename);
 
 					break;
+				}
+
+				case ExportListType.JSON: {
+					var filename = Path.Combine(savePath, "assets.json");
+					JObject doc = new JObject {
+						new JProperty("filename", filename),
+						new JProperty("createdAt", DateTime.UtcNow.ToString("s")),
+						new JProperty("Assets", new JArray(
+						toExportAssets.Select(
+						asset => new JObject(
+							new JProperty("Name", asset.Text),
+							new JProperty("Container", asset.Container),
+							new JProperty("Type", new JObject(
+								new JProperty("id", (int)asset.Type),
+								new JProperty("name", asset.TypeString))),
+							new JProperty("PathID", asset.m_PathID),
+							new JProperty("Source", asset.SourceFile.fullName),
+							new JProperty("Size", asset.FullSize)
+							)
+						)
+						)
+						)
+					};
+					if (Properties.Settings1.Default.indentedJson) {
+						File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.Indented));
+					}
+					else {
+						File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.None));
+					}
+					break;
+				}
 				}
 
 				var statusText = $"Finished exporting asset list with {toExportAssets.Count()} items.";
@@ -488,30 +528,29 @@ namespace AssetStudioGUI {
 				Exporter.g_ohms_export_with_structure = false;
 
 				switch (exportListType) {
-				case ExportListType.XML:
+				case ExportListType.XML: {
 					var filename = Path.Combine(savePath, "assets.xml");
 					var doc = new XDocument(
 							new XElement("Assets",
-								//new XAttribute("filename", filename),
 								new XAttribute("CreatedAt", DateTime.Now.ToString("s")),
 								new XAttribute("CreatedAtUTC", DateTime.UtcNow.ToString("s")),
 								new XElement("SourceFiles",
-								new XAttribute("OpenType", assetsManager.m_lastLoadType.ToString()),
-								assetsManager.m_lastOpenPaths.Select(
-									x => new XElement("File",
-									new XElement("Path", x)
+									new XAttribute("OpenType", assetsManager.m_lastLoadType.ToString()),
+									assetsManager.m_lastOpenPaths.Select(
+										x => new XElement("File",
+											new XElement("Path", x)
 										)
 									)
 								),
 								toExportAssets.Select(
 									asset => new XElement("Asset",
-										new XAttribute("id", asset.ID),
+										new XAttribute("ID", asset.ID),
 										new XElement("Name", asset.Text),
-										//new XElement("Container", asset.Container),
-										new XElement("Type", new XAttribute("id", (int)asset.Type), asset.TypeString),
+										new XElement("Type",
+											new XAttribute("id", (int)asset.Type),
+											asset.TypeString
+										),
 										new XElement("PathID", asset.m_PathID)
-										//new XElement("Source", asset.SourceFile.fullName),
-										//new XElement("Size", asset.FullSize)
 									)
 								)
 							)
@@ -521,6 +560,50 @@ namespace AssetStudioGUI {
 					++exportedCount;
 
 					break;
+				}
+				case ExportListType.JSON: {
+					var filename = Path.Combine(savePath, "assets.json");
+					JObject doc = new JObject {
+						new JProperty("createdAt", DateTime.Now.ToString("s")),
+						new JProperty("createdAtUTC", DateTime.UtcNow.ToString("s")),
+						new JProperty("SourceFiles",
+							new JObject(
+								new JProperty("OpenType", assetsManager.m_lastLoadType.ToString()),
+								new JProperty("Files",
+									new JArray(
+										assetsManager.m_lastOpenPaths.Select(
+											x => new JObject(
+												new JProperty("Path", x)
+											)
+										)
+									)
+								)
+							)
+						),
+						new JProperty("Assets",
+							new JArray(
+								toExportAssets.Select(
+									asset => new JObject(
+										new JProperty("ID", asset.ID),
+										new JProperty("Name", asset.Text),
+										new JProperty("Type", new JObject(
+											new JProperty("id", (int)asset.Type),
+											new JProperty("name", asset.TypeString))),
+										new JProperty("PathID", asset.m_PathID)
+									)
+								)
+							)
+						)
+					};
+					if (Properties.Settings1.Default.indentedJson) {
+						File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.Indented));
+					}
+					else {
+						File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.None));
+					}
+					++exportedCount;
+					break;
+				}
 				}
 				Progress.Report(++i, toExportCount);
 
@@ -691,6 +774,16 @@ namespace AssetStudioGUI {
 				var type = MonoBehaviourToTypeTree(m_MonoBehaviour);
 				str = m_MonoBehaviour.Dump(type);
 			}
+			return str;
+		}
+
+		public static string DumpAssetJson(Object obj) {
+			var type = obj.ToType();
+			if (type == null && obj is MonoBehaviour m_MonoBehaviour) {
+				var m_Type = MonoBehaviourToTypeTree(m_MonoBehaviour);
+				type = m_MonoBehaviour.ToType(m_Type);
+			}
+			var str = JsonConvert.SerializeObject(type, Formatting.Indented);
 			return str;
 		}
 

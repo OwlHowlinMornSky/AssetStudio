@@ -5,9 +5,9 @@
 		<TargetFrameworks>net472</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ApplicationIcon>Resources\as.ico</ApplicationIcon>
-		<Version>1.2.0.1</Version>
-		<AssemblyVersion>1.2.0.1</AssemblyVersion>
-		<FileVersion>1.2.0.1</FileVersion>
+		<Version>1.2.1.1</Version>
+		<AssemblyVersion>1.2.1.1</AssemblyVersion>
+		<FileVersion>1.2.1.1</FileVersion>
 		<Copyright></Copyright>
 		<DebugType>embedded</DebugType>
 		<StartupObject>AssetStudioGUI.Program</StartupObject>

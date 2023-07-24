@@ -560,6 +560,10 @@ namespace AssetStudioGUI {
 			fontPreviewBox.Visible = false;
 			FMODpanel.Visible = false;
 			glControl1.Visible = false;
+
+			dumpTextBox.Text = null;
+			dumpJsonTextBox.Text = null;
+
 			StatusStripUpdate("");
 
 			FMODreset();
@@ -567,15 +571,18 @@ namespace AssetStudioGUI {
 			lastSelectedItem = (AssetItem)e.Item;
 
 			if (e.IsSelected) {
-				if (tabControl2.SelectedIndex == 1) {
-					dumpTextBox.Text = DumpAsset(lastSelectedItem.Asset);
-				}
 				if (enablePreview.Checked) {
 					PreviewAsset(lastSelectedItem);
 					if (displayInfo.Checked && lastSelectedItem.InfoText != null) {
 						assetInfoLabel.Text = lastSelectedItem.InfoText;
 						assetInfoLabel.Visible = true;
 					}
+				}
+				if (tabControl2.SelectedIndex == 1) {
+					dumpTextBox.Text = DumpAsset(lastSelectedItem.Asset);
+				}
+				else if (tabControl2.SelectedIndex == 2) {
+					dumpJsonTextBox.Text = DumpAssetJson(lastSelectedItem.Asset);
 				}
 			}
 		}
@@ -646,11 +653,7 @@ namespace AssetStudioGUI {
 						textPreviewBox.Text = str;
 						textPreviewBox.Visible = true;
 					}*/
-					var type = assetItem.Asset.ToType();
-					var str = JsonConvert.SerializeObject(type, Formatting.Indented);
-					if (str != null) {
-						PreviewText(str);
-					}
+					PreviewText(DumpAsset(assetItem.Asset));
 					break;
 				}
 			}
@@ -1272,15 +1275,15 @@ namespace AssetStudioGUI {
 		}
 
 		private void toolStripMenuItem11_Click(object sender, EventArgs e) {
-			ExportAssetsList(ExportFilter.All);
+			ExportAssetsList(ExportFilter.All, ExportListType.XML);
 		}
 
 		private void toolStripMenuItem12_Click(object sender, EventArgs e) {
-			ExportAssetsList(ExportFilter.Selected);
+			ExportAssetsList(ExportFilter.Selected, ExportListType.XML);
 		}
 
 		private void toolStripMenuItem13_Click(object sender, EventArgs e) {
-			ExportAssetsList(ExportFilter.Filtered);
+			ExportAssetsList(ExportFilter.Filtered, ExportListType.XML);
 		}
 
 		private void exportAllObjectssplitToolStripMenuItem1_Click(object sender, EventArgs e) {
@@ -1360,7 +1363,7 @@ namespace AssetStudioGUI {
 			}
 		}
 
-		private void ExportAssetsList(ExportFilter type) {
+		private void ExportAssetsList(ExportFilter type, ExportListType filetype) {
 			// XXX: Only exporting as XML for now, but would JSON(/CSV/other) be useful too?
 
 			if (exportableAssets.Count > 0) {
@@ -1381,7 +1384,7 @@ namespace AssetStudioGUI {
 						toExportAssets = visibleAssets;
 						break;
 					}
-					Studio.ExportAssetsList(saveFolderDialog.Folder, toExportAssets, ExportListType.XML);
+					Studio.ExportAssetsList(saveFolderDialog.Folder, toExportAssets, filetype);
 				}
 			}
 			else {
@@ -1418,7 +1421,7 @@ namespace AssetStudioGUI {
 			return true;
 		}
 
-		private void ExportAssetsStructured(ExportFilter type) {
+		private void ExportAssetsStructured(ExportFilter type, ExportListType listType) {
 			if (exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
@@ -1449,7 +1452,7 @@ namespace AssetStudioGUI {
 						toExportAssets = visibleAssets;
 						break;
 					}
-					Studio.ExportAssetsStructured(outdir, toExportAssets, ExportListType.XML);
+					Studio.ExportAssetsStructured(outdir, toExportAssets, listType);
 				}
 			}
 			else {
@@ -1905,8 +1908,23 @@ namespace AssetStudioGUI {
 		}
 
 		private void tabControl2_SelectedIndexChanged(object sender, EventArgs e) {
-			if (tabControl2.SelectedIndex == 1 && lastSelectedItem != null) {
+			if(lastSelectedItem == null) {
+				dumpTextBox.Text = "Nothing to be shown.";
+				return;
+			}
+			switch(tabControl2.SelectedIndex) {
+			case 0:
+				dumpTextBox.Text = null;
+				dumpJsonTextBox.Text = null;
+				break;
+			case 1:
 				dumpTextBox.Text = DumpAsset(lastSelectedItem.Asset);
+				dumpJsonTextBox.Text = null;
+				break;
+			case 2:
+				dumpTextBox.Text = null;
+				dumpJsonTextBox.Text = DumpAssetJson(lastSelectedItem.Asset);
+				break;
 			}
 		}
 
@@ -1915,15 +1933,15 @@ namespace AssetStudioGUI {
 		}
 
 		private void allToolStripMenuItem1_Click(object sender, EventArgs e) {
-			ExportAssetsStructured(ExportFilter.All);
+			ExportAssetsStructured(ExportFilter.All, ExportListType.XML);
 		}
 
 		private void selectedToolStripMenuItem_Click(object sender, EventArgs e) {
-			ExportAssetsStructured(ExportFilter.Selected);
+			ExportAssetsStructured(ExportFilter.Selected, ExportListType.XML);
 		}
 
 		private void filteredToolStripMenuItem_Click(object sender, EventArgs e) {
-			ExportAssetsStructured(ExportFilter.Filtered);
+			ExportAssetsStructured(ExportFilter.Filtered, ExportListType.XML);
 		}
 
 		private void createANewFolderToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
@@ -1951,8 +1969,48 @@ namespace AssetStudioGUI {
 			ExportAssetsOHMS(ExportFilter.Selected);
 		}
 
-		private void oHMSExportSelectedAssetsStructuredToolStripMenuItem_Click(object sender, EventArgs e) {
-			ExportAssetsStructured(ExportFilter.Selected);
+		private void allToolStripMenuItem3_Click(object sender, EventArgs e) {
+			ExportAssets(ExportFilter.All, ExportType.DumpJson);
+		}
+
+		private void selectedAssetsToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssets(ExportFilter.Selected, ExportType.DumpJson);
+		}
+
+		private void filteredAssetsToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssets(ExportFilter.Filtered, ExportType.DumpJson);
+		}
+
+		private void allToolStripMenuItem4_Click(object sender, EventArgs e) {
+			ExportAssetsList(ExportFilter.All, ExportListType.JSON);
+		}
+
+		private void selectedAssetsToolStripMenuItem1_Click(object sender, EventArgs e) {
+			ExportAssetsList(ExportFilter.Selected, ExportListType.JSON);
+		}
+
+		private void filteredAssetsToolStripMenuItem1_Click(object sender, EventArgs e) {
+			ExportAssetsList(ExportFilter.Filtered, ExportListType.JSON);
+		}
+
+		private void allaToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssetsStructured(ExportFilter.All, ExportListType.JSON);
+		}
+
+		private void selectedAssetsToolStripMenuItem2_Click(object sender, EventArgs e) {
+			ExportAssetsStructured(ExportFilter.Selected, ExportListType.JSON);
+		}
+
+		private void displayedAssetsToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssetsStructured(ExportFilter.Filtered, ExportListType.JSON);
+		}
+
+		private void xMLListToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssetsStructured(ExportFilter.Selected, ExportListType.XML);
+		}
+
+		private void jSONListToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssetsStructured(ExportFilter.Selected, ExportListType.JSON);
 		}
 
 		private void glControl1_MouseWheel(object sender, MouseEventArgs e) {

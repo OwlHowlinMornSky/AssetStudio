@@ -46,5 +46,17 @@ namespace AssetStudioGUI.Properties {
                 this["ohmsLastFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool indentedJson {
+            get {
+                return ((bool)(this["indentedJson"]));
+            }
+            set {
+                this["indentedJson"] = value;
+            }
+        }
     }
 }

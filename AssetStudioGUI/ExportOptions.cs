@@ -31,6 +31,7 @@ namespace AssetStudioGUI {
 			fbxVersion.SelectedIndex = Properties.Settings.Default.fbxVersion;
 			fbxFormat.SelectedIndex = Properties.Settings.Default.fbxFormat;
 
+			jsonStructureCheckBox.Checked = Properties.Settings1.Default.indentedJson;
 		}
 
 		private void OKbutton_Click(object sender, EventArgs e) {
@@ -58,6 +59,10 @@ namespace AssetStudioGUI {
 			Properties.Settings.Default.fbxVersion = fbxVersion.SelectedIndex;
 			Properties.Settings.Default.fbxFormat = fbxFormat.SelectedIndex;
 			Properties.Settings.Default.Save();
+
+			Properties.Settings1.Default.indentedJson = jsonStructureCheckBox.Checked;
+			Properties.Settings1.Default.Save();
+
 			DialogResult = DialogResult.OK;
 			Close();
 		}
@@ -66,6 +71,5 @@ namespace AssetStudioGUI {
 			DialogResult = DialogResult.Cancel;
 			Close();
 		}
-
 	}
 }
