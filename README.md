@@ -4,6 +4,7 @@
 
 * New feature: Special export.
 * New feature: Export structured.
+* New featrue: Export to JSON (Dump, Asset List).
 
 [日志](./doc/changes.zh.md)
 
