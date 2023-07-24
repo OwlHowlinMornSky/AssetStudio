@@ -641,10 +641,15 @@ namespace AssetStudioGUI {
 					StatusStripUpdate("Can be exported with Animator or Objects");
 					break;
 				default:
-					var str = assetItem.Asset.Dump();
+					/*var str = assetItem.Asset.Dump();
 					if (str != null) {
 						textPreviewBox.Text = str;
 						textPreviewBox.Visible = true;
+					}*/
+					var type = assetItem.Asset.ToType();
+					var str = JsonConvert.SerializeObject(type, Formatting.Indented);
+					if (str != null) {
+						PreviewText(str);
 					}
 					break;
 				}
@@ -1940,6 +1945,14 @@ namespace AssetStudioGUI {
 
 		private void displayedToolStripMenuItem_Click(object sender, EventArgs e) {
 			ExportAssetsOHMS(ExportFilter.Filtered);
+		}
+
+		private void oHMSExportSelectedAssetsToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssetsOHMS(ExportFilter.Selected);
+		}
+
+		private void oHMSExportSelectedAssetsStructuredToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssetsStructured(ExportFilter.Selected);
 		}
 
 		private void glControl1_MouseWheel(object sender, MouseEventArgs e) {
