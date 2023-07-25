@@ -374,7 +374,7 @@ static inline float fp16_alt_to_fp32_value(uint16_t h) {
 	 * operate on denormal inputs, and do not produce denormal results.
 	 */
 	const float exp_offset = UINT32_C(0x70) << 23;
-	const float normalized_value = fp32_from_bits((two_w >> 4) + exp_offset);
+	const float normalized_value = fp32_from_bits((two_w >> 4) + (uint32_t)exp_offset);
 
 	/*
 	 * Convert denormalized half-precision inputs into single-precision results (always normalized).

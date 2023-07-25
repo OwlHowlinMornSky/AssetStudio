@@ -370,7 +370,7 @@ static inline uint8_t f32_to_u8(const float f) {
 	else if (c > 255)
 		return 255;
 	else
-		return c;
+		return (uint8_t)c;
 }
 
 static uint8_t half_to_u8(uint16_t h) {

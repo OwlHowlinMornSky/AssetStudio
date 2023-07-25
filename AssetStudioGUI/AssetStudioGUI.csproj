@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net472</TargetFrameworks>
+		<TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ApplicationIcon>Resources\as.ico</ApplicationIcon>
 		<Version>1.2.1.1</Version>
 		<AssemblyVersion>1.2.1.1</AssemblyVersion>
 		<FileVersion>1.2.1.1</FileVersion>
-		<Copyright></Copyright>
+		<Copyright>Copyright © Perfare 2020-2022; Tyler Parret True 2023</Copyright>
 		<DebugType>embedded</DebugType>
-		<StartupObject>AssetStudioGUI.Program</StartupObject>
 		<SignAssembly>False</SignAssembly>
 		<Authors>Perfare, Tyler Parret True</Authors>
-		<Company>$(AssemblyName)</Company>
 		<Title>$(AssemblyName)</Title>
-		<RepositoryUrl></RepositoryUrl>
-		<AnalysisLevel>none</AnalysisLevel>
 		<PackageId>$(AssemblyName)</PackageId>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<IsPublishable>True</IsPublishable>
+		<OutputType>WinExe</OutputType>
+		<StartupObject>AssetStudioGUI.Program</StartupObject>
+		<UseWPF>True</UseWPF>
+		<PlatformTarget>x64</PlatformTarget>
+		<Platforms>AnyCPU</Platforms>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
@@ -75,7 +75,6 @@
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' != 'net472' ">
-		<PackageReference Include="OpenTK" Version="4.6.7" />
 		<Reference Include="OpenTK.WinForms">
 			<HintPath>Libraries\OpenTK.WinForms.dll</HintPath>
 		</Reference>
@@ -87,7 +86,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="OpenTK" Version="4.8.0" />
 	</ItemGroup>
 
 	<ItemGroup>

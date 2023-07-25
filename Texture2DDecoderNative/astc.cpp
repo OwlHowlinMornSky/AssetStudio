@@ -162,7 +162,7 @@ static uint_fast8_t select_color_hdr(int v0, int v1, int weight) {
     else
         m = 5 * m - 2048;
     float f = fp16_ieee_to_fp32_value((c >> 1 & 0x7c00) | m >> 3);
-    return isfinite(f) ? clamp(roundf(f * 255)) : 255;
+    return isfinite(f) ? clamp((int)roundf(f * 255)) : 255;
 }
 
 static inline uint8_t f32_to_u8(const float f) {
@@ -172,7 +172,7 @@ static inline uint8_t f32_to_u8(const float f) {
     else if (c > 255)
         return 255;
     else
-        return c;
+        return (uint8_t)c;
 }
 
 static inline uint8_t f16ptr_to_u8(const uint8_t *ptr) {

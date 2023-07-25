@@ -108,6 +108,9 @@ namespace AssetStudioGUI {
 			enablePreview.Checked = Properties.Settings.Default.enablePreview;
 			createANewFolderToolStripMenuItem.Checked = Properties.Settings1.Default.ohmsCreateNew;
 
+			dumpTextBox.Text = "Nothing to show.";
+			dumpJsonTextBox.Text = "Nothing to show.";
+
 			FMODinit();
 
 			logger = new GUILogger(StatusStripUpdate);
@@ -204,7 +207,7 @@ namespace AssetStudioGUI {
 				//Text = $"AssetStudioGUI v{Application.ProductVersion} - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 			else {
-				Text = this.TextBase + $" - no productName - { assetsManager.assetsFileList[0].unityVersion} - { assetsManager.assetsFileList[0].m_TargetPlatform}";
+				Text = this.TextBase + $" - no productName - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 				//Text = $"AssetStudioGUI v{Application.ProductVersion} - no productName - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 
@@ -561,8 +564,8 @@ namespace AssetStudioGUI {
 			FMODpanel.Visible = false;
 			glControl1.Visible = false;
 
-			dumpTextBox.Text = null;
-			dumpJsonTextBox.Text = null;
+			dumpTextBox.Text = "Nothing to show.";
+			dumpJsonTextBox.Text = "Nothing to show.";
 
 			StatusStripUpdate("");
 
@@ -595,6 +598,12 @@ namespace AssetStudioGUI {
 			fontPreviewBox.Visible = false;
 			FMODpanel.Visible = false;
 			glControl1.Visible = false;
+
+			lastSelectedItem = null;
+
+			dumpTextBox.Text = "Nothing to show.";
+			dumpJsonTextBox.Text = "Nothing to show.";
+
 			StatusStripUpdate("");
 			if (e.IsSelected) {
 				classTextBox.Text = ((TypeTreeItem)classesListView.SelectedItems[0]).ToString();
@@ -669,14 +678,24 @@ namespace AssetStudioGUI {
 				image.Dispose();
 				assetItem.InfoText = $"Width: {m_Texture2D.m_Width}\nHeight: {m_Texture2D.m_Height}\nFormat: {m_Texture2D.m_TextureFormat}";
 				switch (m_Texture2D.m_TextureSettings.m_FilterMode) {
-				case 0: assetItem.InfoText += "\nFilter Mode: Point "; break;
-				case 1: assetItem.InfoText += "\nFilter Mode: Bilinear "; break;
-				case 2: assetItem.InfoText += "\nFilter Mode: Trilinear "; break;
+				case 0:
+					assetItem.InfoText += "\nFilter Mode: Point ";
+					break;
+				case 1:
+					assetItem.InfoText += "\nFilter Mode: Bilinear ";
+					break;
+				case 2:
+					assetItem.InfoText += "\nFilter Mode: Trilinear ";
+					break;
 				}
 				assetItem.InfoText += $"\nAnisotropic level: {m_Texture2D.m_TextureSettings.m_Aniso}\nMip map bias: {m_Texture2D.m_TextureSettings.m_MipBias}";
 				switch (m_Texture2D.m_TextureSettings.m_WrapMode) {
-				case 0: assetItem.InfoText += "\nWrap mode: Repeat"; break;
-				case 1: assetItem.InfoText += "\nWrap mode: Clamp"; break;
+				case 0:
+					assetItem.InfoText += "\nWrap mode: Repeat";
+					break;
+				case 1:
+					assetItem.InfoText += "\nWrap mode: Clamp";
+					break;
 				}
 				assetItem.InfoText += "\nChannels: ";
 				int validChannel = 0;
@@ -803,7 +822,8 @@ namespace AssetStudioGUI {
 			exinfo.length = (uint)m_AudioClip.m_Size;
 
 			var result = system.createSound(m_AudioData, FMOD.MODE.OPENMEMORY | loopMode, ref exinfo, out sound);
-			if (ERRCHECK(result)) return;
+			if (ERRCHECK(result))
+				return;
 
 			sound.getNumSubSounds(out var numsubsounds);
 
@@ -815,15 +835,18 @@ namespace AssetStudioGUI {
 			}
 
 			result = sound.getLength(out FMODlenms, FMOD.TIMEUNIT.MS);
-			if (ERRCHECK(result)) return;
+			if (ERRCHECK(result))
+				return;
 
 			result = system.playSound(sound, null, true, out channel);
-			if (ERRCHECK(result)) return;
+			if (ERRCHECK(result))
+				return;
 
 			FMODpanel.Visible = true;
 
 			result = channel.getFrequency(out var frequency);
-			if (ERRCHECK(result)) return;
+			if (ERRCHECK(result))
+				return;
 
 			FMODinfoLabel.Text = frequency + " Hz";
 			FMODtimerLabel.Text = $"0:0.0 / {FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
@@ -1100,6 +1123,9 @@ namespace AssetStudioGUI {
 			}
 
 			FMODreset();
+
+			dumpTextBox.Text = "Nothing to show.";
+			dumpJsonTextBox.Text = "Nothing to show.";
 		}
 
 		private void assetListView_MouseClick(object sender, MouseEventArgs e) {
@@ -1393,7 +1419,7 @@ namespace AssetStudioGUI {
 		}
 
 		private bool GetANewFolder(string iDir, out string oDir) {
-			if(assetsManager.m_lastOpenPaths.Length == 1) {
+			if (assetsManager.m_lastOpenPaths.Length == 1) {
 				oDir = Path.Combine(iDir, Path.GetFileName(assetsManager.m_lastOpenPaths[0]));
 				if (Directory.Exists(oDir)) {
 					oDir += DateTime.Now.ToString(" yyyyMMdd-HHmmss");
@@ -1432,7 +1458,7 @@ namespace AssetStudioGUI {
 
 					string outdir;
 					if (Properties.Settings1.Default.ohmsCreateNew) {
-						if(!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
 							return;
 						}
 					}
@@ -1559,7 +1585,9 @@ namespace AssetStudioGUI {
 			FMODreset();
 
 			var result = FMOD.Factory.System_Create(out system);
-			if (ERRCHECK(result)) { return; }
+			if (ERRCHECK(result)) {
+				return;
+			}
 
 			result = system.getVersion(out var version);
 			ERRCHECK(result);
@@ -1569,13 +1597,19 @@ namespace AssetStudioGUI {
 			}
 
 			result = system.init(2, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
-			if (ERRCHECK(result)) { return; }
+			if (ERRCHECK(result)) {
+				return;
+			}
 
 			result = system.getMasterSoundGroup(out masterSoundGroup);
-			if (ERRCHECK(result)) { return; }
+			if (ERRCHECK(result)) {
+				return;
+			}
 
 			result = masterSoundGroup.setVolume(FMODVolume);
-			if (ERRCHECK(result)) { return; }
+			if (ERRCHECK(result)) {
+				return;
+			}
 		}
 
 		private void FMODreset() {
@@ -1597,21 +1631,29 @@ namespace AssetStudioGUI {
 				timer.Start();
 				var result = channel.isPlaying(out var playing);
 				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 				}
 
 				if (playing) {
 					result = channel.stop();
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 
 					result = system.playSound(sound, null, false, out channel);
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 
 					FMODpauseButton.Text = "Pause";
 				}
 				else {
 					result = system.playSound(sound, null, false, out channel);
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 					FMODstatusLabel.Text = "Playing";
 
 					if (FMODprogressBar.Value > 0) {
@@ -1619,7 +1661,9 @@ namespace AssetStudioGUI {
 
 						result = channel.setPosition(newms, FMOD.TIMEUNIT.MS);
 						if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-							if (ERRCHECK(result)) { return; }
+							if (ERRCHECK(result)) {
+								return;
+							}
 						}
 
 					}
@@ -1631,14 +1675,20 @@ namespace AssetStudioGUI {
 			if (sound != null && channel != null) {
 				var result = channel.isPlaying(out var playing);
 				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 				}
 
 				if (playing) {
 					result = channel.getPaused(out var paused);
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 					result = channel.setPaused(!paused);
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 
 					if (paused) {
 						FMODstatusLabel.Text = "Playing";
@@ -1658,12 +1708,16 @@ namespace AssetStudioGUI {
 			if (channel != null) {
 				var result = channel.isPlaying(out var playing);
 				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 				}
 
 				if (playing) {
 					result = channel.stop();
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 					//channel = null;
 					//don't FMODreset, it will nullify the sound
 					timer.Stop();
@@ -1682,23 +1736,31 @@ namespace AssetStudioGUI {
 
 			if (sound != null) {
 				result = sound.setMode(loopMode);
-				if (ERRCHECK(result)) { return; }
+				if (ERRCHECK(result)) {
+					return;
+				}
 			}
 
 			if (channel != null) {
 				result = channel.isPlaying(out var playing);
 				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 				}
 
 				result = channel.getPaused(out var paused);
 				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 				}
 
 				if (playing || paused) {
 					result = channel.setMode(loopMode);
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 				}
 			}
 		}
@@ -1707,7 +1769,9 @@ namespace AssetStudioGUI {
 			FMODVolume = Convert.ToSingle(FMODvolumeBar.Value) / 10;
 
 			var result = masterSoundGroup.setVolume(FMODVolume);
-			if (ERRCHECK(result)) { return; }
+			if (ERRCHECK(result)) {
+				return;
+			}
 		}
 
 		private void FMODprogressBar_Scroll(object sender, EventArgs e) {
@@ -1727,16 +1791,22 @@ namespace AssetStudioGUI {
 
 				var result = channel.setPosition(newms, FMOD.TIMEUNIT.MS);
 				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 				}
 
 
 				result = channel.isPlaying(out var playing);
 				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (ERRCHECK(result)) { return; }
+					if (ERRCHECK(result)) {
+						return;
+					}
 				}
 
-				if (playing) { timer.Start(); }
+				if (playing) {
+					timer.Start();
+				}
 			}
 		}
 
@@ -1924,11 +1994,12 @@ namespace AssetStudioGUI {
 		}
 
 		private void tabControl2_SelectedIndexChanged(object sender, EventArgs e) {
-			if(lastSelectedItem == null) {
-				dumpTextBox.Text = "Nothing to be shown.";
+			if (lastSelectedItem == null) {
+				dumpTextBox.Text = "Nothing to show.";
+				dumpJsonTextBox.Text = "Nothing to show.";
 				return;
 			}
-			switch(tabControl2.SelectedIndex) {
+			switch (tabControl2.SelectedIndex) {
 			case 0:
 				dumpTextBox.Text = null;
 				dumpJsonTextBox.Text = null;
@@ -2035,6 +2106,10 @@ namespace AssetStudioGUI {
 
 		private void charArtBundleToolStripMenuItem_Click(object sender, EventArgs e) {
 			ExportAssetsStructured(ExportFilter.OHMS_arknights_charart, ExportListType.JSON);
+		}
+
+		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
+			lastSelectedItem = null;
 		}
 
 		private void glControl1_MouseWheel(object sender, MouseEventArgs e) {
