@@ -1451,6 +1451,22 @@ namespace AssetStudioGUI {
 					case ExportFilter.Filtered:
 						toExportAssets = visibleAssets;
 						break;
+					case ExportFilter.OHMS_arknights_scene:
+						toExportAssets = exportableAssets.FindAll(
+							x => (x.Type == ClassIDType.Mesh) ||
+							(x.Type == ClassIDType.MeshRenderer) ||
+							(x.Type == ClassIDType.Texture2D)
+						);
+						break;
+					case ExportFilter.OHMS_arknights_charart:
+						toExportAssets = exportableAssets.FindAll(
+							x => (x.Type == ClassIDType.Material) ||
+							(x.Type == ClassIDType.MonoBehaviour) ||
+							(x.Type == ClassIDType.Sprite) ||
+							(x.Type == ClassIDType.TextAsset) ||
+							(x.Type == ClassIDType.Texture2D)
+						);
+						break;
 					}
 					Studio.ExportAssetsStructured(outdir, toExportAssets, listType);
 				}
@@ -2011,6 +2027,14 @@ namespace AssetStudioGUI {
 
 		private void jSONListToolStripMenuItem_Click(object sender, EventArgs e) {
 			ExportAssetsStructured(ExportFilter.Selected, ExportListType.JSON);
+		}
+
+		private void sceneToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssetsStructured(ExportFilter.OHMS_arknights_scene, ExportListType.JSON);
+		}
+
+		private void charArtBundleToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportAssetsStructured(ExportFilter.OHMS_arknights_charart, ExportListType.JSON);
 		}
 
 		private void glControl1_MouseWheel(object sender, MouseEventArgs e) {

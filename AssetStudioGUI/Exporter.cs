@@ -360,8 +360,18 @@ namespace AssetStudioGUI {
 			return true;
 		}
 
+		public static bool ExportAnimatorConvert(AssetItem item, string exportPath, List<AssetItem> animationList = null) {
+			if (!TryExportFile(exportPath, item, ".fbx", out var exportFullPath))
+				return false;
+			var m_Animator = (Animator)item.Asset;
+			var convert = animationList != null
+				? new ModelConverter(m_Animator, Properties.Settings.Default.convertType, animationList.Select(x => (AnimationClip)x.Asset).ToArray())
+				: new ModelConverter(m_Animator, Properties.Settings.Default.convertType);
+			ExportFbx(convert, exportFullPath);
+			return true;
+		}
+
 		private static bool TryExportFile(string dir, AssetItem item, string extension, out string fullPath) {
-			var fileName = FixFileName(item.Text);
 			if (g_ohms_export_with_structure) {
 				fullPath = Path.Combine(dir, item.ID + ".ttbin");
 				if (!File.Exists(fullPath)) {
@@ -370,6 +380,7 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
+				var fileName = FixFileName(item.Text);
 				fullPath = Path.Combine(dir, fileName + extension);
 				if (!File.Exists(fullPath)) {
 					Directory.CreateDirectory(dir);
@@ -484,7 +495,7 @@ namespace AssetStudioGUI {
 			case ClassIDType.Sprite:
 				return ExportSprite(item, exportPath);
 			case ClassIDType.Animator:
-				return ExportAnimator(item, exportPath);
+				return ExportAnimatorConvert(item, exportPath);
 			case ClassIDType.AnimationClip:
 				return false;
 			default:
@@ -513,13 +524,15 @@ namespace AssetStudioGUI {
 			case ClassIDType.MovieTexture:
 				return ExportMovieTexture(item, exportPath);
 			case ClassIDType.Sprite:
-				return ExportDumpFileJson(item, exportPath); //ExportSprite(item, exportPath);
+				return ExportDumpFileJson(item, exportPath);
 			case ClassIDType.Animator:
 				return false;
 			case ClassIDType.AnimationClip:
 				return false;
+			case ClassIDType.AssetBundle:
+				return false;
 			default:
-				return ExportDumpFileJson(item, exportPath); //ExportDumpFile(item, exportPath);
+				return ExportDumpFileJson(item, exportPath);
 			}
 		}
 

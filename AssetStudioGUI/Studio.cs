@@ -25,7 +25,9 @@ namespace AssetStudioGUI {
 	internal enum ExportFilter {
 		All,
 		Selected,
-		Filtered
+		Filtered,
+		OHMS_arknights_scene,
+		OHMS_arknights_charart
 	}
 
 	internal enum ExportListType {

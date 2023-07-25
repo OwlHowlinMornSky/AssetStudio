@@ -101,10 +101,13 @@
 			this.allaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.selectedAssetsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
 			this.displayedAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+			this.arknightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.sceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.charArtBundleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.sceneTreeView = new AssetStudioGUI.GOHierarchy();
 			this.treeSearch = new System.Windows.Forms.TextBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.assetListView = new System.Windows.Forms.ListView();
@@ -158,6 +161,7 @@
 			this.oHMSExportSelectedAssetsStructuredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.xMLListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.jSONListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.sceneTreeView = new AssetStudioGUI.GOHierarchy();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -494,21 +498,21 @@
 			// toolStripMenuItem11
 			// 
 			this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-			this.toolStripMenuItem11.Size = new System.Drawing.Size(165, 22);
+			this.toolStripMenuItem11.Size = new System.Drawing.Size(180, 22);
 			this.toolStripMenuItem11.Text = "All assets";
 			this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
 			// 
 			// toolStripMenuItem12
 			// 
 			this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-			this.toolStripMenuItem12.Size = new System.Drawing.Size(165, 22);
+			this.toolStripMenuItem12.Size = new System.Drawing.Size(180, 22);
 			this.toolStripMenuItem12.Text = "Selected assets";
 			this.toolStripMenuItem12.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
 			// 
 			// toolStripMenuItem13
 			// 
 			this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-			this.toolStripMenuItem13.Size = new System.Drawing.Size(165, 22);
+			this.toolStripMenuItem13.Size = new System.Drawing.Size(180, 22);
 			this.toolStripMenuItem13.Text = "Filtered assets";
 			this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
 			// 
@@ -645,8 +649,10 @@
             this.selectedToolStripMenuItem1,
             this.displayedToolStripMenuItem,
             this.toolStripSeparator7,
+            this.structuredJsonListToolStripMenuItem,
             this.withStructureToolStripMenuItem,
-            this.structuredJsonListToolStripMenuItem});
+            this.toolStripSeparator9,
+            this.arknightsToolStripMenuItem});
 			this.exportOHMSToolStripMenuItem.Name = "exportOHMSToolStripMenuItem";
 			this.exportOHMSToolStripMenuItem.Size = new System.Drawing.Size(104, 21);
 			this.exportOHMSToolStripMenuItem.Text = "[OHMS]Export";
@@ -737,23 +743,51 @@
 			// allaToolStripMenuItem
 			// 
 			this.allaToolStripMenuItem.Name = "allaToolStripMenuItem";
-			this.allaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+			this.allaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.allaToolStripMenuItem.Text = "All assets";
 			this.allaToolStripMenuItem.Click += new System.EventHandler(this.allaToolStripMenuItem_Click);
 			// 
 			// selectedAssetsToolStripMenuItem2
 			// 
 			this.selectedAssetsToolStripMenuItem2.Name = "selectedAssetsToolStripMenuItem2";
-			this.selectedAssetsToolStripMenuItem2.Size = new System.Drawing.Size(173, 22);
+			this.selectedAssetsToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
 			this.selectedAssetsToolStripMenuItem2.Text = "Selected assets";
 			this.selectedAssetsToolStripMenuItem2.Click += new System.EventHandler(this.selectedAssetsToolStripMenuItem2_Click);
 			// 
 			// displayedAssetsToolStripMenuItem
 			// 
 			this.displayedAssetsToolStripMenuItem.Name = "displayedAssetsToolStripMenuItem";
-			this.displayedAssetsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+			this.displayedAssetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.displayedAssetsToolStripMenuItem.Text = "Displayed assets";
 			this.displayedAssetsToolStripMenuItem.Click += new System.EventHandler(this.displayedAssetsToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator9
+			// 
+			this.toolStripSeparator9.Name = "toolStripSeparator9";
+			this.toolStripSeparator9.Size = new System.Drawing.Size(193, 6);
+			// 
+			// arknightsToolStripMenuItem
+			// 
+			this.arknightsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sceneToolStripMenuItem,
+            this.charArtBundleToolStripMenuItem});
+			this.arknightsToolStripMenuItem.Name = "arknightsToolStripMenuItem";
+			this.arknightsToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+			this.arknightsToolStripMenuItem.Text = "[Arknights]";
+			// 
+			// sceneToolStripMenuItem
+			// 
+			this.sceneToolStripMenuItem.Name = "sceneToolStripMenuItem";
+			this.sceneToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+			this.sceneToolStripMenuItem.Text = "Scene Bundle";
+			this.sceneToolStripMenuItem.Click += new System.EventHandler(this.sceneToolStripMenuItem_Click);
+			// 
+			// charArtBundleToolStripMenuItem
+			// 
+			this.charArtBundleToolStripMenuItem.Name = "charArtBundleToolStripMenuItem";
+			this.charArtBundleToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+			this.charArtBundleToolStripMenuItem.Text = "CharArt Bundle";
+			this.charArtBundleToolStripMenuItem.Click += new System.EventHandler(this.charArtBundleToolStripMenuItem_Click);
 			// 
 			// splitContainer1
 			// 
@@ -803,17 +837,6 @@
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Scene Hierarchy";
 			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// sceneTreeView
-			// 
-			this.sceneTreeView.CheckBoxes = true;
-			this.sceneTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.sceneTreeView.HideSelection = false;
-			this.sceneTreeView.Location = new System.Drawing.Point(0, 21);
-			this.sceneTreeView.Name = "sceneTreeView";
-			this.sceneTreeView.Size = new System.Drawing.Size(472, 587);
-			this.sceneTreeView.TabIndex = 1;
-			this.sceneTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.sceneTreeView_AfterCheck);
 			// 
 			// treeSearch
 			// 
@@ -1359,6 +1382,17 @@
 			this.jSONListToolStripMenuItem.Text = "JSON list";
 			this.jSONListToolStripMenuItem.Click += new System.EventHandler(this.jSONListToolStripMenuItem_Click);
 			// 
+			// sceneTreeView
+			// 
+			this.sceneTreeView.CheckBoxes = true;
+			this.sceneTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.sceneTreeView.HideSelection = false;
+			this.sceneTreeView.Location = new System.Drawing.Point(0, 21);
+			this.sceneTreeView.Name = "sceneTreeView";
+			this.sceneTreeView.Size = new System.Drawing.Size(472, 587);
+			this.sceneTreeView.TabIndex = 1;
+			this.sceneTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.sceneTreeView_AfterCheck);
+			// 
 			// AssetStudioGUIForm
 			// 
 			this.AllowDrop = true;
@@ -1539,6 +1573,10 @@
 		private System.Windows.Forms.ToolStripMenuItem displayedAssetsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem xMLListToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem jSONListToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+		private System.Windows.Forms.ToolStripMenuItem arknightsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem sceneToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem charArtBundleToolStripMenuItem;
 	}
 }
 
