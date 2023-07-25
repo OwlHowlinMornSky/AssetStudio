@@ -27,13 +27,20 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssetStudioGUIForm));
 			menuStrip1 = new System.Windows.Forms.MenuStrip();
 			fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			loadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			loadFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuFile_loadFile = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuFile_loadFolder = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-			extractFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			extractFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuFile_extractFile = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuFile_extractFolder = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-			clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuFile_clear = new System.Windows.Forms.ToolStripMenuItem();
+			optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuOptions_displayAllAssets = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuOptions_enablePreview = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuOptions_displayInfo = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuOptions_SpecifyUnityVersion = new System.Windows.Forms.ToolStripMenuItem();
+			specifyUnityVersion = new System.Windows.Forms.ToolStripTextBox();
+			ui_menuOptions_exportOptions = new System.Windows.Forms.ToolStripMenuItem();
 			filterTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			modelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,13 +78,6 @@
 			allToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
 			selectedAssetsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			filteredAssetsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			displayAll = new System.Windows.Forms.ToolStripMenuItem();
-			enablePreview = new System.Windows.Forms.ToolStripMenuItem();
-			displayInfo = new System.Windows.Forms.ToolStripMenuItem();
-			toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
-			specifyUnityVersion = new System.Windows.Forms.ToolStripTextBox();
-			showExpOpt = new System.Windows.Forms.ToolStripMenuItem();
 			debugMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
 			exportClassStructuresMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +93,7 @@
 			selectedAssetsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
 			displayedAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			withStructureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			allToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuOhmsExport_StructXml_All = new System.Windows.Forms.ToolStripMenuItem();
 			selectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			filteredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -181,7 +181,7 @@
 			// 
 			// menuStrip1
 			// 
-			menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, filterTypeToolStripMenuItem, modelToolStripMenuItem, exportToolStripMenuItem, optionsToolStripMenuItem, debugMenuItem, exportOHMSToolStripMenuItem });
+			menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionsToolStripMenuItem, filterTypeToolStripMenuItem, modelToolStripMenuItem, exportToolStripMenuItem, debugMenuItem, exportOHMSToolStripMenuItem });
 			menuStrip1.Location = new System.Drawing.Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
 			menuStrip1.Size = new System.Drawing.Size(1264, 25);
@@ -190,55 +190,112 @@
 			// 
 			// fileToolStripMenuItem
 			// 
-			fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { loadFileToolStripMenuItem, loadFolderToolStripMenuItem, toolStripMenuItem1, extractFileToolStripMenuItem, extractFolderToolStripMenuItem, toolStripSeparator5, clearToolStripMenuItem });
+			fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_menuFile_loadFile, ui_menuFile_loadFolder, toolStripMenuItem1, ui_menuFile_extractFile, ui_menuFile_extractFolder, toolStripSeparator5, ui_menuFile_clear });
 			fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
 			fileToolStripMenuItem.Text = "File";
 			// 
-			// loadFileToolStripMenuItem
+			// ui_menuFile_loadFile
 			// 
-			loadFileToolStripMenuItem.Name = "loadFileToolStripMenuItem";
-			loadFileToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-			loadFileToolStripMenuItem.Text = "Load file";
-			loadFileToolStripMenuItem.Click += loadFile_Click;
+			ui_menuFile_loadFile.Name = "ui_menuFile_loadFile";
+			ui_menuFile_loadFile.Size = new System.Drawing.Size(154, 22);
+			ui_menuFile_loadFile.Text = "Load file";
+			ui_menuFile_loadFile.Click += ui_menuFile_loadFile_Click;
 			// 
-			// loadFolderToolStripMenuItem
+			// ui_menuFile_loadFolder
 			// 
-			loadFolderToolStripMenuItem.Name = "loadFolderToolStripMenuItem";
-			loadFolderToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-			loadFolderToolStripMenuItem.Text = "Load folder";
-			loadFolderToolStripMenuItem.Click += loadFolder_Click;
+			ui_menuFile_loadFolder.Name = "ui_menuFile_loadFolder";
+			ui_menuFile_loadFolder.Size = new System.Drawing.Size(154, 22);
+			ui_menuFile_loadFolder.Text = "Load folder";
+			ui_menuFile_loadFolder.Click += ui_menuFile_loadFolder_Click;
 			// 
 			// toolStripMenuItem1
 			// 
 			toolStripMenuItem1.Name = "toolStripMenuItem1";
 			toolStripMenuItem1.Size = new System.Drawing.Size(151, 6);
 			// 
-			// extractFileToolStripMenuItem
+			// ui_menuFile_extractFile
 			// 
-			extractFileToolStripMenuItem.Name = "extractFileToolStripMenuItem";
-			extractFileToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-			extractFileToolStripMenuItem.Text = "Extract file";
-			extractFileToolStripMenuItem.Click += extractFileToolStripMenuItem_Click;
+			ui_menuFile_extractFile.Name = "ui_menuFile_extractFile";
+			ui_menuFile_extractFile.Size = new System.Drawing.Size(154, 22);
+			ui_menuFile_extractFile.Text = "Extract file";
+			ui_menuFile_extractFile.Click += ui_menuFile_extractFile_Click;
 			// 
-			// extractFolderToolStripMenuItem
+			// ui_menuFile_extractFolder
 			// 
-			extractFolderToolStripMenuItem.Name = "extractFolderToolStripMenuItem";
-			extractFolderToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-			extractFolderToolStripMenuItem.Text = "Extract folder";
-			extractFolderToolStripMenuItem.Click += extractFolderToolStripMenuItem_Click;
+			ui_menuFile_extractFolder.Name = "ui_menuFile_extractFolder";
+			ui_menuFile_extractFolder.Size = new System.Drawing.Size(154, 22);
+			ui_menuFile_extractFolder.Text = "Extract folder";
+			ui_menuFile_extractFolder.Click += ui_menuFile_extractFolder_Click;
 			// 
 			// toolStripSeparator5
 			// 
 			toolStripSeparator5.Name = "toolStripSeparator5";
 			toolStripSeparator5.Size = new System.Drawing.Size(151, 6);
 			// 
-			// clearToolStripMenuItem
+			// ui_menuFile_clear
 			// 
-			clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-			clearToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-			clearToolStripMenuItem.Text = "Clear";
-			clearToolStripMenuItem.Click += clearToolStripMenuItem_Click;
+			ui_menuFile_clear.Name = "ui_menuFile_clear";
+			ui_menuFile_clear.Size = new System.Drawing.Size(154, 22);
+			ui_menuFile_clear.Text = "Clear";
+			ui_menuFile_clear.Click += ui_menuFile_clear_Click;
+			// 
+			// optionsToolStripMenuItem
+			// 
+			optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_menuOptions_displayAllAssets, ui_menuOptions_enablePreview, ui_menuOptions_displayInfo, ui_menuOptions_SpecifyUnityVersion, ui_menuOptions_exportOptions });
+			optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+			optionsToolStripMenuItem.Size = new System.Drawing.Size(66, 21);
+			optionsToolStripMenuItem.Text = "Options";
+			// 
+			// ui_menuOptions_displayAllAssets
+			// 
+			ui_menuOptions_displayAllAssets.CheckOnClick = true;
+			ui_menuOptions_displayAllAssets.Name = "ui_menuOptions_displayAllAssets";
+			ui_menuOptions_displayAllAssets.Size = new System.Drawing.Size(223, 22);
+			ui_menuOptions_displayAllAssets.Text = "Display all assets";
+			ui_menuOptions_displayAllAssets.ToolTipText = "Check this option will display all types assets. Not extractable assets can export the RAW file.";
+			ui_menuOptions_displayAllAssets.CheckedChanged += ui_menuOptions_displayAllAssets_CheckedChanged;
+			// 
+			// ui_menuOptions_enablePreview
+			// 
+			ui_menuOptions_enablePreview.Checked = true;
+			ui_menuOptions_enablePreview.CheckOnClick = true;
+			ui_menuOptions_enablePreview.CheckState = System.Windows.Forms.CheckState.Checked;
+			ui_menuOptions_enablePreview.Name = "ui_menuOptions_enablePreview";
+			ui_menuOptions_enablePreview.Size = new System.Drawing.Size(223, 22);
+			ui_menuOptions_enablePreview.Text = "Enable preview";
+			ui_menuOptions_enablePreview.ToolTipText = "Toggle the loading and preview of readable assets, such as images, sounds, text, etc.\r\nDisable preview if you have performance or compatibility issues.";
+			ui_menuOptions_enablePreview.CheckedChanged += ui_menuOptions_enablePreview_Check;
+			// 
+			// ui_menuOptions_displayInfo
+			// 
+			ui_menuOptions_displayInfo.Checked = true;
+			ui_menuOptions_displayInfo.CheckOnClick = true;
+			ui_menuOptions_displayInfo.CheckState = System.Windows.Forms.CheckState.Checked;
+			ui_menuOptions_displayInfo.Name = "ui_menuOptions_displayInfo";
+			ui_menuOptions_displayInfo.Size = new System.Drawing.Size(223, 22);
+			ui_menuOptions_displayInfo.Text = "Display asset infromation";
+			ui_menuOptions_displayInfo.ToolTipText = "Toggle the overlay that shows information about each asset, eg. image size, format, audio bitrate, etc.";
+			ui_menuOptions_displayInfo.CheckedChanged += ui_menuOptions_displayAssetInfo_Check;
+			// 
+			// ui_menuOptions_SpecifyUnityVersion
+			// 
+			ui_menuOptions_SpecifyUnityVersion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { specifyUnityVersion });
+			ui_menuOptions_SpecifyUnityVersion.Name = "ui_menuOptions_SpecifyUnityVersion";
+			ui_menuOptions_SpecifyUnityVersion.Size = new System.Drawing.Size(223, 22);
+			ui_menuOptions_SpecifyUnityVersion.Text = "Specify Unity version";
+			// 
+			// specifyUnityVersion
+			// 
+			specifyUnityVersion.Name = "specifyUnityVersion";
+			specifyUnityVersion.Size = new System.Drawing.Size(100, 23);
+			// 
+			// ui_menuOptions_exportOptions
+			// 
+			ui_menuOptions_exportOptions.Name = "ui_menuOptions_exportOptions";
+			ui_menuOptions_exportOptions.Size = new System.Drawing.Size(223, 22);
+			ui_menuOptions_exportOptions.Text = "Export options";
+			ui_menuOptions_exportOptions.Click += ui_menuOptions_exportOptions_Click;
 			// 
 			// filterTypeToolStripMenuItem
 			// 
@@ -494,63 +551,6 @@
 			filteredAssetsToolStripMenuItem1.Text = "Filtered assets";
 			filteredAssetsToolStripMenuItem1.Click += filteredAssetsToolStripMenuItem1_Click;
 			// 
-			// optionsToolStripMenuItem
-			// 
-			optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { displayAll, enablePreview, displayInfo, toolStripMenuItem14, showExpOpt });
-			optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			optionsToolStripMenuItem.Size = new System.Drawing.Size(66, 21);
-			optionsToolStripMenuItem.Text = "Options";
-			// 
-			// displayAll
-			// 
-			displayAll.CheckOnClick = true;
-			displayAll.Name = "displayAll";
-			displayAll.Size = new System.Drawing.Size(223, 22);
-			displayAll.Text = "Display all assets";
-			displayAll.ToolTipText = "Check this option will display all types assets. Not extractable assets can export the RAW file.";
-			displayAll.CheckedChanged += displayAll_CheckedChanged;
-			// 
-			// enablePreview
-			// 
-			enablePreview.Checked = true;
-			enablePreview.CheckOnClick = true;
-			enablePreview.CheckState = System.Windows.Forms.CheckState.Checked;
-			enablePreview.Name = "enablePreview";
-			enablePreview.Size = new System.Drawing.Size(223, 22);
-			enablePreview.Text = "Enable preview";
-			enablePreview.ToolTipText = "Toggle the loading and preview of readable assets, such as images, sounds, text, etc.\r\nDisable preview if you have performance or compatibility issues.";
-			enablePreview.CheckedChanged += enablePreview_Check;
-			// 
-			// displayInfo
-			// 
-			displayInfo.Checked = true;
-			displayInfo.CheckOnClick = true;
-			displayInfo.CheckState = System.Windows.Forms.CheckState.Checked;
-			displayInfo.Name = "displayInfo";
-			displayInfo.Size = new System.Drawing.Size(223, 22);
-			displayInfo.Text = "Display asset infromation";
-			displayInfo.ToolTipText = "Toggle the overlay that shows information about each asset, eg. image size, format, audio bitrate, etc.";
-			displayInfo.CheckedChanged += displayAssetInfo_Check;
-			// 
-			// toolStripMenuItem14
-			// 
-			toolStripMenuItem14.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { specifyUnityVersion });
-			toolStripMenuItem14.Name = "toolStripMenuItem14";
-			toolStripMenuItem14.Size = new System.Drawing.Size(223, 22);
-			toolStripMenuItem14.Text = "Specify Unity version";
-			// 
-			// specifyUnityVersion
-			// 
-			specifyUnityVersion.Name = "specifyUnityVersion";
-			specifyUnityVersion.Size = new System.Drawing.Size(100, 23);
-			// 
-			// showExpOpt
-			// 
-			showExpOpt.Name = "showExpOpt";
-			showExpOpt.Size = new System.Drawing.Size(223, 22);
-			showExpOpt.Text = "Export options";
-			showExpOpt.Click += showExpOpt_Click;
-			// 
 			// debugMenuItem
 			// 
 			debugMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItem15, exportClassStructuresMenuItem });
@@ -654,17 +654,17 @@
 			// 
 			// withStructureToolStripMenuItem
 			// 
-			withStructureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { allToolStripMenuItem1, selectedToolStripMenuItem, filteredToolStripMenuItem });
+			withStructureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_menuOhmsExport_StructXml_All, selectedToolStripMenuItem, filteredToolStripMenuItem });
 			withStructureToolStripMenuItem.Name = "withStructureToolStripMenuItem";
 			withStructureToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
 			withStructureToolStripMenuItem.Text = "Structured(XML list)";
 			// 
-			// allToolStripMenuItem1
+			// ui_menuOhmsExport_StructXml_All
 			// 
-			allToolStripMenuItem1.Name = "allToolStripMenuItem1";
-			allToolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
-			allToolStripMenuItem1.Text = "All assets";
-			allToolStripMenuItem1.Click += allToolStripMenuItem1_Click;
+			ui_menuOhmsExport_StructXml_All.Name = "ui_menuOhmsExport_StructXml_All";
+			ui_menuOhmsExport_StructXml_All.Size = new System.Drawing.Size(173, 22);
+			ui_menuOhmsExport_StructXml_All.Text = "All assets";
+			ui_menuOhmsExport_StructXml_All.Click += ui_menuOhmsExport_StructXml_All_Click;
 			// 
 			// selectedToolStripMenuItem
 			// 
@@ -1097,7 +1097,6 @@
 			glControl1.APIVersion = new System.Version(3, 3, 0, 0);
 			glControl1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			glControl1.Enabled = false;
 			glControl1.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
 			glControl1.IsEventDriven = true;
 			glControl1.Location = new System.Drawing.Point(0, 0);
@@ -1355,8 +1354,8 @@
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.TextBox treeSearch;
 		private System.Windows.Forms.TextBox listSearch;
-		private System.Windows.Forms.ToolStripMenuItem loadFileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem loadFolderToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_loadFile;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_loadFolder;
 		private System.Windows.Forms.ListView assetListView;
 		private System.Windows.Forms.ColumnHeader columnHeaderName;
 		private System.Windows.Forms.ColumnHeader columnHeaderSize;
@@ -1386,14 +1385,14 @@
 		private System.Windows.Forms.Label FMODinfoLabel;
 		private System.Windows.Forms.Timer timer;
 		private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem displayAll;
-		private System.Windows.Forms.ToolStripMenuItem enablePreview;
-		private System.Windows.Forms.ToolStripMenuItem displayInfo;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_displayAllAssets;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_enablePreview;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_displayInfo;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem extractFileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem extractFolderToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_extractFile;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_extractFolder;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-		private System.Windows.Forms.ToolStripMenuItem showExpOpt;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_exportOptions;
 		private GOHierarchy sceneTreeView;
 		private System.Windows.Forms.ToolStripMenuItem debugMenuItem;
 		private System.Windows.Forms.TabPage tabPage3;
@@ -1440,17 +1439,17 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_SpecifyUnityVersion;
 		private System.Windows.Forms.ToolStripTextBox specifyUnityVersion;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
 		private System.Windows.Forms.ToolStripMenuItem exportOHMSToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem withStructureToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuOhmsExport_StructXml_All;
 		private System.Windows.Forms.ToolStripMenuItem selectedToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem filteredToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem createANewFolderToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-		private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_clear;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem2;
 		private System.Windows.Forms.ToolStripMenuItem selectedToolStripMenuItem1;
