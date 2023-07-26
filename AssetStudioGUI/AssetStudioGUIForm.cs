@@ -17,6 +17,8 @@ using System.Timers;
 using System.Windows.Forms;
 using static AssetStudioGUI.Studio;
 using Font = AssetStudio.Font;
+using OpenTK.WinForms;
+using OpenTK;
 #if NET472
 using Vector3 = OpenTK.Vector3;
 using Vector4 = OpenTK.Vector4;
@@ -27,58 +29,10 @@ using Matrix4 = OpenTK.Mathematics.Matrix4;
 #endif
 
 namespace AssetStudioGUI {
+
 	partial class AssetStudioGUIForm : Form {
 		private AssetItem lastSelectedItem;
-		private DirectBitmap imageTexture;
 		private string tempClipboard;
-
-		#region Member_FMOD
-		private FMOD.System system;
-		private FMOD.Sound sound;
-		private FMOD.Channel channel;
-		private FMOD.SoundGroup masterSoundGroup;
-		private FMOD.MODE loopMode = FMOD.MODE.LOOP_OFF;
-		private uint FMODlenms;
-		private float FMODVolume = 0.8f;
-		#endregion
-
-		#region TexControl
-		private static char[] textureChannelNames = new[] { 'B', 'G', 'R', 'A' };
-		private bool[] textureChannels = new[] { true, true, true, true };
-		#endregion
-
-		#region GLControl
-		private bool glControlLoaded;
-		private int mdx, mdy;
-		private bool lmdown, rmdown;
-		private int pgmID, pgmColorID, pgmBlackID;
-		private int attributeVertexPosition;
-		private int attributeNormalDirection;
-		private int attributeVertexColor;
-		private int uniformModelMatrix;
-		private int uniformViewMatrix;
-		private int uniformProjMatrix;
-		private int vao;
-		private Vector3[] vertexData;
-		private Vector3[] normalData;
-		private Vector3[] normal2Data;
-		private Vector4[] colorData;
-		private Matrix4 modelMatrixData;
-		private Matrix4 viewMatrixData;
-		private Matrix4 projMatrixData;
-		private Matrix4 viewRotMatrix;
-
-		private float m_modelScale;
-		private Vector3 m_modelRot;
-		private Vector3 m_cameraPos;
-		private Vector3 m_cameraRot;
-		private float m_cameraFOV;
-
-		private int[] indiceData;
-		private int wireFrameMode = 2;
-		private int shadeMode;
-		private int normalMode;
-		#endregion
 
 		#region Member_LeftView
 		//asset list sorting
@@ -101,11 +55,11 @@ namespace AssetStudioGUI {
 		private string TextBase; // OHMS
 		#endregion
 
-		[DllImport("gdi32.dll")]
-		private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
+		private DirectBitmap m_imageTexture;
 
 		public AssetStudioGUIForm() {
 			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+
 			InitializeComponent();
 
 			this.TextBase = $"AssetStudio v0.16.47-OHMS-v{Application.ProductVersion}";
@@ -118,21 +72,17 @@ namespace AssetStudioGUI {
 			ui_menuOptions_enablePreview.Checked = Properties.Settings.Default.enablePreview;
 			createANewFolderToolStripMenuItem.Checked = Properties.Settings1.Default.ohmsCreateNew;
 
-			dumpTextBox.Text = null;
-			dumpJsonTextBox.Text = null;
-
-			m_modelScale = 1.0f;
-			m_modelRot = Vector3.Zero;
-			m_cameraPos = Vector3.Zero;
-			m_cameraRot = Vector3.Zero;
-			m_cameraFOV = (float)Math.PI / 4.0f;
 			FMODinit();
+			GLInit();
 
 			logger = new GUILogger(StatusStripUpdate);
 			Logger.Default = logger;
 			Progress.Default = new Progress<int>(SetProgressBarValue);
 			Studio.StatusStripUpdate = StatusStripUpdate;
 		}
+
+		[DllImport("gdi32.dll")]
+		private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
 
 		#region Process
 		private async void BuildAssetStructures() {
@@ -146,18 +96,16 @@ namespace AssetStudioGUI {
 
 			if (!string.IsNullOrEmpty(productName)) {
 				Text = this.TextBase + $" - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
-				//Text = $"AssetStudioGUI v{Application.ProductVersion} - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 			else {
 				Text = this.TextBase + $" - no productName - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
-				//Text = $"AssetStudioGUI v{Application.ProductVersion} - no productName - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 
-			assetListView.VirtualListSize = visibleAssets.Count;
+			ui_tabLeft_page1_listView.VirtualListSize = visibleAssets.Count;
 
-			sceneTreeView.BeginUpdate();
-			sceneTreeView.Nodes.AddRange(treeNodeCollection.ToArray());
-			sceneTreeView.EndUpdate();
+			ui_tabLeft_page0_treeView.BeginUpdate();
+			ui_tabLeft_page0_treeView.Nodes.AddRange(treeNodeCollection.ToArray());
+			ui_tabLeft_page0_treeView.EndUpdate();
 			treeNodeCollection.Clear();
 
 			classesListView.BeginUpdate();
@@ -182,11 +130,11 @@ namespace AssetStudioGUI {
 					Size = new Size(180, 22),
 					Text = type.ToString()
 				};
-				typeItem.Click += typeToolStripMenuItem_Click;
+				typeItem.Click += ui_menuFilter_0_all_Click;
 				filterTypeToolStripMenuItem.DropDownItems.Add(typeItem);
 			}
-			allToolStripMenuItem.Checked = true;
-			var log = $"Finished loading {assetsManager.assetsFileList.Count} files with {assetListView.Items.Count} exportable assets";
+			ui_menuFilter_0_all.Checked = true;
+			var log = $"Finished loading {assetsManager.assetsFileList.Count} files with {ui_tabLeft_page1_listView.Items.Count} exportable assets";
 			var m_ObjectsCount = assetsManager.assetsFileList.Sum(x => x.m_Objects.Count);
 			var objectsCount = assetsManager.assetsFileList.Sum(x => x.Objects.Count);
 			if (m_ObjectsCount != objectsCount) {
@@ -196,40 +144,35 @@ namespace AssetStudioGUI {
 		}
 
 		private void ResetForm() {
-			Text = this.TextBase;//$"AssetStudioGUI v{Application.ProductVersion}";
+			Text = this.TextBase;
+
+			// Studio things
 			assetsManager.Clear();
 			assemblyLoader.Clear();
 			exportableAssets.Clear();
 			visibleAssets.Clear();
-			sceneTreeView.Nodes.Clear();
-			assetListView.VirtualListSize = 0;
-			assetListView.Items.Clear();
+
+			ui_tabLeft_page0_treeView.Nodes.Clear();
+			ui_tabLeft_page1_listView.VirtualListSize = 0;
+			ui_tabLeft_page1_listView.Items.Clear();
 			classesListView.Items.Clear();
 			classesListView.Groups.Clear();
-			previewPanel.BackgroundImage = Properties.Resources.preview;
-			imageTexture?.Dispose();
-			imageTexture = null;
-			previewPanel.BackgroundImageLayout = ImageLayout.Center;
-			assetInfoLabel.Visible = false;
-			assetInfoLabel.Text = null;
-			textPreviewBox.Visible = false;
-			fontPreviewBox.Visible = false;
-			glControl1.Visible = false;
+			m_imageTexture?.Dispose();
+			m_imageTexture = null;
+
+			ResetPreview();
+
 			lastSelectedItem = null;
 			sortColumn = -1;
 			reverseSort = false;
 			enableFiltering = false;
-			listSearch.Text = " Filter ";
+			ui_tabLeft_page1_listSearch.Text = " Filter ";
 
 			var count = filterTypeToolStripMenuItem.DropDownItems.Count;
 			for (var i = 1; i < count; i++) {
 				filterTypeToolStripMenuItem.DropDownItems.RemoveAt(1);
 			}
 
-			FMODreset();
-
-			dumpTextBox.Text = null;
-			dumpJsonTextBox.Text = null;
 		}
 
 		private void SetProgressBarValue(int value) {
@@ -251,19 +194,19 @@ namespace AssetStudioGUI {
 		}
 
 		private List<AssetItem> GetSelectedAssets() {
-			var selectedAssets = new List<AssetItem>(assetListView.SelectedIndices.Count);
-			foreach (int index in assetListView.SelectedIndices) {
-				selectedAssets.Add((AssetItem)assetListView.Items[index]);
+			var selectedAssets = new List<AssetItem>(ui_tabLeft_page1_listView.SelectedIndices.Count);
+			foreach (int index in ui_tabLeft_page1_listView.SelectedIndices) {
+				selectedAssets.Add((AssetItem)ui_tabLeft_page1_listView.Items[index]);
 			}
 
 			return selectedAssets;
 		}
 
 		private void FilterAssetList() {
-			assetListView.BeginUpdate();
-			assetListView.SelectedIndices.Clear();
+			ui_tabLeft_page1_listView.BeginUpdate();
+			ui_tabLeft_page1_listView.SelectedIndices.Clear();
 			var show = new List<ClassIDType>();
-			if (!allToolStripMenuItem.Checked) {
+			if (!ui_menuFilter_0_all.Checked) {
 				for (var i = 1; i < filterTypeToolStripMenuItem.DropDownItems.Count; i++) {
 					var item = (ToolStripMenuItem)filterTypeToolStripMenuItem.DropDownItems[i];
 					if (item.Checked) {
@@ -275,20 +218,30 @@ namespace AssetStudioGUI {
 			else {
 				visibleAssets = exportableAssets;
 			}
-			if (listSearch.Text != " Filter ") {
+			if (ui_tabLeft_page1_listSearch.Text != " Filter ") {
 				visibleAssets = visibleAssets.FindAll(
-					x => x.Text.IndexOf(listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-					x.SubItems[1].Text.IndexOf(listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-					x.SubItems[3].Text.IndexOf(listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+					x => x.Text.IndexOf(ui_tabLeft_page1_listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+					x.SubItems[1].Text.IndexOf(ui_tabLeft_page1_listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+					x.SubItems[3].Text.IndexOf(ui_tabLeft_page1_listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
 			}
-			assetListView.VirtualListSize = visibleAssets.Count;
-			assetListView.EndUpdate();
+			ui_tabLeft_page1_listView.VirtualListSize = visibleAssets.Count;
+			ui_tabLeft_page1_listView.EndUpdate();
+		}
+
+		private void TreeNodeSearch(TreeNode treeNode) {
+			if (treeNode.Text.IndexOf(ui_tabLeft_page0_treeSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0) {
+				treeSrcResults.Add(treeNode);
+			}
+
+			foreach (TreeNode node in treeNode.Nodes) {
+				TreeNodeSearch(node);
+			}
 		}
 		#endregion // Process
 
 		#region Export
 		private void ExportObjects(bool animation) {
-			if (sceneTreeView.Nodes.Count > 0) {
+			if (ui_tabLeft_page0_treeView.Nodes.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
@@ -301,7 +254,7 @@ namespace AssetStudioGUI {
 							animationList = null;
 						}
 					}
-					ExportObjectsWithAnimationClip(exportPath, sceneTreeView.Nodes, animationList);
+					ExportObjectsWithAnimationClip(exportPath, ui_tabLeft_page0_treeView.Nodes, animationList);
 				}
 			}
 			else {
@@ -310,9 +263,9 @@ namespace AssetStudioGUI {
 		}
 
 		private void ExportMergeObjects(bool animation) {
-			if (sceneTreeView.Nodes.Count > 0) {
+			if (ui_tabLeft_page0_treeView.Nodes.Count > 0) {
 				var gameObjects = new List<GameObject>();
-				GetSelectedParentNode(sceneTreeView.Nodes, gameObjects);
+				GetSelectedParentNode(ui_tabLeft_page0_treeView.Nodes, gameObjects);
 				if (gameObjects.Count > 0) {
 					var saveFileDialog = new SaveFileDialog();
 					saveFileDialog.FileName = gameObjects[0].m_Name + " (merge).fbx";
@@ -393,6 +346,30 @@ namespace AssetStudioGUI {
 				StatusStripUpdate("No exportable assets loaded");
 			}
 		}
+
+		private void ExportAnimatorAndSelectedAnimationClips() {
+			AssetItem animator = null;
+			List<AssetItem> animationList = new List<AssetItem>();
+			var selectedAssets = GetSelectedAssets();
+			foreach (var assetPreloadData in selectedAssets) {
+				if (assetPreloadData.Type == ClassIDType.Animator) {
+					animator = assetPreloadData;
+				}
+				else if (assetPreloadData.Type == ClassIDType.AnimationClip) {
+					animationList.Add(assetPreloadData);
+				}
+			}
+
+			if (animator != null) {
+				var saveFolderDialog = new OpenFolderDialog();
+				saveFolderDialog.InitialFolder = saveDirectoryBackup;
+				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
+					saveDirectoryBackup = saveFolderDialog.Folder;
+					var exportPath = Path.Combine(saveFolderDialog.Folder, "Animator") + Path.DirectorySeparatorChar;
+					ExportAnimatorWithAnimationClip(animator, animationList, exportPath);
+				}
+			}
+		}
 		#endregion // Export
 
 		// Callbacks
@@ -408,42 +385,45 @@ namespace AssetStudioGUI {
 			if (paths.Length > 0) {
 				ResetForm();
 				assetsManager.SpecifyUnityVersion = specifyUnityVersion.Text;
+
+				await Task.Run(() => assetsManager.LoadDropIn(paths));
+				/*
 				if (paths.Length == 1 && Directory.Exists(paths[0])) {
 					await Task.Run(() => assetsManager.LoadFolder(paths[0]));
 				}
 				else {
 					await Task.Run(() => assetsManager.LoadFiles(paths));
-				}
+				}*/
 				BuildAssetStructures();
 			}
 		}
 
 		private void AssetStudioForm_KeyDown(object sender, KeyEventArgs e) {
-			if (glControl1.Visible) {
+			if (ui_tabRight_preview_glPreview.Visible) {
 				if (e.Control) {
 					switch (e.KeyCode) {
 					case System.Windows.Forms.Keys.W:
 						//Toggle WireFrame
 						wireFrameMode = (wireFrameMode + 1) % 3;
-						glControl1.Invalidate();
+						ui_tabRight_preview_glPreview.Invalidate();
 						break;
 					case System.Windows.Forms.Keys.S:
 						//Toggle Shade
 						shadeMode = (shadeMode + 1) % 2;
-						glControl1.Invalidate();
+						ui_tabRight_preview_glPreview.Invalidate();
 						break;
 					case System.Windows.Forms.Keys.N:
 						//Normal mode
 						normalMode = (normalMode + 1) % 2;
 						CreateVAO();
-						glControl1.Invalidate();
+						ui_tabRight_preview_glPreview.Invalidate();
 						break;
 					case System.Windows.Forms.Keys.R:
 						wireFrameMode = 2;
 						shadeMode = 0;
 						normalMode = 0;
 						initMatrices();
-						glControl1.Invalidate();
+						ui_tabRight_preview_glPreview.Invalidate();
 						break;
 					}
 				}
@@ -453,19 +433,19 @@ namespace AssetStudioGUI {
 					var need = false;
 					switch (e.KeyCode) {
 					case System.Windows.Forms.Keys.B:
-						textureChannels[0] = !textureChannels[0];
+						m_textureChannels[0] = !m_textureChannels[0];
 						need = true;
 						break;
 					case System.Windows.Forms.Keys.G:
-						textureChannels[1] = !textureChannels[1];
+						m_textureChannels[1] = !m_textureChannels[1];
 						need = true;
 						break;
 					case System.Windows.Forms.Keys.R:
-						textureChannels[2] = !textureChannels[2];
+						m_textureChannels[2] = !m_textureChannels[2];
 						need = true;
 						break;
 					case System.Windows.Forms.Keys.A:
-						textureChannels[3] = !textureChannels[3];
+						m_textureChannels[3] = !m_textureChannels[3];
 						need = true;
 						break;
 					}
@@ -481,24 +461,28 @@ namespace AssetStudioGUI {
 		#endregion // AssetStudioGUIForm
 
 		#region ContextMenu
-		private void copyToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void ui_conMenu_copyText_Click(object sender, EventArgs e) {
 			Clipboard.SetDataObject(tempClipboard);
 		}
 
-		private void exportSelectedAssetsToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void ui_conMenu_exportSelectedAssets_Click(object sender, EventArgs e) {
 			ExportAssets(ExportFilter.Selected, ExportType.Convert);
 		}
 
+		private void ui_conMenu_exportAnimatorAndSelectedAnimationClips_Click(object sender, EventArgs e) {
+			ExportAnimatorAndSelectedAnimationClips();
+		}
+
 		private void goToSceneHierarchyToolStripMenuItem_Click(object sender, EventArgs e) {
-			var selectasset = (AssetItem)assetListView.Items[assetListView.SelectedIndices[0]];
+			var selectasset = (AssetItem)ui_tabLeft_page1_listView.Items[ui_tabLeft_page1_listView.SelectedIndices[0]];
 			if (selectasset.TreeNode != null) {
-				sceneTreeView.SelectedNode = selectasset.TreeNode;
-				tabControl1.SelectedTab = tabPage1;
+				ui_tabLeft_page0_treeView.SelectedNode = selectasset.TreeNode;
+				ui_tabLeft_tab.SelectedTab = ui_tabLeft_page0;
 			}
 		}
 
 		private void showOriginalFileToolStripMenuItem_Click(object sender, EventArgs e) {
-			var selectasset = (AssetItem)assetListView.Items[assetListView.SelectedIndices[0]];
+			var selectasset = (AssetItem)ui_tabLeft_page1_listView.Items[ui_tabLeft_page1_listView.SelectedIndices[0]];
 			var args = $"/select, \"{selectasset.SourceFile.originalPath ?? selectasset.SourceFile.fullName}\"";
 			var pfi = new ProcessStartInfo("explorer.exe", args);
 			Process.Start(pfi);
@@ -507,15 +491,15 @@ namespace AssetStudioGUI {
 		#endregion
 
 		#region ContextMenu_OHMS
-		private void oHMSExportSelectedAssetsToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void ui_conMenu_OHMS_ExportSelected_Click(object sender, EventArgs e) {
 			ExportAssetsOHMS(ExportFilter.Selected);
 		}
 
-		private void xMLListToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void ui_conMenu_OHMS_ExportSelected_Struct_XML_Click(object sender, EventArgs e) {
 			ExportAssetsStructured(ExportFilter.Selected, ExportListType.XML);
 		}
 
-		private void jSONListToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void ui_conMenu_OHMS_ExportSelected_Struct_JSON_Click(object sender, EventArgs e) {
 			ExportAssetsStructured(ExportFilter.Selected, ExportListType.JSON);
 		}
 		#endregion // ContextMenu_OHMS
@@ -583,49 +567,13 @@ namespace AssetStudioGUI {
 		}
 
 		private void ui_menuOptions_enablePreview_Check(object sender, EventArgs e) {
-			if (lastSelectedItem != null) {
-				switch (lastSelectedItem.Type) {
-				case ClassIDType.Texture2D:
-				case ClassIDType.Sprite: {
-					if (ui_menuOptions_enablePreview.Checked && imageTexture != null) {
-						previewPanel.BackgroundImage = imageTexture.Bitmap;
-					}
-					else {
-						previewPanel.BackgroundImage = Properties.Resources.preview;
-						previewPanel.BackgroundImageLayout = ImageLayout.Center;
-					}
+			if (tabControl2.SelectedIndex == 0) {
+				if (lastSelectedItem != null && ui_menuOptions_enablePreview.Checked) {
+					PreviewAsset(lastSelectedItem);
 				}
-				break;
-				case ClassIDType.Shader:
-				case ClassIDType.TextAsset:
-				case ClassIDType.MonoBehaviour:
-					textPreviewBox.Visible = !textPreviewBox.Visible;
-					break;
-				case ClassIDType.Font:
-					fontPreviewBox.Visible = !fontPreviewBox.Visible;
-					break;
-				case ClassIDType.AudioClip: {
-					FMODpanel.Visible = !FMODpanel.Visible;
-
-					if (sound != null && channel != null) {
-						var result = channel.isPlaying(out var playing);
-						if (result == FMOD.RESULT.OK && playing) {
-							channel.stop();
-							FMODreset();
-						}
-					}
-					else if (FMODpanel.Visible) {
-						PreviewAsset(lastSelectedItem);
-					}
-
-					break;
+				else {
+					ResetPreview();
 				}
-
-				}
-
-			}
-			else if (lastSelectedItem != null && ui_menuOptions_enablePreview.Checked) {
-				PreviewAsset(lastSelectedItem);
 			}
 
 			Properties.Settings.Default.enablePreview = ui_menuOptions_enablePreview.Checked;
@@ -651,12 +599,12 @@ namespace AssetStudioGUI {
 		#endregion // Menu_Options
 
 		#region Menu_Filter
-		private void typeToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void ui_menuFilter_0_all_Click(object sender, EventArgs e) {
 			var typeItem = (ToolStripMenuItem)sender;
-			if (typeItem != allToolStripMenuItem) {
-				allToolStripMenuItem.Checked = false;
+			if (typeItem != ui_menuFilter_0_all) {
+				ui_menuFilter_0_all.Checked = false;
 			}
-			else if (allToolStripMenuItem.Checked) {
+			else if (ui_menuFilter_0_all.Checked) {
 				for (var i = 1; i < filterTypeToolStripMenuItem.DropDownItems.Count; i++) {
 					var item = (ToolStripMenuItem)filterTypeToolStripMenuItem.DropDownItems[i];
 					item.Checked = false;
@@ -668,13 +616,13 @@ namespace AssetStudioGUI {
 
 		#region Menu_Model
 		private void exportAllObjectssplitToolStripMenuItem1_Click(object sender, EventArgs e) {
-			if (sceneTreeView.Nodes.Count > 0) {
+			if (ui_tabLeft_page0_treeView.Nodes.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					var savePath = saveFolderDialog.Folder + Path.DirectorySeparatorChar;
-					ExportSplitObjects(savePath, sceneTreeView.Nodes);
+					ExportSplitObjects(savePath, ui_tabLeft_page0_treeView.Nodes);
 				}
 			}
 			else {
@@ -712,28 +660,8 @@ namespace AssetStudioGUI {
 			ExportAssets(ExportFilter.Filtered, ExportType.Convert);
 		}
 
-		private void exportAnimatorwithAnimationClipMenuItem_Click(object sender, EventArgs e) {
-			AssetItem animator = null;
-			List<AssetItem> animationList = new List<AssetItem>();
-			var selectedAssets = GetSelectedAssets();
-			foreach (var assetPreloadData in selectedAssets) {
-				if (assetPreloadData.Type == ClassIDType.Animator) {
-					animator = assetPreloadData;
-				}
-				else if (assetPreloadData.Type == ClassIDType.AnimationClip) {
-					animationList.Add(assetPreloadData);
-				}
-			}
-
-			if (animator != null) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = saveDirectoryBackup;
-				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					saveDirectoryBackup = saveFolderDialog.Folder;
-					var exportPath = Path.Combine(saveFolderDialog.Folder, "Animator") + Path.DirectorySeparatorChar;
-					ExportAnimatorWithAnimationClip(animator, animationList, exportPath);
-				}
-			}
+		private void ui_menuExport_exportAnimatorAndSelectedAnimationClips_Click(object sender, EventArgs e) {
+			ExportAnimatorAndSelectedAnimationClips();
 		}
 
 		private void toolStripMenuItem4_Click(object sender, EventArgs e) {
@@ -878,44 +806,40 @@ namespace AssetStudioGUI {
 		#endregion // Menu_OHMS_Export
 
 		#region LeftTabPage
-		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
-			lastSelectedItem = null;
-		}
-
-		private void tabPageSelected(object sender, TabControlEventArgs e) {
+		private void ui_tabLeft_tab_Selected(object sender, TabControlEventArgs e) {
 			switch (e.TabPageIndex) {
 			case 0:
-				treeSearch.Select();
+				ui_tabLeft_page0_treeSearch.Select();
 				break;
 			case 1:
-				listSearch.Select();
+				ui_tabLeft_page1_listSearch.Select();
 				break;
 			}
 		}
 
-		private void treeSearch_Enter(object sender, EventArgs e) {
-			if (treeSearch.Text == " Search ") {
-				treeSearch.Text = "";
-				treeSearch.ForeColor = SystemColors.WindowText;
+		private void ui_tabLeft_page0_treeSearch_Enter(object sender, EventArgs e) {
+			if (ui_tabLeft_page0_treeSearch.Text == " Search ") {
+				ui_tabLeft_page0_treeSearch.Text = "";
+				ui_tabLeft_page0_treeSearch.ForeColor = SystemColors.WindowText;
 			}
 		}
 
-		private void treeSearch_Leave(object sender, EventArgs e) {
-			if (treeSearch.Text == "") {
-				treeSearch.Text = " Search ";
-				treeSearch.ForeColor = SystemColors.GrayText;
+		private void ui_tabLeft_page0_treeSearch_Leave(object sender, EventArgs e) {
+			if (ui_tabLeft_page0_treeSearch.Text == "") {
+				ui_tabLeft_page0_treeSearch.Text = " Search ";
+				ui_tabLeft_page0_treeSearch.ForeColor = SystemColors.GrayText;
 			}
 		}
 
-		private void treeSearch_TextChanged(object sender, EventArgs e) {
+		private void ui_tabLeft_page0_treeSearch_TextChanged(object sender, EventArgs e) {
 			treeSrcResults.Clear();
 			nextGObject = 0;
 		}
 
-		private void treeSearch_KeyDown(object sender, KeyEventArgs e) {
+		private void ui_tabLeft_page0_treeSearch_KeyDown(object sender, KeyEventArgs e) {
 			if (e.KeyCode == System.Windows.Forms.Keys.Enter) {
 				if (treeSrcResults.Count == 0) {
-					foreach (TreeNode node in sceneTreeView.Nodes) {
+					foreach (TreeNode node in ui_tabLeft_page0_treeView.Nodes) {
 						TreeNodeSearch(node);
 					}
 				}
@@ -924,35 +848,35 @@ namespace AssetStudioGUI {
 						nextGObject = 0;
 					}
 					treeSrcResults[nextGObject].EnsureVisible();
-					sceneTreeView.SelectedNode = treeSrcResults[nextGObject];
+					ui_tabLeft_page0_treeView.SelectedNode = treeSrcResults[nextGObject];
 					nextGObject++;
 				}
 			}
 		}
 
-		private void sceneTreeView_AfterCheck(object sender, TreeViewEventArgs e) {
+		private void ui_tabLeft_page0_treeView_AfterCheck(object sender, TreeViewEventArgs e) {
 			foreach (TreeNode childNode in e.Node.Nodes) {
 				childNode.Checked = e.Node.Checked;
 			}
 		}
 
-		private void listSearch_Enter(object sender, EventArgs e) {
-			if (listSearch.Text == " Filter ") {
-				listSearch.Text = "";
-				listSearch.ForeColor = SystemColors.WindowText;
+		private void ui_tabLeft_page1_listSearch_Enter(object sender, EventArgs e) {
+			if (ui_tabLeft_page1_listSearch.Text == " Filter ") {
+				ui_tabLeft_page1_listSearch.Text = "";
+				ui_tabLeft_page1_listSearch.ForeColor = SystemColors.WindowText;
 				enableFiltering = true;
 			}
 		}
 
-		private void listSearch_Leave(object sender, EventArgs e) {
-			if (listSearch.Text == "") {
+		private void ui_tabLeft_page1_listSearch_Leave(object sender, EventArgs e) {
+			if (ui_tabLeft_page1_listSearch.Text == "") {
 				enableFiltering = false;
-				listSearch.Text = " Filter ";
-				listSearch.ForeColor = SystemColors.GrayText;
+				ui_tabLeft_page1_listSearch.Text = " Filter ";
+				ui_tabLeft_page1_listSearch.ForeColor = SystemColors.GrayText;
 			}
 		}
 
-		private void ListSearchTextChanged(object sender, EventArgs e) {
+		private void ui_tabLeft_page1_ListSearchTextChanged(object sender, EventArgs e) {
 			if (enableFiltering) {
 				if (delayTimer.Enabled) {
 					delayTimer.Stop();
@@ -964,7 +888,7 @@ namespace AssetStudioGUI {
 			}
 		}
 
-		private void assetListView_ColumnClick(object sender, ColumnClickEventArgs e) {
+		private void ui_tabLeft_page1_listView_ColumnClick(object sender, ColumnClickEventArgs e) {
 			if (sortColumn != e.Column) {
 				reverseSort = false;
 			}
@@ -972,8 +896,8 @@ namespace AssetStudioGUI {
 				reverseSort = !reverseSort;
 			}
 			sortColumn = e.Column;
-			assetListView.BeginUpdate();
-			assetListView.SelectedIndices.Clear();
+			ui_tabLeft_page1_listView.BeginUpdate();
+			ui_tabLeft_page1_listView.SelectedIndices.Clear();
 			if (sortColumn == 4) //FullSize
 			{
 				visibleAssets.Sort((a, b) => {
@@ -997,82 +921,61 @@ namespace AssetStudioGUI {
 					return reverseSort ? bt.CompareTo(at) : at.CompareTo(bt);
 				});
 			}
-			assetListView.EndUpdate();
+			ui_tabLeft_page1_listView.EndUpdate();
 		}
 
-		private void assetListView_MouseClick(object sender, MouseEventArgs e) {
-			if (e.Button == MouseButtons.Right && assetListView.SelectedIndices.Count > 0) {
-				goToSceneHierarchyToolStripMenuItem.Visible = false;
-				showOriginalFileToolStripMenuItem.Visible = false;
-				exportAnimatorwithselectedAnimationClipMenuItem.Visible = false;
+		private void ui_tabLeft_page1_listView_MouseClick(object sender, MouseEventArgs e) {
+			if (e.Button == MouseButtons.Right) {
+				if (ui_tabLeft_page1_listView.SelectedIndices.Count > 0) {
+					ui_conMenu_exportAnimatorAndSelectedAnimationClips.Visible = false;
+					ui_conMenu_goToSceneHierarchy.Visible = false;
+					ui_conMenu_showOriginalFile.Visible = false;
 
-				if (assetListView.SelectedIndices.Count == 1) {
-					goToSceneHierarchyToolStripMenuItem.Visible = true;
-					showOriginalFileToolStripMenuItem.Visible = true;
-				}
-				if (assetListView.SelectedIndices.Count >= 1) {
-					var selectedAssets = GetSelectedAssets();
-					if (selectedAssets.Any(x => x.Type == ClassIDType.Animator) && selectedAssets.Any(x => x.Type == ClassIDType.AnimationClip)) {
-						exportAnimatorwithselectedAnimationClipMenuItem.Visible = true;
+					if (ui_tabLeft_page1_listView.SelectedIndices.Count >= 1) {
+						var selectedAssets = GetSelectedAssets();
+						if (selectedAssets.Any(x => x.Type == ClassIDType.Animator) && selectedAssets.Any(x => x.Type == ClassIDType.AnimationClip)) {
+							ui_conMenu_exportAnimatorAndSelectedAnimationClips.Visible = true;
+						}
 					}
-				}
+					if (ui_tabLeft_page1_listView.SelectedIndices.Count == 1) {
+						ui_conMenu_goToSceneHierarchy.Visible = true;
+						ui_conMenu_showOriginalFile.Visible = true;
+					}
 
-				tempClipboard = assetListView.HitTest(new Point(e.X, e.Y)).SubItem.Text;
-				contextMenuStrip1.Show(assetListView, e.X, e.Y);
+					tempClipboard = ui_tabLeft_page1_listView.HitTest(new Point(e.X, e.Y)).SubItem.Text;
+					contextMenuStrip1.Show(ui_tabLeft_page1_listView, e.X, e.Y);
+				}
 			}
 		}
 
-		private void assetListView_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
+		private void ui_tabLeft_page1_listView_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
 			e.Item = visibleAssets[e.ItemIndex];
 		}
 
-		private void selectAsset(object sender, ListViewItemSelectionChangedEventArgs e) {
-			previewPanel.BackgroundImage = Properties.Resources.preview;
-			previewPanel.BackgroundImageLayout = ImageLayout.Center;
-			classTextBox.Visible = false;
-			assetInfoLabel.Visible = false;
-			assetInfoLabel.Text = null;
-			textPreviewBox.Visible = false;
-			fontPreviewBox.Visible = false;
-			FMODpanel.Visible = false;
-			glControl1.Visible = false;
-
-			dumpTextBox.Text = null;
-			dumpJsonTextBox.Text = null;
-
-			StatusStripUpdate("");
-
-			FMODreset();
-
-			lastSelectedItem = (AssetItem)e.Item;
-
+		private void ui_tabLeft_page1_listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
 			if (e.IsSelected) {
-				if (ui_menuOptions_enablePreview.Checked) {
-					PreviewAsset(lastSelectedItem);
-					if (ui_menuOptions_displayInfo.Checked && lastSelectedItem.InfoText != null) {
-						assetInfoLabel.Text = lastSelectedItem.InfoText;
-						assetInfoLabel.Visible = true;
+				lastSelectedItem = (AssetItem)e.Item;
+				m_previewLoaded = 0;
+				switch (tabControl2.SelectedIndex) {
+				case 0:
+					if (ui_menuOptions_enablePreview.Checked) {
+						PreviewAsset(lastSelectedItem);
 					}
-				}
-				if (tabControl2.SelectedIndex == 1) {
-					dumpTextBox.Text = DumpAsset(lastSelectedItem.Asset);
-				}
-				else if (tabControl2.SelectedIndex == 2) {
-					dumpJsonTextBox.Text = DumpAssetJson(lastSelectedItem.Asset);
+					else {
+						ResetPreview();
+					}
+					break;
+				case 1:
+					PreviewDump(lastSelectedItem);
+					break;
+				case 2:
+					PreviewDumpJSON(lastSelectedItem);
+					break;
 				}
 			}
-		}
-
-		#endregion // LeftTabPage
-
-		#region Left_List
-		private void TreeNodeSearch(TreeNode treeNode) {
-			if (treeNode.Text.IndexOf(treeSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0) {
-				treeSrcResults.Add(treeNode);
-			}
-
-			foreach (TreeNode node in treeNode.Nodes) {
-				TreeNodeSearch(node);
+			else {
+				lastSelectedItem = null;
+				ResetPreview();
 			}
 		}
 
@@ -1082,61 +985,158 @@ namespace AssetStudioGUI {
 		}
 
 		private void classesListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
-			classTextBox.Visible = true;
-			assetInfoLabel.Visible = false;
-			assetInfoLabel.Text = null;
-			textPreviewBox.Visible = false;
-			fontPreviewBox.Visible = false;
-			FMODpanel.Visible = false;
-			glControl1.Visible = false;
-
-			lastSelectedItem = null;
-
-			dumpTextBox.Text = null;
-			dumpJsonTextBox.Text = null;
-
 			StatusStripUpdate("");
 			if (e.IsSelected) {
-				classTextBox.Text = ((TypeTreeItem)classesListView.SelectedItems[0]).ToString();
+				classTextPreview.Text = ((TypeTreeItem)classesListView.SelectedItems[0]).ToString();
+				m_previewLoaded = 1 << 3;
+				SwitchPreviewPage(PreviewType.ClassText);
 			}
+			//else {
+			//	SwitchPreviewPage(PreviewType.None);
+			//}
 		}
-		#endregion // Left_List
+		#endregion LeftTabPage
 
 		#region RightTabPage
 		private void tabControl2_SelectedIndexChanged(object sender, EventArgs e) {
+			if ((m_previewLoaded & (1 << 3)) != 0) {
+				return;
+			}
 			if (lastSelectedItem == null) {
-				dumpTextBox.Text = null;
-				dumpJsonTextBox.Text = null;
+				ResetPreview();
 				return;
 			}
 			switch (tabControl2.SelectedIndex) {
 			case 0:
-				dumpTextBox.Text = null;
-				dumpJsonTextBox.Text = null;
+				if (Properties.Settings.Default.enablePreview)
+					PreviewAsset(lastSelectedItem);
 				break;
 			case 1:
-				dumpTextBox.Text = DumpAsset(lastSelectedItem.Asset);
-				dumpJsonTextBox.Text = null;
+				PreviewDump(lastSelectedItem);
 				break;
 			case 2:
-				dumpTextBox.Text = null;
-				dumpJsonTextBox.Text = DumpAssetJson(lastSelectedItem.Asset);
+				PreviewDumpJSON(lastSelectedItem);
 				break;
 			}
 		}
-		#endregion // RightTabPage
+		#endregion RightTabPage
 
-		#region Right_Preview
+		#region Preview
+		private int m_previewLoaded;
+
 		private void preview_Resize(object sender, EventArgs e) {
-			if (glControlLoaded && glControl1.Visible) {
-				ChangeGLSize(glControl1.Size);
-				glControl1.Invalidate();
+			if (glControlLoaded && ui_tabRight_preview_glPreview.Visible) {
+				ChangeGLSize(ui_tabRight_preview_glPreview.Size);
+				ui_tabRight_preview_glPreview.Invalidate();
+			}
+		}
+
+		enum PreviewType {
+			None = 0,
+			FMOD,
+			Font,
+			GL,
+			Text,
+			ClassText,
+			Dump,
+			DumpJson,
+			COUNT
+		}
+
+		private void ResetPreview() {
+			previewPanel.BackgroundImage = Properties.Resources.preview;
+			previewPanel.BackgroundImageLayout = ImageLayout.Center;
+
+			SwitchPreviewPage(PreviewType.None);
+
+			assetInfoLabel.Visible = false;
+			assetInfoLabel.Text = null;
+
+			dumpTextBox.Text = null;
+			dumpJsonTextBox.Text = null;
+
+			m_previewLoaded = 0;
+
+			StatusStripUpdate("");
+		}
+
+		private void SwitchPreviewPage(PreviewType type) {
+			switch (type) {
+			case PreviewType.None:
+				FMODpanel.Visible = false;
+				FMODreset();
+				fontPreviewBox.Visible = false;
+				ui_tabRight_preview_glPreview.Visible = false;
+				textPreviewBox.Visible = false;
+				textPreviewBox.Text = null;
+				classTextPreview.Visible = false;
+				classTextPreview.Text = null;
+				dumpTextBox.Text = null;
+				dumpJsonTextBox.Text = null;
+				break;
+			case PreviewType.FMOD:
+				FMODpanel.Visible = true;
+				fontPreviewBox.Visible = false;
+				ui_tabRight_preview_glPreview.Visible = false;
+				textPreviewBox.Visible = false;
+				textPreviewBox.Text = null;
+				classTextPreview.Visible = false;
+				classTextPreview.Text = null;
+				break;
+			case PreviewType.Font:
+				fontPreviewBox.Visible = true;
+				FMODpanel.Visible = false;
+				FMODreset();
+				ui_tabRight_preview_glPreview.Visible = false;
+				textPreviewBox.Visible = false;
+				textPreviewBox.Text = null;
+				classTextPreview.Visible = false;
+				classTextPreview.Text = null;
+				break;
+			case PreviewType.GL:
+				ui_tabRight_preview_glPreview.Visible = true;
+				FMODpanel.Visible = false;
+				FMODreset();
+				fontPreviewBox.Visible = false;
+				textPreviewBox.Visible = false;
+				textPreviewBox.Text = null;
+				classTextPreview.Visible = false;
+				classTextPreview.Text = null;
+				break;
+			case PreviewType.Text:
+				textPreviewBox.Visible = true;
+				FMODpanel.Visible = false;
+				FMODreset();
+				fontPreviewBox.Visible = false;
+				ui_tabRight_preview_glPreview.Visible = false;
+				classTextPreview.Visible = false;
+				classTextPreview.Text = null;
+				break;
+			case PreviewType.ClassText:
+				classTextPreview.Visible = true;
+				FMODpanel.Visible = false;
+				FMODreset();
+				fontPreviewBox.Visible = false;
+				ui_tabRight_preview_glPreview.Visible = false;
+				textPreviewBox.Visible = false;
+				textPreviewBox.Text = null;
+				assetInfoLabel.Visible = false;
+				assetInfoLabel.Text = null;
+				dumpTextBox.Text = null;
+				;
+				dumpJsonTextBox.Text = null;
+				break;
 			}
 		}
 
 		private void PreviewAsset(AssetItem assetItem) {
-			if (assetItem == null)
+			if (assetItem == null) {
+				ResetPreview();
 				return;
+			}
+			if ((m_previewLoaded & (1 << 0)) != 0) {
+				return;
+			}
 			try {
 				switch (assetItem.Asset) {
 				case Texture2D m_Texture2D:
@@ -1174,20 +1174,26 @@ namespace AssetStudioGUI {
 					StatusStripUpdate("Can be exported with Animator or Objects");
 					break;
 				default:
-					/*var str = assetItem.Asset.Dump();
-					if (str != null) {
-						textPreviewBox.Text = str;
-						textPreviewBox.Visible = true;
-					}*/
 					PreviewText(DumpAsset(assetItem.Asset));
 					break;
 				}
+				if (ui_menuOptions_displayInfo.Checked && lastSelectedItem.InfoText != null) {
+					assetInfoLabel.Text = lastSelectedItem.InfoText;
+					assetInfoLabel.Visible = true;
+				}
+				else {
+					assetInfoLabel.Text = null;
+					assetInfoLabel.Visible = false;
+				}
+				m_previewLoaded |= 1 << 0;
 			}
 			catch (Exception e) {
 				MessageBox.Show($"Preview {assetItem.Type}:{assetItem.Text} error\r\n{e.Message}\r\n{e.StackTrace}");
 			}
 		}
 
+		private static char[] m_textureChannelNames = new[] { 'B', 'G', 'R', 'A' };
+		private bool[] m_textureChannels = new[] { true, true, true, true };
 		private void PreviewTexture2D(AssetItem assetItem, Texture2D m_Texture2D) {
 			var image = m_Texture2D.ConvertToImage(true);
 			if (image != null) {
@@ -1217,8 +1223,8 @@ namespace AssetStudioGUI {
 				assetItem.InfoText += "\nChannels: ";
 				int validChannel = 0;
 				for (int i = 0; i < 4; i++) {
-					if (textureChannels[i]) {
-						assetItem.InfoText += textureChannelNames[i];
+					if (m_textureChannels[i]) {
+						assetItem.InfoText += m_textureChannelNames[i];
 						validChannel++;
 					}
 				}
@@ -1229,10 +1235,10 @@ namespace AssetStudioGUI {
 					for (int i = 0; i < bitmap.Height; i++) {
 						int offset = Math.Abs(bitmap.Stride) * i;
 						for (int j = 0; j < bitmap.Width; j++) {
-							bytes[offset] = textureChannels[0] ? bytes[offset] : validChannel == 1 && textureChannels[3] ? byte.MaxValue : byte.MinValue;
-							bytes[offset + 1] = textureChannels[1] ? bytes[offset + 1] : validChannel == 1 && textureChannels[3] ? byte.MaxValue : byte.MinValue;
-							bytes[offset + 2] = textureChannels[2] ? bytes[offset + 2] : validChannel == 1 && textureChannels[3] ? byte.MaxValue : byte.MinValue;
-							bytes[offset + 3] = textureChannels[3] ? bytes[offset + 3] : byte.MaxValue;
+							bytes[offset] = m_textureChannels[0] ? bytes[offset] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
+							bytes[offset + 1] = m_textureChannels[1] ? bytes[offset + 1] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
+							bytes[offset + 2] = m_textureChannels[2] ? bytes[offset + 2] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
+							bytes[offset + 3] = m_textureChannels[3] ? bytes[offset + 3] : byte.MaxValue;
 							offset += 4;
 						}
 					}
@@ -1329,6 +1335,7 @@ namespace AssetStudioGUI {
 					break;
 				}
 			}
+			FMODreset();
 
 			var m_AudioData = m_AudioClip.m_AudioData.GetData();
 			if (m_AudioData == null || m_AudioData.Length == 0)
@@ -1359,14 +1366,16 @@ namespace AssetStudioGUI {
 			if (ERRCHECK(result))
 				return;
 
-			FMODpanel.Visible = true;
+			//FMODpanel.Visible = true;
+			SwitchPreviewPage(PreviewType.FMOD);
 
 			result = channel.getFrequency(out var frequency);
 			if (ERRCHECK(result))
 				return;
 
 			FMODinfoLabel.Text = frequency + " Hz";
-			FMODtimerLabel.Text = $"0:0.0 / {FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
+			FMODtimerLabel.Text = $"0:0.0";
+			FMODdurationLabel.Text = $"{FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
 		}
 
 		private void PreviewShader(Shader m_Shader) {
@@ -1426,7 +1435,8 @@ namespace AssetStudioGUI {
 							fontPreviewBox.SelectionStart = 423;
 							fontPreviewBox.SelectionLength = 55;
 							fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 72, FontStyle.Regular);
-							fontPreviewBox.Visible = true;
+							//fontPreviewBox.Visible = true;
+							SwitchPreviewPage(PreviewType.Font);
 						}
 					}
 					return;
@@ -1436,8 +1446,6 @@ namespace AssetStudioGUI {
 		}
 
 		private void PreviewMesh(Mesh m_Mesh) {
-			assetInfoLabel.Text = "TEST";
-			assetInfoLabel.Visible = true;
 			if (m_Mesh.m_VertexCount > 0) {
 				initMatrices();
 				#region Vertices
@@ -1469,13 +1477,14 @@ namespace AssetStudioGUI {
 				}
 
 				// Calculate modelMatrix
-				//Vector3 dist = Vector3.One;
-				//for (int i = 0; i < 3; i++) {
-				//	dist[i] = max[i] - min[i];
-				//}
-				//float d = Math.Max(1e-5f, dist.Length);
-				//m_modelScale = 10.0f / d;
-				updateModelMatrix();
+				Vector3 dist = Vector3.One;
+				for (int i = 0; i < 3; i++) {
+					dist[i] = max[i] - min[i];
+				}
+				float d = Math.Max(1e-5f, dist.Length);
+				m_cameraPos.Z = m_defaultCameraDis = d;
+				updateViewMatrix();
+
 				#endregion
 				#region Indicies
 				indiceData = new int[m_Mesh.m_Indices.Count];
@@ -1553,7 +1562,8 @@ namespace AssetStudioGUI {
 					}
 				}
 				#endregion
-				glControl1.Visible = true;
+				//glControl1.Visible = true;
+				SwitchPreviewPage(PreviewType.GL);
 				CreateVAO();
 				StatusStripUpdate("Using OpenGL Version: " + GL.GetString(StringName.Version) + "\n"
 								  + "'Mouse Left' = Rotate Model | 'Mouse Right' = Rotate Camera | 'Mouse Wheel' = Move\n"
@@ -1578,24 +1588,49 @@ namespace AssetStudioGUI {
 		}
 
 		private void PreviewTexture(DirectBitmap bitmap) {
-			imageTexture?.Dispose();
-			imageTexture = bitmap;
-			previewPanel.BackgroundImage = imageTexture.Bitmap;
-			if (imageTexture.Width > previewPanel.Width || imageTexture.Height > previewPanel.Height)
+			m_imageTexture?.Dispose();
+			m_imageTexture = bitmap;
+			previewPanel.BackgroundImage = m_imageTexture.Bitmap;
+			if (m_imageTexture.Width > previewPanel.Width || m_imageTexture.Height > previewPanel.Height)
 				previewPanel.BackgroundImageLayout = ImageLayout.Zoom;
 			else
 				previewPanel.BackgroundImageLayout = ImageLayout.Center;
+			SwitchPreviewPage(PreviewType.None);
 		}
 
 		private void PreviewText(string text) {
 			textPreviewBox.Text = text;
-			textPreviewBox.Visible = true;
+			//textPreviewBox.Visible = true;
+			SwitchPreviewPage(PreviewType.Text);
 		}
-		#endregion // RightPreview
-		// End Callbacks
 
-		// Special Preview
-		#region FMOD
+		private void PreviewDump(AssetItem assetItem) {
+			if ((m_previewLoaded & (1 << 1)) != 0)
+				return;
+			dumpTextBox.Text = DumpAsset(assetItem.Asset);
+			m_previewLoaded |= 1 << 1;
+			SwitchPreviewPage(PreviewType.Dump);
+		}
+
+		private void PreviewDumpJSON(AssetItem assetItem) {
+			if ((m_previewLoaded & (1 << 2)) != 0)
+				return;
+			dumpJsonTextBox.Text = DumpAssetJson(assetItem.Asset);
+			m_previewLoaded |= 1 << 2;
+			SwitchPreviewPage(PreviewType.DumpJson);
+		}
+		#endregion Preview
+
+		#region FMOD_Controller
+
+		private FMOD.System system;
+		private FMOD.Sound sound;
+		private FMOD.Channel channel;
+		private FMOD.SoundGroup masterSoundGroup;
+		private FMOD.MODE loopMode = FMOD.MODE.LOOP_OFF;
+		private uint FMODlenms;
+		private float FMODVolume = 0.8f;
+
 		private void FMODinit() {
 			FMODreset();
 
@@ -1630,7 +1665,8 @@ namespace AssetStudioGUI {
 		private void FMODreset() {
 			timer.Stop();
 			FMODprogressBar.Value = 0;
-			FMODtimerLabel.Text = "0:00.0 / 0:00.0";
+			FMODtimerLabel.Text = "0:0.0";
+			FMODdurationLabel.Text = "0:0.0";
 			FMODstatusLabel.Text = "Stopped";
 			FMODinfoLabel.Text = "";
 
@@ -1737,7 +1773,8 @@ namespace AssetStudioGUI {
 					//don't FMODreset, it will nullify the sound
 					timer.Stop();
 					FMODprogressBar.Value = 0;
-					FMODtimerLabel.Text = "0:00.0 / 0:00.0";
+					FMODtimerLabel.Text = "0:0.0";
+					//FMODdurationLabel.Text = "0:0.0";
 					FMODstatusLabel.Text = "Stopped";
 					FMODpauseButton.Text = "Pause";
 				}
@@ -1792,7 +1829,8 @@ namespace AssetStudioGUI {
 		private void FMODprogressBar_Scroll(object sender, EventArgs e) {
 			if (channel != null) {
 				uint newms = FMODlenms / 1000 * (uint)FMODprogressBar.Value;
-				FMODtimerLabel.Text = $"{newms / 1000 / 60}:{newms / 1000 % 60}.{newms / 10 % 100}/{FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
+				FMODtimerLabel.Text = $"{newms / 1000 / 60}:{newms / 1000 % 60}.{newms / 10 % 100}";
+				//FMODdurationLabel.Text = $"{FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
 			}
 		}
 
@@ -1847,7 +1885,8 @@ namespace AssetStudioGUI {
 				}
 			}
 
-			FMODtimerLabel.Text = $"{ms / 1000 / 60}:{ms / 1000 % 60}.{ms / 10 % 100} / {FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
+			FMODtimerLabel.Text = $"{ms / 1000 / 60}:{ms / 1000 % 60}.{ms / 10 % 100}";
+			//FMODdurationLabel.Text = $"{FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
 			FMODprogressBar.Value = (int)(ms * 1000 / FMODlenms);
 			FMODstatusLabel.Text = paused ? "Paused " : playing ? "Playing" : "Stopped";
 
@@ -1864,11 +1903,51 @@ namespace AssetStudioGUI {
 			}
 			return false;
 		}
-		#endregion
+		#endregion FMOD_Controller
 
 		#region GLControl
+		private bool glControlLoaded;
+		private int mdx, mdy;
+		private bool lmdown, rmdown;
+		private int pgmID, pgmColorID, pgmBlackID;
+		private int attributeVertexPosition;
+		private int attributeNormalDirection;
+		private int attributeVertexColor;
+		private int uniformModelMatrix;
+		private int uniformViewMatrix;
+		private int uniformProjMatrix;
+		private int vao;
+		private Vector3[] vertexData;
+		private Vector3[] normalData;
+		private Vector3[] normal2Data;
+		private Vector4[] colorData;
+		private Matrix4 modelMatrixData;
+		private Matrix4 viewMatrixData;
+		private Matrix4 projMatrixData;
+		private Matrix4 viewRotMatrix;
+
+		private float m_modelScale;
+		private Vector3 m_modelRot;
+		private Vector3 m_cameraPos;
+		private Vector3 m_cameraRot;
+		private float m_cameraFOV;
+		private float m_defaultCameraDis;
+
+		private int[] indiceData;
+		private int wireFrameMode = 2;
+		private int shadeMode;
+		private int normalMode;
+
+		private void GLInit() {
+			m_modelScale = 1.0f;
+			m_modelRot = Vector3.Zero;
+			m_cameraPos = Vector3.Zero;
+			m_cameraRot = Vector3.Zero;
+			m_cameraFOV = (float)Math.PI / 4.0f;
+		}
+
 		private void InitOpenTK() {
-			ChangeGLSize(glControl1.Size);
+			ChangeGLSize(ui_tabRight_preview_glPreview.Size);
 			GL.ClearColor(System.Drawing.Color.CadetBlue);
 			pgmID = GL.CreateProgram();
 			LoadShader("vs", ShaderType.VertexShader, pgmID, out int vsID);
@@ -1965,7 +2044,7 @@ namespace AssetStudioGUI {
 		}
 
 		private void initMatrices() {
-			m_cameraPos = new Vector3(0.0f, 0.0f, 20.0f);
+			m_cameraPos = new Vector3(0.0f, 0.0f, m_defaultCameraDis);
 			m_cameraRot = Vector3.Zero;
 			m_modelRot = Vector3.Zero;
 			m_modelScale = 1.0f;
@@ -2004,44 +2083,63 @@ namespace AssetStudioGUI {
 		private void glControl1_Load(object sender, EventArgs e) {
 			InitOpenTK();
 			glControlLoaded = true;
+			//MessageBox.Show("Load");
 		}
 
 		private void glControl1_Paint(object sender, PaintEventArgs e) {
-			glControl1.MakeCurrent();
+			ui_tabRight_preview_glPreview.MakeCurrent();
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 			GL.Enable(EnableCap.DepthTest);
-			GL.DepthFunc(DepthFunction.Less);
-			//GL.Enable(EnableCap.CullFace);
-			//GL.CullFace(CullFaceMode.Back);
+			GL.DepthFunc(DepthFunction.Lequal);
+			//GL.Enable(EnableCap.LineSmooth);
+			//GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
+			//GL.Enable(EnableCap.PolygonSmooth);
+			//GL.Hint(HintTarget.PolygonSmoothHint, HintMode.Nicest);
 
 			GL.BindVertexArray(vao);
-			if (wireFrameMode == 0 || wireFrameMode == 2) {
+			switch (wireFrameMode) {
+			case 0:
 				GL.UseProgram(shadeMode == 0 ? pgmID : pgmColorID);
 				GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
 				GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
 				GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
 				GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 				GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-			}
-			//Wireframe
-			if (wireFrameMode == 1 || wireFrameMode == 2) {
-				GL.Enable(EnableCap.PolygonOffsetLine);
-				GL.PolygonOffset(-1, -1);
+				break;
+			case 1:
 				GL.UseProgram(pgmBlackID);
 				GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
 				GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
 				GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
 				GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
 				GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-				GL.Disable(EnableCap.PolygonOffsetLine);
+				break;
+			case 2:
+				GL.Enable(EnableCap.PolygonOffsetFill);
+				GL.PolygonOffset(1, 1);
+				GL.UseProgram(shadeMode == 0 ? pgmID : pgmColorID);
+				GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
+				GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
+				GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
+				GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+				GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
+				GL.Disable(EnableCap.PolygonOffsetFill);
+				GL.UseProgram(pgmBlackID);
+				GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
+				GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
+				GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
+				GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+				GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
+				break;
 			}
+
 			GL.BindVertexArray(0);
 			GL.Flush();
-			glControl1.SwapBuffers();
+			ui_tabRight_preview_glPreview.SwapBuffers();
 		}
 
 		private void glControl1_MouseWheel(object sender, MouseEventArgs e) {
-			if (glControl1.Visible) {
+			if (ui_tabRight_preview_glPreview.Visible) {
 				Vector4 front = new Vector4(0, 0, -1, 0);
 				front = front * viewRotMatrix.Inverted();
 
@@ -2052,7 +2150,7 @@ namespace AssetStudioGUI {
 
 				updateViewMatrix();
 
-				glControl1.Invalidate();
+				ui_tabRight_preview_glPreview.Invalidate();
 			}
 		}
 
@@ -2081,7 +2179,7 @@ namespace AssetStudioGUI {
 					m_cameraRot -= new Vector3(dy * 0.005f, dx * 0.005f, 0.0f);
 					updateViewMatrix();
 				}
-				glControl1.Invalidate();
+				ui_tabRight_preview_glPreview.Invalidate();
 			}
 		}
 
@@ -2093,10 +2191,9 @@ namespace AssetStudioGUI {
 				rmdown = false;
 			}
 		}
-		#endregion
-		// End Special Preview
+		#endregion GLControl
 
-		#region OHMS_core
+		#region OHMS
 		private bool GetANewFolder(string iDir, out string oDir) {
 			if (assetsManager.m_lastOpenPaths.Length == 1) {
 				oDir = Path.Combine(iDir, Path.GetFileName(assetsManager.m_lastOpenPaths[0]));
@@ -2261,7 +2358,6 @@ namespace AssetStudioGUI {
 				StatusStripUpdate("No exportable assets loaded");
 			}
 		}
-		#endregion
-
+		#endregion OHMS
 	}
 }

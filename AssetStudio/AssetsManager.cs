@@ -36,7 +36,7 @@ namespace AssetStudio {
 
 			MergeSplitAssets(path);
 			var toReadFile = ProcessingSplitFiles(files.ToList());
-			Load(toReadFile);
+			Load(toReadFile.ToList());
 		}
 
 		public void LoadFolder(string path) {
@@ -47,10 +47,27 @@ namespace AssetStudio {
 			MergeSplitAssets(path, true);
 			var files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories).ToList();
 			var toReadFile = ProcessingSplitFiles(files);
-			Load(toReadFile);
+			Load(toReadFile.ToList());
 		}
 
-		private void Load(string[] files) {
+		public void LoadDropIn(params string[] paths) {
+			m_lastLoadType = LastLoadType.File;
+			m_lastOpenPaths = paths.Select(x => Path.GetFullPath(x)).ToArray();
+
+			List<string> toReadFiles = new();
+
+			foreach (var path in paths) {
+				if (Directory.Exists(path)) {
+					toReadFiles.AddRange(Directory.GetFiles(path, "*.*", SearchOption.AllDirectories));
+				}
+				else if (File.Exists(path)) {
+					toReadFiles.Add(path);
+				}
+			}
+			Load(toReadFiles);
+		}
+
+		private void Load(List<string> files) {
 			foreach (var file in files) {
 				importFiles.Add(file);
 				importFilesHash.Add(Path.GetFileName(file));

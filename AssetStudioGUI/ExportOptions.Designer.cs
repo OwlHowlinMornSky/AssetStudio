@@ -1,550 +1,547 @@
-﻿namespace AssetStudioGUI
-{
-    partial class ExportOptions
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+﻿namespace AssetStudioGUI {
+	partial class ExportOptions {
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing) {
+			if (disposing && (components != null)) {
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-			this.components = new System.ComponentModel.Container();
-			this.OKbutton = new System.Windows.Forms.Button();
-			this.Cancel = new System.Windows.Forms.Button();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.openAfterExport = new System.Windows.Forms.CheckBox();
-			this.restoreExtensionName = new System.Windows.Forms.CheckBox();
-			this.assetGroupOptions = new System.Windows.Forms.ComboBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.convertAudio = new System.Windows.Forms.CheckBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.totga = new System.Windows.Forms.RadioButton();
-			this.tojpg = new System.Windows.Forms.RadioButton();
-			this.topng = new System.Windows.Forms.RadioButton();
-			this.tobmp = new System.Windows.Forms.RadioButton();
-			this.converttexture = new System.Windows.Forms.CheckBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.exportAllUvsAsDiffuseMaps = new System.Windows.Forms.CheckBox();
-			this.exportBlendShape = new System.Windows.Forms.CheckBox();
-			this.exportAnimations = new System.Windows.Forms.CheckBox();
-			this.scaleFactor = new System.Windows.Forms.NumericUpDown();
-			this.label5 = new System.Windows.Forms.Label();
-			this.fbxFormat = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.fbxVersion = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.boneSize = new System.Windows.Forms.NumericUpDown();
-			this.label2 = new System.Windows.Forms.Label();
-			this.exportSkins = new System.Windows.Forms.CheckBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.filterPrecision = new System.Windows.Forms.NumericUpDown();
-			this.castToBone = new System.Windows.Forms.CheckBox();
-			this.exportAllNodes = new System.Windows.Forms.CheckBox();
-			this.eulerFilter = new System.Windows.Forms.CheckBox();
-			this.exportUvsTooltip = new System.Windows.Forms.ToolTip(this.components);
-			this.jsonStructureCheckBox = new System.Windows.Forms.CheckBox();
-			this.groupBox1.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.scaleFactor)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.boneSize)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.filterPrecision)).BeginInit();
-			this.SuspendLayout();
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent() {
+			components = new System.ComponentModel.Container();
+			OKbutton = new System.Windows.Forms.Button();
+			Cancel = new System.Windows.Forms.Button();
+			groupBox1 = new System.Windows.Forms.GroupBox();
+			jsonStructureCheckBox = new System.Windows.Forms.CheckBox();
+			openAfterExport = new System.Windows.Forms.CheckBox();
+			restoreExtensionName = new System.Windows.Forms.CheckBox();
+			assetGroupOptions = new System.Windows.Forms.ComboBox();
+			label6 = new System.Windows.Forms.Label();
+			convertAudio = new System.Windows.Forms.CheckBox();
+			panel1 = new System.Windows.Forms.Panel();
+			totga = new System.Windows.Forms.RadioButton();
+			tojpg = new System.Windows.Forms.RadioButton();
+			topng = new System.Windows.Forms.RadioButton();
+			tobmp = new System.Windows.Forms.RadioButton();
+			converttexture = new System.Windows.Forms.CheckBox();
+			groupBox2 = new System.Windows.Forms.GroupBox();
+			exportAllUvsAsDiffuseMaps = new System.Windows.Forms.CheckBox();
+			exportBlendShape = new System.Windows.Forms.CheckBox();
+			exportAnimations = new System.Windows.Forms.CheckBox();
+			scaleFactor = new System.Windows.Forms.NumericUpDown();
+			label5 = new System.Windows.Forms.Label();
+			fbxFormat = new System.Windows.Forms.ComboBox();
+			label4 = new System.Windows.Forms.Label();
+			fbxVersion = new System.Windows.Forms.ComboBox();
+			label3 = new System.Windows.Forms.Label();
+			boneSize = new System.Windows.Forms.NumericUpDown();
+			label2 = new System.Windows.Forms.Label();
+			exportSkins = new System.Windows.Forms.CheckBox();
+			label1 = new System.Windows.Forms.Label();
+			filterPrecision = new System.Windows.Forms.NumericUpDown();
+			castToBone = new System.Windows.Forms.CheckBox();
+			exportAllNodes = new System.Windows.Forms.CheckBox();
+			eulerFilter = new System.Windows.Forms.CheckBox();
+			exportUvsTooltip = new System.Windows.Forms.ToolTip(components);
+			groupBox1.SuspendLayout();
+			panel1.SuspendLayout();
+			groupBox2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)scaleFactor).BeginInit();
+			((System.ComponentModel.ISupportInitialize)boneSize).BeginInit();
+			((System.ComponentModel.ISupportInitialize)filterPrecision).BeginInit();
+			SuspendLayout();
 			// 
 			// OKbutton
 			// 
-			this.OKbutton.Location = new System.Drawing.Point(318, 351);
-			this.OKbutton.Name = "OKbutton";
-			this.OKbutton.Size = new System.Drawing.Size(75, 21);
-			this.OKbutton.TabIndex = 6;
-			this.OKbutton.Text = "OK";
-			this.OKbutton.UseVisualStyleBackColor = true;
-			this.OKbutton.Click += new System.EventHandler(this.OKbutton_Click);
+			OKbutton.Location = new System.Drawing.Point(371, 497);
+			OKbutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			OKbutton.Name = "OKbutton";
+			OKbutton.Size = new System.Drawing.Size(88, 30);
+			OKbutton.TabIndex = 6;
+			OKbutton.Text = "OK";
+			OKbutton.UseVisualStyleBackColor = true;
+			OKbutton.Click += OKbutton_Click;
 			// 
 			// Cancel
 			// 
-			this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.Cancel.Location = new System.Drawing.Point(399, 351);
-			this.Cancel.Name = "Cancel";
-			this.Cancel.Size = new System.Drawing.Size(75, 21);
-			this.Cancel.TabIndex = 7;
-			this.Cancel.Text = "Cancel";
-			this.Cancel.UseVisualStyleBackColor = true;
-			this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
+			Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			Cancel.Location = new System.Drawing.Point(465, 497);
+			Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			Cancel.Name = "Cancel";
+			Cancel.Size = new System.Drawing.Size(88, 30);
+			Cancel.TabIndex = 7;
+			Cancel.Text = "Cancel";
+			Cancel.UseVisualStyleBackColor = true;
+			Cancel.Click += Cancel_Click;
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.AutoSize = true;
-			this.groupBox1.Controls.Add(this.jsonStructureCheckBox);
-			this.groupBox1.Controls.Add(this.openAfterExport);
-			this.groupBox1.Controls.Add(this.restoreExtensionName);
-			this.groupBox1.Controls.Add(this.assetGroupOptions);
-			this.groupBox1.Controls.Add(this.label6);
-			this.groupBox1.Controls.Add(this.convertAudio);
-			this.groupBox1.Controls.Add(this.panel1);
-			this.groupBox1.Controls.Add(this.converttexture);
-			this.groupBox1.Location = new System.Drawing.Point(12, 12);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(232, 334);
-			this.groupBox1.TabIndex = 9;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Export";
-			// 
-			// openAfterExport
-			// 
-			this.openAfterExport.AutoSize = true;
-			this.openAfterExport.Checked = true;
-			this.openAfterExport.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.openAfterExport.Location = new System.Drawing.Point(6, 160);
-			this.openAfterExport.Name = "openAfterExport";
-			this.openAfterExport.Size = new System.Drawing.Size(168, 16);
-			this.openAfterExport.TabIndex = 10;
-			this.openAfterExport.Text = "Open folder after export";
-			this.openAfterExport.UseVisualStyleBackColor = true;
-			// 
-			// restoreExtensionName
-			// 
-			this.restoreExtensionName.AutoSize = true;
-			this.restoreExtensionName.Checked = true;
-			this.restoreExtensionName.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.restoreExtensionName.Location = new System.Drawing.Point(6, 58);
-			this.restoreExtensionName.Name = "restoreExtensionName";
-			this.restoreExtensionName.Size = new System.Drawing.Size(216, 16);
-			this.restoreExtensionName.TabIndex = 9;
-			this.restoreExtensionName.Text = "Restore TextAsset extension name";
-			this.restoreExtensionName.UseVisualStyleBackColor = true;
-			// 
-			// assetGroupOptions
-			// 
-			this.assetGroupOptions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.assetGroupOptions.FormattingEnabled = true;
-			this.assetGroupOptions.Items.AddRange(new object[] {
-            "type name",
-            "container path",
-            "source file name",
-            "do not group"});
-			this.assetGroupOptions.Location = new System.Drawing.Point(6, 32);
-			this.assetGroupOptions.Name = "assetGroupOptions";
-			this.assetGroupOptions.Size = new System.Drawing.Size(149, 20);
-			this.assetGroupOptions.TabIndex = 8;
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(6, 17);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(149, 12);
-			this.label6.TabIndex = 7;
-			this.label6.Text = "Group exported assets by";
-			// 
-			// convertAudio
-			// 
-			this.convertAudio.AutoSize = true;
-			this.convertAudio.Checked = true;
-			this.convertAudio.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.convertAudio.Location = new System.Drawing.Point(6, 138);
-			this.convertAudio.Name = "convertAudio";
-			this.convertAudio.Size = new System.Drawing.Size(198, 16);
-			this.convertAudio.TabIndex = 6;
-			this.convertAudio.Text = "Convert AudioClip to WAV(PCM)";
-			this.convertAudio.UseVisualStyleBackColor = true;
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.totga);
-			this.panel1.Controls.Add(this.tojpg);
-			this.panel1.Controls.Add(this.topng);
-			this.panel1.Controls.Add(this.tobmp);
-			this.panel1.Location = new System.Drawing.Point(20, 102);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(202, 30);
-			this.panel1.TabIndex = 5;
-			// 
-			// totga
-			// 
-			this.totga.AutoSize = true;
-			this.totga.Location = new System.Drawing.Point(150, 6);
-			this.totga.Name = "totga";
-			this.totga.Size = new System.Drawing.Size(41, 16);
-			this.totga.TabIndex = 2;
-			this.totga.Text = "Tga";
-			this.totga.UseVisualStyleBackColor = true;
-			// 
-			// tojpg
-			// 
-			this.tojpg.AutoSize = true;
-			this.tojpg.Location = new System.Drawing.Point(97, 6);
-			this.tojpg.Name = "tojpg";
-			this.tojpg.Size = new System.Drawing.Size(47, 16);
-			this.tojpg.TabIndex = 4;
-			this.tojpg.Text = "Jpeg";
-			this.tojpg.UseVisualStyleBackColor = true;
-			// 
-			// topng
-			// 
-			this.topng.AutoSize = true;
-			this.topng.Checked = true;
-			this.topng.Location = new System.Drawing.Point(50, 6);
-			this.topng.Name = "topng";
-			this.topng.Size = new System.Drawing.Size(41, 16);
-			this.topng.TabIndex = 3;
-			this.topng.TabStop = true;
-			this.topng.Text = "Png";
-			this.topng.UseVisualStyleBackColor = true;
-			// 
-			// tobmp
-			// 
-			this.tobmp.AutoSize = true;
-			this.tobmp.Location = new System.Drawing.Point(3, 6);
-			this.tobmp.Name = "tobmp";
-			this.tobmp.Size = new System.Drawing.Size(41, 16);
-			this.tobmp.TabIndex = 2;
-			this.tobmp.Text = "Bmp";
-			this.tobmp.UseVisualStyleBackColor = true;
-			// 
-			// converttexture
-			// 
-			this.converttexture.AutoSize = true;
-			this.converttexture.Checked = true;
-			this.converttexture.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.converttexture.Location = new System.Drawing.Point(6, 80);
-			this.converttexture.Name = "converttexture";
-			this.converttexture.Size = new System.Drawing.Size(126, 16);
-			this.converttexture.TabIndex = 1;
-			this.converttexture.Text = "Convert Texture2D";
-			this.converttexture.UseVisualStyleBackColor = true;
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.AutoSize = true;
-			this.groupBox2.Controls.Add(this.exportAllUvsAsDiffuseMaps);
-			this.groupBox2.Controls.Add(this.exportBlendShape);
-			this.groupBox2.Controls.Add(this.exportAnimations);
-			this.groupBox2.Controls.Add(this.scaleFactor);
-			this.groupBox2.Controls.Add(this.label5);
-			this.groupBox2.Controls.Add(this.fbxFormat);
-			this.groupBox2.Controls.Add(this.label4);
-			this.groupBox2.Controls.Add(this.fbxVersion);
-			this.groupBox2.Controls.Add(this.label3);
-			this.groupBox2.Controls.Add(this.boneSize);
-			this.groupBox2.Controls.Add(this.label2);
-			this.groupBox2.Controls.Add(this.exportSkins);
-			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.Controls.Add(this.filterPrecision);
-			this.groupBox2.Controls.Add(this.castToBone);
-			this.groupBox2.Controls.Add(this.exportAllNodes);
-			this.groupBox2.Controls.Add(this.eulerFilter);
-			this.groupBox2.Location = new System.Drawing.Point(250, 12);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(224, 334);
-			this.groupBox2.TabIndex = 11;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Fbx";
-			// 
-			// exportAllUvsAsDiffuseMaps
-			// 
-			this.exportAllUvsAsDiffuseMaps.AccessibleDescription = "";
-			this.exportAllUvsAsDiffuseMaps.AutoSize = true;
-			this.exportAllUvsAsDiffuseMaps.Location = new System.Drawing.Point(6, 171);
-			this.exportAllUvsAsDiffuseMaps.Name = "exportAllUvsAsDiffuseMaps";
-			this.exportAllUvsAsDiffuseMaps.Size = new System.Drawing.Size(204, 16);
-			this.exportAllUvsAsDiffuseMaps.TabIndex = 23;
-			this.exportAllUvsAsDiffuseMaps.Text = "Export all UVs as diffuse maps";
-			this.exportUvsTooltip.SetToolTip(this.exportAllUvsAsDiffuseMaps, "Unchecked: UV1 exported as normal map. Check this if your export is missing a UV " +
-        "map.");
-			this.exportAllUvsAsDiffuseMaps.UseVisualStyleBackColor = true;
-			// 
-			// exportBlendShape
-			// 
-			this.exportBlendShape.AutoSize = true;
-			this.exportBlendShape.Checked = true;
-			this.exportBlendShape.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.exportBlendShape.Location = new System.Drawing.Point(6, 127);
-			this.exportBlendShape.Name = "exportBlendShape";
-			this.exportBlendShape.Size = new System.Drawing.Size(126, 16);
-			this.exportBlendShape.TabIndex = 22;
-			this.exportBlendShape.Text = "Export blendshape";
-			this.exportBlendShape.UseVisualStyleBackColor = true;
-			// 
-			// exportAnimations
-			// 
-			this.exportAnimations.AutoSize = true;
-			this.exportAnimations.Checked = true;
-			this.exportAnimations.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.exportAnimations.Location = new System.Drawing.Point(6, 105);
-			this.exportAnimations.Name = "exportAnimations";
-			this.exportAnimations.Size = new System.Drawing.Size(126, 16);
-			this.exportAnimations.TabIndex = 21;
-			this.exportAnimations.Text = "Export animations";
-			this.exportAnimations.UseVisualStyleBackColor = true;
-			// 
-			// scaleFactor
-			// 
-			this.scaleFactor.DecimalPlaces = 2;
-			this.scaleFactor.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.scaleFactor.Location = new System.Drawing.Point(83, 224);
-			this.scaleFactor.Name = "scaleFactor";
-			this.scaleFactor.Size = new System.Drawing.Size(60, 21);
-			this.scaleFactor.TabIndex = 20;
-			this.scaleFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.scaleFactor.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(6, 226);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(71, 12);
-			this.label5.TabIndex = 19;
-			this.label5.Text = "ScaleFactor";
-			// 
-			// fbxFormat
-			// 
-			this.fbxFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.fbxFormat.FormattingEnabled = true;
-			this.fbxFormat.Items.AddRange(new object[] {
-            "Binary",
-            "Ascii"});
-			this.fbxFormat.Location = new System.Drawing.Point(77, 254);
-			this.fbxFormat.Name = "fbxFormat";
-			this.fbxFormat.Size = new System.Drawing.Size(61, 20);
-			this.fbxFormat.TabIndex = 18;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(6, 258);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(59, 12);
-			this.label4.TabIndex = 17;
-			this.label4.Text = "FBXFormat";
-			// 
-			// fbxVersion
-			// 
-			this.fbxVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.fbxVersion.FormattingEnabled = true;
-			this.fbxVersion.Items.AddRange(new object[] {
-            "6.1",
-            "7.1",
-            "7.2",
-            "7.3",
-            "7.4",
-            "7.5"});
-			this.fbxVersion.Location = new System.Drawing.Point(77, 284);
-			this.fbxVersion.Name = "fbxVersion";
-			this.fbxVersion.Size = new System.Drawing.Size(47, 20);
-			this.fbxVersion.TabIndex = 16;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(6, 287);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(65, 12);
-			this.label3.TabIndex = 15;
-			this.label3.Text = "FBXVersion";
-			// 
-			// boneSize
-			// 
-			this.boneSize.Location = new System.Drawing.Point(65, 197);
-			this.boneSize.Name = "boneSize";
-			this.boneSize.Size = new System.Drawing.Size(46, 21);
-			this.boneSize.TabIndex = 11;
-			this.boneSize.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(6, 199);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(53, 12);
-			this.label2.TabIndex = 10;
-			this.label2.Text = "BoneSize";
-			// 
-			// exportSkins
-			// 
-			this.exportSkins.AutoSize = true;
-			this.exportSkins.Checked = true;
-			this.exportSkins.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.exportSkins.Location = new System.Drawing.Point(6, 83);
-			this.exportSkins.Name = "exportSkins";
-			this.exportSkins.Size = new System.Drawing.Size(96, 16);
-			this.exportSkins.TabIndex = 8;
-			this.exportSkins.Text = "Export skins";
-			this.exportSkins.UseVisualStyleBackColor = true;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(26, 39);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(95, 12);
-			this.label1.TabIndex = 7;
-			this.label1.Text = "FilterPrecision";
-			// 
-			// filterPrecision
-			// 
-			this.filterPrecision.DecimalPlaces = 2;
-			this.filterPrecision.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-			this.filterPrecision.Location = new System.Drawing.Point(127, 37);
-			this.filterPrecision.Name = "filterPrecision";
-			this.filterPrecision.Size = new System.Drawing.Size(51, 21);
-			this.filterPrecision.TabIndex = 6;
-			this.filterPrecision.Value = new decimal(new int[] {
-            25,
-            0,
-            0,
-            131072});
-			// 
-			// castToBone
-			// 
-			this.castToBone.AutoSize = true;
-			this.castToBone.Location = new System.Drawing.Point(6, 149);
-			this.castToBone.Name = "castToBone";
-			this.castToBone.Size = new System.Drawing.Size(156, 16);
-			this.castToBone.TabIndex = 5;
-			this.castToBone.Text = "All nodes cast to bone";
-			this.castToBone.UseVisualStyleBackColor = true;
-			// 
-			// exportAllNodes
-			// 
-			this.exportAllNodes.AutoSize = true;
-			this.exportAllNodes.Checked = true;
-			this.exportAllNodes.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.exportAllNodes.Location = new System.Drawing.Point(6, 61);
-			this.exportAllNodes.Name = "exportAllNodes";
-			this.exportAllNodes.Size = new System.Drawing.Size(120, 16);
-			this.exportAllNodes.TabIndex = 4;
-			this.exportAllNodes.Text = "Export all nodes";
-			this.exportAllNodes.UseVisualStyleBackColor = true;
-			// 
-			// eulerFilter
-			// 
-			this.eulerFilter.AutoSize = true;
-			this.eulerFilter.Checked = true;
-			this.eulerFilter.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.eulerFilter.Location = new System.Drawing.Point(6, 20);
-			this.eulerFilter.Name = "eulerFilter";
-			this.eulerFilter.Size = new System.Drawing.Size(90, 16);
-			this.eulerFilter.TabIndex = 3;
-			this.eulerFilter.Text = "EulerFilter";
-			this.eulerFilter.UseVisualStyleBackColor = true;
+			groupBox1.AutoSize = true;
+			groupBox1.Controls.Add(jsonStructureCheckBox);
+			groupBox1.Controls.Add(openAfterExport);
+			groupBox1.Controls.Add(restoreExtensionName);
+			groupBox1.Controls.Add(assetGroupOptions);
+			groupBox1.Controls.Add(label6);
+			groupBox1.Controls.Add(convertAudio);
+			groupBox1.Controls.Add(panel1);
+			groupBox1.Controls.Add(converttexture);
+			groupBox1.Location = new System.Drawing.Point(14, 17);
+			groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			groupBox1.Size = new System.Drawing.Size(271, 473);
+			groupBox1.TabIndex = 9;
+			groupBox1.TabStop = false;
+			groupBox1.Text = "Export";
 			// 
 			// jsonStructureCheckBox
 			// 
-			this.jsonStructureCheckBox.AutoSize = true;
-			this.jsonStructureCheckBox.Checked = true;
-			this.jsonStructureCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.jsonStructureCheckBox.Location = new System.Drawing.Point(6, 182);
-			this.jsonStructureCheckBox.Name = "jsonStructureCheckBox";
-			this.jsonStructureCheckBox.Size = new System.Drawing.Size(102, 16);
-			this.jsonStructureCheckBox.TabIndex = 11;
-			this.jsonStructureCheckBox.Text = "Indented Json";
-			this.jsonStructureCheckBox.UseVisualStyleBackColor = true;
+			jsonStructureCheckBox.AutoSize = true;
+			jsonStructureCheckBox.Checked = true;
+			jsonStructureCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			jsonStructureCheckBox.Location = new System.Drawing.Point(7, 258);
+			jsonStructureCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			jsonStructureCheckBox.Name = "jsonStructureCheckBox";
+			jsonStructureCheckBox.Size = new System.Drawing.Size(115, 21);
+			jsonStructureCheckBox.TabIndex = 11;
+			jsonStructureCheckBox.Text = "Indented JSON";
+			jsonStructureCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// openAfterExport
+			// 
+			openAfterExport.AutoSize = true;
+			openAfterExport.Checked = true;
+			openAfterExport.CheckState = System.Windows.Forms.CheckState.Checked;
+			openAfterExport.Location = new System.Drawing.Point(7, 227);
+			openAfterExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			openAfterExport.Name = "openAfterExport";
+			openAfterExport.Size = new System.Drawing.Size(171, 21);
+			openAfterExport.TabIndex = 10;
+			openAfterExport.Text = "Open folder after export";
+			openAfterExport.UseVisualStyleBackColor = true;
+			// 
+			// restoreExtensionName
+			// 
+			restoreExtensionName.AutoSize = true;
+			restoreExtensionName.Checked = true;
+			restoreExtensionName.CheckState = System.Windows.Forms.CheckState.Checked;
+			restoreExtensionName.Location = new System.Drawing.Point(7, 82);
+			restoreExtensionName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			restoreExtensionName.Name = "restoreExtensionName";
+			restoreExtensionName.Size = new System.Drawing.Size(226, 21);
+			restoreExtensionName.TabIndex = 9;
+			restoreExtensionName.Text = "Restore TextAsset extension name";
+			restoreExtensionName.UseVisualStyleBackColor = true;
+			// 
+			// assetGroupOptions
+			// 
+			assetGroupOptions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			assetGroupOptions.FormattingEnabled = true;
+			assetGroupOptions.Items.AddRange(new object[] { "type name", "container path", "source file name", "do not group" });
+			assetGroupOptions.Location = new System.Drawing.Point(7, 45);
+			assetGroupOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			assetGroupOptions.Name = "assetGroupOptions";
+			assetGroupOptions.Size = new System.Drawing.Size(173, 25);
+			assetGroupOptions.TabIndex = 8;
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Location = new System.Drawing.Point(7, 24);
+			label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(160, 17);
+			label6.TabIndex = 7;
+			label6.Text = "Group exported assets by";
+			// 
+			// convertAudio
+			// 
+			convertAudio.AutoSize = true;
+			convertAudio.Checked = true;
+			convertAudio.CheckState = System.Windows.Forms.CheckState.Checked;
+			convertAudio.Location = new System.Drawing.Point(7, 196);
+			convertAudio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			convertAudio.Name = "convertAudio";
+			convertAudio.Size = new System.Drawing.Size(215, 21);
+			convertAudio.TabIndex = 6;
+			convertAudio.Text = "Convert AudioClip to WAV(PCM)";
+			convertAudio.UseVisualStyleBackColor = true;
+			// 
+			// panel1
+			// 
+			panel1.Controls.Add(totga);
+			panel1.Controls.Add(tojpg);
+			panel1.Controls.Add(topng);
+			panel1.Controls.Add(tobmp);
+			panel1.Location = new System.Drawing.Point(23, 144);
+			panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			panel1.Name = "panel1";
+			panel1.Size = new System.Drawing.Size(236, 42);
+			panel1.TabIndex = 5;
+			// 
+			// totga
+			// 
+			totga.AutoSize = true;
+			totga.Location = new System.Drawing.Point(175, 8);
+			totga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			totga.Name = "totga";
+			totga.Size = new System.Drawing.Size(48, 21);
+			totga.TabIndex = 2;
+			totga.Text = "Tga";
+			totga.UseVisualStyleBackColor = true;
+			// 
+			// tojpg
+			// 
+			tojpg.AutoSize = true;
+			tojpg.Location = new System.Drawing.Point(113, 8);
+			tojpg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			tojpg.Name = "tojpg";
+			tojpg.Size = new System.Drawing.Size(54, 21);
+			tojpg.TabIndex = 4;
+			tojpg.Text = "Jpeg";
+			tojpg.UseVisualStyleBackColor = true;
+			// 
+			// topng
+			// 
+			topng.AutoSize = true;
+			topng.Checked = true;
+			topng.Location = new System.Drawing.Point(58, 8);
+			topng.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			topng.Name = "topng";
+			topng.Size = new System.Drawing.Size(48, 21);
+			topng.TabIndex = 3;
+			topng.TabStop = true;
+			topng.Text = "Png";
+			topng.UseVisualStyleBackColor = true;
+			// 
+			// tobmp
+			// 
+			tobmp.AutoSize = true;
+			tobmp.Location = new System.Drawing.Point(4, 8);
+			tobmp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			tobmp.Name = "tobmp";
+			tobmp.Size = new System.Drawing.Size(53, 21);
+			tobmp.TabIndex = 2;
+			tobmp.Text = "Bmp";
+			tobmp.UseVisualStyleBackColor = true;
+			// 
+			// converttexture
+			// 
+			converttexture.AutoSize = true;
+			converttexture.Checked = true;
+			converttexture.CheckState = System.Windows.Forms.CheckState.Checked;
+			converttexture.Location = new System.Drawing.Point(7, 113);
+			converttexture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			converttexture.Name = "converttexture";
+			converttexture.Size = new System.Drawing.Size(135, 21);
+			converttexture.TabIndex = 1;
+			converttexture.Text = "Convert Texture2D";
+			converttexture.UseVisualStyleBackColor = true;
+			// 
+			// groupBox2
+			// 
+			groupBox2.AutoSize = true;
+			groupBox2.Controls.Add(exportAllUvsAsDiffuseMaps);
+			groupBox2.Controls.Add(exportBlendShape);
+			groupBox2.Controls.Add(exportAnimations);
+			groupBox2.Controls.Add(scaleFactor);
+			groupBox2.Controls.Add(label5);
+			groupBox2.Controls.Add(fbxFormat);
+			groupBox2.Controls.Add(label4);
+			groupBox2.Controls.Add(fbxVersion);
+			groupBox2.Controls.Add(label3);
+			groupBox2.Controls.Add(boneSize);
+			groupBox2.Controls.Add(label2);
+			groupBox2.Controls.Add(exportSkins);
+			groupBox2.Controls.Add(label1);
+			groupBox2.Controls.Add(filterPrecision);
+			groupBox2.Controls.Add(castToBone);
+			groupBox2.Controls.Add(exportAllNodes);
+			groupBox2.Controls.Add(eulerFilter);
+			groupBox2.Location = new System.Drawing.Point(292, 17);
+			groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			groupBox2.Name = "groupBox2";
+			groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			groupBox2.Size = new System.Drawing.Size(261, 473);
+			groupBox2.TabIndex = 11;
+			groupBox2.TabStop = false;
+			groupBox2.Text = "Fbx";
+			// 
+			// exportAllUvsAsDiffuseMaps
+			// 
+			exportAllUvsAsDiffuseMaps.AccessibleDescription = "";
+			exportAllUvsAsDiffuseMaps.AutoSize = true;
+			exportAllUvsAsDiffuseMaps.Location = new System.Drawing.Point(7, 242);
+			exportAllUvsAsDiffuseMaps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			exportAllUvsAsDiffuseMaps.Name = "exportAllUvsAsDiffuseMaps";
+			exportAllUvsAsDiffuseMaps.Size = new System.Drawing.Size(205, 21);
+			exportAllUvsAsDiffuseMaps.TabIndex = 23;
+			exportAllUvsAsDiffuseMaps.Text = "Export all UVs as diffuse maps";
+			exportUvsTooltip.SetToolTip(exportAllUvsAsDiffuseMaps, "Unchecked: UV1 exported as normal map. Check this if your export is missing a UV map.");
+			exportAllUvsAsDiffuseMaps.UseVisualStyleBackColor = true;
+			// 
+			// exportBlendShape
+			// 
+			exportBlendShape.AutoSize = true;
+			exportBlendShape.Checked = true;
+			exportBlendShape.CheckState = System.Windows.Forms.CheckState.Checked;
+			exportBlendShape.Location = new System.Drawing.Point(7, 180);
+			exportBlendShape.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			exportBlendShape.Name = "exportBlendShape";
+			exportBlendShape.Size = new System.Drawing.Size(137, 21);
+			exportBlendShape.TabIndex = 22;
+			exportBlendShape.Text = "Export blendshape";
+			exportBlendShape.UseVisualStyleBackColor = true;
+			// 
+			// exportAnimations
+			// 
+			exportAnimations.AutoSize = true;
+			exportAnimations.Checked = true;
+			exportAnimations.CheckState = System.Windows.Forms.CheckState.Checked;
+			exportAnimations.Location = new System.Drawing.Point(7, 149);
+			exportAnimations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			exportAnimations.Name = "exportAnimations";
+			exportAnimations.Size = new System.Drawing.Size(132, 21);
+			exportAnimations.TabIndex = 21;
+			exportAnimations.Text = "Export animations";
+			exportAnimations.UseVisualStyleBackColor = true;
+			// 
+			// scaleFactor
+			// 
+			scaleFactor.DecimalPlaces = 2;
+			scaleFactor.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+			scaleFactor.Location = new System.Drawing.Point(97, 317);
+			scaleFactor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			scaleFactor.Name = "scaleFactor";
+			scaleFactor.Size = new System.Drawing.Size(70, 23);
+			scaleFactor.TabIndex = 20;
+			scaleFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			scaleFactor.Value = new decimal(new int[] { 1, 0, 0, 0 });
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Location = new System.Drawing.Point(7, 320);
+			label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(74, 17);
+			label5.TabIndex = 19;
+			label5.Text = "ScaleFactor";
+			// 
+			// fbxFormat
+			// 
+			fbxFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			fbxFormat.FormattingEnabled = true;
+			fbxFormat.Items.AddRange(new object[] { "Binary", "Ascii" });
+			fbxFormat.Location = new System.Drawing.Point(90, 360);
+			fbxFormat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			fbxFormat.Name = "fbxFormat";
+			fbxFormat.Size = new System.Drawing.Size(70, 25);
+			fbxFormat.TabIndex = 18;
+			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.Location = new System.Drawing.Point(7, 366);
+			label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(71, 17);
+			label4.TabIndex = 17;
+			label4.Text = "FBXFormat";
+			// 
+			// fbxVersion
+			// 
+			fbxVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			fbxVersion.FormattingEnabled = true;
+			fbxVersion.Items.AddRange(new object[] { "6.1", "7.1", "7.2", "7.3", "7.4", "7.5" });
+			fbxVersion.Location = new System.Drawing.Point(90, 402);
+			fbxVersion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			fbxVersion.Name = "fbxVersion";
+			fbxVersion.Size = new System.Drawing.Size(54, 25);
+			fbxVersion.TabIndex = 16;
+			// 
+			// label3
+			// 
+			label3.AutoSize = true;
+			label3.Location = new System.Drawing.Point(7, 407);
+			label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(74, 17);
+			label3.TabIndex = 15;
+			label3.Text = "FBXVersion";
+			// 
+			// boneSize
+			// 
+			boneSize.Location = new System.Drawing.Point(76, 279);
+			boneSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			boneSize.Name = "boneSize";
+			boneSize.Size = new System.Drawing.Size(54, 23);
+			boneSize.TabIndex = 11;
+			boneSize.Value = new decimal(new int[] { 10, 0, 0, 0 });
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Location = new System.Drawing.Point(7, 282);
+			label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(61, 17);
+			label2.TabIndex = 10;
+			label2.Text = "BoneSize";
+			// 
+			// exportSkins
+			// 
+			exportSkins.AutoSize = true;
+			exportSkins.Checked = true;
+			exportSkins.CheckState = System.Windows.Forms.CheckState.Checked;
+			exportSkins.Location = new System.Drawing.Point(7, 118);
+			exportSkins.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			exportSkins.Name = "exportSkins";
+			exportSkins.Size = new System.Drawing.Size(98, 21);
+			exportSkins.TabIndex = 8;
+			exportSkins.Text = "Export skins";
+			exportSkins.UseVisualStyleBackColor = true;
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Location = new System.Drawing.Point(30, 55);
+			label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(88, 17);
+			label1.TabIndex = 7;
+			label1.Text = "FilterPrecision";
+			// 
+			// filterPrecision
+			// 
+			filterPrecision.DecimalPlaces = 2;
+			filterPrecision.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+			filterPrecision.Location = new System.Drawing.Point(148, 52);
+			filterPrecision.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			filterPrecision.Name = "filterPrecision";
+			filterPrecision.Size = new System.Drawing.Size(59, 23);
+			filterPrecision.TabIndex = 6;
+			filterPrecision.Value = new decimal(new int[] { 25, 0, 0, 131072 });
+			// 
+			// castToBone
+			// 
+			castToBone.AutoSize = true;
+			castToBone.Location = new System.Drawing.Point(7, 211);
+			castToBone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			castToBone.Name = "castToBone";
+			castToBone.Size = new System.Drawing.Size(158, 21);
+			castToBone.TabIndex = 5;
+			castToBone.Text = "All nodes cast to bone";
+			castToBone.UseVisualStyleBackColor = true;
+			// 
+			// exportAllNodes
+			// 
+			exportAllNodes.AutoSize = true;
+			exportAllNodes.Checked = true;
+			exportAllNodes.CheckState = System.Windows.Forms.CheckState.Checked;
+			exportAllNodes.Location = new System.Drawing.Point(7, 86);
+			exportAllNodes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			exportAllNodes.Name = "exportAllNodes";
+			exportAllNodes.Size = new System.Drawing.Size(122, 21);
+			exportAllNodes.TabIndex = 4;
+			exportAllNodes.Text = "Export all nodes";
+			exportAllNodes.UseVisualStyleBackColor = true;
+			// 
+			// eulerFilter
+			// 
+			eulerFilter.AutoSize = true;
+			eulerFilter.Checked = true;
+			eulerFilter.CheckState = System.Windows.Forms.CheckState.Checked;
+			eulerFilter.Location = new System.Drawing.Point(7, 28);
+			eulerFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			eulerFilter.Name = "eulerFilter";
+			eulerFilter.Size = new System.Drawing.Size(84, 21);
+			eulerFilter.TabIndex = 3;
+			eulerFilter.Text = "EulerFilter";
+			eulerFilter.UseVisualStyleBackColor = true;
 			// 
 			// ExportOptions
 			// 
-			this.AcceptButton = this.OKbutton;
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CancelButton = this.Cancel;
-			this.ClientSize = new System.Drawing.Size(486, 384);
-			this.Controls.Add(this.groupBox2);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.Cancel);
-			this.Controls.Add(this.OKbutton);
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "ExportOptions";
-			this.ShowIcon = false;
-			this.ShowInTaskbar = false;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Export options";
-			this.TopMost = true;
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.scaleFactor)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.boneSize)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.filterPrecision)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AcceptButton = OKbutton;
+			AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			CancelButton = Cancel;
+			ClientSize = new System.Drawing.Size(567, 544);
+			Controls.Add(groupBox2);
+			Controls.Add(groupBox1);
+			Controls.Add(Cancel);
+			Controls.Add(OKbutton);
+			Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "ExportOptions";
+			ShowIcon = false;
+			ShowInTaskbar = false;
+			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			Text = "Export options";
+			TopMost = true;
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)scaleFactor).EndInit();
+			((System.ComponentModel.ISupportInitialize)boneSize).EndInit();
+			((System.ComponentModel.ISupportInitialize)filterPrecision).EndInit();
+			ResumeLayout(false);
+			PerformLayout();
+		}
 
-        }
-
-        #endregion
-        private System.Windows.Forms.Button OKbutton;
-        private System.Windows.Forms.Button Cancel;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox converttexture;
-        private System.Windows.Forms.RadioButton tojpg;
-        private System.Windows.Forms.RadioButton topng;
-        private System.Windows.Forms.RadioButton tobmp;
-        private System.Windows.Forms.RadioButton totga;
-        private System.Windows.Forms.CheckBox convertAudio;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.NumericUpDown boneSize;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox exportSkins;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown filterPrecision;
-        private System.Windows.Forms.CheckBox castToBone;
-        private System.Windows.Forms.CheckBox exportAllNodes;
-        private System.Windows.Forms.CheckBox eulerFilter;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox fbxVersion;
-        private System.Windows.Forms.ComboBox fbxFormat;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown scaleFactor;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox exportBlendShape;
-        private System.Windows.Forms.CheckBox exportAnimations;
-        private System.Windows.Forms.ComboBox assetGroupOptions;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox restoreExtensionName;
-        private System.Windows.Forms.CheckBox openAfterExport;
-        private System.Windows.Forms.CheckBox exportAllUvsAsDiffuseMaps;
-        private System.Windows.Forms.ToolTip exportUvsTooltip;
+		#endregion
+		private System.Windows.Forms.Button OKbutton;
+		private System.Windows.Forms.Button Cancel;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.CheckBox converttexture;
+		private System.Windows.Forms.RadioButton tojpg;
+		private System.Windows.Forms.RadioButton topng;
+		private System.Windows.Forms.RadioButton tobmp;
+		private System.Windows.Forms.RadioButton totga;
+		private System.Windows.Forms.CheckBox convertAudio;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.NumericUpDown boneSize;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.CheckBox exportSkins;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.NumericUpDown filterPrecision;
+		private System.Windows.Forms.CheckBox castToBone;
+		private System.Windows.Forms.CheckBox exportAllNodes;
+		private System.Windows.Forms.CheckBox eulerFilter;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.ComboBox fbxVersion;
+		private System.Windows.Forms.ComboBox fbxFormat;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.NumericUpDown scaleFactor;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.CheckBox exportBlendShape;
+		private System.Windows.Forms.CheckBox exportAnimations;
+		private System.Windows.Forms.ComboBox assetGroupOptions;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.CheckBox restoreExtensionName;
+		private System.Windows.Forms.CheckBox openAfterExport;
+		private System.Windows.Forms.CheckBox exportAllUvsAsDiffuseMaps;
+		private System.Windows.Forms.ToolTip exportUvsTooltip;
 		private System.Windows.Forms.CheckBox jsonStructureCheckBox;
 	}
 }

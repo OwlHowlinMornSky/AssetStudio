@@ -25,24 +25,24 @@
 		private void InitializeComponent() {
 			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssetStudioGUIForm));
-			menuStrip1 = new System.Windows.Forms.MenuStrip();
+			ui_menuStrip0_up = new System.Windows.Forms.MenuStrip();
 			fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			ui_menuFile_loadFile = new System.Windows.Forms.ToolStripMenuItem();
 			ui_menuFile_loadFolder = new System.Windows.Forms.ToolStripMenuItem();
-			toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+			ui_menuFile_separator0 = new System.Windows.Forms.ToolStripSeparator();
 			ui_menuFile_extractFile = new System.Windows.Forms.ToolStripMenuItem();
 			ui_menuFile_extractFolder = new System.Windows.Forms.ToolStripMenuItem();
-			toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			ui_menuFile_separator1 = new System.Windows.Forms.ToolStripSeparator();
 			ui_menuFile_clear = new System.Windows.Forms.ToolStripMenuItem();
 			optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			ui_menuOptions_displayAllAssets = new System.Windows.Forms.ToolStripMenuItem();
 			ui_menuOptions_enablePreview = new System.Windows.Forms.ToolStripMenuItem();
 			ui_menuOptions_displayInfo = new System.Windows.Forms.ToolStripMenuItem();
-			ui_menuOptions_SpecifyUnityVersion = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuOptions_specifyUnityVersion = new System.Windows.Forms.ToolStripMenuItem();
 			specifyUnityVersion = new System.Windows.Forms.ToolStripTextBox();
 			ui_menuOptions_exportOptions = new System.Windows.Forms.ToolStripMenuItem();
 			filterTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuFilter_0_all = new System.Windows.Forms.ToolStripMenuItem();
 			modelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			exportAllObjectssplitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			exportSelectedObjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +55,7 @@
 			exportSelectedAssetsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			exportFilteredAssetsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			exportAnimatorWithSelectedAnimationClipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			ui_menuExport_exportAnimatorAndSelectedAnimationClips = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,19 +101,19 @@
 			sceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			charArtBundleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			splitContainer1 = new System.Windows.Forms.SplitContainer();
-			tabControl1 = new System.Windows.Forms.TabControl();
-			tabPage1 = new System.Windows.Forms.TabPage();
-			sceneTreeView = new GOHierarchy();
-			treeSearch = new System.Windows.Forms.TextBox();
-			tabPage2 = new System.Windows.Forms.TabPage();
-			assetListView = new System.Windows.Forms.ListView();
+			ui_tabLeft_tab = new System.Windows.Forms.TabControl();
+			ui_tabLeft_page0 = new System.Windows.Forms.TabPage();
+			ui_tabLeft_page0_treeView = new GOHierarchy();
+			ui_tabLeft_page0_treeSearch = new System.Windows.Forms.TextBox();
+			ui_tabLeft_page1 = new System.Windows.Forms.TabPage();
+			ui_tabLeft_page1_listView = new System.Windows.Forms.ListView();
 			columnHeaderName = new System.Windows.Forms.ColumnHeader();
 			columnHeaderContainer = new System.Windows.Forms.ColumnHeader();
 			columnHeaderType = new System.Windows.Forms.ColumnHeader();
 			columnHeaderPathID = new System.Windows.Forms.ColumnHeader();
 			columnHeaderSize = new System.Windows.Forms.ColumnHeader();
-			listSearch = new System.Windows.Forms.TextBox();
-			tabPage3 = new System.Windows.Forms.TabPage();
+			ui_tabLeft_page1_listSearch = new System.Windows.Forms.TextBox();
+			ui_tabLeft_page2 = new System.Windows.Forms.TabPage();
 			classesListView = new System.Windows.Forms.ListView();
 			columnHeader1 = new System.Windows.Forms.ColumnHeader();
 			columnHeader2 = new System.Windows.Forms.ColumnHeader();
@@ -135,9 +135,9 @@
 			FMODpauseButton = new System.Windows.Forms.Button();
 			FMODplayButton = new System.Windows.Forms.Button();
 			fontPreviewBox = new System.Windows.Forms.RichTextBox();
-			glControl1 = new OpenTK.GLControl();
+			ui_tabRight_preview_glPreview = new GL_Component();
 			textPreviewBox = new System.Windows.Forms.TextBox();
-			classTextBox = new System.Windows.Forms.TextBox();
+			classTextPreview = new System.Windows.Forms.TextBox();
 			tabPage5 = new System.Windows.Forms.TabPage();
 			dumpTextBox = new System.Windows.Forms.TextBox();
 			tabPage6 = new System.Windows.Forms.TabPage();
@@ -147,25 +147,26 @@
 			timer = new System.Windows.Forms.Timer(components);
 			openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(components);
-			copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			exportSelectedAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			exportAnimatorwithselectedAnimationClipMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			goToSceneHierarchyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			showOriginalFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-			oHMSExportSelectedAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			oHMSExportSelectedAssetsStructuredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			xMLListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			jSONListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			menuStrip1.SuspendLayout();
+			ui_conMenu_copyText = new System.Windows.Forms.ToolStripMenuItem();
+			ui_conMenu_exportSelectedAssets = new System.Windows.Forms.ToolStripMenuItem();
+			ui_conMenu_exportAnimatorAndSelectedAnimationClips = new System.Windows.Forms.ToolStripMenuItem();
+			ui_conMenu_goToSceneHierarchy = new System.Windows.Forms.ToolStripMenuItem();
+			ui_conMenu_showOriginalFile = new System.Windows.Forms.ToolStripMenuItem();
+			ui_conMenu_separator0 = new System.Windows.Forms.ToolStripSeparator();
+			ui_conMenu_OHMS_ExportSelected = new System.Windows.Forms.ToolStripMenuItem();
+			ui_conMenu_OHMS_ExportSelected_Struct = new System.Windows.Forms.ToolStripMenuItem();
+			ui_conMenu_OHMS_ExportSelected_Struct_JSON = new System.Windows.Forms.ToolStripMenuItem();
+			ui_conMenu_OHMS_ExportSelected_Struct_XML = new System.Windows.Forms.ToolStripMenuItem();
+			FMODdurationLabel = new System.Windows.Forms.Label();
+			ui_menuStrip0_up.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
 			splitContainer1.Panel1.SuspendLayout();
 			splitContainer1.Panel2.SuspendLayout();
 			splitContainer1.SuspendLayout();
-			tabControl1.SuspendLayout();
-			tabPage1.SuspendLayout();
-			tabPage2.SuspendLayout();
-			tabPage3.SuspendLayout();
+			ui_tabLeft_tab.SuspendLayout();
+			ui_tabLeft_page0.SuspendLayout();
+			ui_tabLeft_page1.SuspendLayout();
+			ui_tabLeft_page2.SuspendLayout();
 			progressbarPanel.SuspendLayout();
 			tabControl2.SuspendLayout();
 			tabPage4.SuspendLayout();
@@ -179,18 +180,18 @@
 			contextMenuStrip1.SuspendLayout();
 			SuspendLayout();
 			// 
-			// menuStrip1
+			// ui_menuStrip0_up
 			// 
-			menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionsToolStripMenuItem, filterTypeToolStripMenuItem, modelToolStripMenuItem, exportToolStripMenuItem, debugMenuItem, exportOHMSToolStripMenuItem });
-			menuStrip1.Location = new System.Drawing.Point(0, 0);
-			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new System.Drawing.Size(1264, 25);
-			menuStrip1.TabIndex = 0;
-			menuStrip1.Text = "menuStrip1";
+			ui_menuStrip0_up.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionsToolStripMenuItem, filterTypeToolStripMenuItem, modelToolStripMenuItem, exportToolStripMenuItem, debugMenuItem, exportOHMSToolStripMenuItem });
+			ui_menuStrip0_up.Location = new System.Drawing.Point(0, 0);
+			ui_menuStrip0_up.Name = "ui_menuStrip0_up";
+			ui_menuStrip0_up.Size = new System.Drawing.Size(1264, 25);
+			ui_menuStrip0_up.TabIndex = 0;
+			ui_menuStrip0_up.Text = "menuStrip1";
 			// 
 			// fileToolStripMenuItem
 			// 
-			fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_menuFile_loadFile, ui_menuFile_loadFolder, toolStripMenuItem1, ui_menuFile_extractFile, ui_menuFile_extractFolder, toolStripSeparator5, ui_menuFile_clear });
+			fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_menuFile_loadFile, ui_menuFile_loadFolder, ui_menuFile_separator0, ui_menuFile_extractFile, ui_menuFile_extractFolder, ui_menuFile_separator1, ui_menuFile_clear });
 			fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
 			fileToolStripMenuItem.Text = "File";
@@ -209,10 +210,10 @@
 			ui_menuFile_loadFolder.Text = "Load folder";
 			ui_menuFile_loadFolder.Click += ui_menuFile_loadFolder_Click;
 			// 
-			// toolStripMenuItem1
+			// ui_menuFile_separator0
 			// 
-			toolStripMenuItem1.Name = "toolStripMenuItem1";
-			toolStripMenuItem1.Size = new System.Drawing.Size(151, 6);
+			ui_menuFile_separator0.Name = "ui_menuFile_separator0";
+			ui_menuFile_separator0.Size = new System.Drawing.Size(151, 6);
 			// 
 			// ui_menuFile_extractFile
 			// 
@@ -228,10 +229,10 @@
 			ui_menuFile_extractFolder.Text = "Extract folder";
 			ui_menuFile_extractFolder.Click += ui_menuFile_extractFolder_Click;
 			// 
-			// toolStripSeparator5
+			// ui_menuFile_separator1
 			// 
-			toolStripSeparator5.Name = "toolStripSeparator5";
-			toolStripSeparator5.Size = new System.Drawing.Size(151, 6);
+			ui_menuFile_separator1.Name = "ui_menuFile_separator1";
+			ui_menuFile_separator1.Size = new System.Drawing.Size(151, 6);
 			// 
 			// ui_menuFile_clear
 			// 
@@ -242,7 +243,7 @@
 			// 
 			// optionsToolStripMenuItem
 			// 
-			optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_menuOptions_displayAllAssets, ui_menuOptions_enablePreview, ui_menuOptions_displayInfo, ui_menuOptions_SpecifyUnityVersion, ui_menuOptions_exportOptions });
+			optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_menuOptions_displayAllAssets, ui_menuOptions_enablePreview, ui_menuOptions_displayInfo, ui_menuOptions_specifyUnityVersion, ui_menuOptions_exportOptions });
 			optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
 			optionsToolStripMenuItem.Size = new System.Drawing.Size(66, 21);
 			optionsToolStripMenuItem.Text = "Options";
@@ -278,12 +279,12 @@
 			ui_menuOptions_displayInfo.ToolTipText = "Toggle the overlay that shows information about each asset, eg. image size, format, audio bitrate, etc.";
 			ui_menuOptions_displayInfo.CheckedChanged += ui_menuOptions_displayAssetInfo_Check;
 			// 
-			// ui_menuOptions_SpecifyUnityVersion
+			// ui_menuOptions_specifyUnityVersion
 			// 
-			ui_menuOptions_SpecifyUnityVersion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { specifyUnityVersion });
-			ui_menuOptions_SpecifyUnityVersion.Name = "ui_menuOptions_SpecifyUnityVersion";
-			ui_menuOptions_SpecifyUnityVersion.Size = new System.Drawing.Size(223, 22);
-			ui_menuOptions_SpecifyUnityVersion.Text = "Specify Unity version";
+			ui_menuOptions_specifyUnityVersion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { specifyUnityVersion });
+			ui_menuOptions_specifyUnityVersion.Name = "ui_menuOptions_specifyUnityVersion";
+			ui_menuOptions_specifyUnityVersion.Size = new System.Drawing.Size(223, 22);
+			ui_menuOptions_specifyUnityVersion.Text = "Specify Unity version";
 			// 
 			// specifyUnityVersion
 			// 
@@ -299,20 +300,20 @@
 			// 
 			// filterTypeToolStripMenuItem
 			// 
-			filterTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { allToolStripMenuItem });
+			filterTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_menuFilter_0_all });
 			filterTypeToolStripMenuItem.Name = "filterTypeToolStripMenuItem";
 			filterTypeToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
 			filterTypeToolStripMenuItem.Text = "Filter";
 			// 
-			// allToolStripMenuItem
+			// ui_menuFilter_0_all
 			// 
-			allToolStripMenuItem.Checked = true;
-			allToolStripMenuItem.CheckOnClick = true;
-			allToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-			allToolStripMenuItem.Name = "allToolStripMenuItem";
-			allToolStripMenuItem.Size = new System.Drawing.Size(90, 22);
-			allToolStripMenuItem.Text = "All";
-			allToolStripMenuItem.Click += typeToolStripMenuItem_Click;
+			ui_menuFilter_0_all.Checked = true;
+			ui_menuFilter_0_all.CheckOnClick = true;
+			ui_menuFilter_0_all.CheckState = System.Windows.Forms.CheckState.Checked;
+			ui_menuFilter_0_all.Name = "ui_menuFilter_0_all";
+			ui_menuFilter_0_all.Size = new System.Drawing.Size(90, 22);
+			ui_menuFilter_0_all.Text = "All";
+			ui_menuFilter_0_all.Click += ui_menuFilter_0_all_Click;
 			// 
 			// modelToolStripMenuItem
 			// 
@@ -363,7 +364,7 @@
 			// 
 			// exportToolStripMenuItem
 			// 
-			exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { exportAllAssetsMenuItem, exportSelectedAssetsMenuItem, exportFilteredAssetsMenuItem, toolStripSeparator3, exportAnimatorWithSelectedAnimationClipToolStripMenuItem, toolStripSeparator4, toolStripMenuItem2, toolStripMenuItem3, dumpJsonToolStripMenuItem, toolStripSeparator2, toolStripMenuItem10, assetListToJSONToolStripMenuItem });
+			exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { exportAllAssetsMenuItem, exportSelectedAssetsMenuItem, exportFilteredAssetsMenuItem, toolStripSeparator3, ui_menuExport_exportAnimatorAndSelectedAnimationClips, toolStripSeparator4, toolStripMenuItem2, toolStripMenuItem3, dumpJsonToolStripMenuItem, toolStripSeparator2, toolStripMenuItem10, assetListToJSONToolStripMenuItem });
 			exportToolStripMenuItem.Name = "exportToolStripMenuItem";
 			exportToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
 			exportToolStripMenuItem.Text = "Export";
@@ -394,12 +395,12 @@
 			toolStripSeparator3.Name = "toolStripSeparator3";
 			toolStripSeparator3.Size = new System.Drawing.Size(281, 6);
 			// 
-			// exportAnimatorWithSelectedAnimationClipToolStripMenuItem
+			// ui_menuExport_exportAnimatorAndSelectedAnimationClips
 			// 
-			exportAnimatorWithSelectedAnimationClipToolStripMenuItem.Name = "exportAnimatorWithSelectedAnimationClipToolStripMenuItem";
-			exportAnimatorWithSelectedAnimationClipToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
-			exportAnimatorWithSelectedAnimationClipToolStripMenuItem.Text = "Animator + selected AnimationClips";
-			exportAnimatorWithSelectedAnimationClipToolStripMenuItem.Click += exportAnimatorwithAnimationClipMenuItem_Click;
+			ui_menuExport_exportAnimatorAndSelectedAnimationClips.Name = "ui_menuExport_exportAnimatorAndSelectedAnimationClips";
+			ui_menuExport_exportAnimatorAndSelectedAnimationClips.Size = new System.Drawing.Size(284, 22);
+			ui_menuExport_exportAnimatorAndSelectedAnimationClips.Text = "Animator + selected AnimationClips";
+			ui_menuExport_exportAnimatorAndSelectedAnimationClips.Click += ui_menuExport_exportAnimatorAndSelectedAnimationClips_Click;
 			// 
 			// toolStripSeparator4
 			// 
@@ -715,7 +716,7 @@
 			// 
 			// splitContainer1.Panel1
 			// 
-			splitContainer1.Panel1.Controls.Add(tabControl1);
+			splitContainer1.Panel1.Controls.Add(ui_tabLeft_tab);
 			splitContainer1.Panel1.Controls.Add(progressbarPanel);
 			splitContainer1.Panel1MinSize = 200;
 			// 
@@ -729,86 +730,85 @@
 			splitContainer1.TabIndex = 2;
 			splitContainer1.TabStop = false;
 			// 
-			// tabControl1
+			// ui_tabLeft_tab
 			// 
-			tabControl1.Controls.Add(tabPage1);
-			tabControl1.Controls.Add(tabPage2);
-			tabControl1.Controls.Add(tabPage3);
-			tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			tabControl1.Location = new System.Drawing.Point(0, 0);
-			tabControl1.Name = "tabControl1";
-			tabControl1.Padding = new System.Drawing.Point(17, 3);
-			tabControl1.SelectedIndex = 0;
-			tabControl1.Size = new System.Drawing.Size(480, 634);
-			tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-			tabControl1.TabIndex = 0;
-			tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
-			tabControl1.Selected += tabPageSelected;
+			ui_tabLeft_tab.Controls.Add(ui_tabLeft_page0);
+			ui_tabLeft_tab.Controls.Add(ui_tabLeft_page1);
+			ui_tabLeft_tab.Controls.Add(ui_tabLeft_page2);
+			ui_tabLeft_tab.Dock = System.Windows.Forms.DockStyle.Fill;
+			ui_tabLeft_tab.Location = new System.Drawing.Point(0, 0);
+			ui_tabLeft_tab.Name = "ui_tabLeft_tab";
+			ui_tabLeft_tab.Padding = new System.Drawing.Point(17, 3);
+			ui_tabLeft_tab.SelectedIndex = 0;
+			ui_tabLeft_tab.Size = new System.Drawing.Size(480, 634);
+			ui_tabLeft_tab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+			ui_tabLeft_tab.TabIndex = 0;
+			ui_tabLeft_tab.Selected += ui_tabLeft_tab_Selected;
 			// 
-			// tabPage1
+			// ui_tabLeft_page0
 			// 
-			tabPage1.Controls.Add(sceneTreeView);
-			tabPage1.Controls.Add(treeSearch);
-			tabPage1.Location = new System.Drawing.Point(4, 26);
-			tabPage1.Name = "tabPage1";
-			tabPage1.Size = new System.Drawing.Size(472, 604);
-			tabPage1.TabIndex = 0;
-			tabPage1.Text = "Scene Hierarchy";
-			tabPage1.UseVisualStyleBackColor = true;
+			ui_tabLeft_page0.Controls.Add(ui_tabLeft_page0_treeView);
+			ui_tabLeft_page0.Controls.Add(ui_tabLeft_page0_treeSearch);
+			ui_tabLeft_page0.Location = new System.Drawing.Point(4, 26);
+			ui_tabLeft_page0.Name = "ui_tabLeft_page0";
+			ui_tabLeft_page0.Size = new System.Drawing.Size(472, 604);
+			ui_tabLeft_page0.TabIndex = 0;
+			ui_tabLeft_page0.Text = "Scene Hierarchy";
+			ui_tabLeft_page0.UseVisualStyleBackColor = true;
 			// 
-			// sceneTreeView
+			// ui_tabLeft_page0_treeView
 			// 
-			sceneTreeView.CheckBoxes = true;
-			sceneTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-			sceneTreeView.HideSelection = false;
-			sceneTreeView.Location = new System.Drawing.Point(0, 23);
-			sceneTreeView.Name = "sceneTreeView";
-			sceneTreeView.Size = new System.Drawing.Size(472, 581);
-			sceneTreeView.TabIndex = 1;
-			sceneTreeView.AfterCheck += sceneTreeView_AfterCheck;
+			ui_tabLeft_page0_treeView.CheckBoxes = true;
+			ui_tabLeft_page0_treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+			ui_tabLeft_page0_treeView.HideSelection = false;
+			ui_tabLeft_page0_treeView.Location = new System.Drawing.Point(0, 23);
+			ui_tabLeft_page0_treeView.Name = "ui_tabLeft_page0_treeView";
+			ui_tabLeft_page0_treeView.Size = new System.Drawing.Size(472, 581);
+			ui_tabLeft_page0_treeView.TabIndex = 1;
+			ui_tabLeft_page0_treeView.AfterCheck += ui_tabLeft_page0_treeView_AfterCheck;
 			// 
-			// treeSearch
+			// ui_tabLeft_page0_treeSearch
 			// 
-			treeSearch.Dock = System.Windows.Forms.DockStyle.Top;
-			treeSearch.ForeColor = System.Drawing.SystemColors.GrayText;
-			treeSearch.Location = new System.Drawing.Point(0, 0);
-			treeSearch.Name = "treeSearch";
-			treeSearch.Size = new System.Drawing.Size(472, 23);
-			treeSearch.TabIndex = 0;
-			treeSearch.Text = " Search ";
-			treeSearch.TextChanged += treeSearch_TextChanged;
-			treeSearch.Enter += treeSearch_Enter;
-			treeSearch.KeyDown += treeSearch_KeyDown;
-			treeSearch.Leave += treeSearch_Leave;
+			ui_tabLeft_page0_treeSearch.Dock = System.Windows.Forms.DockStyle.Top;
+			ui_tabLeft_page0_treeSearch.ForeColor = System.Drawing.SystemColors.GrayText;
+			ui_tabLeft_page0_treeSearch.Location = new System.Drawing.Point(0, 0);
+			ui_tabLeft_page0_treeSearch.Name = "ui_tabLeft_page0_treeSearch";
+			ui_tabLeft_page0_treeSearch.Size = new System.Drawing.Size(472, 23);
+			ui_tabLeft_page0_treeSearch.TabIndex = 0;
+			ui_tabLeft_page0_treeSearch.Text = " Search ";
+			ui_tabLeft_page0_treeSearch.TextChanged += ui_tabLeft_page0_treeSearch_TextChanged;
+			ui_tabLeft_page0_treeSearch.Enter += ui_tabLeft_page0_treeSearch_Enter;
+			ui_tabLeft_page0_treeSearch.KeyDown += ui_tabLeft_page0_treeSearch_KeyDown;
+			ui_tabLeft_page0_treeSearch.Leave += ui_tabLeft_page0_treeSearch_Leave;
 			// 
-			// tabPage2
+			// ui_tabLeft_page1
 			// 
-			tabPage2.Controls.Add(assetListView);
-			tabPage2.Controls.Add(listSearch);
-			tabPage2.Location = new System.Drawing.Point(4, 26);
-			tabPage2.Name = "tabPage2";
-			tabPage2.Size = new System.Drawing.Size(472, 604);
-			tabPage2.TabIndex = 1;
-			tabPage2.Text = "Asset List";
-			tabPage2.UseVisualStyleBackColor = true;
+			ui_tabLeft_page1.Controls.Add(ui_tabLeft_page1_listView);
+			ui_tabLeft_page1.Controls.Add(ui_tabLeft_page1_listSearch);
+			ui_tabLeft_page1.Location = new System.Drawing.Point(4, 26);
+			ui_tabLeft_page1.Name = "ui_tabLeft_page1";
+			ui_tabLeft_page1.Size = new System.Drawing.Size(472, 604);
+			ui_tabLeft_page1.TabIndex = 1;
+			ui_tabLeft_page1.Text = "Asset List";
+			ui_tabLeft_page1.UseVisualStyleBackColor = true;
 			// 
-			// assetListView
+			// ui_tabLeft_page1_listView
 			// 
-			assetListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { columnHeaderName, columnHeaderContainer, columnHeaderType, columnHeaderPathID, columnHeaderSize });
-			assetListView.Dock = System.Windows.Forms.DockStyle.Fill;
-			assetListView.FullRowSelect = true;
-			assetListView.GridLines = true;
-			assetListView.Location = new System.Drawing.Point(0, 23);
-			assetListView.Name = "assetListView";
-			assetListView.Size = new System.Drawing.Size(472, 581);
-			assetListView.TabIndex = 1;
-			assetListView.UseCompatibleStateImageBehavior = false;
-			assetListView.View = System.Windows.Forms.View.Details;
-			assetListView.VirtualMode = true;
-			assetListView.ColumnClick += assetListView_ColumnClick;
-			assetListView.ItemSelectionChanged += selectAsset;
-			assetListView.RetrieveVirtualItem += assetListView_RetrieveVirtualItem;
-			assetListView.MouseClick += assetListView_MouseClick;
+			ui_tabLeft_page1_listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { columnHeaderName, columnHeaderContainer, columnHeaderType, columnHeaderPathID, columnHeaderSize });
+			ui_tabLeft_page1_listView.Dock = System.Windows.Forms.DockStyle.Fill;
+			ui_tabLeft_page1_listView.FullRowSelect = true;
+			ui_tabLeft_page1_listView.GridLines = true;
+			ui_tabLeft_page1_listView.Location = new System.Drawing.Point(0, 23);
+			ui_tabLeft_page1_listView.Name = "ui_tabLeft_page1_listView";
+			ui_tabLeft_page1_listView.Size = new System.Drawing.Size(472, 581);
+			ui_tabLeft_page1_listView.TabIndex = 1;
+			ui_tabLeft_page1_listView.UseCompatibleStateImageBehavior = false;
+			ui_tabLeft_page1_listView.View = System.Windows.Forms.View.Details;
+			ui_tabLeft_page1_listView.VirtualMode = true;
+			ui_tabLeft_page1_listView.ColumnClick += ui_tabLeft_page1_listView_ColumnClick;
+			ui_tabLeft_page1_listView.ItemSelectionChanged += ui_tabLeft_page1_listView_ItemSelectionChanged;
+			ui_tabLeft_page1_listView.RetrieveVirtualItem += ui_tabLeft_page1_listView_RetrieveVirtualItem;
+			ui_tabLeft_page1_listView.MouseClick += ui_tabLeft_page1_listView_MouseClick;
 			// 
 			// columnHeaderName
 			// 
@@ -834,28 +834,28 @@
 			columnHeaderSize.Text = "Size";
 			columnHeaderSize.Width = 50;
 			// 
-			// listSearch
+			// ui_tabLeft_page1_listSearch
 			// 
-			listSearch.Dock = System.Windows.Forms.DockStyle.Top;
-			listSearch.ForeColor = System.Drawing.SystemColors.GrayText;
-			listSearch.Location = new System.Drawing.Point(0, 0);
-			listSearch.Name = "listSearch";
-			listSearch.Size = new System.Drawing.Size(472, 23);
-			listSearch.TabIndex = 0;
-			listSearch.Text = " Filter ";
-			listSearch.TextChanged += ListSearchTextChanged;
-			listSearch.Enter += listSearch_Enter;
-			listSearch.Leave += listSearch_Leave;
+			ui_tabLeft_page1_listSearch.Dock = System.Windows.Forms.DockStyle.Top;
+			ui_tabLeft_page1_listSearch.ForeColor = System.Drawing.SystemColors.GrayText;
+			ui_tabLeft_page1_listSearch.Location = new System.Drawing.Point(0, 0);
+			ui_tabLeft_page1_listSearch.Name = "ui_tabLeft_page1_listSearch";
+			ui_tabLeft_page1_listSearch.Size = new System.Drawing.Size(472, 23);
+			ui_tabLeft_page1_listSearch.TabIndex = 0;
+			ui_tabLeft_page1_listSearch.Text = " Filter ";
+			ui_tabLeft_page1_listSearch.TextChanged += ui_tabLeft_page1_ListSearchTextChanged;
+			ui_tabLeft_page1_listSearch.Enter += ui_tabLeft_page1_listSearch_Enter;
+			ui_tabLeft_page1_listSearch.Leave += ui_tabLeft_page1_listSearch_Leave;
 			// 
-			// tabPage3
+			// ui_tabLeft_page2
 			// 
-			tabPage3.Controls.Add(classesListView);
-			tabPage3.Location = new System.Drawing.Point(4, 26);
-			tabPage3.Name = "tabPage3";
-			tabPage3.Size = new System.Drawing.Size(472, 604);
-			tabPage3.TabIndex = 2;
-			tabPage3.Text = "Asset Classes";
-			tabPage3.UseVisualStyleBackColor = true;
+			ui_tabLeft_page2.Controls.Add(classesListView);
+			ui_tabLeft_page2.Location = new System.Drawing.Point(4, 26);
+			ui_tabLeft_page2.Name = "ui_tabLeft_page2";
+			ui_tabLeft_page2.Size = new System.Drawing.Size(472, 604);
+			ui_tabLeft_page2.TabIndex = 2;
+			ui_tabLeft_page2.Text = "Asset Classes";
+			ui_tabLeft_page2.UseVisualStyleBackColor = true;
 			// 
 			// classesListView
 			// 
@@ -933,9 +933,9 @@
 			previewPanel.Controls.Add(assetInfoLabel);
 			previewPanel.Controls.Add(FMODpanel);
 			previewPanel.Controls.Add(fontPreviewBox);
-			previewPanel.Controls.Add(glControl1);
+			previewPanel.Controls.Add(ui_tabRight_preview_glPreview);
 			previewPanel.Controls.Add(textPreviewBox);
-			previewPanel.Controls.Add(classTextBox);
+			previewPanel.Controls.Add(classTextPreview);
 			previewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			previewPanel.Location = new System.Drawing.Point(0, 0);
 			previewPanel.Name = "previewPanel";
@@ -956,6 +956,7 @@
 			// FMODpanel
 			// 
 			FMODpanel.BackColor = System.Drawing.SystemColors.ControlDark;
+			FMODpanel.Controls.Add(FMODdurationLabel);
 			FMODpanel.Controls.Add(FMODcopyright);
 			FMODpanel.Controls.Add(FMODinfoLabel);
 			FMODpanel.Controls.Add(FMODtimerLabel);
@@ -976,49 +977,56 @@
 			// FMODcopyright
 			// 
 			FMODcopyright.AutoSize = true;
+			FMODcopyright.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			FMODcopyright.ForeColor = System.Drawing.SystemColors.ControlLight;
-			FMODcopyright.Location = new System.Drawing.Point(214, 337);
+			FMODcopyright.Location = new System.Drawing.Point(187, 338);
 			FMODcopyright.Name = "FMODcopyright";
-			FMODcopyright.Size = new System.Drawing.Size(350, 17);
+			FMODcopyright.Size = new System.Drawing.Size(406, 20);
 			FMODcopyright.TabIndex = 9;
 			FMODcopyright.Text = "Audio Engine supplied by FMOD by Firelight Technologies.";
 			// 
 			// FMODinfoLabel
 			// 
 			FMODinfoLabel.AutoSize = true;
+			FMODinfoLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			FMODinfoLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			FMODinfoLabel.Location = new System.Drawing.Point(269, 235);
+			FMODinfoLabel.Location = new System.Drawing.Point(392, 229);
 			FMODinfoLabel.Name = "FMODinfoLabel";
-			FMODinfoLabel.Size = new System.Drawing.Size(0, 17);
+			FMODinfoLabel.Size = new System.Drawing.Size(30, 21);
 			FMODinfoLabel.TabIndex = 8;
+			FMODinfoLabel.Text = "Hz";
 			// 
 			// FMODtimerLabel
 			// 
 			FMODtimerLabel.AutoSize = true;
+			FMODtimerLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			FMODtimerLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			FMODtimerLabel.Location = new System.Drawing.Point(460, 235);
+			FMODtimerLabel.Location = new System.Drawing.Point(194, 229);
 			FMODtimerLabel.Name = "FMODtimerLabel";
-			FMODtimerLabel.Size = new System.Drawing.Size(89, 17);
+			FMODtimerLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			FMODtimerLabel.Size = new System.Drawing.Size(45, 21);
 			FMODtimerLabel.TabIndex = 7;
-			FMODtimerLabel.Text = "0:00.0 / 0:00.0";
+			FMODtimerLabel.Text = "0:0.0";
 			// 
 			// FMODstatusLabel
 			// 
+			FMODstatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			FMODstatusLabel.AutoSize = true;
+			FMODstatusLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			FMODstatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			FMODstatusLabel.Location = new System.Drawing.Point(213, 235);
+			FMODstatusLabel.Location = new System.Drawing.Point(298, 229);
 			FMODstatusLabel.Name = "FMODstatusLabel";
-			FMODstatusLabel.Size = new System.Drawing.Size(58, 17);
+			FMODstatusLabel.Size = new System.Drawing.Size(74, 21);
 			FMODstatusLabel.TabIndex = 6;
 			FMODstatusLabel.Text = "Stopped";
 			// 
 			// FMODprogressBar
 			// 
 			FMODprogressBar.AutoSize = false;
-			FMODprogressBar.Location = new System.Drawing.Point(213, 253);
+			FMODprogressBar.Location = new System.Drawing.Point(194, 253);
 			FMODprogressBar.Maximum = 1000;
 			FMODprogressBar.Name = "FMODprogressBar";
-			FMODprogressBar.Size = new System.Drawing.Size(350, 22);
+			FMODprogressBar.Size = new System.Drawing.Size(390, 22);
 			FMODprogressBar.TabIndex = 5;
 			FMODprogressBar.TickStyle = System.Windows.Forms.TickStyle.None;
 			FMODprogressBar.Scroll += FMODprogressBar_Scroll;
@@ -1028,7 +1036,7 @@
 			// FMODvolumeBar
 			// 
 			FMODvolumeBar.LargeChange = 2;
-			FMODvolumeBar.Location = new System.Drawing.Point(460, 280);
+			FMODvolumeBar.Location = new System.Drawing.Point(480, 280);
 			FMODvolumeBar.Name = "FMODvolumeBar";
 			FMODvolumeBar.Size = new System.Drawing.Size(104, 45);
 			FMODvolumeBar.TabIndex = 4;
@@ -1039,9 +1047,9 @@
 			// FMODloopButton
 			// 
 			FMODloopButton.Appearance = System.Windows.Forms.Appearance.Button;
-			FMODloopButton.Location = new System.Drawing.Point(399, 280);
+			FMODloopButton.Location = new System.Drawing.Point(410, 280);
 			FMODloopButton.Name = "FMODloopButton";
-			FMODloopButton.Size = new System.Drawing.Size(55, 42);
+			FMODloopButton.Size = new System.Drawing.Size(65, 42);
 			FMODloopButton.TabIndex = 3;
 			FMODloopButton.Text = "Loop";
 			FMODloopButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1050,9 +1058,9 @@
 			// 
 			// FMODstopButton
 			// 
-			FMODstopButton.Location = new System.Drawing.Point(338, 280);
+			FMODstopButton.Location = new System.Drawing.Point(340, 280);
 			FMODstopButton.Name = "FMODstopButton";
-			FMODstopButton.Size = new System.Drawing.Size(55, 42);
+			FMODstopButton.Size = new System.Drawing.Size(65, 42);
 			FMODstopButton.TabIndex = 2;
 			FMODstopButton.Text = "Stop";
 			FMODstopButton.UseVisualStyleBackColor = true;
@@ -1060,9 +1068,9 @@
 			// 
 			// FMODpauseButton
 			// 
-			FMODpauseButton.Location = new System.Drawing.Point(277, 280);
+			FMODpauseButton.Location = new System.Drawing.Point(270, 280);
 			FMODpauseButton.Name = "FMODpauseButton";
-			FMODpauseButton.Size = new System.Drawing.Size(55, 42);
+			FMODpauseButton.Size = new System.Drawing.Size(65, 42);
 			FMODpauseButton.TabIndex = 1;
 			FMODpauseButton.Text = "Pause";
 			FMODpauseButton.UseVisualStyleBackColor = true;
@@ -1070,9 +1078,9 @@
 			// 
 			// FMODplayButton
 			// 
-			FMODplayButton.Location = new System.Drawing.Point(216, 280);
+			FMODplayButton.Location = new System.Drawing.Point(200, 280);
 			FMODplayButton.Name = "FMODplayButton";
-			FMODplayButton.Size = new System.Drawing.Size(55, 42);
+			FMODplayButton.Size = new System.Drawing.Size(65, 42);
 			FMODplayButton.TabIndex = 0;
 			FMODplayButton.Text = "Play";
 			FMODplayButton.UseVisualStyleBackColor = true;
@@ -1091,27 +1099,27 @@
 			fontPreviewBox.Visible = false;
 			fontPreviewBox.WordWrap = false;
 			// 
-			// glControl1
+			// ui_tabRight_preview_glPreview
 			// 
-			glControl1.API = OpenTK.Windowing.Common.ContextAPI.OpenGL;
-			glControl1.APIVersion = new System.Version(3, 3, 0, 0);
-			glControl1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-			glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			glControl1.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
-			glControl1.IsEventDriven = true;
-			glControl1.Location = new System.Drawing.Point(0, 0);
-			glControl1.Name = "glControl1";
-			glControl1.Profile = OpenTK.Windowing.Common.ContextProfile.Core;
-			glControl1.Size = new System.Drawing.Size(768, 602);
-			glControl1.TabIndex = 4;
-			glControl1.Visible = false;
-			glControl1.VSync = false;
-			glControl1.Load += glControl1_Load;
-			glControl1.Paint += glControl1_Paint;
-			glControl1.MouseDown += glControl1_MouseDown;
-			glControl1.MouseMove += glControl1_MouseMove;
-			glControl1.MouseUp += glControl1_MouseUp;
-			glControl1.MouseWheel += glControl1_MouseWheel;
+			ui_tabRight_preview_glPreview.API = OpenTK.Windowing.Common.ContextAPI.OpenGL;
+			ui_tabRight_preview_glPreview.APIVersion = new System.Version(3, 3, 0, 0);
+			ui_tabRight_preview_glPreview.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+			ui_tabRight_preview_glPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+			ui_tabRight_preview_glPreview.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
+			ui_tabRight_preview_glPreview.IsEventDriven = true;
+			ui_tabRight_preview_glPreview.Location = new System.Drawing.Point(0, 0);
+			ui_tabRight_preview_glPreview.Name = "ui_tabRight_preview_glPreview";
+			ui_tabRight_preview_glPreview.Profile = OpenTK.Windowing.Common.ContextProfile.Core;
+			ui_tabRight_preview_glPreview.Size = new System.Drawing.Size(768, 602);
+			ui_tabRight_preview_glPreview.TabIndex = 4;
+			ui_tabRight_preview_glPreview.Visible = false;
+			ui_tabRight_preview_glPreview.VSync = false;
+			ui_tabRight_preview_glPreview.Load += glControl1_Load;
+			ui_tabRight_preview_glPreview.Paint += glControl1_Paint;
+			ui_tabRight_preview_glPreview.MouseDown += glControl1_MouseDown;
+			ui_tabRight_preview_glPreview.MouseMove += glControl1_MouseMove;
+			ui_tabRight_preview_glPreview.MouseUp += glControl1_MouseUp;
+			ui_tabRight_preview_glPreview.MouseWheel += glControl1_MouseWheel;
 			// 
 			// textPreviewBox
 			// 
@@ -1127,18 +1135,18 @@
 			textPreviewBox.Visible = false;
 			textPreviewBox.WordWrap = false;
 			// 
-			// classTextBox
+			// classTextPreview
 			// 
-			classTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			classTextBox.Location = new System.Drawing.Point(0, 0);
-			classTextBox.Multiline = true;
-			classTextBox.Name = "classTextBox";
-			classTextBox.ReadOnly = true;
-			classTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			classTextBox.Size = new System.Drawing.Size(768, 602);
-			classTextBox.TabIndex = 3;
-			classTextBox.Visible = false;
-			classTextBox.WordWrap = false;
+			classTextPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+			classTextPreview.Location = new System.Drawing.Point(0, 0);
+			classTextPreview.Multiline = true;
+			classTextPreview.Name = "classTextPreview";
+			classTextPreview.ReadOnly = true;
+			classTextPreview.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			classTextPreview.Size = new System.Drawing.Size(768, 602);
+			classTextPreview.TabIndex = 3;
+			classTextPreview.Visible = false;
+			classTextPreview.WordWrap = false;
 			// 
 			// tabPage5
 			// 
@@ -1220,90 +1228,101 @@
 			// contextMenuStrip1
 			// 
 			contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-			contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { copyToolStripMenuItem, exportSelectedAssetsToolStripMenuItem, exportAnimatorwithselectedAnimationClipMenuItem, goToSceneHierarchyToolStripMenuItem, showOriginalFileToolStripMenuItem, toolStripSeparator8, oHMSExportSelectedAssetsToolStripMenuItem, oHMSExportSelectedAssetsStructuredToolStripMenuItem });
+			contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_conMenu_copyText, ui_conMenu_exportSelectedAssets, ui_conMenu_exportAnimatorAndSelectedAnimationClips, ui_conMenu_goToSceneHierarchy, ui_conMenu_showOriginalFile, ui_conMenu_separator0, ui_conMenu_OHMS_ExportSelected, ui_conMenu_OHMS_ExportSelected_Struct });
 			contextMenuStrip1.Name = "contextMenuStrip1";
 			contextMenuStrip1.Size = new System.Drawing.Size(329, 164);
 			// 
-			// copyToolStripMenuItem
+			// ui_conMenu_copyText
 			// 
-			copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-			copyToolStripMenuItem.Size = new System.Drawing.Size(328, 22);
-			copyToolStripMenuItem.Text = "Copy text";
-			copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
+			ui_conMenu_copyText.Name = "ui_conMenu_copyText";
+			ui_conMenu_copyText.Size = new System.Drawing.Size(328, 22);
+			ui_conMenu_copyText.Text = "Copy text";
+			ui_conMenu_copyText.Click += ui_conMenu_copyText_Click;
 			// 
-			// exportSelectedAssetsToolStripMenuItem
+			// ui_conMenu_exportSelectedAssets
 			// 
-			exportSelectedAssetsToolStripMenuItem.Name = "exportSelectedAssetsToolStripMenuItem";
-			exportSelectedAssetsToolStripMenuItem.Size = new System.Drawing.Size(328, 22);
-			exportSelectedAssetsToolStripMenuItem.Text = "Export selected assets";
-			exportSelectedAssetsToolStripMenuItem.Click += exportSelectedAssetsToolStripMenuItem_Click;
+			ui_conMenu_exportSelectedAssets.Name = "ui_conMenu_exportSelectedAssets";
+			ui_conMenu_exportSelectedAssets.Size = new System.Drawing.Size(328, 22);
+			ui_conMenu_exportSelectedAssets.Text = "Export selected assets";
+			ui_conMenu_exportSelectedAssets.Click += ui_conMenu_exportSelectedAssets_Click;
 			// 
-			// exportAnimatorwithselectedAnimationClipMenuItem
+			// ui_conMenu_exportAnimatorAndSelectedAnimationClips
 			// 
-			exportAnimatorwithselectedAnimationClipMenuItem.Name = "exportAnimatorwithselectedAnimationClipMenuItem";
-			exportAnimatorwithselectedAnimationClipMenuItem.Size = new System.Drawing.Size(328, 22);
-			exportAnimatorwithselectedAnimationClipMenuItem.Text = "Export Animator + selected AnimationClips";
-			exportAnimatorwithselectedAnimationClipMenuItem.Visible = false;
-			exportAnimatorwithselectedAnimationClipMenuItem.Click += exportAnimatorwithAnimationClipMenuItem_Click;
+			ui_conMenu_exportAnimatorAndSelectedAnimationClips.Name = "ui_conMenu_exportAnimatorAndSelectedAnimationClips";
+			ui_conMenu_exportAnimatorAndSelectedAnimationClips.Size = new System.Drawing.Size(328, 22);
+			ui_conMenu_exportAnimatorAndSelectedAnimationClips.Text = "Export Animator + selected AnimationClips";
+			ui_conMenu_exportAnimatorAndSelectedAnimationClips.Visible = false;
+			ui_conMenu_exportAnimatorAndSelectedAnimationClips.Click += ui_conMenu_exportAnimatorAndSelectedAnimationClips_Click;
 			// 
-			// goToSceneHierarchyToolStripMenuItem
+			// ui_conMenu_goToSceneHierarchy
 			// 
-			goToSceneHierarchyToolStripMenuItem.Name = "goToSceneHierarchyToolStripMenuItem";
-			goToSceneHierarchyToolStripMenuItem.Size = new System.Drawing.Size(328, 22);
-			goToSceneHierarchyToolStripMenuItem.Text = "Go to scene hierarchy";
-			goToSceneHierarchyToolStripMenuItem.Visible = false;
-			goToSceneHierarchyToolStripMenuItem.Click += goToSceneHierarchyToolStripMenuItem_Click;
+			ui_conMenu_goToSceneHierarchy.Name = "ui_conMenu_goToSceneHierarchy";
+			ui_conMenu_goToSceneHierarchy.Size = new System.Drawing.Size(328, 22);
+			ui_conMenu_goToSceneHierarchy.Text = "Go to scene hierarchy";
+			ui_conMenu_goToSceneHierarchy.Visible = false;
+			ui_conMenu_goToSceneHierarchy.Click += goToSceneHierarchyToolStripMenuItem_Click;
 			// 
-			// showOriginalFileToolStripMenuItem
+			// ui_conMenu_showOriginalFile
 			// 
-			showOriginalFileToolStripMenuItem.Name = "showOriginalFileToolStripMenuItem";
-			showOriginalFileToolStripMenuItem.Size = new System.Drawing.Size(328, 22);
-			showOriginalFileToolStripMenuItem.Text = "Show original file";
-			showOriginalFileToolStripMenuItem.Visible = false;
-			showOriginalFileToolStripMenuItem.Click += showOriginalFileToolStripMenuItem_Click;
+			ui_conMenu_showOriginalFile.Name = "ui_conMenu_showOriginalFile";
+			ui_conMenu_showOriginalFile.Size = new System.Drawing.Size(328, 22);
+			ui_conMenu_showOriginalFile.Text = "Show original file";
+			ui_conMenu_showOriginalFile.Visible = false;
+			ui_conMenu_showOriginalFile.Click += showOriginalFileToolStripMenuItem_Click;
 			// 
-			// toolStripSeparator8
+			// ui_conMenu_separator0
 			// 
-			toolStripSeparator8.Name = "toolStripSeparator8";
-			toolStripSeparator8.Size = new System.Drawing.Size(325, 6);
+			ui_conMenu_separator0.Name = "ui_conMenu_separator0";
+			ui_conMenu_separator0.Size = new System.Drawing.Size(325, 6);
 			// 
-			// oHMSExportSelectedAssetsToolStripMenuItem
+			// ui_conMenu_OHMS_ExportSelected
 			// 
-			oHMSExportSelectedAssetsToolStripMenuItem.Name = "oHMSExportSelectedAssetsToolStripMenuItem";
-			oHMSExportSelectedAssetsToolStripMenuItem.Size = new System.Drawing.Size(328, 22);
-			oHMSExportSelectedAssetsToolStripMenuItem.Text = "[OHMS] Export selected assets";
-			oHMSExportSelectedAssetsToolStripMenuItem.Click += oHMSExportSelectedAssetsToolStripMenuItem_Click;
+			ui_conMenu_OHMS_ExportSelected.Name = "ui_conMenu_OHMS_ExportSelected";
+			ui_conMenu_OHMS_ExportSelected.Size = new System.Drawing.Size(328, 22);
+			ui_conMenu_OHMS_ExportSelected.Text = "[OHMS] Export selected assets";
+			ui_conMenu_OHMS_ExportSelected.Click += ui_conMenu_OHMS_ExportSelected_Click;
 			// 
-			// oHMSExportSelectedAssetsStructuredToolStripMenuItem
+			// ui_conMenu_OHMS_ExportSelected_Struct
 			// 
-			oHMSExportSelectedAssetsStructuredToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { xMLListToolStripMenuItem, jSONListToolStripMenuItem });
-			oHMSExportSelectedAssetsStructuredToolStripMenuItem.Name = "oHMSExportSelectedAssetsStructuredToolStripMenuItem";
-			oHMSExportSelectedAssetsStructuredToolStripMenuItem.Size = new System.Drawing.Size(328, 22);
-			oHMSExportSelectedAssetsStructuredToolStripMenuItem.Text = "[OHMS] Export selected assets (Structured)";
+			ui_conMenu_OHMS_ExportSelected_Struct.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { ui_conMenu_OHMS_ExportSelected_Struct_JSON, ui_conMenu_OHMS_ExportSelected_Struct_XML });
+			ui_conMenu_OHMS_ExportSelected_Struct.Name = "ui_conMenu_OHMS_ExportSelected_Struct";
+			ui_conMenu_OHMS_ExportSelected_Struct.Size = new System.Drawing.Size(328, 22);
+			ui_conMenu_OHMS_ExportSelected_Struct.Text = "[OHMS] Export selected assets (Structured)";
 			// 
-			// xMLListToolStripMenuItem
+			// ui_conMenu_OHMS_ExportSelected_Struct_JSON
 			// 
-			xMLListToolStripMenuItem.Name = "xMLListToolStripMenuItem";
-			xMLListToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-			xMLListToolStripMenuItem.Text = "XML list";
-			xMLListToolStripMenuItem.Click += xMLListToolStripMenuItem_Click;
+			ui_conMenu_OHMS_ExportSelected_Struct_JSON.Name = "ui_conMenu_OHMS_ExportSelected_Struct_JSON";
+			ui_conMenu_OHMS_ExportSelected_Struct_JSON.Size = new System.Drawing.Size(128, 22);
+			ui_conMenu_OHMS_ExportSelected_Struct_JSON.Text = "JSON list";
+			ui_conMenu_OHMS_ExportSelected_Struct_JSON.Click += ui_conMenu_OHMS_ExportSelected_Struct_JSON_Click;
 			// 
-			// jSONListToolStripMenuItem
+			// ui_conMenu_OHMS_ExportSelected_Struct_XML
 			// 
-			jSONListToolStripMenuItem.Name = "jSONListToolStripMenuItem";
-			jSONListToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-			jSONListToolStripMenuItem.Text = "JSON list";
-			jSONListToolStripMenuItem.Click += jSONListToolStripMenuItem_Click;
+			ui_conMenu_OHMS_ExportSelected_Struct_XML.Name = "ui_conMenu_OHMS_ExportSelected_Struct_XML";
+			ui_conMenu_OHMS_ExportSelected_Struct_XML.Size = new System.Drawing.Size(128, 22);
+			ui_conMenu_OHMS_ExportSelected_Struct_XML.Text = "XML list";
+			ui_conMenu_OHMS_ExportSelected_Struct_XML.Click += ui_conMenu_OHMS_ExportSelected_Struct_XML_Click;
+			// 
+			// FMODdurationLabel
+			// 
+			FMODdurationLabel.AutoSize = true;
+			FMODdurationLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			FMODdurationLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			FMODdurationLabel.Location = new System.Drawing.Point(511, 229);
+			FMODdurationLabel.Name = "FMODdurationLabel";
+			FMODdurationLabel.Size = new System.Drawing.Size(45, 21);
+			FMODdurationLabel.TabIndex = 10;
+			FMODdurationLabel.Text = "0:0.0";
 			// 
 			// AssetStudioGUIForm
 			// 
 			AllowDrop = true;
 			ClientSize = new System.Drawing.Size(1264, 681);
 			Controls.Add(splitContainer1);
-			Controls.Add(menuStrip1);
+			Controls.Add(ui_menuStrip0_up);
 			Icon = Properties.Resources._as;
 			KeyPreview = true;
-			MainMenuStrip = menuStrip1;
+			MainMenuStrip = ui_menuStrip0_up;
 			MinimumSize = new System.Drawing.Size(620, 372);
 			Name = "AssetStudioGUIForm";
 			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1311,19 +1330,19 @@
 			DragDrop += AssetStudioGUIForm_DragDrop;
 			DragEnter += AssetStudioGUIForm_DragEnter;
 			KeyDown += AssetStudioForm_KeyDown;
-			menuStrip1.ResumeLayout(false);
-			menuStrip1.PerformLayout();
+			ui_menuStrip0_up.ResumeLayout(false);
+			ui_menuStrip0_up.PerformLayout();
 			splitContainer1.Panel1.ResumeLayout(false);
 			splitContainer1.Panel2.ResumeLayout(false);
 			splitContainer1.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
 			splitContainer1.ResumeLayout(false);
-			tabControl1.ResumeLayout(false);
-			tabPage1.ResumeLayout(false);
-			tabPage1.PerformLayout();
-			tabPage2.ResumeLayout(false);
-			tabPage2.PerformLayout();
-			tabPage3.ResumeLayout(false);
+			ui_tabLeft_tab.ResumeLayout(false);
+			ui_tabLeft_page0.ResumeLayout(false);
+			ui_tabLeft_page0.PerformLayout();
+			ui_tabLeft_page1.ResumeLayout(false);
+			ui_tabLeft_page1.PerformLayout();
+			ui_tabLeft_page2.ResumeLayout(false);
 			progressbarPanel.ResumeLayout(false);
 			tabControl2.ResumeLayout(false);
 			tabPage4.ResumeLayout(false);
@@ -1346,17 +1365,17 @@
 
 		#endregion
 
-		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.MenuStrip ui_menuStrip0_up;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.SplitContainer splitContainer1;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.TextBox treeSearch;
-		private System.Windows.Forms.TextBox listSearch;
+		private System.Windows.Forms.TabControl ui_tabLeft_tab;
+		private System.Windows.Forms.TabPage ui_tabLeft_page0;
+		private System.Windows.Forms.TabPage ui_tabLeft_page1;
+		private System.Windows.Forms.TextBox ui_tabLeft_page0_treeSearch;
+		private System.Windows.Forms.TextBox ui_tabLeft_page1_listSearch;
 		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_loadFile;
 		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_loadFolder;
-		private System.Windows.Forms.ListView assetListView;
+		private System.Windows.Forms.ListView ui_tabLeft_page1_listView;
 		private System.Windows.Forms.ColumnHeader columnHeaderName;
 		private System.Windows.Forms.ColumnHeader columnHeaderSize;
 		private System.Windows.Forms.ColumnHeader columnHeaderType;
@@ -1388,33 +1407,33 @@
 		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_displayAllAssets;
 		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_enablePreview;
 		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_displayInfo;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+		private System.Windows.Forms.ToolStripSeparator ui_menuFile_separator0;
 		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_extractFile;
 		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_extractFolder;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_exportOptions;
-		private GOHierarchy sceneTreeView;
+		private GOHierarchy ui_tabLeft_page0_treeView;
 		private System.Windows.Forms.ToolStripMenuItem debugMenuItem;
-		private System.Windows.Forms.TabPage tabPage3;
+		private System.Windows.Forms.TabPage ui_tabLeft_page2;
 		private System.Windows.Forms.ListView classesListView;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.TextBox classTextBox;
+		private System.Windows.Forms.TextBox classTextPreview;
 		private System.Windows.Forms.ToolStripMenuItem exportClassStructuresMenuItem;
 		private System.Windows.Forms.Label FMODcopyright;
-		private OpenTK.GLControl glControl1;
+		private GL_Component ui_tabRight_preview_glPreview;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem showOriginalFileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exportAnimatorwithselectedAnimationClipMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exportSelectedAssetsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_showOriginalFile;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_exportAnimatorAndSelectedAnimationClips;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_exportSelectedAssets;
 		private System.Windows.Forms.ToolStripMenuItem filterTypeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuFilter_0_all;
 		private System.Windows.Forms.ToolStripMenuItem exportSelectedObjectsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportSelectedObjectsWithAnimationClipToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-		private System.Windows.Forms.ToolStripMenuItem exportAnimatorWithSelectedAnimationClipToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuExport_exportAnimatorAndSelectedAnimationClips;
 		private System.Windows.Forms.ToolStripMenuItem exportAllObjectssplitToolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem goToSceneHierarchyToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_goToSceneHierarchy;
 		private System.Windows.Forms.ToolStripMenuItem exportSelectedObjectsmergeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportSelectedObjectsmergeWithAnimationClipToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -1429,7 +1448,7 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
 		private System.Windows.Forms.ColumnHeader columnHeaderContainer;
 		private System.Windows.Forms.ColumnHeader columnHeaderPathID;
-		private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_copyText;
 		private System.Windows.Forms.TabControl tabControl2;
 		private System.Windows.Forms.TabPage tabPage4;
 		private System.Windows.Forms.TabPage tabPage5;
@@ -1439,7 +1458,7 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
-		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_SpecifyUnityVersion;
+		private System.Windows.Forms.ToolStripMenuItem ui_menuOptions_specifyUnityVersion;
 		private System.Windows.Forms.ToolStripTextBox specifyUnityVersion;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
 		private System.Windows.Forms.ToolStripMenuItem exportOHMSToolStripMenuItem;
@@ -1448,16 +1467,16 @@
 		private System.Windows.Forms.ToolStripMenuItem selectedToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem filteredToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem createANewFolderToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+		private System.Windows.Forms.ToolStripSeparator ui_menuFile_separator1;
 		private System.Windows.Forms.ToolStripMenuItem ui_menuFile_clear;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem2;
 		private System.Windows.Forms.ToolStripMenuItem selectedToolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem displayedToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-		private System.Windows.Forms.ToolStripMenuItem oHMSExportSelectedAssetsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem oHMSExportSelectedAssetsStructuredToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator ui_conMenu_separator0;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_OHMS_ExportSelected;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_OHMS_ExportSelected_Struct;
 		private System.Windows.Forms.TabPage tabPage6;
 		private System.Windows.Forms.TextBox dumpJsonTextBox;
 		private System.Windows.Forms.ToolStripMenuItem dumpJsonToolStripMenuItem;
@@ -1472,12 +1491,13 @@
 		private System.Windows.Forms.ToolStripMenuItem allaToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem selectedAssetsToolStripMenuItem2;
 		private System.Windows.Forms.ToolStripMenuItem displayedAssetsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem xMLListToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem jSONListToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_OHMS_ExportSelected_Struct_XML;
+		private System.Windows.Forms.ToolStripMenuItem ui_conMenu_OHMS_ExportSelected_Struct_JSON;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
 		private System.Windows.Forms.ToolStripMenuItem arknightsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem sceneToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem charArtBundleToolStripMenuItem;
+		private System.Windows.Forms.Label FMODdurationLabel;
 	}
 }
 
