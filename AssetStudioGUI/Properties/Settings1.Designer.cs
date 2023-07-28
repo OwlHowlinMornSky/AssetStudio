@@ -58,5 +58,17 @@ namespace AssetStudioGUI.Properties {
                 this["indentedJson"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int language {
+            get {
+                return ((int)(this["language"]));
+            }
+            set {
+                this["language"] = value;
+            }
+        }
     }
 }

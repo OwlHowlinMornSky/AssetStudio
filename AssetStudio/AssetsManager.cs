@@ -28,6 +28,7 @@ namespace AssetStudio {
 		public LastLoadType m_lastLoadType = LastLoadType.Unknown;
 		public string[] m_lastOpenPaths = null; // OHMS
 
+		// OHMS DEFECTIVE
 		public void LoadFiles(params string[] files) {
 			var path = Path.GetDirectoryName(Path.GetFullPath(files[0]));
 

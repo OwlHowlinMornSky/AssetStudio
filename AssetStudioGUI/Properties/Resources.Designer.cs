@@ -162,5 +162,174 @@ namespace AssetStudioGUI.Properties {
                 return ResourceManager.GetString("vs", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 Exporting 的本地化字符串。
+        /// </summary>
+        internal static string zls_Exporting {
+            get {
+                return ResourceManager.GetString("zls_Exporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 导出中 的本地化字符串。
+        /// </summary>
+        internal static string zls_Exporting_zh_CN {
+            get {
+                return ResourceManager.GetString("zls_Exporting.zh-CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Finished loading {0} files with {1} exportable assets. 的本地化字符串。
+        /// </summary>
+        internal static string zls_load_finishLoading {
+            get {
+                return ResourceManager.GetString("zls_load_finishLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 加载了 {0} 个文件，共计 {1} 个可导出的资料。 的本地化字符串。
+        /// </summary>
+        internal static string zls_load_finishLoading_zh_CN {
+            get {
+                return ResourceManager.GetString("zls_load_finishLoading.zh-CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Compression format:  的本地化字符串。
+        /// </summary>
+        internal static string zls_preview_audio_format_head {
+            get {
+                return ResourceManager.GetString("zls_preview_audio_format_head", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编码格式： 的本地化字符串。
+        /// </summary>
+        internal static string zls_preview_audio_format_head_zh_CN {
+            get {
+                return ResourceManager.GetString("zls_preview_audio_format_head.zh-CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unable to preview this mesh 的本地化字符串。
+        /// </summary>
+        internal static string zls_preview_GL_cannotPreview {
+            get {
+                return ResourceManager.GetString("zls_preview_GL_cannotPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 无法预览该mesh 的本地化字符串。
+        /// </summary>
+        internal static string zls_preview_GL_cannotPreview_zh_CN {
+            get {
+                return ResourceManager.GetString("zls_preview_GL_cannotPreview.zh-CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Using OpenGL Version:  的本地化字符串。
+        /// </summary>
+        internal static string zls_preview_GL_info0 {
+            get {
+                return ResourceManager.GetString("zls_preview_GL_info0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 使用的 OpenGL 的版本:  的本地化字符串。
+        /// </summary>
+        internal static string zls_preview_GL_info0_zh_CN {
+            get {
+                return ResourceManager.GetString("zls_preview_GL_info0.zh-CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 &apos;Mouse Left&apos; = Rotate Model | &apos;Mouse Right&apos; = Rotate Camera | &apos;Mouse Wheel&apos; = Move
+        ///&apos;Ctrl + W&apos; = Wireframe | &apos;Ctrl + S&apos; = Shade | &apos;Ctrl + N&apos; = ReNormal | &apos;Ctrl + R&apos; = Reset 的本地化字符串。
+        /// </summary>
+        internal static string zls_preview_GL_info1 {
+            get {
+                return ResourceManager.GetString("zls_preview_GL_info1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 &apos;鼠标左键&apos; = 旋转模型 | &apos;鼠标右键&apos; = 旋转摄像机 | &apos;鼠标滚轮&apos; = 移动
+        ///&apos;Ctrl + W&apos; = 线框 | &apos;Ctrl + S&apos; = 阴影 | &apos;Ctrl + N&apos; = 重算法线 | &apos;Ctrl + R&apos; = 重置 的本地化字符串。
+        /// </summary>
+        internal static string zls_preview_GL_info1_zh_CN {
+            get {
+                return ResourceManager.GetString("zls_preview_GL_info1.zh-CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Restart to apply the change.
+        /// 的本地化字符串。
+        /// </summary>
+        internal static string zls_setting_OkMessageboxText {
+            get {
+                return ResourceManager.GetString("zls_setting_OkMessageboxText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Change of language will work after restart.
+        ///Do you want to restart now?
+        /// 的本地化字符串。
+        /// </summary>
+        internal static string zls_setting_OkMessageboxText_en_US {
+            get {
+                return ResourceManager.GetString("zls_setting_OkMessageboxText.en-US", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 语言改动将在重启后生效。
+        ///立即重启吗？
+        /// 的本地化字符串。
+        /// </summary>
+        internal static string zls_setting_OkMessageboxText_zh_CN {
+            get {
+                return ResourceManager.GetString("zls_setting_OkMessageboxText.zh-CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Change lang. 的本地化字符串。
+        /// </summary>
+        internal static string zls_setting_OkMessageboxTitle {
+            get {
+                return ResourceManager.GetString("zls_setting_OkMessageboxTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Change language 的本地化字符串。
+        /// </summary>
+        internal static string zls_setting_OkMessageboxTitle_en_US {
+            get {
+                return ResourceManager.GetString("zls_setting_OkMessageboxTitle.en-US", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 更改语言 的本地化字符串。
+        /// </summary>
+        internal static string zls_setting_OkMessageboxTitle_zh_CN {
+            get {
+                return ResourceManager.GetString("zls_setting_OkMessageboxTitle.zh-CN", resourceCulture);
+            }
+        }
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace AssetStudioGUI {
@@ -9,11 +11,18 @@ namespace AssetStudioGUI {
 		[STAThread]
 		static void Main() {
 #if !NETFRAMEWORK
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            //Application.SetHighDpiMode(HighDpiMode.SystemAware);
 #endif
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new AssetStudioGUIForm());
+			do {
+				m_exitForChanges = false;
+				LanguageOptions.m_veryFirstSetting = Properties.Settings1.Default.language;
+				Application.Run(new AssetStudioGUIForm());
+			}
+			while (m_exitForChanges);
 		}
+
+		public static bool m_exitForChanges;
 	}
 }

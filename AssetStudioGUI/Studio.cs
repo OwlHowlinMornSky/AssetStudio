@@ -514,7 +514,11 @@ namespace AssetStudioGUI {
 						break;
 					}
 					exportPath += Path.DirectorySeparatorChar;
-					StatusStripUpdate($"[{exportedCount}/{toExportCount}] Exporting {asset.TypeString}: {asset.Text}");
+					//StatusStripUpdate($"[{exportedCount}/{toExportCount}] Exporting {asset.TypeString}: {asset.Text}");
+					StatusStripUpdate($"[{exportedCount}/{toExportCount}] "
+						+ LocalizedStrings.Get(LocalizedStrings.Type.Export_Exporting)
+						+ $" {asset.TypeString}: {asset.Text}");
+					;
 					try {
 						if (ExportConvertFileOHMS(asset, exportPath)) {
 							++exportedCount;

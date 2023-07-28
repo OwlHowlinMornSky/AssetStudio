@@ -182,6 +182,67 @@ void main()
 	color = vertexColor; 
 }</value>
   </data>
+  <data name="zls_Exporting" xml:space="preserve">
+    <value>Exporting</value>
+  </data>
+  <data name="zls_Exporting.zh-CN" xml:space="preserve">
+    <value>导出中</value>
+  </data>
+  <data name="zls_load_finishLoading" xml:space="preserve">
+    <value>Finished loading {0} files with {1} exportable assets.</value>
+  </data>
+  <data name="zls_load_finishLoading.zh-CN" xml:space="preserve">
+    <value>加载了 {0} 个文件，共计 {1} 个可导出的资料。</value>
+  </data>
+  <data name="zls_preview_audio_format_head" xml:space="preserve">
+    <value>Compression format: </value>
+  </data>
+  <data name="zls_preview_audio_format_head.zh-CN" xml:space="preserve">
+    <value>编码格式：</value>
+  </data>
+  <data name="zls_preview_GL_cannotPreview" xml:space="preserve">
+    <value>Unable to preview this mesh</value>
+  </data>
+  <data name="zls_preview_GL_cannotPreview.zh-CN" xml:space="preserve">
+    <value>无法预览该mesh</value>
+  </data>
+  <data name="zls_preview_GL_info0" xml:space="preserve">
+    <value>Using OpenGL Version: </value>
+  </data>
+  <data name="zls_preview_GL_info0.zh-CN" xml:space="preserve">
+    <value>使用的 OpenGL 的版本: </value>
+  </data>
+  <data name="zls_preview_GL_info1" xml:space="preserve">
+    <value>'Mouse Left' = Rotate Model | 'Mouse Right' = Rotate Camera | 'Mouse Wheel' = Move
+'Ctrl + W' = Wireframe | 'Ctrl + S' = Shade | 'Ctrl + N' = ReNormal | 'Ctrl + R' = Reset</value>
+  </data>
+  <data name="zls_preview_GL_info1.zh-CN" xml:space="preserve">
+    <value>'鼠标左键' = 旋转模型 | '鼠标右键' = 旋转摄像机 | '鼠标滚轮' = 移动
+'Ctrl + W' = 线框 | 'Ctrl + S' = 阴影 | 'Ctrl + N' = 重算法线 | 'Ctrl + R' = 重置</value>
+  </data>
+  <data name="zls_setting_OkMessageboxText" xml:space="preserve">
+    <value>%Restart to apply the change.
+</value>
+  </data>
+  <data name="zls_setting_OkMessageboxText.en-US" xml:space="preserve">
+    <value>Change of language will work after restart.
+Do you want to restart now?
+</value>
+  </data>
+  <data name="zls_setting_OkMessageboxText.zh-CN" xml:space="preserve">
+    <value>语言改动将在重启后生效。
+立即重启吗？
+</value>
+  </data>
+  <data name="zls_setting_OkMessageboxTitle" xml:space="preserve">
+    <value>%Change lang.</value>
+  </data>
+  <data name="zls_setting_OkMessageboxTitle.en-US" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="zls_setting_OkMessageboxTitle.zh-CN" xml:space="preserve">
+    <value>更改语言</value>
+  </data>
   <data name="_as" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\as.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
