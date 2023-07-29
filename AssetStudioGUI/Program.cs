@@ -17,7 +17,7 @@ namespace AssetStudioGUI {
 			Application.SetCompatibleTextRenderingDefault(false);
 			do {
 				m_exitForChanges = false;
-				LanguageOptions.m_veryFirstSetting = Properties.Settings1.Default.language;
+				LanguageOptions.m_veryFirstSetting = Properties.SettingsOHMS.Default.language;
 				Application.Run(new AssetStudioGUIForm());
 			}
 			while (m_exitForChanges);

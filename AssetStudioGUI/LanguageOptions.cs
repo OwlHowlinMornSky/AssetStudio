@@ -20,7 +20,7 @@ namespace AssetStudioGUI {
 
 		public LanguageOptions() {
 			InitializeComponent();
-			label_restart_note.Visible = (m_veryFirstSetting != Properties.Settings1.Default.language);
+			label_restart_note.Visible = (m_veryFirstSetting != Properties.SettingsOHMS.Default.language);
 #if DEBUG
 			lang_0.Visible = true;
 #else
@@ -29,7 +29,7 @@ namespace AssetStudioGUI {
 			lang_0.Enabled = false;
 #endif
 			button_ok.Enabled = false;
-			m_newLang = m_oldLang = Properties.Settings1.Default.language;
+			m_newLang = m_oldLang = Properties.SettingsOHMS.Default.language;
 			switch (m_oldLang) {
 #if DEBUG
 			case 0:
@@ -98,8 +98,8 @@ namespace AssetStudioGUI {
 						MessageBoxIcon.Information
 						);
 					if (res == DialogResult.Yes || res == DialogResult.No) {
-						Properties.Settings1.Default.language = m_newLang;
-						Properties.Settings1.Default.Save();
+						Properties.SettingsOHMS.Default.language = m_newLang;
+						Properties.SettingsOHMS.Default.Save();
 						if (res == DialogResult.Yes) {
 							DialogResult = DialogResult.OK;
 						}
@@ -110,8 +110,8 @@ namespace AssetStudioGUI {
 					}
 				}
 				else {
-					Properties.Settings1.Default.language = m_veryFirstSetting;
-					Properties.Settings1.Default.Save();
+					Properties.SettingsOHMS.Default.language = m_veryFirstSetting;
+					Properties.SettingsOHMS.Default.Save();
 					DialogResult = DialogResult.Cancel;
 					update(m_veryFirstSetting);
 				}

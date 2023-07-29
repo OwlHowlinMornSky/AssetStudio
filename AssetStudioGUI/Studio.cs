@@ -464,7 +464,7 @@ namespace AssetStudioGUI {
 						)
 						)
 					};
-					if (Properties.Settings1.Default.indentedJson) {
+					if (Properties.SettingsOHMS.Default.indentedJson) {
 						File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.Indented));
 					}
 					else {
@@ -551,7 +551,7 @@ namespace AssetStudioGUI {
 							)
 						)
 					};
-				if (Properties.Settings1.Default.indentedJson) {
+				if (Properties.SettingsOHMS.Default.indentedJson) {
 					File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.Indented));
 				}
 				else {

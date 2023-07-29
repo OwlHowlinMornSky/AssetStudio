@@ -60,11 +60,10 @@ namespace AssetStudioGUI {
 		private int m_langWhenLoad;
 
 		public AssetStudioGUIForm() {
-			m_langWhenLoad = Properties.Settings1.Default.language;
+			m_langWhenLoad = Properties.SettingsOHMS.Default.language;
 			LanguageOptions.update(m_langWhenLoad);
 
-			string te = Properties.StringsMainForm.test;
-			MessageBox.Show(te);
+			MessageBox.Show(Properties.StringsMainForm.test);
 
 			InitializeComponent();
 #if DEBUG
@@ -88,7 +87,7 @@ namespace AssetStudioGUI {
 			ui_menuOptions_displayAllAssets.Checked = Properties.Settings.Default.displayAll;
 			ui_menuOptions_displayInfo.Checked = Properties.Settings.Default.displayInfo;
 			ui_menuOptions_enablePreview.Checked = Properties.Settings.Default.enablePreview;
-			ui_menuOhmsExport_createANewFolder.Checked = Properties.Settings1.Default.ohmsCreateNew;
+			ui_menuOhmsExport_createANewFolder.Checked = Properties.SettingsOHMS.Default.ohmsCreateNew;
 
 			FMODinit();
 			GLInit();
@@ -242,7 +241,6 @@ namespace AssetStudioGUI {
 			else {
 				visibleAssets = exportableAssets;
 			}
-			//if (ui_tabLeft_page1_listSearch.Text != " filter ") {
 			if (ui_tabLeft_page1_listSearch.Text != m_page1_filter_default) {
 				visibleAssets = visibleAssets.FindAll(
 					x => x.Text.IndexOf(ui_tabLeft_page1_listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
@@ -397,7 +395,6 @@ namespace AssetStudioGUI {
 		}
 		#endregion // Export
 
-		// Callbacks
 		#region AssetStudioGUIForm
 		private void AssetStudioGUIForm_DragEnter(object sender, DragEventArgs e) {
 			if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
@@ -412,13 +409,6 @@ namespace AssetStudioGUI {
 				assetsManager.SpecifyUnityVersion = ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Text;
 
 				await Task.Run(() => assetsManager.LoadDropIn(paths));
-				/*
-				if (paths.Length == 1 && Directory.Exists(paths[0])) {
-					await Task.Run(() => assetsManager.LoadFolder(paths[0]));
-				}
-				else {
-					await Task.Run(() => assetsManager.LoadFiles(paths));
-				}*/
 				BuildAssetStructures();
 			}
 		}
@@ -781,8 +771,8 @@ namespace AssetStudioGUI {
 
 		#region Menu_OHMS_Export
 		private void ui_menuOhmsExport_createANewFolder_CheckedChanged(object sender, EventArgs e) {
-			Properties.Settings1.Default.ohmsCreateNew = ui_menuOhmsExport_createANewFolder.Checked;
-			Properties.Settings1.Default.Save();
+			Properties.SettingsOHMS.Default.ohmsCreateNew = ui_menuOhmsExport_createANewFolder.Checked;
+			Properties.SettingsOHMS.Default.Save();
 		}
 
 		private void ui_menuOhmsExport_allAssets_Click(object sender, EventArgs e) {
@@ -832,14 +822,14 @@ namespace AssetStudioGUI {
 
 		#region LeftTabPage
 		private void ui_tabLeft_tab_Selected(object sender, TabControlEventArgs e) {
-			/*switch (e.TabPageIndex) {
+			switch (e.TabPageIndex) {
 			case 0:
 				ui_tabLeft_page0_treeSearch.Select();
 				break;
 			case 1:
 				ui_tabLeft_page1_listSearch.Select();
 				break;
-			}*/
+			}
 		}
 
 		private string m_page0_search_default;
@@ -2291,15 +2281,15 @@ namespace AssetStudioGUI {
 		private void ExportAssetsStructured(ExportFilter type, ExportListType listType) {
 			if (exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
+				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
-					Properties.Settings1.Default.ohmsLastFolder = saveFolderDialog.Folder;
-					Properties.Settings1.Default.Save();
+					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					Properties.SettingsOHMS.Default.Save();
 
 					string outdir;
-					if (Properties.Settings1.Default.ohmsCreateNew) {
+					if (Properties.SettingsOHMS.Default.ohmsCreateNew) {
 						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
 							return;
 						}
@@ -2331,15 +2321,15 @@ namespace AssetStudioGUI {
 		private void ExportAssetsArknights(ExportArknightsFilter type, ExportListType listType) {
 			if (exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
+				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
-					Properties.Settings1.Default.ohmsLastFolder = saveFolderDialog.Folder;
-					Properties.Settings1.Default.Save();
+					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					Properties.SettingsOHMS.Default.Save();
 
 					string outdir;
-					if (Properties.Settings1.Default.ohmsCreateNew) {
+					if (Properties.SettingsOHMS.Default.ohmsCreateNew) {
 						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
 							return;
 						}
@@ -2365,15 +2355,15 @@ namespace AssetStudioGUI {
 		private void ExportAssetsSprites(ExportFilter type) {
 			if (exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
+				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
-					Properties.Settings1.Default.ohmsLastFolder = saveFolderDialog.Folder;
-					Properties.Settings1.Default.Save();
+					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					Properties.SettingsOHMS.Default.Save();
 
 					string outdir;
-					if (Properties.Settings1.Default.ohmsCreateNew) {
+					if (Properties.SettingsOHMS.Default.ohmsCreateNew) {
 						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
 							return;
 						}
@@ -2405,15 +2395,15 @@ namespace AssetStudioGUI {
 		private void ExportAssetsOHMS(ExportFilter type) {
 			if (exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
+				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
-					Properties.Settings1.Default.ohmsLastFolder = saveFolderDialog.Folder;
-					Properties.Settings1.Default.Save();
+					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					Properties.SettingsOHMS.Default.Save();
 
 					string outdir;
-					if (Properties.Settings1.Default.ohmsCreateNew) {
+					if (Properties.SettingsOHMS.Default.ohmsCreateNew) {
 						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
 							return;
 						}
