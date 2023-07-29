@@ -59,13 +59,8 @@ namespace AssetStudioGUI {
 
 		private int m_langWhenLoad;
 
-		//public static System.Resources.ResourceManager rm;
-
 		public AssetStudioGUIForm() {
 			m_langWhenLoad = Properties.Settings1.Default.language;
-			//rm = new System.Resources.ResourceManager(
-			//	"AssetStudioGUI.Properties.StringsMainForm",
-			//	Assembly.GetExecutingAssembly());
 			LanguageOptions.update(m_langWhenLoad);
 
 			string te = Properties.StringsMainForm.test;
@@ -121,7 +116,6 @@ namespace AssetStudioGUI {
 				Text = this.TextBase + $" - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 			else {
-				//Text = this.TextBase + $" - {LocalizedStrings.Get(LocalizedStrings.Type.Load_NoProductName)} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 				Text = this.TextBase + $" - {Properties.StringsMainForm.Load_NoProductName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 
@@ -158,8 +152,6 @@ namespace AssetStudioGUI {
 				ui_menuFilter.DropDownItems.Add(typeItem);
 			}
 			ui_menuFilter_0_all.Checked = true;
-			//var log = $"Finished loading {assetsManager.assetsFileList.Count} files with {ui_tabLeft_page1_listView.Items.Count} exportable assets";
-			//var log = String.Format(LocalizedStrings.Get(LocalizedStrings.Type.Load_FinishLoading),
 			var log = String.Format(Properties.StringsMainForm.Load_FinishLoading,
 				assetsManager.assetsFileList.Count, ui_tabLeft_page1_listView.Items.Count);
 			var m_ObjectsCount = assetsManager.assetsFileList.Sum(x => x.m_Objects.Count);
@@ -1022,9 +1014,6 @@ namespace AssetStudioGUI {
 				m_previewLoaded = 1 << 3;
 				SwitchPreviewPage(PreviewType.ClassText);
 			}
-			//else {
-			//	SwitchPreviewPage(PreviewType.None);
-			//}
 		}
 
 		private void m_delayTimer_Elapsed(object sender, ElapsedEventArgs e) {
@@ -1290,9 +1279,6 @@ namespace AssetStudioGUI {
 
 		private void PreviewAudioClip(AssetItem assetItem, AudioClip m_AudioClip) {
 			//Info
-			//assetItem.InfoText = "Compression format: ";
-			//assetItem.InfoText = LocalizedStrings.Get(LocalizedStrings.Type.Preview_Audio_formatHead);
-			assetItem.InfoText = Properties.StringsMainForm.Preview_Audio_formatHead;
 			if (m_AudioClip.version[0] < 5) {
 				switch (m_AudioClip.m_Type) {
 				case FMODSoundType.ACC:
@@ -1404,7 +1390,6 @@ namespace AssetStudioGUI {
 			if (FMOD_CHECK(result))
 				return;
 
-			//FMODpanel.Visible = true;
 			SwitchPreviewPage(PreviewType.FMOD);
 
 			result = channel.getFrequency(out var frequency);
@@ -1414,7 +1399,6 @@ namespace AssetStudioGUI {
 			ui_tabRight_page0_FMODinfoLabel.Text = frequency + " Hz";
 			ui_tabRight_page0_FMODtimerLabel.Text = "00:00.00";
 
-			//ui_tabRight_page0_FMODdurationLabel.Text = $"{FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
 			ui_tabRight_page0_FMODdurationLabel.Text = String.Format("{0:D2}:{1:D2}.{2:D2}", FMODlenms / 1000 / 60, FMODlenms / 1000 % 60, FMODlenms / 10 % 100);
 		}
 
@@ -1475,7 +1459,6 @@ namespace AssetStudioGUI {
 							ui_tabRight_page0_fontPreviewBox.SelectionStart = 423;
 							ui_tabRight_page0_fontPreviewBox.SelectionLength = 55;
 							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 72, FontStyle.Regular);
-							//fontPreviewBox.Visible = true;
 							SwitchPreviewPage(PreviewType.Font);
 						}
 					}
@@ -1602,20 +1585,11 @@ namespace AssetStudioGUI {
 					}
 				}
 				#endregion
-				//glControl1.Visible = true;
 				SwitchPreviewPage(PreviewType.GL);
 				GL_CreateVAO();
-				//StatusStripUpdate("Using OpenGL Version: " + GL.GetString(StringName.Version) + "\n"
-				//				  + "'Mouse Left' = Rotate Model | 'Mouse Right' = Rotate Camera | 'Mouse Wheel' = Move\n"
-				//				  + "'Ctrl + W' = Wireframe | 'Ctrl + S' = Shade | 'Ctrl + N' = ReNormal | 'Ctrl + R' = Reset");
-				//StatusStripUpdate(LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_info0)
-				//	+ GL.GetString(StringName.Version) + "\n"
-				//	+ LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_info1));
 				StatusStripUpdate(String.Format(Properties.StringsMainForm.Preview_GL_info, GL.GetString(StringName.Version)));
 			}
 			else {
-				//StatusStripUpdate("Unable to preview this mesh");
-				//StatusStripUpdate(LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_unable));
 				StatusStripUpdate(Properties.StringsMainForm.Preview_GL_unable);
 			}
 		}
@@ -1646,7 +1620,6 @@ namespace AssetStudioGUI {
 
 		private void PreviewText(string text) {
 			ui_tabRight_page0_textPreviewBox.Text = text;
-			//textPreviewBox.Visible = true;
 			SwitchPreviewPage(PreviewType.Text);
 		}
 
@@ -2374,26 +2347,6 @@ namespace AssetStudioGUI {
 					else {
 						outdir = saveFolderDialog.Folder;
 					}
-					
-					/*List<AssetItem> toExportAssets = null;
-					switch (type) {
-					case ExportArknightsFilter.Scene:
-						toExportAssets = exportableAssets.FindAll(
-							x => (x.Type == ClassIDType.Mesh) ||
-							(x.Type == ClassIDType.MeshRenderer) ||
-							(x.Type == ClassIDType.Texture2D)
-						);
-						break;
-					case ExportArknightsFilter.CharArt:
-						toExportAssets = exportableAssets.FindAll(
-							x => (x.Type == ClassIDType.Material) ||
-							(x.Type == ClassIDType.MonoBehaviour) ||
-							(x.Type == ClassIDType.Sprite) ||
-							(x.Type == ClassIDType.TextAsset) ||
-							(x.Type == ClassIDType.Texture2D)
-						);
-						break;
-					}*/
 					switch (type) {
 					case ExportArknightsFilter.Scene:
 						Studio.ExportAssetsArknightsScene(outdir, exportableAssets, listType);
