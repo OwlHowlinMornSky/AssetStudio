@@ -22,14 +22,14 @@ namespace AssetStudioGUI.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class StringsMainForm {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal StringsMainForm() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AssetStudioGUI.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AssetStudioGUI.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AssetStudioGUI.Properties.StringsMainForm", typeof(StringsMainForm).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,105 +61,83 @@ namespace AssetStudioGUI.Properties {
         }
         
         /// <summary>
-        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
+        ///   查找类似 %Exporting% 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Icon _as {
+        internal static string Export_Exporting {
             get {
-                object obj = ResourceManager.GetObject("_as", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ResourceManager.GetString("Export_Exporting", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 %Restart_To_Apply% 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap preview {
+        internal static string LangSet_OkMessageboxText {
             get {
-                object obj = ResourceManager.GetObject("preview", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("LangSet_OkMessageboxText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 #version 140
-        ///
-        ///in vec3 normal;
-        ///
-        ///out vec4 outputColor;
-        ///
-        ///void main()
-        ///{
-        ///	vec3 unitNormal = normalize(normal);
-        ///	float nDotProduct = clamp(dot(unitNormal, vec3(0.707, 0, 0.707)), 0, 1);
-        ///	vec2 ContributionWeightsSqrt = vec2(0.5, 0.5f) + vec2(0.5f, -0.5f) * unitNormal.y;
-        ///	vec2 ContributionWeights = ContributionWeightsSqrt * ContributionWeightsSqrt;
-        ///
-        ///	vec3 color = nDotProduct * vec3(1, 0.957, 0.839) / 3.14159;
-        ///	color += vec3(0.779, 0.716, 0.453) * ContributionWeights.y;
-        ///	color += vec3(0.368, 0.477, 0. [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///   查找类似 %Change_Lang% 的本地化字符串。
         /// </summary>
-        internal static string shader_fs {
+        internal static string LangSet_OkMessageboxTitle {
             get {
-                return ResourceManager.GetString("shader_fs", resourceCulture);
+                return ResourceManager.GetString("LangSet_OkMessageboxTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 #version 140
-        ///
-        ///out vec4 outputColor;
-        ///
-        ///void main()
-        ///{
-        ///	outputColor = vec4(0, 0, 0, 1);
-        ///} 的本地化字符串。
+        ///   查找类似 %{0}%{1}% 的本地化字符串。
         /// </summary>
-        internal static string shader_fsBlack {
+        internal static string Load_FinishLoading {
             get {
-                return ResourceManager.GetString("shader_fsBlack", resourceCulture);
+                return ResourceManager.GetString("Load_FinishLoading", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 #version 140
-        ///
-        ///out vec4 outputColor;
-        ///in vec4 color;
-        ///
-        ///void main()
-        ///{
-        ///	outputColor = color;
-        ///} 的本地化字符串。
+        ///   查找类似 %No_Product_Name% 的本地化字符串。
         /// </summary>
-        internal static string shader_fsColor {
+        internal static string Load_NoProductName {
             get {
-                return ResourceManager.GetString("shader_fsColor", resourceCulture);
+                return ResourceManager.GetString("Load_NoProductName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 #version 140
-        ///
-        ///in vec3 vertexPosition;
-        ///in vec3 normalDirection;
-        ///in vec4 vertexColor;
-        ///uniform mat4 modelMatrix;
-        ///uniform mat4 viewMatrix;
-        ///uniform mat4 projMatrix;
-        ///
-        ///out vec3 normal;
-        ///out vec4 color;
-        ///
-        ///void main()
-        ///{
-        ///	gl_Position = projMatrix * viewMatrix * modelMatrix * vec4(vertexPosition, 1.0);
-        ///	normal = normalDirection;
-        ///	color = vertexColor; 
-        ///} 的本地化字符串。
+        ///   查找类似 %Format% 的本地化字符串。
         /// </summary>
-        internal static string shader_vs {
+        internal static string Preview_Audio_formatHead {
             get {
-                return ResourceManager.GetString("shader_vs", resourceCulture);
+                return ResourceManager.GetString("Preview_Audio_formatHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %GL_Help% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_GL_info {
+            get {
+                return ResourceManager.GetString("Preview_GL_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %GL_Not_Supported% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_GL_unable {
+            get {
+                return ResourceManager.GetString("Preview_GL_unable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Localization_Failed% 的本地化字符串。
+        /// </summary>
+        internal static string test {
+            get {
+                return ResourceManager.GetString("test", resourceCulture);
             }
         }
     }

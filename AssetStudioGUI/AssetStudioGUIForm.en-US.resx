@@ -138,8 +138,15 @@
   <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Text" xml:space="preserve">
     <value>PathID</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
   <data name="ui_tabLeft_page1_listView_columnHeader_Size.Text" xml:space="preserve">
-    <value>Size</value>
+    <value>Size (Byte)</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Width" type="System.Int32, mscorlib">
+    <value>80</value>
   </data>
   <data name="ui_tabLeft_page1_listSearch.Text" xml:space="preserve">
     <value> Filter </value>
@@ -225,6 +232,9 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_tabRight_page2.Text" xml:space="preserve">
     <value>Dump(JSON)</value>
+  </data>
+  <data name="ui_statusLabel0_down.Text" xml:space="preserve">
+    <value>Ready to Go.</value>
   </data>
   <data name="ui_menuFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 21</value>

@@ -16,6 +16,9 @@ using System.Windows.Forms;
 using static AssetStudioGUI.Studio;
 using Font = AssetStudio.Font;
 using SpirV;
+using System.Globalization;
+using System.Reflection;
+using System.Threading;
 #if NET472
 using Vector3 = OpenTK.Vector3;
 using Vector4 = OpenTK.Vector4;
@@ -56,9 +59,17 @@ namespace AssetStudioGUI {
 
 		private int m_langWhenLoad;
 
+		//public static System.Resources.ResourceManager rm;
+
 		public AssetStudioGUIForm() {
 			m_langWhenLoad = Properties.Settings1.Default.language;
-			CultureSwitcher.update(m_langWhenLoad);
+			//rm = new System.Resources.ResourceManager(
+			//	"AssetStudioGUI.Properties.StringsMainForm",
+			//	Assembly.GetExecutingAssembly());
+			LanguageOptions.update(m_langWhenLoad);
+
+			string te = Properties.StringsMainForm.test;
+			MessageBox.Show(te);
 
 			InitializeComponent();
 #if DEBUG
@@ -73,8 +84,6 @@ namespace AssetStudioGUI {
 			ui_tabRight_page0_FMODresumeButton.Top = ui_tabRight_page0_FMODpauseButton.Top;
 			ui_tabRight_page0_FMODstatusLabel_Playing.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
 			ui_tabRight_page0_FMODstatusLabel_Paused.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
-
-			LocalizedStrings.load(m_langWhenLoad);
 
 			this.TextBase = $"AssetStudio v0.16.47-OHMS-v{Application.ProductVersion}";
 
@@ -112,7 +121,8 @@ namespace AssetStudioGUI {
 				Text = this.TextBase + $" - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 			else {
-				Text = this.TextBase + $" - no productName - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
+				//Text = this.TextBase + $" - {LocalizedStrings.Get(LocalizedStrings.Type.Load_NoProductName)} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
+				Text = this.TextBase + $" - {Properties.StringsMainForm.Load_NoProductName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 
 			ui_tabLeft_page1_listView.VirtualListSize = visibleAssets.Count;
@@ -149,7 +159,8 @@ namespace AssetStudioGUI {
 			}
 			ui_menuFilter_0_all.Checked = true;
 			//var log = $"Finished loading {assetsManager.assetsFileList.Count} files with {ui_tabLeft_page1_listView.Items.Count} exportable assets";
-			var log = String.Format(LocalizedStrings.Get(LocalizedStrings.Type.Load_FinishLoading),
+			//var log = String.Format(LocalizedStrings.Get(LocalizedStrings.Type.Load_FinishLoading),
+			var log = String.Format(Properties.StringsMainForm.Load_FinishLoading,
 				assetsManager.assetsFileList.Count, ui_tabLeft_page1_listView.Items.Count);
 			var m_ObjectsCount = assetsManager.assetsFileList.Sum(x => x.m_Objects.Count);
 			var objectsCount = assetsManager.assetsFileList.Sum(x => x.Objects.Count);
@@ -182,7 +193,12 @@ namespace AssetStudioGUI {
 			sortColumn = -1;
 			reverseSort = false;
 			enableFiltering = false;
-			ui_tabLeft_page1_listSearch.Text = " Filter ";
+			//ui_tabLeft_page1_listSearch.Text = " Filter ";
+			ui_tabLeft_page1_listSearch.Text = m_page1_filter_default;
+			ui_tabLeft_page1_listSearch.ForeColor = SystemColors.GrayText;
+
+			ui_tabLeft_page0_treeSearch.Text = m_page0_search_default;
+			ui_tabLeft_page0_treeSearch.ForeColor = SystemColors.GrayText;
 
 			var count = ui_menuFilter.DropDownItems.Count;
 			for (var i = 1; i < count; i++) {
@@ -234,7 +250,8 @@ namespace AssetStudioGUI {
 			else {
 				visibleAssets = exportableAssets;
 			}
-			if (ui_tabLeft_page1_listSearch.Text != " Filter ") {
+			//if (ui_tabLeft_page1_listSearch.Text != " filter ") {
+			if (ui_tabLeft_page1_listSearch.Text != m_page1_filter_default) {
 				visibleAssets = visibleAssets.FindAll(
 					x => x.Text.IndexOf(ui_tabLeft_page1_listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
 					x.SubItems[1].Text.IndexOf(ui_tabLeft_page1_listSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
@@ -489,7 +506,7 @@ namespace AssetStudioGUI {
 			ExportAnimatorAndSelectedAnimationClips();
 		}
 
-		private void goToSceneHierarchyToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void ui_conMenu_goToSceneHierarchy_Click(object sender, EventArgs e) {
 			var selectasset = (AssetItem)ui_tabLeft_page1_listView.Items[ui_tabLeft_page1_listView.SelectedIndices[0]];
 			if (selectasset.TreeNode != null) {
 				ui_tabLeft_page0_treeView.SelectedNode = selectasset.TreeNode;
@@ -497,7 +514,7 @@ namespace AssetStudioGUI {
 			}
 		}
 
-		private void showOriginalFileToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void ui_conMenu_showOriginalFile_Click(object sender, EventArgs e) {
 			var selectasset = (AssetItem)ui_tabLeft_page1_listView.Items[ui_tabLeft_page1_listView.SelectedIndices[0]];
 			var args = $"/select, \"{selectasset.SourceFile.originalPath ?? selectasset.SourceFile.fullName}\"";
 			var pfi = new ProcessStartInfo("explorer.exe", args);
@@ -813,11 +830,11 @@ namespace AssetStudioGUI {
 		}
 
 		private void ui_menuOhmsExport_arknights_sceneBundle_Click(object sender, EventArgs e) {
-			ExportAssetsStructured(ExportFilter.OHMS_arknights_scene, ExportListType.JSON);
+			ExportAssetsArknights(ExportArknightsFilter.Scene, ExportListType.JSON);
 		}
 
 		private void ui_menuOhmsExport_arknights_charartBundle_Click(object sender, EventArgs e) {
-			ExportAssetsStructured(ExportFilter.OHMS_arknights_charart, ExportListType.JSON);
+			ExportAssetsArknights(ExportArknightsFilter.CharArt, ExportListType.JSON);
 		}
 		#endregion // Menu_OHMS_Export
 
@@ -893,6 +910,7 @@ namespace AssetStudioGUI {
 				ui_tabLeft_page1_listSearch.ForeColor = SystemColors.GrayText;
 			}
 		}
+
 
 		private void ui_tabLeft_page1_ListSearchTextChanged(object sender, EventArgs e) {
 			if (enableFiltering) {
@@ -1273,7 +1291,8 @@ namespace AssetStudioGUI {
 		private void PreviewAudioClip(AssetItem assetItem, AudioClip m_AudioClip) {
 			//Info
 			//assetItem.InfoText = "Compression format: ";
-			assetItem.InfoText = LocalizedStrings.Get(LocalizedStrings.Type.Preview_Audio_formatHead);
+			//assetItem.InfoText = LocalizedStrings.Get(LocalizedStrings.Type.Preview_Audio_formatHead);
+			assetItem.InfoText = Properties.StringsMainForm.Preview_Audio_formatHead;
 			if (m_AudioClip.version[0] < 5) {
 				switch (m_AudioClip.m_Type) {
 				case FMODSoundType.ACC:
@@ -1589,13 +1608,15 @@ namespace AssetStudioGUI {
 				//StatusStripUpdate("Using OpenGL Version: " + GL.GetString(StringName.Version) + "\n"
 				//				  + "'Mouse Left' = Rotate Model | 'Mouse Right' = Rotate Camera | 'Mouse Wheel' = Move\n"
 				//				  + "'Ctrl + W' = Wireframe | 'Ctrl + S' = Shade | 'Ctrl + N' = ReNormal | 'Ctrl + R' = Reset");
-				StatusStripUpdate(LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_info0)
-					+ GL.GetString(StringName.Version) + "\n"
-					+ LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_info1));
+				//StatusStripUpdate(LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_info0)
+				//	+ GL.GetString(StringName.Version) + "\n"
+				//	+ LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_info1));
+				StatusStripUpdate(String.Format(Properties.StringsMainForm.Preview_GL_info, GL.GetString(StringName.Version)));
 			}
 			else {
 				//StatusStripUpdate("Unable to preview this mesh");
-				StatusStripUpdate(LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_unable));
+				//StatusStripUpdate(LocalizedStrings.Get(LocalizedStrings.Type.Preview_GL_unable));
+				StatusStripUpdate(Properties.StringsMainForm.Preview_GL_unable);
 			}
 		}
 
@@ -2325,14 +2346,45 @@ namespace AssetStudioGUI {
 					case ExportFilter.Filtered:
 						toExportAssets = visibleAssets;
 						break;
-					case ExportFilter.OHMS_arknights_scene:
+					}
+					Studio.ExportAssetsStructured(outdir, toExportAssets, listType);
+				}
+			}
+			else {
+				StatusStripUpdate("No exportable assets loaded");
+			}
+		}
+
+		private void ExportAssetsArknights(ExportArknightsFilter type, ExportListType listType) {
+			if (exportableAssets.Count > 0) {
+				var saveFolderDialog = new OpenFolderDialog();
+				saveFolderDialog.InitialFolder = Properties.Settings1.Default.ohmsLastFolder;
+				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
+					ui_tabRight_page0_FMODtimer.Stop();
+					saveDirectoryBackup = saveFolderDialog.Folder;
+					Properties.Settings1.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					Properties.Settings1.Default.Save();
+
+					string outdir;
+					if (Properties.Settings1.Default.ohmsCreateNew) {
+						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+							return;
+						}
+					}
+					else {
+						outdir = saveFolderDialog.Folder;
+					}
+					
+					/*List<AssetItem> toExportAssets = null;
+					switch (type) {
+					case ExportArknightsFilter.Scene:
 						toExportAssets = exportableAssets.FindAll(
 							x => (x.Type == ClassIDType.Mesh) ||
 							(x.Type == ClassIDType.MeshRenderer) ||
 							(x.Type == ClassIDType.Texture2D)
 						);
 						break;
-					case ExportFilter.OHMS_arknights_charart:
+					case ExportArknightsFilter.CharArt:
 						toExportAssets = exportableAssets.FindAll(
 							x => (x.Type == ClassIDType.Material) ||
 							(x.Type == ClassIDType.MonoBehaviour) ||
@@ -2341,8 +2393,15 @@ namespace AssetStudioGUI {
 							(x.Type == ClassIDType.Texture2D)
 						);
 						break;
+					}*/
+					switch (type) {
+					case ExportArknightsFilter.Scene:
+						Studio.ExportAssetsArknightsScene(outdir, exportableAssets, listType);
+						break;
+					case ExportArknightsFilter.CharArt:
+						Studio.ExportAssetsArknightsCharart(outdir, exportableAssets, listType);
+						break;
 					}
-					Studio.ExportAssetsStructured(outdir, toExportAssets, listType);
 				}
 			}
 			else {
@@ -2443,6 +2502,5 @@ namespace AssetStudioGUI {
 				Close();
 			}
 		}
-
 	}
 }

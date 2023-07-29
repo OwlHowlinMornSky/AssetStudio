@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -43,6 +45,25 @@ namespace AssetStudioGUI {
 			}
 		}
 
+		public static void update(int lang) {
+			switch (lang) {
+#if DEBUG
+			case 0:
+				Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+				Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
+				break;
+#endif
+			case 2:
+				Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-CN");
+				Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
+				break;
+			default:
+				Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+				Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+				break;
+			}
+		}
+
 		private void button_ok_Click(object sender, EventArgs e) {
 			if (m_newLang != m_oldLang) {
 				if (m_newLang != m_veryFirstSetting) {
@@ -50,26 +71,26 @@ namespace AssetStudioGUI {
 					string text = "";
 					switch (m_newLang) {
 					case 0:
-						title += Properties.Resources.zls_setting_OkMessageboxTitle;
-						text += Properties.Resources.zls_setting_OkMessageboxText;
+						title += Properties.StringsMainForm.LangSet_OkMessageboxTitle;
+						text += Properties.StringsMainForm.LangSet_OkMessageboxText;
 						break;
 					case 2:
-						title += Properties.Resources.zls_setting_OkMessageboxTitle_zh_CN;
-						text += Properties.Resources.zls_setting_OkMessageboxText_zh_CN;
+						title += Properties.StringsMainForm.LangSet_OkMessageboxTitle;
+						text += Properties.StringsMainForm.LangSet_OkMessageboxText;
 						break;
 					default:
-						title += Properties.Resources.zls_setting_OkMessageboxTitle_en_US;
-						text += Properties.Resources.zls_setting_OkMessageboxText_en_US;
+						title += Properties.StringsMainForm.LangSet_OkMessageboxTitle;
+						text += Properties.StringsMainForm.LangSet_OkMessageboxText;
 						break;
 					}
 					switch (m_oldLang) {
 					case 1:
-						title += "  " + Properties.Resources.zls_setting_OkMessageboxTitle_en_US;
-						text += Properties.Resources.zls_setting_OkMessageboxText_en_US;
+						title += "  " + Properties.StringsMainForm.LangSet_OkMessageboxTitle;
+						text += Properties.StringsMainForm.LangSet_OkMessageboxText;
 						break;
 					case 2:
-						title += "  " + Properties.Resources.zls_setting_OkMessageboxTitle_zh_CN;
-						text += Properties.Resources.zls_setting_OkMessageboxText_zh_CN;
+						title += "  " + Properties.StringsMainForm.LangSet_OkMessageboxTitle;
+						text += Properties.StringsMainForm.LangSet_OkMessageboxText;
 						break;
 					}
 					var res = MessageBox.Show(text, title,
@@ -85,14 +106,14 @@ namespace AssetStudioGUI {
 						else {
 							DialogResult = DialogResult.Cancel;
 						}
-						CultureSwitcher.update(m_newLang);
+						update(m_newLang);
 					}
 				}
 				else {
 					Properties.Settings1.Default.language = m_veryFirstSetting;
 					Properties.Settings1.Default.Save();
 					DialogResult = DialogResult.Cancel;
-					CultureSwitcher.update(m_veryFirstSetting);
+					update(m_veryFirstSetting);
 				}
 			}
 		}

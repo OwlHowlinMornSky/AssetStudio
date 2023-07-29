@@ -1092,13 +1092,13 @@ namespace AssetStudioGUI {
 			// 
 			resources.ApplyResources(ui_conMenu_goToSceneHierarchy, "ui_conMenu_goToSceneHierarchy");
 			ui_conMenu_goToSceneHierarchy.Name = "ui_conMenu_goToSceneHierarchy";
-			ui_conMenu_goToSceneHierarchy.Click += goToSceneHierarchyToolStripMenuItem_Click;
+			ui_conMenu_goToSceneHierarchy.Click += ui_conMenu_goToSceneHierarchy_Click;
 			// 
 			// ui_conMenu_showOriginalFile
 			// 
 			resources.ApplyResources(ui_conMenu_showOriginalFile, "ui_conMenu_showOriginalFile");
 			ui_conMenu_showOriginalFile.Name = "ui_conMenu_showOriginalFile";
-			ui_conMenu_showOriginalFile.Click += showOriginalFileToolStripMenuItem_Click;
+			ui_conMenu_showOriginalFile.Click += ui_conMenu_showOriginalFile_Click;
 			// 
 			// ui_conMenu_separator0
 			// 

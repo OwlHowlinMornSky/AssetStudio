@@ -117,72 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Export_Exporting" xml:space="preserve">
+    <value>导出中</value>
   </data>
-  <data name="shader_fs" xml:space="preserve">
-    <value>#version 140
-
-in vec3 normal;
-
-out vec4 outputColor;
-
-void main()
-{
-	vec3 unitNormal = normalize(normal);
-	float nDotProduct = clamp(dot(unitNormal, vec3(0.707, 0, 0.707)), 0, 1);
-	vec2 ContributionWeightsSqrt = vec2(0.5, 0.5f) + vec2(0.5f, -0.5f) * unitNormal.y;
-	vec2 ContributionWeights = ContributionWeightsSqrt * ContributionWeightsSqrt;
-
-	vec3 color = nDotProduct * vec3(1, 0.957, 0.839) / 3.14159;
-	color += vec3(0.779, 0.716, 0.453) * ContributionWeights.y;
-	color += vec3(0.368, 0.477, 0.735) * ContributionWeights.x;
-	outputColor = vec4(sqrt(color), 1);
-}</value>
+  <data name="LangSet_OkMessageboxText" xml:space="preserve">
+    <value>语言改动将在重启后生效。
+立即重启吗？</value>
   </data>
-  <data name="shader_fsBlack" xml:space="preserve">
-    <value>#version 140
-
-out vec4 outputColor;
-
-void main()
-{
-	outputColor = vec4(0, 0, 0, 1);
-}</value>
+  <data name="LangSet_OkMessageboxTitle" xml:space="preserve">
+    <value>更改语言</value>
   </data>
-  <data name="shader_fsColor" xml:space="preserve">
-    <value>#version 140
-
-out vec4 outputColor;
-in vec4 color;
-
-void main()
-{
-	outputColor = color;
-}</value>
+  <data name="Load_FinishLoading" xml:space="preserve">
+    <value>加载了 {0} 个文件，共计 {1} 个可导出的资料。</value>
   </data>
-  <data name="shader_vs" xml:space="preserve">
-    <value>#version 140
-
-in vec3 vertexPosition;
-in vec3 normalDirection;
-in vec4 vertexColor;
-uniform mat4 modelMatrix;
-uniform mat4 viewMatrix;
-uniform mat4 projMatrix;
-
-out vec3 normal;
-out vec4 color;
-
-void main()
-{
-	gl_Position = projMatrix * viewMatrix * modelMatrix * vec4(vertexPosition, 1.0);
-	normal = normalDirection;
-	color = vertexColor; 
-}</value>
+  <data name="Load_NoProductName" xml:space="preserve">
+    <value>无产品名</value>
   </data>
-  <data name="_as" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\as.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Preview_Audio_formatHead" xml:space="preserve">
+    <value>编码格式：</value>
+  </data>
+  <data name="Preview_GL_info" xml:space="preserve">
+    <value>使用的 OpenGL 的版本：{0}
+'鼠标左键' = 旋转模型 | '鼠标右键' = 旋转摄像机 | '鼠标滚轮' = 移动
+'Ctrl + W' = 线框 | 'Ctrl + S' = 阴影 | 'Ctrl + N' = 重算法线 | 'Ctrl + R' = 重置</value>
+  </data>
+  <data name="Preview_GL_unable" xml:space="preserve">
+    <value>无法预览该mesh</value>
+  </data>
+  <data name="test" xml:space="preserve">
+    <value>zh-CN</value>
   </data>
 </root>

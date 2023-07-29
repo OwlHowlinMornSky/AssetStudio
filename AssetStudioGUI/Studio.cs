@@ -25,9 +25,12 @@ namespace AssetStudioGUI {
 	internal enum ExportFilter {
 		All,
 		Selected,
-		Filtered,
-		OHMS_arknights_scene,
-		OHMS_arknights_charart
+		Filtered
+	}
+
+	internal enum ExportArknightsFilter {
+		Scene,
+		CharArt
 	}
 
 	internal enum ExportListType {
@@ -481,6 +484,84 @@ namespace AssetStudioGUI {
 			});
 		}
 
+		public static void ExportAssetsStructuredLIST(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+			switch (exportListType) {
+			case ExportListType.XML: {
+				var filename = Path.Combine(savePath, "assets.xml");
+				var doc = new XDocument(
+							new XElement("Assets",
+								new XAttribute("CreatedAt", DateTime.Now.ToString("s")),
+								new XAttribute("CreatedAtUTC", DateTime.UtcNow.ToString("s")),
+								new XElement("SourceFiles",
+									new XAttribute("OpenType", assetsManager.m_lastLoadType.ToString()),
+									assetsManager.m_lastOpenPaths.Select(
+										x => new XElement("File",
+											new XElement("Path", x)
+										)
+									)
+								),
+								toExportAssets.Select(
+									asset => new XElement("Asset",
+										new XAttribute("ID", asset.ID),
+										new XElement("Name", asset.Text),
+										new XElement("Type",
+											new XAttribute("id", (int)asset.Type),
+											asset.TypeString
+										),
+										new XElement("PathID", asset.m_PathID)
+									)
+								)
+							)
+						);
+
+				doc.Save(filename);
+				break;
+			}
+			case ExportListType.JSON: {
+				var filename = Path.Combine(savePath, "assets.json");
+				JObject doc = new JObject {
+						new JProperty("createdAt", DateTime.Now.ToString("s")),
+						new JProperty("createdAtUTC", DateTime.UtcNow.ToString("s")),
+						new JProperty("SourceFiles",
+							new JObject(
+								new JProperty("OpenType", assetsManager.m_lastLoadType.ToString()),
+								new JProperty("Files",
+									new JArray(
+										assetsManager.m_lastOpenPaths.Select(
+											x => new JObject(
+												new JProperty("Path", x)
+											)
+										)
+									)
+								)
+							)
+						),
+						new JProperty("Assets",
+							new JArray(
+								toExportAssets.Select(
+									asset => new JObject(
+										new JProperty("ID", asset.ID),
+										new JProperty("Name", asset.Text),
+										new JProperty("Type", new JObject(
+											new JProperty("id", (int)asset.Type),
+											new JProperty("name", asset.TypeString))),
+										new JProperty("PathID", asset.m_PathID)
+									)
+								)
+							)
+						)
+					};
+				if (Properties.Settings1.Default.indentedJson) {
+					File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.Indented));
+				}
+				else {
+					File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.None));
+				}
+				break;
+			}
+			}
+		}
+
 		public static void ExportAssetsStructured(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
 			ThreadPool.QueueUserWorkItem(state => {
 				Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
@@ -514,11 +595,9 @@ namespace AssetStudioGUI {
 						break;
 					}
 					exportPath += Path.DirectorySeparatorChar;
-					//StatusStripUpdate($"[{exportedCount}/{toExportCount}] Exporting {asset.TypeString}: {asset.Text}");
 					StatusStripUpdate($"[{exportedCount}/{toExportCount}] "
-						+ LocalizedStrings.Get(LocalizedStrings.Type.Export_Exporting)
+						+ Properties.StringsMainForm.Export_Exporting
 						+ $" {asset.TypeString}: {asset.Text}");
-					;
 					try {
 						if (ExportConvertFileOHMS(asset, exportPath)) {
 							++exportedCount;
@@ -533,84 +612,8 @@ namespace AssetStudioGUI {
 
 				Exporter.g_ohms_export_with_structure = false;
 
-				switch (exportListType) {
-				case ExportListType.XML: {
-					var filename = Path.Combine(savePath, "assets.xml");
-					var doc = new XDocument(
-							new XElement("Assets",
-								new XAttribute("CreatedAt", DateTime.Now.ToString("s")),
-								new XAttribute("CreatedAtUTC", DateTime.UtcNow.ToString("s")),
-								new XElement("SourceFiles",
-									new XAttribute("OpenType", assetsManager.m_lastLoadType.ToString()),
-									assetsManager.m_lastOpenPaths.Select(
-										x => new XElement("File",
-											new XElement("Path", x)
-										)
-									)
-								),
-								toExportAssets.Select(
-									asset => new XElement("Asset",
-										new XAttribute("ID", asset.ID),
-										new XElement("Name", asset.Text),
-										new XElement("Type",
-											new XAttribute("id", (int)asset.Type),
-											asset.TypeString
-										),
-										new XElement("PathID", asset.m_PathID)
-									)
-								)
-							)
-						);
-
-					doc.Save(filename);
-					++exportedCount;
-
-					break;
-				}
-				case ExportListType.JSON: {
-					var filename = Path.Combine(savePath, "assets.json");
-					JObject doc = new JObject {
-						new JProperty("createdAt", DateTime.Now.ToString("s")),
-						new JProperty("createdAtUTC", DateTime.UtcNow.ToString("s")),
-						new JProperty("SourceFiles",
-							new JObject(
-								new JProperty("OpenType", assetsManager.m_lastLoadType.ToString()),
-								new JProperty("Files",
-									new JArray(
-										assetsManager.m_lastOpenPaths.Select(
-											x => new JObject(
-												new JProperty("Path", x)
-											)
-										)
-									)
-								)
-							)
-						),
-						new JProperty("Assets",
-							new JArray(
-								toExportAssets.Select(
-									asset => new JObject(
-										new JProperty("ID", asset.ID),
-										new JProperty("Name", asset.Text),
-										new JProperty("Type", new JObject(
-											new JProperty("id", (int)asset.Type),
-											new JProperty("name", asset.TypeString))),
-										new JProperty("PathID", asset.m_PathID)
-									)
-								)
-							)
-						)
-					};
-					if (Properties.Settings1.Default.indentedJson) {
-						File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.Indented));
-					}
-					else {
-						File.WriteAllText(filename, JsonConvert.SerializeObject(doc, Formatting.None));
-					}
-					++exportedCount;
-					break;
-				}
-				}
+				ExportAssetsStructuredLIST(savePath, toExportAssets, exportListType);
+				++exportedCount;
 				Progress.Report(++i, toExportCount);
 
 				var statusText = $"Finished OHMS_EXPORT_STRUCT [{exportedCount}/{toExportCount}].";
@@ -620,6 +623,32 @@ namespace AssetStudioGUI {
 					OpenFolderInExplorer(savePath);
 				}
 			});
+		}
+
+		public static void ExportAssetsArknightsScene(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+
+		}
+
+		public static void ExportAssetsArknightsCharart(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+			List<long> longs = new List<long>();
+			foreach (var item in toExportAssets) {
+				if (item.Type == ClassIDType.Material) {
+					var m = (Material)item.Asset;
+					foreach (var pair in m.m_SavedProperties.m_TexEnvs) {
+						switch (pair.Key) {
+						case "_AlphaTex":
+						case "_MainTex":
+							longs.Add(pair.Value.m_Texture.m_PathID);
+							break;
+						}
+					}
+				}
+			}
+			var test = new string("");
+			foreach (var n in longs) {
+				test += n.ToString() + "\n";
+			}
+			MessageBox.Show(test, "test");
 		}
 
 		public static void ExportSplitObjects(string savePath, TreeNodeCollection nodes) {
