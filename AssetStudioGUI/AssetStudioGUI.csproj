@@ -39,10 +39,10 @@
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
-		<Compile Update="Properties\StringsMainForm.Designer.cs">
+		<Compile Update="Properties\Strings.Designer.cs">
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
-		  <DependentUpon>StringsMainForm.resx</DependentUpon>
+		  <DependentUpon>Strings.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Properties\Settings.Designer.cs">
 			<AutoGen>True</AutoGen>
@@ -61,9 +61,9 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Properties\StringsMainForm.resx">
+		<EmbeddedResource Update="Properties\Strings.resx">
 		  <Generator>ResXFileCodeGenerator</Generator>
-		  <LastGenOutput>StringsMainForm.Designer.cs</LastGenOutput>
+		  <LastGenOutput>Strings.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<Compile Update="Properties\Resources.Designer.cs">
 			<AutoGen>True</AutoGen>

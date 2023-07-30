@@ -596,7 +596,7 @@ namespace AssetStudioGUI {
 					}
 					exportPath += Path.DirectorySeparatorChar;
 					StatusStripUpdate($"[{exportedCount}/{toExportCount}] "
-						+ Properties.StringsMainForm.Export_Exporting
+						+ Properties.Strings.Export_Exporting
 						+ $" {asset.TypeString}: {asset.Text}");
 					try {
 						if (ExportConvertFileOHMS(asset, exportPath)) {

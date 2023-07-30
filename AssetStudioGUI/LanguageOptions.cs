@@ -134,8 +134,8 @@ namespace AssetStudioGUI {
 				if (newLang != m_oldLang) {
 					update(newLang);
 
-					string title = Properties.StringsMainForm.LangSet_OkMessageboxTitle;
-					string text = Properties.StringsMainForm.LangSet_OkMessageboxText;
+					string title = Properties.Strings.LangSet_OkMessageboxTitle;
+					string text = Properties.Strings.LangSet_OkMessageboxText;
 
 					MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}

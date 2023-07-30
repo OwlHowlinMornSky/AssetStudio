@@ -118,32 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Export_Exporting" xml:space="preserve">
-    <value>导出中</value>
+    <value>Exporting</value>
   </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
-    <value>语言改动将在重启后生效。</value>
+    <value>Restart to apply the change.</value>
   </data>
   <data name="LangSet_OkMessageboxTitle" xml:space="preserve">
-    <value>更改语言</value>
+    <value>Change language</value>
   </data>
   <data name="Load_FinishLoading" xml:space="preserve">
-    <value>加载了 {0} 个文件，共计 {1} 个可导出的资料。</value>
+    <value>Finished loading {0} files with {1} exportable assets.</value>
   </data>
   <data name="Load_NoProductName" xml:space="preserve">
-    <value>无产品名</value>
+    <value>no product name</value>
   </data>
   <data name="Preview_Audio_formatHead" xml:space="preserve">
-    <value>编码格式：</value>
+    <value>Compression format:</value>
   </data>
   <data name="Preview_GL_info" xml:space="preserve">
-    <value>使用的 OpenGL 的版本：{0}
-'鼠标左键' = 旋转模型 | '鼠标右键' = 旋转摄像机 | '鼠标滚轮' = 移动
-'Ctrl + W' = 线框 | 'Ctrl + S' = 阴影 | 'Ctrl + N' = 重算法线 | 'Ctrl + R' = 重置</value>
+    <value>Using OpenGL Version: {0}
+'Mouse Left' = Rotate Model | 'Mouse Right' = Rotate Camera | 'Mouse Wheel' = Move
+'Ctrl + W' = Wireframe | 'Ctrl + S' = Shade | 'Ctrl + N' = ReNormal | 'Ctrl + R' = Reset</value>
   </data>
   <data name="Preview_GL_unable" xml:space="preserve">
-    <value>无法预览该mesh</value>
-  </data>
-  <data name="test" xml:space="preserve">
-    <value>zh-CN</value>
+    <value>Unable to preview this mesh</value>
   </data>
 </root>

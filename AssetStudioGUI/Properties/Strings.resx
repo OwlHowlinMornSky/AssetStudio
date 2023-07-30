@@ -118,32 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Export_Exporting" xml:space="preserve">
-    <value>Exporting</value>
+    <value>%Exporting%</value>
   </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
-    <value>Restart to apply the change.</value>
+    <value>%Restart_To_Apply%</value>
   </data>
   <data name="LangSet_OkMessageboxTitle" xml:space="preserve">
-    <value>Change language</value>
+    <value>%Change_Lang%</value>
   </data>
   <data name="Load_FinishLoading" xml:space="preserve">
-    <value>Finished loading {0} files with {1} exportable assets.</value>
+    <value>%{0}%{1}%</value>
   </data>
   <data name="Load_NoProductName" xml:space="preserve">
-    <value>no product name</value>
+    <value>%No_Product_Name%</value>
   </data>
   <data name="Preview_Audio_formatHead" xml:space="preserve">
-    <value>Compression format:</value>
+    <value>%Format%</value>
   </data>
   <data name="Preview_GL_info" xml:space="preserve">
-    <value>Using OpenGL Version: {0}
-'Mouse Left' = Rotate Model | 'Mouse Right' = Rotate Camera | 'Mouse Wheel' = Move
-'Ctrl + W' = Wireframe | 'Ctrl + S' = Shade | 'Ctrl + N' = ReNormal | 'Ctrl + R' = Reset</value>
+    <value>%GL_Help%</value>
   </data>
   <data name="Preview_GL_unable" xml:space="preserve">
-    <value>Unable to preview this mesh</value>
-  </data>
-  <data name="test" xml:space="preserve">
-    <value>en-US</value>
+    <value>%GL_Not_Supported%</value>
   </data>
 </root>

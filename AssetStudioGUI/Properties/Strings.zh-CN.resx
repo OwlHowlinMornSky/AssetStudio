@@ -118,30 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Export_Exporting" xml:space="preserve">
-    <value>%Exporting%</value>
+    <value>导出中</value>
   </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
-    <value>%Restart_To_Apply%</value>
+    <value>语言改动将在重启后生效。</value>
   </data>
   <data name="LangSet_OkMessageboxTitle" xml:space="preserve">
-    <value>%Change_Lang%</value>
+    <value>更改语言</value>
   </data>
   <data name="Load_FinishLoading" xml:space="preserve">
-    <value>%{0}%{1}%</value>
+    <value>加载了 {0} 个文件，共计 {1} 个可导出的资料。</value>
   </data>
   <data name="Load_NoProductName" xml:space="preserve">
-    <value>%No_Product_Name%</value>
+    <value>无产品名</value>
   </data>
   <data name="Preview_Audio_formatHead" xml:space="preserve">
-    <value>%Format%</value>
+    <value>编码格式：</value>
   </data>
   <data name="Preview_GL_info" xml:space="preserve">
-    <value>%GL_Help%</value>
+    <value>使用的 OpenGL 的版本：{0}
+'鼠标左键' = 旋转模型 | '鼠标右键' = 旋转摄像机 | '鼠标滚轮' = 移动
+'Ctrl + W' = 线框 | 'Ctrl + S' = 阴影 | 'Ctrl + N' = 重算法线 | 'Ctrl + R' = 重置</value>
   </data>
   <data name="Preview_GL_unable" xml:space="preserve">
-    <value>%GL_Not_Supported%</value>
-  </data>
-  <data name="test" xml:space="preserve">
-    <value>%Localization_Failed%</value>
+    <value>无法预览该mesh</value>
   </data>
 </root>

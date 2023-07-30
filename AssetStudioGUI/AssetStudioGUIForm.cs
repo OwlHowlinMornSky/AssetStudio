@@ -60,8 +60,6 @@ namespace AssetStudioGUI {
 		public AssetStudioGUIForm() {
 			LanguageOptions.initWhenOpenForm();
 
-			//MessageBox.Show(Properties.StringsMainForm.test);
-
 			InitializeComponent();
 #if DEBUG
 			ui_menuDebug.Visible = true;
@@ -109,7 +107,7 @@ namespace AssetStudioGUI {
 				Text = this.TextBase + $" - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 			else {
-				Text = this.TextBase + $" - {Properties.StringsMainForm.Load_NoProductName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
+				Text = this.TextBase + $" - {Properties.Strings.Load_NoProductName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 			}
 
 			ui_tabLeft_page1_listView.VirtualListSize = visibleAssets.Count;
@@ -145,7 +143,7 @@ namespace AssetStudioGUI {
 				ui_menuFilter.DropDownItems.Add(typeItem);
 			}
 			ui_menuFilter_0_all.Checked = true;
-			var log = String.Format(Properties.StringsMainForm.Load_FinishLoading,
+			var log = String.Format(Properties.Strings.Load_FinishLoading,
 				assetsManager.assetsFileList.Count, ui_tabLeft_page1_listView.Items.Count);
 			var m_ObjectsCount = assetsManager.assetsFileList.Sum(x => x.m_Objects.Count);
 			var objectsCount = assetsManager.assetsFileList.Sum(x => x.Objects.Count);
@@ -1571,10 +1569,10 @@ namespace AssetStudioGUI {
 				#endregion
 				SwitchPreviewPage(PreviewType.GL);
 				GL_CreateVAO();
-				StatusStripUpdate(String.Format(Properties.StringsMainForm.Preview_GL_info, GL.GetString(StringName.Version)));
+				StatusStripUpdate(String.Format(Properties.Strings.Preview_GL_info, GL.GetString(StringName.Version)));
 			}
 			else {
-				StatusStripUpdate(Properties.StringsMainForm.Preview_GL_unable);
+				StatusStripUpdate(Properties.Strings.Preview_GL_unable);
 			}
 		}
 
