@@ -121,8 +121,7 @@
     <value>Exporting</value>
   </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
-    <value>Change of language will work after restart.
-Do you want to restart now?</value>
+    <value>Restart to apply the change.</value>
   </data>
   <data name="LangSet_OkMessageboxTitle" xml:space="preserve">
     <value>Change language</value>

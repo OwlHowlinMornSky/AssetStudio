@@ -117,45 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lang_0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 21</value>
-  </data>
-  <data name="lang_0.Text" xml:space="preserve">
-    <value>调试</value>
-  </data>
-  <data name="button_ok.Text" xml:space="preserve">
+  <data name="ui_button_ok.Text" xml:space="preserve">
     <value>确定</value>
   </data>
-  <data name="button_cancle.Text" xml:space="preserve">
+  <data name="ui_button_cancle.Text" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="label_en_US.Size" type="System.Drawing.Size, System.Drawing">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ui_label_en_us.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 17</value>
   </data>
-  <data name="label_en_US.Text" xml:space="preserve">
+  <data name="ui_label_en_us.Text" xml:space="preserve">
     <value>英语 (美国)</value>
   </data>
-  <data name="label_zh_CN.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ui_label_zh_cn.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 17</value>
   </data>
-  <data name="label_zh_CN.Text" xml:space="preserve">
+  <data name="ui_label_zh_cn.Text" xml:space="preserve">
     <value> </value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label_zh_CN.Visible" type="System.Boolean, mscorlib">
+  <data name="ui_label_zh_cn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="label_restart_note.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 280</value>
+  <data name="ui_label_restart_note.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 280</value>
   </data>
-  <data name="label_restart_note.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 17</value>
+  <data name="ui_label_restart_note.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 17</value>
   </data>
-  <data name="label_restart_note.Text" xml:space="preserve">
-    <value>重启以应用更改。</value>
+  <data name="ui_label_restart_note.Text" xml:space="preserve">
+    <value>重启以应用更改</value>
+  </data>
+  <data name="ui_lang_auto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 21</value>
+  </data>
+  <data name="ui_lang_auto.Text" xml:space="preserve">
+    <value>自动检测：</value>
+  </data>
+  <data name="ui_label_detected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 14</value>
+  </data>
+  <data name="ui_label_detected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 17</value>
+  </data>
+  <data name="ui_label_detected.Text" xml:space="preserve">
+    <value>未知</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>语言</value>
+    <value>界面语言</value>
   </data>
 </root>

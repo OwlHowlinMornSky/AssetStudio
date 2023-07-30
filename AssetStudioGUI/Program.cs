@@ -1,6 +1,4 @@
 using System;
-using System.Globalization;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace AssetStudioGUI {
@@ -15,14 +13,7 @@ namespace AssetStudioGUI {
 #endif
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			do {
-				m_exitForChanges = false;
-				LanguageOptions.m_veryFirstSetting = Properties.SettingsOHMS.Default.language;
-				Application.Run(new AssetStudioGUIForm());
-			}
-			while (m_exitForChanges);
+			Application.Run(new AssetStudioGUIForm());
 		}
-
-		public static bool m_exitForChanges;
 	}
 }

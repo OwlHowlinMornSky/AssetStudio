@@ -117,37 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_ok.Text" xml:space="preserve">
+  <data name="ui_button_ok.Text" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="button_cancle.Text" xml:space="preserve">
+  <data name="ui_button_cancle.Text" xml:space="preserve">
     <value>Cancle</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label_en_US.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ui_label_en_us.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 17</value>
   </data>
-  <data name="label_en_US.Text" xml:space="preserve">
+  <data name="ui_label_en_us.Text" xml:space="preserve">
     <value> </value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label_en_US.Visible" type="System.Boolean, mscorlib">
+  <data name="ui_label_en_us.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="label_zh_CN.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ui_label_zh_cn.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 17</value>
   </data>
-  <data name="label_zh_CN.Text" xml:space="preserve">
+  <data name="ui_label_zh_cn.Text" xml:space="preserve">
     <value>Chinese (China)</value>
   </data>
-  <data name="label_restart_note.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 280</value>
+  <data name="ui_label_restart_note.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 17</value>
   </data>
-  <data name="label_restart_note.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
+  <data name="ui_label_restart_note.Text" xml:space="preserve">
+    <value>Restart to apply the changes.</value>
   </data>
-  <data name="label_restart_note.Text" xml:space="preserve">
-    <value>Restart to apply the change.</value>
+  <data name="ui_lang_auto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 21</value>
+  </data>
+  <data name="ui_lang_auto.Text" xml:space="preserve">
+    <value>Auto-detect:</value>
+  </data>
+  <data name="ui_label_detected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 14</value>
+  </data>
+  <data name="ui_label_detected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="ui_label_detected.Text" xml:space="preserve">
+    <value>Unknown.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Languages</value>

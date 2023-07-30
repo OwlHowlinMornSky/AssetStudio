@@ -121,8 +121,7 @@
     <value>导出中</value>
   </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
-    <value>语言改动将在重启后生效。
-立即重启吗？</value>
+    <value>语言改动将在重启后生效。</value>
   </data>
   <data name="LangSet_OkMessageboxTitle" xml:space="preserve">
     <value>更改语言</value>

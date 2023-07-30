@@ -61,10 +61,10 @@ namespace AssetStudioGUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int language {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint language {
             get {
-                return ((int)(this["language"]));
+                return ((uint)(this["language"]));
             }
             set {
                 this["language"] = value;

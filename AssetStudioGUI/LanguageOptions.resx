@@ -117,251 +117,272 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lang_en_us.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_ok.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 33</value>
-  </data>
-  <data name="lang_zh_cn.Text" xml:space="preserve">
-    <value>中文 (中国)</value>
-  </data>
-  <data name="&gt;&gt;lang_zh_cn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lang_zh_cn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_restart_note.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label_zh_CN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 17</value>
-  </data>
-  <data name="&gt;&gt;lang_0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label_restart_note.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label_en_US.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>LanguageOptions</value>
-  </data>
-  <data name="lang_zh_cn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 21</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>309, 338</value>
-  </data>
-  <data name="&gt;&gt;label_restart_note.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_label_detected.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_cancle.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;ui_button_ok.Name" xml:space="preserve">
+    <value>ui_button_ok</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_auto.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_auto.Name" xml:space="preserve">
+    <value>ui_lang_auto</value>
+  </data>
+  <data name="&gt;&gt;ui_label_en_us.Name" xml:space="preserve">
+    <value>ui_label_en_us</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_zh_cn.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>327, 338</value>
+  </data>
+  <data name="&gt;&gt;ui_label_zh_cn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ui_label_detected.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_lang_auto.Text" xml:space="preserve">
+    <value>%AUTO%:</value>
+  </data>
+  <data name="ui_label_en_us.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 43</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ui_label_en_us.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_button_ok.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ui_label_detected.Name" xml:space="preserve">
+    <value>ui_label_detected</value>
+  </data>
+  <data name="ui_label_en_us.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="&gt;&gt;ui_button_ok.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_en_us.Name" xml:space="preserve">
+    <value>ui_lang_en_us</value>
+  </data>
+  <data name="&gt;&gt;ui_label_en_us.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="ui_button_ok.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 300</value>
+  </data>
+  <data name="ui_label_restart_note.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;ui_label_en_us.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_label_detected.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ui_label_detected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 17</value>
+  </data>
+  <data name="&gt;&gt;ui_label_detected.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ui_label_en_us.Text" xml:space="preserve">
+    <value>%en-US%</value>
+  </data>
+  <data name="&gt;&gt;ui_button_cancle.Name" xml:space="preserve">
+    <value>ui_button_cancle</value>
+  </data>
+  <data name="&gt;&gt;ui_label_restart_note.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_en_us.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_auto.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ui_button_cancle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_en_us.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;ui_button_cancle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_label_zh_cn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="ui_label_detected.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ui_label_restart_note.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
-  <data name="lang_0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
-  </data>
-  <data name="&gt;&gt;label_zh_CN.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label_en_US.Name" xml:space="preserve">
-    <value>label_en_US</value>
-  </data>
-  <data name="&gt;&gt;button_cancle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lang_zh_cn.Name" xml:space="preserve">
-    <value>lang_zh_cn</value>
-  </data>
-  <data name="lang_en_us.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="lang_zh_cn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 39</value>
-  </data>
-  <data name="&gt;&gt;label_en_US.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="button_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 300</value>
-  </data>
-  <data name="label_restart_note.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="button_cancle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 300</value>
-  </data>
-  <data name="&gt;&gt;label_zh_CN.Name" xml:space="preserve">
-    <value>label_zh_CN</value>
-  </data>
-  <data name="label_en_US.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 14</value>
-  </data>
-  <data name="&gt;&gt;lang_en_us.Name" xml:space="preserve">
-    <value>lang_en_us</value>
-  </data>
-  <data name="&gt;&gt;button_ok.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label_restart_note.Text" xml:space="preserve">
-    <value>%Restart to apply the change.</value>
-  </data>
-  <data name="&gt;&gt;button_cancle.Name" xml:space="preserve">
-    <value>button_cancle</value>
-  </data>
-  <data name="button_ok.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;button_ok.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lang_0.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_en_US.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
-  </data>
-  <data name="&gt;&gt;label_restart_note.Name" xml:space="preserve">
-    <value>label_restart_note</value>
-  </data>
-  <data name="&gt;&gt;lang_0.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lang_0.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;label_en_US.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_cancle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 33</value>
-  </data>
-  <data name="&gt;&gt;label_zh_CN.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lang_zh_cn.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label_zh_CN.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_zh_CN.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label_restart_note.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_restart_note.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 17</value>
-  </data>
-  <data name="&gt;&gt;button_ok.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lang_en_us.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 21</value>
-  </data>
-  <data name="&gt;&gt;label_zh_CN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_ok.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="lang_0.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lang_en_us.Text" xml:space="preserve">
-    <value>English (US)</value>
-  </data>
-  <data name="label_zh_CN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 41</value>
-  </data>
-  <data name="label_en_US.Text" xml:space="preserve">
-    <value>%English</value>
-  </data>
-  <data name="lang_0.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="lang_en_us.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lang_zh_cn.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;lang_0.Name" xml:space="preserve">
-    <value>lang_0</value>
-  </data>
-  <data name="lang_en_us.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label_restart_note.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>%Lang.</value>
-  </data>
-  <data name="&gt;&gt;button_cancle.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lang_en_us.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lang_0.Text" xml:space="preserve">
-    <value>Debug</value>
-  </data>
-  <data name="&gt;&gt;lang_0.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="button_cancle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="&gt;&gt;button_cancle.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;button_ok.Name" xml:space="preserve">
-    <value>button_ok</value>
-  </data>
-  <data name="&gt;&gt;lang_zh_cn.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="button_cancle.Text" xml:space="preserve">
-    <value>%Cancle</value>
-  </data>
-  <data name="label_en_US.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="button_ok.Text" xml:space="preserve">
-    <value>%OK</value>
-  </data>
-  <data name="label_zh_CN.Text" xml:space="preserve">
-    <value>%Chinese</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 17</value>
-  </data>
-  <data name="&gt;&gt;lang_en_us.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_lang_auto.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label_en_US.ZOrder" xml:space="preserve">
+  <data name="ui_button_cancle.Text" xml:space="preserve">
+    <value>%Cancle%</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_zh_cn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_label_zh_cn.Text" xml:space="preserve">
+    <value>%zh-CN%</value>
+  </data>
+  <data name="&gt;&gt;ui_label_restart_note.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_label_zh_cn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 70</value>
+  </data>
+  <data name="ui_lang_zh_cn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 21</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_en_us.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_lang_zh_cn.Text" xml:space="preserve">
+    <value>中文 (中国)</value>
+  </data>
+  <data name="&gt;&gt;ui_button_ok.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;ui_label_zh_cn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_lang_en_us.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ui_button_ok.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 33</value>
+  </data>
+  <data name="ui_lang_zh_cn.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="label_restart_note.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 280</value>
+  <data name="ui_button_ok.Text" xml:space="preserve">
+    <value>%OK%</value>
   </data>
-  <data name="lang_0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 305</value>
+  <data name="ui_lang_en_us.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 39</value>
+  </data>
+  <data name="&gt;&gt;ui_label_restart_note.Name" xml:space="preserve">
+    <value>ui_label_restart_note</value>
+  </data>
+  <data name="ui_label_restart_note.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 280</value>
+  </data>
+  <data name="ui_label_detected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 14</value>
+  </data>
+  <data name="ui_button_cancle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 33</value>
+  </data>
+  <data name="ui_label_restart_note.Text" xml:space="preserve">
+    <value>%Restart to apply the change.%</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_zh_cn.Name" xml:space="preserve">
+    <value>ui_lang_zh_cn</value>
+  </data>
+  <data name="ui_lang_auto.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ui_button_cancle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_lang_auto.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;ui_lang_zh_cn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_lang_zh_cn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 66</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>LanguageOptions</value>
+  </data>
+  <data name="ui_button_cancle.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="ui_label_zh_cn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>%Lang%</value>
+  </data>
+  <data name="ui_label_detected.Text" xml:space="preserve">
+    <value>%[Unknown]%</value>
+  </data>
+  <data name="ui_label_restart_note.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ui_button_cancle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 300</value>
+  </data>
+  <data name="&gt;&gt;ui_label_zh_cn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_lang_en_us.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_label_en_us.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ui_label_en_us.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_lang_zh_cn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_label_restart_note.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ui_label_zh_cn.Name" xml:space="preserve">
+    <value>ui_label_zh_cn</value>
+  </data>
+  <data name="ui_button_cancle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ui_lang_en_us.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 21</value>
+  </data>
+  <data name="ui_button_ok.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ui_label_zh_cn.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ui_lang_en_us.Text" xml:space="preserve">
+    <value>English (US)</value>
+  </data>
+  <data name="ui_label_restart_note.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 17</value>
+  </data>
+  <data name="ui_lang_auto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;ui_button_ok.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_lang_auto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 21</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

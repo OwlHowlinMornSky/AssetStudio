@@ -57,20 +57,14 @@ namespace AssetStudioGUI {
 
 		private DirectBitmap m_imageTexture;
 
-		private int m_langWhenLoad;
-
 		public AssetStudioGUIForm() {
-			m_langWhenLoad = Properties.SettingsOHMS.Default.language;
-			LanguageOptions.update(m_langWhenLoad);
+			LanguageOptions.initWhenOpenForm();
 
-			MessageBox.Show(Properties.StringsMainForm.test);
+			//MessageBox.Show(Properties.StringsMainForm.test);
 
 			InitializeComponent();
 #if DEBUG
 			ui_menuDebug.Visible = true;
-#else
-			ui_menuDebug.Visible = false;
-			ui_menuDebug.Enabled = false;
 #endif
 			m_page0_search_default = ui_tabLeft_page0_treeSearch.Text;
 			m_page1_filter_default = ui_tabLeft_page1_listSearch.Text;
@@ -2439,11 +2433,7 @@ namespace AssetStudioGUI {
 
 		private void ui_menuOptions_language_Click(object sender, EventArgs e) {
 			var langOpt = new LanguageOptions();
-			var res = langOpt.ShowDialog(this);
-			if (res == DialogResult.OK) {
-				Program.m_exitForChanges = true;
-				Close();
-			}
+			langOpt.ShowDialog(this);
 		}
 	}
 }
