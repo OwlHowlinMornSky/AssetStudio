@@ -2,7 +2,9 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -10,6 +12,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using WinRT;
 using static AssetStudioGUI.Exporter;
 using Object = AssetStudio.Object;
 
@@ -650,6 +653,46 @@ namespace AssetStudioGUI {
 		}
 
 		public static void ExportAssetsArknightsCharart(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+			//List<MonoBehaviour> monoBehaviours =
+			//	toExportAssets.FindAll(x => x.Type == ClassIDType.MonoBehaviour).Select(x => (MonoBehaviour)x.Asset).ToList();
+
+			List<AssetItem> monoItems = toExportAssets.FindAll(x => x.Type == ClassIDType.MonoBehaviour);
+			
+			string str = "";
+			//monoItems.ForEach(x => { str += x.Text + "\n"; });
+			//MessageBox.Show(str);
+
+			AssetItem ark_building_item = monoItems.Find(x => x.Text == "VCharacter");
+			if (ark_building_item == null) {
+				MessageBox.Show("None!");
+				return;
+			}
+			MessageBox.Show(ark_building_item.m_PathID.ToString());
+			MonoBehaviour ark_building = (MonoBehaviour)ark_building_item.Asset;
+
+			//MessageBox.Show(ark_building.m_Script.m_PathID.ToString());
+			str = "";
+			ark_building.serializedType.m_Type.m_Nodes.ForEach(x => { str += x.m_Name + "\n"; });
+			//MessageBox.Show(str);
+
+			OrderedDictionary t = ark_building.ToType();
+			//str = "";
+			//foreach (DictionaryEntry i in t) {
+			//	str += i.Key + ": " + i.Value + "\n";
+			//}
+			//MessageBox.Show(str);
+
+			var tt = t["_skeleton"];
+			MessageBox.Show(tt.GetType().Equals(typeof(OrderedDictionary)) ? "1" : "0");
+			var r = (OrderedDictionary)tt;
+
+			var rr = r["m_PathID"];
+			MessageBox.Show(rr.GetType().Equals(typeof(long)) ? "1" : "0");
+			var rrr = (long)rr;
+
+			MessageBox.Show(rrr.ToString());
+
+			return;
 			List<long> longs = new List<long>();
 			foreach (var item in toExportAssets) {
 				if (item.Type == ClassIDType.Material) {
