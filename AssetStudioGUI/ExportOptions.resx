@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+  <!--
     Microsoft ResX Schema 
-    
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
     <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing"">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
         <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,113 +117,599 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBox2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="OKbutton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 497</value>
+  <data name="totga.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 8</value>
+  </data>
+  <data name="converttexture.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tobmp.Name" xml:space="preserve">
+    <value>tobmp</value>
+  </data>
+  <data name="jsonStructureCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="Cancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;topng.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="assetGroupOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 25</value>
+  </data>
+  <data name="&gt;&gt;exportAnimations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="scaleFactor.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>%FBX Version</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OKbutton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="&gt;&gt;fbxVersion.Name" xml:space="preserve">
+    <value>fbxVersion</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="OKbutton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 30</value>
+  <data name="exportSkins.Text" xml:space="preserve">
+    <value>%Export skins</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OKbutton.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;restoreExtensionName.Name" xml:space="preserve">
+    <value>restoreExtensionName</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>%FilterPrecision</value>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>%Cancel</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;assetGroupOptions.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;filterPrecision.Name" xml:space="preserve">
+    <value>filterPrecision</value>
+  </data>
+  <data name="&gt;&gt;exportBlendShape.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="restoreExtensionName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 82</value>
+  </data>
+  <data name="jsonStructureCheckBox.Text" xml:space="preserve">
+    <value>%Indented JSON</value>
+  </data>
+  <data name="eulerFilter.Text" xml:space="preserve">
+    <value>%EulerFilter</value>
+  </data>
+  <data name="castToBone.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="exportBlendShape.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 180</value>
+  </data>
+  <data name="tobmp.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Cancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;jsonStructureCheckBox.Name" xml:space="preserve">
+    <value>jsonStructureCheckBox</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="&gt;&gt;fbxFormat.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="eulerFilter.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;openAfterExport.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="converttexture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="topng.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 21</value>
+  </data>
+  <data name="exportSkins.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 21</value>
+  </data>
+  <data name="&gt;&gt;fbxVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="topng.Text" xml:space="preserve">
+    <value>Png</value>
+  </data>
+  <data name="exportAllUvsAsDiffuseMaps.ToolTip" xml:space="preserve">
+    <value>Unchecked: UV1 exported as normal map. Check this if your export is missing a UV map.</value>
+  </data>
+  <data name="tobmp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 473</value>
+  </data>
+  <data name="assetGroupOptions.Items1" xml:space="preserve">
+    <value>%container path</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 320</value>
+  </data>
+  <data name="&gt;&gt;filterPrecision.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;exportAnimations.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="convertAudio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tojpg.Name" xml:space="preserve">
+    <value>tojpg</value>
+  </data>
+  <data name="&gt;&gt;jsonStructureCheckBox.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="fbxVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="topng.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="filterPrecision.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>%BoneSize</value>
+  </data>
+  <data name="exportSkins.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="converttexture.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="convertAudio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="scaleFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 23</value>
+  </data>
+  <data name="&gt;&gt;totga.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="exportAllUvsAsDiffuseMaps.AccessibleDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;exportAllUvsAsDiffuseMaps.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="fbxFormat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 25</value>
+  </data>
+  <data name="openAfterExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 21</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="exportAllUvsAsDiffuseMaps.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="exportAllUvsAsDiffuseMaps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 242</value>
+  </data>
+  <data name="&gt;&gt;totga.Name" xml:space="preserve">
+    <value>totga</value>
+  </data>
+  <data name="exportSkins.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 118</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="eulerFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 21</value>
+  </data>
+  <data name="&gt;&gt;exportSkins.Name" xml:space="preserve">
+    <value>exportSkins</value>
+  </data>
+  <data name="topng.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tojpg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 21</value>
+  </data>
+  <data name="castToBone.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;topng.Name" xml:space="preserve">
+    <value>topng</value>
+  </data>
+  <data name="tobmp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ExportOptions</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>%Export</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 17</value>
   </data>
   <data name="OKbutton.Text" xml:space="preserve">
     <value>%OK</value>
   </data>
-  <data name="&gt;&gt;OKbutton.Name" xml:space="preserve">
-    <value>OKbutton</value>
+  <data name="&gt;&gt;exportAllUvsAsDiffuseMaps.Name" xml:space="preserve">
+    <value>exportAllUvsAsDiffuseMaps</value>
   </data>
-  <data name="&gt;&gt;OKbutton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;exportAnimations.Name" xml:space="preserve">
+    <value>exportAnimations</value>
   </data>
-  <data name="&gt;&gt;OKbutton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tojpg.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="exportAllNodes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="restoreExtensionName.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="exportAnimations.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="topng.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="castToBone.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="exportAllUvsAsDiffuseMaps.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 282</value>
+  </data>
+  <data name="jsonStructureCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;fbxVersion.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;OKbutton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 497</value>
+  <data name="eulerFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;exportAnimations.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 55</value>
+  </data>
+  <data name="exportAnimations.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="exportBlendShape.Text" xml:space="preserve">
+    <value>%Export blendshape</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>%Fbx</value>
+  </data>
+  <data name="scaleFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 318</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 473</value>
+  </data>
+  <data name="&gt;&gt;OKbutton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;eulerFilter.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="filterPrecision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 23</value>
+  </data>
+  <data name="&gt;&gt;tojpg.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="Cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 30</value>
+  <data name="restoreExtensionName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 21</value>
   </data>
-  <data name="Cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="assetGroupOptions.Items3" xml:space="preserve">
+    <value>%do not group</value>
   </data>
-  <data name="Cancel.Text" xml:space="preserve">
-    <value>%Cancel</value>
+  <data name="&gt;&gt;fbxFormat.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;converttexture.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="topng.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 8</value>
+  </data>
+  <data name="&gt;&gt;tobmp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="exportBlendShape.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 21</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 17</value>
+  </data>
+  <data name="assetGroupOptions.Items2" xml:space="preserve">
+    <value>%source file name</value>
+  </data>
+  <data name="fbxVersion.Items1" xml:space="preserve">
+    <value>7.1</value>
+  </data>
+  <data name="filterPrecision.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;exportAllUvsAsDiffuseMaps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="jsonStructureCheckBox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;exportAllUvsAsDiffuseMaps.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="fbxFormat.Items" xml:space="preserve">
+    <value>%Binary</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="openAfterExport.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="&gt;&gt;scaleFactor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 17</value>
+  </data>
+  <data name="&gt;&gt;scaleFactor.Name" xml:space="preserve">
+    <value>scaleFactor</value>
+  </data>
+  <data name="eulerFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="restoreExtensionName.Text" xml:space="preserve">
+    <value>%Restore TextAsset extension name</value>
+  </data>
+  <data name="&gt;&gt;totga.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>292, 17</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 17</value>
+  </data>
+  <data name="fbxVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 25</value>
+  </data>
+  <data name="&gt;&gt;filterPrecision.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Cancel.Name" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="&gt;&gt;Cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="convertAudio.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;Cancel.Parent" xml:space="preserve">
+  <data name="converttexture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 21</value>
+  </data>
+  <data name="fbxFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;exportBlendShape.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="converttexture.Text" xml:space="preserve">
+    <value>%Convert Texture2D</value>
+  </data>
+  <data name="exportAllNodes.Text" xml:space="preserve">
+    <value>%Export all nodes</value>
+  </data>
+  <data name="fbxVersion.Items4" xml:space="preserve">
+    <value>7.4</value>
+  </data>
+  <data name="exportBlendShape.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="exportSkins.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;exportUvsTooltip.Name" xml:space="preserve">
+    <value>exportUvsTooltip</value>
+  </data>
+  <data name="&gt;&gt;castToBone.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="tobmp.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;OKbutton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Cancel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;jsonStructureCheckBox.Name" xml:space="preserve">
-    <value>jsonStructureCheckBox</value>
-  </data>
-  <data name="&gt;&gt;jsonStructureCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;jsonStructureCheckBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;jsonStructureCheckBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;openAfterExport.Name" xml:space="preserve">
-    <value>openAfterExport</value>
-  </data>
-  <data name="&gt;&gt;openAfterExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openAfterExport.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;openAfterExport.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;restoreExtensionName.Name" xml:space="preserve">
-    <value>restoreExtensionName</value>
-  </data>
-  <data name="&gt;&gt;restoreExtensionName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;restoreExtensionName.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;restoreExtensionName.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;assetGroupOptions.Name" xml:space="preserve">
-    <value>assetGroupOptions</value>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 42</value>
   </data>
   <data name="&gt;&gt;assetGroupOptions.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;assetGroupOptions.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;assetGroupOptions.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exportAllNodes.Name" xml:space="preserve">
+    <value>exportAllNodes</value>
+  </data>
+  <data name="filterPrecision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 52</value>
+  </data>
+  <data name="tojpg.Text" xml:space="preserve">
+    <value>Jpeg</value>
+  </data>
+  <data name="exportBlendShape.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="exportAnimations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 149</value>
+  </data>
+  <data name="exportAllUvsAsDiffuseMaps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 21</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;totga.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;castToBone.Name" xml:space="preserve">
+    <value>castToBone</value>
+  </data>
+  <data name="&gt;&gt;exportUvsTooltip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tobmp.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="exportAnimations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 21</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -231,806 +717,455 @@
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;convertAudio.Name" xml:space="preserve">
-    <value>convertAudio</value>
-  </data>
-  <data name="&gt;&gt;convertAudio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;convertAudio.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;convertAudio.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;converttexture.Name" xml:space="preserve">
-    <value>converttexture</value>
-  </data>
-  <data name="&gt;&gt;converttexture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;converttexture.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;converttexture.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 17</value>
-  </data>
-  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="assetGroupOptions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>567, 544</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 473</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>%Export</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="jsonStructureCheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="jsonStructureCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 258</value>
-  </data>
-  <data name="jsonStructureCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="jsonStructureCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 21</value>
-  </data>
-  <data name="jsonStructureCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="jsonStructureCheckBox.Text" xml:space="preserve">
-    <value>%Indented JSON</value>
-  </data>
-  <data name="openAfterExport.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="openAfterExport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 227</value>
+  <data name="&gt;&gt;jsonStructureCheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="openAfterExport.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="openAfterExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 21</value>
-  </data>
-  <data name="openAfterExport.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="openAfterExport.Text" xml:space="preserve">
-    <value>%Open folder after export</value>
-  </data>
-  <data name="restoreExtensionName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="restoreExtensionName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 82</value>
-  </data>
-  <data name="restoreExtensionName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="restoreExtensionName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 21</value>
-  </data>
-  <data name="restoreExtensionName.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="restoreExtensionName.Text" xml:space="preserve">
-    <value>%Restore TextAsset extension name</value>
-  </data>
-  <data name="assetGroupOptions.Items" xml:space="preserve">
-    <value>%type name</value>
-  </data>
-  <data name="assetGroupOptions.Items1" xml:space="preserve">
-    <value>%container path</value>
-  </data>
-  <data name="assetGroupOptions.Items2" xml:space="preserve">
-    <value>%source file name</value>
-  </data>
-  <data name="assetGroupOptions.Items3" xml:space="preserve">
-    <value>%do not group</value>
-  </data>
-  <data name="assetGroupOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 45</value>
-  </data>
-  <data name="assetGroupOptions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="assetGroupOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 25</value>
-  </data>
-  <data name="assetGroupOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 24</value>
-  </data>
-  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 17</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>%Group exported assets by</value>
-  </data>
-  <data name="convertAudio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="convertAudio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 196</value>
-  </data>
-  <data name="convertAudio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="convertAudio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 21</value>
-  </data>
-  <data name="convertAudio.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="convertAudio.Text" xml:space="preserve">
-    <value>%Convert AudioClip to WAV(PCM)</value>
-  </data>
-  <data name="&gt;&gt;totga.Name" xml:space="preserve">
-    <value>totga</value>
-  </data>
-  <data name="&gt;&gt;totga.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;totga.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;totga.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tojpg.Name" xml:space="preserve">
-    <value>tojpg</value>
-  </data>
-  <data name="&gt;&gt;tojpg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tojpg.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;tojpg.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;topng.Name" xml:space="preserve">
-    <value>topng</value>
-  </data>
-  <data name="&gt;&gt;topng.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;topng.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;topng.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tobmp.Name" xml:space="preserve">
-    <value>tobmp</value>
-  </data>
-  <data name="&gt;&gt;tobmp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tobmp.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;tobmp.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 144</value>
-  </data>
-  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 42</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="totga.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="totga.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 8</value>
-  </data>
-  <data name="totga.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="totga.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 21</value>
-  </data>
-  <data name="totga.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="totga.Text" xml:space="preserve">
-    <value>Tga</value>
-  </data>
-  <data name="tojpg.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tojpg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 8</value>
-  </data>
-  <data name="tojpg.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="tojpg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 21</value>
-  </data>
-  <data name="tojpg.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tojpg.Text" xml:space="preserve">
-    <value>Jpeg</value>
-  </data>
-  <data name="topng.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="topng.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 8</value>
-  </data>
-  <data name="topng.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="topng.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 21</value>
-  </data>
-  <data name="topng.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="topng.Text" xml:space="preserve">
-    <value>Png</value>
-  </data>
-  <data name="tobmp.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tobmp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 8</value>
-  </data>
-  <data name="tobmp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="tobmp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
-  </data>
-  <data name="tobmp.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tobmp.Text" xml:space="preserve">
-    <value>Bmp</value>
-  </data>
-  <data name="converttexture.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="converttexture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 113</value>
-  </data>
-  <data name="converttexture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="converttexture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 21</value>
-  </data>
-  <data name="converttexture.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="converttexture.Text" xml:space="preserve">
-    <value>%Convert Texture2D</value>
-  </data>
-  <data name="groupBox2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="exportUvsTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing">
-    <value>17, 17</value>
-  </data>
-  <data name="exportAllUvsAsDiffuseMaps.AccessibleDescription" xml:space="preserve">
-    <value />
-  </data>
-  <data name="exportAllUvsAsDiffuseMaps.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="exportAllUvsAsDiffuseMaps.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 242</value>
-  </data>
-  <data name="exportAllUvsAsDiffuseMaps.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="exportAllUvsAsDiffuseMaps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 21</value>
-  </data>
-  <data name="exportAllUvsAsDiffuseMaps.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="exportAllUvsAsDiffuseMaps.Text" xml:space="preserve">
-    <value>%Export all UVs as diffuse maps</value>
-  </data>
-  <data name="exportAllUvsAsDiffuseMaps.ToolTip" xml:space="preserve">
-    <value>Unchecked: UV1 exported as normal map. Check this if your export is missing a UV map.</value>
-  </data>
-  <data name="&gt;&gt;exportAllUvsAsDiffuseMaps.Name" xml:space="preserve">
-    <value>exportAllUvsAsDiffuseMaps</value>
-  </data>
-  <data name="&gt;&gt;exportAllUvsAsDiffuseMaps.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;exportAllUvsAsDiffuseMaps.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;exportAllUvsAsDiffuseMaps.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="exportBlendShape.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="exportBlendShape.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 180</value>
-  </data>
-  <data name="exportBlendShape.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="exportBlendShape.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 21</value>
-  </data>
-  <data name="exportBlendShape.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="exportBlendShape.Text" xml:space="preserve">
-    <value>%Export blendshape</value>
-  </data>
-  <data name="&gt;&gt;exportBlendShape.Name" xml:space="preserve">
-    <value>exportBlendShape</value>
-  </data>
-  <data name="&gt;&gt;exportBlendShape.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;exportBlendShape.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;exportBlendShape.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="exportAnimations.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="exportAnimations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 149</value>
-  </data>
-  <data name="exportAnimations.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="exportAnimations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 21</value>
-  </data>
-  <data name="exportAnimations.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="exportAnimations.Text" xml:space="preserve">
-    <value>%Export animations</value>
-  </data>
-  <data name="&gt;&gt;exportAnimations.Name" xml:space="preserve">
-    <value>exportAnimations</value>
-  </data>
-  <data name="&gt;&gt;exportAnimations.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;exportAnimations.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;exportAnimations.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="scaleFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 318</value>
-  </data>
-  <data name="scaleFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="scaleFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 23</value>
-  </data>
-  <data name="scaleFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="scaleFactor.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;scaleFactor.Name" xml:space="preserve">
-    <value>scaleFactor</value>
-  </data>
-  <data name="&gt;&gt;scaleFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;scaleFactor.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;scaleFactor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 320</value>
-  </data>
-  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 17</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>%ScaleFactor</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="fbxFormat.Items" xml:space="preserve">
-    <value>%Binary</value>
-  </data>
-  <data name="fbxFormat.Items1" xml:space="preserve">
-    <value>%Ascii</value>
-  </data>
-  <data name="fbxFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 360</value>
-  </data>
-  <data name="fbxFormat.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="fbxFormat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 25</value>
-  </data>
-  <data name="fbxFormat.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;fbxFormat.Name" xml:space="preserve">
-    <value>fbxFormat</value>
-  </data>
-  <data name="&gt;&gt;fbxFormat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fbxFormat.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;fbxFormat.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 366</value>
-  </data>
-  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 17</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>%FBX Format</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="fbxVersion.Items" xml:space="preserve">
-    <value>6.1</value>
-  </data>
-  <data name="fbxVersion.Items1" xml:space="preserve">
-    <value>7.1</value>
+  <data name="exportAllNodes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 86</value>
   </data>
   <data name="fbxVersion.Items2" xml:space="preserve">
     <value>7.2</value>
   </data>
-  <data name="fbxVersion.Items3" xml:space="preserve">
-    <value>7.3</value>
+  <data name="fbxFormat.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="fbxVersion.Items4" xml:space="preserve">
-    <value>7.4</value>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 366</value>
   </data>
-  <data name="fbxVersion.Items5" xml:space="preserve">
-    <value>7.5</value>
+  <data name="&gt;&gt;convertAudio.Name" xml:space="preserve">
+    <value>convertAudio</value>
   </data>
-  <data name="fbxVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 402</value>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="fbxVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="openAfterExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 227</value>
+  </data>
+  <data name="&gt;&gt;tobmp.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="fbxFormat.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="fbxVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 25</value>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="fbxVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;fbxVersion.Name" xml:space="preserve">
-    <value>fbxVersion</value>
-  </data>
-  <data name="&gt;&gt;fbxVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fbxVersion.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;fbxVersion.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 407</value>
   </data>
-  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 17</value>
+  <data name="OKbutton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 30</value>
   </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>%FBX Version</value>
+  <data name="tojpg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
+  <data name="&gt;&gt;converttexture.Name" xml:space="preserve">
+    <value>converttexture</value>
   </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+  <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;castToBone.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;assetGroupOptions.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="boneSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 280</value>
+  <data name="boneSize.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="totga.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="castToBone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 21</value>
   </data>
   <data name="boneSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="boneSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 23</value>
+  <data name="totga.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
-  <data name="boneSize.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="&gt;&gt;exportAllNodes.Parent" xml:space="preserve">
+    <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;boneSize.Name" xml:space="preserve">
-    <value>boneSize</value>
+  <data name="Cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 30</value>
   </data>
-  <data name="&gt;&gt;boneSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;openAfterExport.Name" xml:space="preserve">
+    <value>openAfterExport</value>
+  </data>
+  <data name="convertAudio.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;assetGroupOptions.Name" xml:space="preserve">
+    <value>assetGroupOptions</value>
+  </data>
+  <data name="exportSkins.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>%FBX Format</value>
+  </data>
+  <data name="totga.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="fbxVersion.Items3" xml:space="preserve">
+    <value>7.3</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>%Export options</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;exportAllNodes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="boneSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 280</value>
+  </data>
+  <data name="fbxVersion.Items" xml:space="preserve">
+    <value>6.1</value>
+  </data>
+  <data name="&gt;&gt;restoreExtensionName.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="assetGroupOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 45</value>
+  </data>
+  <data name="&gt;&gt;castToBone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="assetGroupOptions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tobmp.Text" xml:space="preserve">
+    <value>Bmp</value>
+  </data>
+  <data name="&gt;&gt;tojpg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 24</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;boneSize.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="exportAnimations.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;exportSkins.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;boneSize.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;eulerFilter.Name" xml:space="preserve">
+    <value>eulerFilter</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 282</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 17</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>%BoneSize</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="exportSkins.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="exportSkins.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 118</value>
-  </data>
-  <data name="exportSkins.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="exportSkins.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 21</value>
-  </data>
-  <data name="exportSkins.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="exportSkins.Text" xml:space="preserve">
-    <value>%Export skins</value>
-  </data>
-  <data name="&gt;&gt;exportSkins.Name" xml:space="preserve">
-    <value>exportSkins</value>
+  <data name="fbxFormat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 360</value>
   </data>
   <data name="&gt;&gt;exportSkins.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;exportSkins.Parent" xml:space="preserve">
+  <data name="&gt;&gt;eulerFilter.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;exportSkins.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;exportBlendShape.Name" xml:space="preserve">
+    <value>exportBlendShape</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 55</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 17</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>%FilterPrecision</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="filterPrecision.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 52</value>
-  </data>
-  <data name="filterPrecision.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="filterPrecision.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 23</value>
-  </data>
-  <data name="filterPrecision.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;filterPrecision.Name" xml:space="preserve">
-    <value>filterPrecision</value>
-  </data>
-  <data name="&gt;&gt;filterPrecision.Type" xml:space="preserve">
+  <data name="&gt;&gt;boneSize.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;filterPrecision.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="boneSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 23</value>
   </data>
-  <data name="&gt;&gt;filterPrecision.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 144</value>
   </data>
-  <data name="castToBone.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="scaleFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="exportAllUvsAsDiffuseMaps.Text" xml:space="preserve">
+    <value>%Export all UVs as diffuse maps</value>
+  </data>
+  <data name="&gt;&gt;boneSize.Name" xml:space="preserve">
+    <value>boneSize</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>%Group exported assets by</value>
+  </data>
+  <data name="&gt;&gt;openAfterExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;topng.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="topng.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;restoreExtensionName.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="converttexture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 113</value>
+  </data>
+  <data name="exportBlendShape.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;scaleFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="scaleFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;topng.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="restoreExtensionName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;OKbutton.Name" xml:space="preserve">
+    <value>OKbutton</value>
+  </data>
+  <data name="&gt;&gt;converttexture.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="exportBlendShape.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
   </data>
   <data name="castToBone.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 211</value>
   </data>
+  <data name="fbxVersion.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="boneSize.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;converttexture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="fbxVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="fbxVersion.Items5" xml:space="preserve">
+    <value>7.5</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 17</value>
+  </data>
+  <data name="jsonStructureCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 258</value>
+  </data>
+  <data name="&gt;&gt;convertAudio.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="exportAllUvsAsDiffuseMaps.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="tojpg.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="exportSkins.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="fbxVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 402</value>
+  </data>
+  <data name="totga.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 21</value>
+  </data>
+  <data name="&gt;&gt;openAfterExport.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;exportSkins.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="tobmp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="castToBone.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="castToBone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 21</value>
+  <data name="restoreExtensionName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="castToBone.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="exportAllNodes.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;exportAllNodes.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;fbxFormat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tojpg.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="openAfterExport.Text" xml:space="preserve">
+    <value>%Open folder after export</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="convertAudio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 21</value>
+  </data>
+  <data name="&gt;&gt;restoreExtensionName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tojpg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 8</value>
+  </data>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="converttexture.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="castToBone.Text" xml:space="preserve">
     <value>%All nodes cast to bone</value>
   </data>
-  <data name="&gt;&gt;castToBone.Name" xml:space="preserve">
-    <value>castToBone</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>%ScaleFactor</value>
   </data>
-  <data name="&gt;&gt;castToBone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;castToBone.Parent" xml:space="preserve">
+  <data name="&gt;&gt;fbxVersion.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;castToBone.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="restoreExtensionName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="exportAllNodes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="exportAllNodes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 86</value>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>465, 497</value>
+  </data>
+  <data name="tobmp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 8</value>
+  </data>
+  <data name="assetGroupOptions.Items" xml:space="preserve">
+    <value>%type name</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="openAfterExport.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OKbutton.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;convertAudio.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="eulerFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 28</value>
+  </data>
+  <data name="convertAudio.Text" xml:space="preserve">
+    <value>%Convert AudioClip to WAV(PCM)</value>
+  </data>
+  <data name="OKbutton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="totga.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;exportBlendShape.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="jsonStructureCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="&gt;&gt;eulerFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="exportAnimations.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;fbxFormat.Name" xml:space="preserve">
+    <value>fbxFormat</value>
+  </data>
+  <data name="OKbutton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="jsonStructureCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 21</value>
   </data>
   <data name="exportAllNodes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -1038,112 +1173,77 @@
   <data name="exportAllNodes.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 21</value>
   </data>
-  <data name="exportAllNodes.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="OKbutton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 497</value>
   </data>
-  <data name="exportAllNodes.Text" xml:space="preserve">
-    <value>%Export all nodes</value>
+  <data name="filterPrecision.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;exportAllNodes.Name" xml:space="preserve">
-    <value>exportAllNodes</value>
-  </data>
-  <data name="&gt;&gt;exportAllNodes.Type" xml:space="preserve">
+  <data name="&gt;&gt;convertAudio.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;exportAllNodes.Parent" xml:space="preserve">
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;exportAllNodes.ZOrder" xml:space="preserve">
-    <value>15</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;jsonStructureCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fbxFormat.Items1" xml:space="preserve">
+    <value>%Ascii</value>
+  </data>
+  <data name="assetGroupOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tojpg.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="exportAnimations.Text" xml:space="preserve">
+    <value>%Export animations</value>
   </data>
   <data name="eulerFilter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="eulerFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 28</value>
+  <data name="&gt;&gt;filterPrecision.ZOrder" xml:space="preserve">
+    <value>13</value>
   </data>
-  <data name="eulerFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="scaleFactor.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="eulerFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 21</value>
-  </data>
-  <data name="eulerFilter.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="eulerFilter.Text" xml:space="preserve">
-    <value>%EulerFilter</value>
-  </data>
-  <data name="&gt;&gt;eulerFilter.Name" xml:space="preserve">
-    <value>eulerFilter</value>
-  </data>
-  <data name="&gt;&gt;eulerFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;eulerFilter.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;eulerFilter.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 17</value>
-  </data>
-  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 473</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>%Fbx</value>
+  <data name="totga.Text" xml:space="preserve">
+    <value>Tga</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 17</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>567, 544</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="&gt;&gt;scaleFactor.Parent" xml:space="preserve">
+    <value>groupBox2</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>%Export options</value>
+  <data name="openAfterExport.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="&gt;&gt;exportUvsTooltip.Name" xml:space="preserve">
-    <value>exportUvsTooltip</value>
+  <data name="convertAudio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 196</value>
   </data>
-  <data name="&gt;&gt;exportUvsTooltip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ExportOptions</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="exportUvsTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

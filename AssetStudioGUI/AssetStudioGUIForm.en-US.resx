@@ -288,7 +288,7 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
     <value>223, 22</value>
   </data>
   <data name="ui_menuOptions_language.Text" xml:space="preserve">
-    <value>Language</value>
+    <value>UI Language</value>
   </data>
   <data name="ui_menuOptions_separator0.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 6</value>

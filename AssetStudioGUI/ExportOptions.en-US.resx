@@ -120,11 +120,20 @@
   <data name="OKbutton.Text" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="OKbutton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="Cancel.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Cancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Export</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="jsonStructureCheckBox.Size" type="System.Drawing.Size, System.Drawing">
@@ -133,17 +142,26 @@
   <data name="jsonStructureCheckBox.Text" xml:space="preserve">
     <value>Indented JSON</value>
   </data>
+  <data name="jsonStructureCheckBox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="openAfterExport.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 21</value>
   </data>
   <data name="openAfterExport.Text" xml:space="preserve">
     <value>Open folder after export</value>
   </data>
+  <data name="openAfterExport.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="restoreExtensionName.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 21</value>
   </data>
   <data name="restoreExtensionName.Text" xml:space="preserve">
     <value>Restore TextAsset extension name</value>
+  </data>
+  <data name="restoreExtensionName.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="assetGroupOptions.Items" xml:space="preserve">
     <value>Type Name</value>
@@ -160,11 +178,17 @@
   <data name="assetGroupOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>24, 45</value>
   </data>
+  <data name="assetGroupOptions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 17</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Group exported assets by</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="convertAudio.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 21</value>
@@ -172,14 +196,26 @@
   <data name="convertAudio.Text" xml:space="preserve">
     <value>Convert AudioClip to WAV(PCM)</value>
   </data>
+  <data name="convertAudio.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="totga.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 21</value>
   </data>
   <data name="totga.Text" xml:space="preserve">
     <value>TGA</value>
   </data>
+  <data name="totga.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tojpg.Text" xml:space="preserve">
     <value>JPEG</value>
+  </data>
+  <data name="tojpg.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="topng.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 21</value>
@@ -187,8 +223,14 @@
   <data name="topng.Text" xml:space="preserve">
     <value>PNG</value>
   </data>
+  <data name="topng.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tobmp.Text" xml:space="preserve">
     <value>BMP</value>
+  </data>
+  <data name="tobmp.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="converttexture.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 21</value>
@@ -196,8 +238,14 @@
   <data name="converttexture.Text" xml:space="preserve">
     <value>Convert Texture2D</value>
   </data>
+  <data name="converttexture.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>FBX</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="exportAllUvsAsDiffuseMaps.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 21</value>
@@ -211,11 +259,20 @@
   <data name="exportBlendShape.Text" xml:space="preserve">
     <value>Export blendshape</value>
   </data>
+  <data name="exportBlendShape.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="exportAnimations.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
   </data>
   <data name="exportAnimations.Text" xml:space="preserve">
     <value>Export animations</value>
+  </data>
+  <data name="exportAnimations.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="scaleFactor.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 17</value>
@@ -223,11 +280,20 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Scale Factor</value>
   </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fbxFormat.Items" xml:space="preserve">
+    <value>Binary</value>
+  </data>
   <data name="fbxFormat.Items1" xml:space="preserve">
     <value>Text (ASCII)</value>
   </data>
   <data name="fbxFormat.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 360</value>
+  </data>
+  <data name="fbxFormat.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 17</value>
@@ -235,8 +301,14 @@
   <data name="label4.Text" xml:space="preserve">
     <value>FBX Format</value>
   </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="fbxVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 402</value>
+  </data>
+  <data name="fbxVersion.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 17</value>
@@ -244,8 +316,14 @@
   <data name="label3.Text" xml:space="preserve">
     <value>FBX Version</value>
   </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="boneSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 279</value>
+  </data>
+  <data name="boneSize.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 17</value>
@@ -253,11 +331,17 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Bone Size</value>
   </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="exportSkins.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 21</value>
   </data>
   <data name="exportSkins.Text" xml:space="preserve">
     <value>Export skins</value>
+  </data>
+  <data name="exportSkins.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 17</value>
@@ -265,11 +349,20 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Filter Precision</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="filterPrecision.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="castToBone.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 21</value>
   </data>
   <data name="castToBone.Text" xml:space="preserve">
     <value>All nodes cast to bone</value>
+  </data>
+  <data name="castToBone.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="exportAllNodes.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 21</value>
@@ -277,13 +370,22 @@
   <data name="exportAllNodes.Text" xml:space="preserve">
     <value>Export all nodes</value>
   </data>
+  <data name="exportAllNodes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="eulerFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 21</value>
   </data>
   <data name="eulerFilter.Text" xml:space="preserve">
     <value>Euler Filter</value>
   </data>
+  <data name="eulerFilter.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Export options</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
