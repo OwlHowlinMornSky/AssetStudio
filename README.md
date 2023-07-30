@@ -2,11 +2,10 @@
 
 ## Changes
 
-* New feature: Special export.
 * New feature: Export structured.
 * New featrue: Export to JSON (Dump, Asset List).
-* New featrue: Language system.
-* Enhancement: Better preview of mesh.
+* New featrue: UI Language Setting.
+* Enhancement: Improved preview of mesh, audio.
 
 [日志](./doc/changes.zh.md)
 
