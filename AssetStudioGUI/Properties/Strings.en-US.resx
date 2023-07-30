@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Export_Exporting" xml:space="preserve">
-    <value>Exporting</value>
+  <data name="Debug_FinishExportClassStructure" xml:space="preserve">
+    <value>Debug: Finished exporting class structures.</value>
+  </data>
+  <data name="Export_FinishExtracting" xml:space="preserve">
+    <value>Finished extracting {0} files.</value>
+  </data>
+  <data name="Export_Nothing" xml:space="preserve">
+    <value>No exportable assets loaded.</value>
+  </data>
+  <data name="Export_Object_Nothing" xml:space="preserve">
+    <value>No Objects available for export.</value>
+  </data>
+  <data name="Export_Object_Nothing_Selected" xml:space="preserve">
+    <value>No Object selected for export.</value>
+  </data>
+  <data name="Export_SaveFolderDialog_Title" xml:space="preserve">
+    <value>Select the save folder</value>
   </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
     <value>Restart to apply the change.</value>
@@ -126,14 +141,32 @@
   <data name="LangSet_OkMessageboxTitle" xml:space="preserve">
     <value>Change language</value>
   </data>
+  <data name="Load_AndFailRead" xml:space="preserve">
+    <value> And {0} assets failed to read.</value>
+  </data>
   <data name="Load_FinishLoading" xml:space="preserve">
     <value>Finished loading {0} files with {1} exportable assets.</value>
   </data>
   <data name="Load_NoProductName" xml:space="preserve">
     <value>no product name</value>
   </data>
+  <data name="Load_NoThing" xml:space="preserve">
+    <value>No Unity file can be loaded.</value>
+  </data>
+  <data name="OHMS_new_folder_failed" xml:space="preserve">
+    <value>Cannot create folder.</value>
+  </data>
+  <data name="OHMS_new_folder_failed_title" xml:space="preserve">
+    <value>Please check output directory</value>
+  </data>
   <data name="Preview_Audio_formatHead" xml:space="preserve">
     <value>Compression format:</value>
+  </data>
+  <data name="Preview_Exception" xml:space="preserve">
+    <value>Preview {0}:{1} error</value>
+  </data>
+  <data name="Preview_Font_Unsupported" xml:space="preserve">
+    <value>Unsupported font for preview. Try to export.</value>
   </data>
   <data name="Preview_GL_info" xml:space="preserve">
     <value>Using OpenGL Version: {0}
@@ -141,6 +174,106 @@
 'Ctrl + W' = Wireframe | 'Ctrl + S' = Shade | 'Ctrl + N' = ReNormal | 'Ctrl + R' = Reset</value>
   </data>
   <data name="Preview_GL_unable" xml:space="preserve">
-    <value>Unable to preview this mesh</value>
+    <value>Unable to preview this mesh.</value>
+  </data>
+  <data name="Preview_GL_unable1" xml:space="preserve">
+    <value>This mesh is empty.</value>
+  </data>
+  <data name="Preview_OnlyExport" xml:space="preserve">
+    <value>Only supported export.</value>
+  </data>
+  <data name="Preview_OnlyExport_Animator" xml:space="preserve">
+    <value>Can be exported with Animator or Objects.</value>
+  </data>
+  <data name="Preview_OnlyExport_FBX" xml:space="preserve">
+    <value>Can be exported to FBX file.</value>
+  </data>
+  <data name="Preview_Shader_Serialized" xml:space="preserve">
+    <value>Serialized Shader can't be read.</value>
+  </data>
+  <data name="Preview_Sprite_info" xml:space="preserve">
+    <value>Width: {0}
+Height: {1}</value>
+  </data>
+  <data name="Preview_Sprite_unsupported" xml:space="preserve">
+    <value>Unsupported sprite for preview.</value>
+  </data>
+  <data name="Preview_Tex2D_Channel_Toggle" xml:space="preserve">
+    <value>for Channel Toggle.</value>
+  </data>
+  <data name="Preview_Tex2D_info" xml:space="preserve">
+    <value>Width: {0}
+Height: {1}
+Format: {2}</value>
+  </data>
+  <data name="Preview_Tex2D_info_channels" xml:space="preserve">
+    <value>Channels: </value>
+  </data>
+  <data name="Preview_Tex2D_info_channels_none" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Preview_Tex2D_info_Filter_Mode" xml:space="preserve">
+    <value>Filter Mode: {0}</value>
+  </data>
+  <data name="Preview_Tex2D_info_Filter_Mode_Bilinear" xml:space="preserve">
+    <value>Bilinear</value>
+  </data>
+  <data name="Preview_Tex2D_info_Filter_Mode_Point" xml:space="preserve">
+    <value>Point</value>
+  </data>
+  <data name="Preview_Tex2D_info_Filter_Mode_Trilinear" xml:space="preserve">
+    <value>Trilinear</value>
+  </data>
+  <data name="Preview_Tex2D_info_mipmap" xml:space="preserve">
+    <value>Anisotropic level: {0}
+Mip map bias: {1}</value>
+  </data>
+  <data name="Preview_Tex2D_info_wrap" xml:space="preserve">
+    <value>Wrap mode: </value>
+  </data>
+  <data name="Preview_Tex2D_info_wrap_clamp" xml:space="preserve">
+    <value>Clamp</value>
+  </data>
+  <data name="Preview_Tex2D_info_wrap_repeat" xml:space="preserve">
+    <value>Repeat</value>
+  </data>
+  <data name="Preview_Tex2D_unsupported" xml:space="preserve">
+    <value>Unsupported image for preview.</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Ready to Go.</value>
+  </data>
+  <data name="Studio_BuildingAssetList" xml:space="preserve">
+    <value>Building asset list...</value>
+  </data>
+  <data name="Studio_BuildingTreeStructure" xml:space="preserve">
+    <value>Building tree structure...</value>
+  </data>
+  <data name="Studio_Decompressing" xml:space="preserve">
+    <value>Decompressing</value>
+  </data>
+  <data name="Studio_Exporting" xml:space="preserve">
+    <value>Exporting</value>
+  </data>
+  <data name="Studio_Export_Exception" xml:space="preserve">
+    <value>Export {0}:{1} error.</value>
+  </data>
+  <data name="Studio_Export_FinishedExporting" xml:space="preserve">
+    <value>Finished exporting {0} assets.</value>
+  </data>
+  <data name="Studio_Export_FinishedExporting_List" xml:space="preserve">
+    <value>Finished exporting asset list with {0} items.</value>
+  </data>
+  <data name="Studio_Export_FinishedExporting_Skipped" xml:space="preserve">
+    <value>{0} assets skipped. (not extractable or files already exist)</value>
+  </data>
+  <data name="Studio_Export_NothingExported" xml:space="preserve">
+    <value>Nothing exported.</value>
+  </data>
+  <data name="Studio_Finished_OHMS_EXPORT_STRUCT" xml:space="preserve">
+    <value>Finished structured export</value>
+  </data>
+  <data name="Studio_SelectAssemblyFolder" xml:space="preserve">
+    <value>Select Assembly Folder</value>
   </data>
 </root>

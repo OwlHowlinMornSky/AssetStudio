@@ -83,7 +83,8 @@ namespace AssetStudioGUI {
 		}
 
 		private static int ExtractBundleFile(FileReader reader, string savePath) {
-			StatusStripUpdate($"Decompressing {reader.FileName} ...");
+			//StatusStripUpdate($"Decompressing {reader.FileName} ...");
+			StatusStripUpdate(Properties.Strings.Studio_Decompressing + $" {reader.FileName} ...");
 			var bundleFile = new BundleFile(reader);
 			reader.Dispose();
 			if (bundleFile.fileList.Length > 0) {
@@ -94,7 +95,8 @@ namespace AssetStudioGUI {
 		}
 
 		private static int ExtractWebDataFile(FileReader reader, string savePath) {
-			StatusStripUpdate($"Decompressing {reader.FileName} ...");
+			//StatusStripUpdate($"Decompressing {reader.FileName} ...");
+			StatusStripUpdate(Properties.Strings.Studio_Decompressing + $" {reader.FileName} ...");
 			var webFile = new WebFile(reader);
 			reader.Dispose();
 			if (webFile.fileList.Length > 0) {
@@ -124,7 +126,8 @@ namespace AssetStudioGUI {
 		}
 
 		public static (string, List<TreeNode>) BuildAssetData() {
-			StatusStripUpdate("Building asset list...");
+			//StatusStripUpdate("Building asset list...");
+			StatusStripUpdate(Properties.Strings.Studio_BuildingAssetList);
 
 			string productName = null;
 			var objectCount = assetsManager.assetsFileList.Sum(x => x.Objects.Count);
@@ -213,8 +216,8 @@ namespace AssetStudioGUI {
 						break;
 					}
 					if (assetItem.Text == "") {
-						//assetItem.Text = assetItem.TypeString + assetItem.UniqueID; // OHMS IMPORTANT DEBUG
-						assetItem.Text = "#" + assetItem.ID;
+						assetItem.Text = assetItem.TypeString + assetItem.UniqueID; // OHMS IMPORTANT DEBUG
+						//assetItem.Text = "#" + assetItem.ID;
 					}
 					if (Properties.Settings.Default.displayAll || exportable) {
 						exportableAssets.Add(assetItem);
@@ -234,7 +237,8 @@ namespace AssetStudioGUI {
 
 			visibleAssets = exportableAssets;
 
-			StatusStripUpdate("Building tree structure...");
+			//StatusStripUpdate("Building tree structure...");
+			StatusStripUpdate(Properties.Strings.Studio_BuildingTreeStructure);
 
 			var treeNodeCollection = new List<TreeNode>();
 			var treeNodeDictionary = new Dictionary<GameObject, GameObjectTreeNode>();
@@ -361,7 +365,9 @@ namespace AssetStudioGUI {
 						break;
 					}
 					exportPath += Path.DirectorySeparatorChar;
-					StatusStripUpdate($"[{exportedCount}/{toExportCount}] Exporting {asset.TypeString}: {asset.Text}");
+					//StatusStripUpdate($"[{exportedCount}/{toExportCount}] Exporting {asset.TypeString}: {asset.Text}");
+					StatusStripUpdate($"[{exportedCount}/{toExportCount}] " +
+						Properties.Strings.Studio_Exporting + $" {asset.TypeString}:{asset.Text}");
 					try {
 						switch (exportType) {
 						case ExportType.Raw:
@@ -392,16 +398,24 @@ namespace AssetStudioGUI {
 						}
 					}
 					catch (Exception ex) {
-						MessageBox.Show($"Export {asset.Type}:{asset.Text} error\r\n{ex.Message}\r\n{ex.StackTrace}");
+						//MessageBox.Show($"Export {asset.Type}:{asset.Text} error\r\n{ex.Message}\r\n{ex.StackTrace}");
+						MessageBox.Show(
+							String.Format(Properties.Strings.Studio_Export_Exception, asset.Type, asset.Text)
+							+ $"\r\n{ex.Message}\r\n{ex.StackTrace}");
 					}
 
 					Progress.Report(++i, toExportCount);
 				}
 
-				var statusText = exportedCount == 0 ? "Nothing exported." : $"Finished exporting {exportedCount} assets.";
+				//var statusText = exportedCount == 0 ? "Nothing exported." : $"Finished exporting {exportedCount} assets.";
+				var statusText = exportedCount == 0 ?
+					Properties.Strings.Studio_Export_NothingExported :
+					String.Format(Properties.Strings.Studio_Export_FinishedExporting, exportedCount);
 
 				if (toExportCount > exportedCount) {
-					statusText += $" {toExportCount - exportedCount} assets skipped (not extractable or files already exist)";
+					statusText += " " +
+						//$"{toExportCount - exportedCount} assets skipped (not extractable or files already exist)";
+						String.Format(Properties.Strings.Studio_Export_FinishedExporting_Skipped, toExportCount - exportedCount);
 				}
 
 				StatusStripUpdate(statusText);
@@ -474,7 +488,8 @@ namespace AssetStudioGUI {
 				}
 				}
 
-				var statusText = $"Finished exporting asset list with {toExportAssets.Count()} items.";
+				//var statusText = $"Finished exporting asset list with {toExportAssets.Count()} items.";
+				var statusText = String.Format(Properties.Strings.Studio_Export_FinishedExporting_List, toExportAssets.Count());
 
 				StatusStripUpdate(statusText);
 
@@ -596,15 +611,18 @@ namespace AssetStudioGUI {
 					}
 					exportPath += Path.DirectorySeparatorChar;
 					StatusStripUpdate($"[{exportedCount}/{toExportCount}] "
-						+ Properties.Strings.Export_Exporting
-						+ $" {asset.TypeString}: {asset.Text}");
+						+ Properties.Strings.Studio_Exporting
+						+ $" {asset.TypeString}:{asset.Text}");
 					try {
 						if (ExportConvertFileOHMS(asset, exportPath)) {
 							++exportedCount;
 						}
 					}
 					catch (Exception ex) {
-						MessageBox.Show($"Export {asset.Type}:{asset.Text} error\r\n{ex.Message}\r\n{ex.StackTrace}");
+						//MessageBox.Show($"Export {asset.Type}:{asset.Text} error\r\n{ex.Message}\r\n{ex.StackTrace}");
+						MessageBox.Show(
+							String.Format(Properties.Strings.Studio_Export_Exception, asset.Type, asset.Text)
+							+ $"\r\n{ex.Message}\r\n{ex.StackTrace}");
 					}
 
 					Progress.Report(++i, toExportCount);
@@ -616,7 +634,9 @@ namespace AssetStudioGUI {
 				++exportedCount;
 				Progress.Report(++i, toExportCount);
 
-				var statusText = $"Finished OHMS_EXPORT_STRUCT [{exportedCount}/{toExportCount}].";
+				//var statusText = "Finished OHMS_EXPORT_STRUCT" + $" [{exportedCount}/{toExportCount}].";
+				var statusText = Properties.Strings.Studio_Finished_OHMS_EXPORT_STRUCT
+				+ $" [{exportedCount}/{toExportCount}].";
 				StatusStripUpdate(statusText);
 
 				if (Properties.Settings.Default.openAfterExport) {
@@ -792,7 +812,8 @@ namespace AssetStudioGUI {
 		public static TypeTree MonoBehaviourToTypeTree(MonoBehaviour m_MonoBehaviour) {
 			if (!assemblyLoader.Loaded) {
 				var openFolderDialog = new OpenFolderDialog();
-				openFolderDialog.Title = "Select Assembly Folder";
+				//openFolderDialog.Title = "Select Assembly Folder";
+				openFolderDialog.Title = Properties.Strings.Studio_SelectAssemblyFolder;
 				if (openFolderDialog.ShowDialog() == DialogResult.OK) {
 					assemblyLoader.Load(openFolderDialog.Folder);
 				}

@@ -90,13 +90,12 @@ namespace AssetStudioGUI.Properties {
         ///void main()
         ///{
         ///	vec3 unitNormal = normalize(normal);
-        ///	float nDotProduct = clamp(dot(unitNormal, vec3(0.707, 0, 0.707)), 0, 1);
-        ///	vec2 ContributionWeightsSqrt = vec2(0.5, 0.5f) + vec2(0.5f, -0.5f) * unitNormal.y;
+        ///	float nDotProduct = clamp(dot(unitNormal, vec3(0.7071067811865475244, 0, 0.7071067811865475244)), 0, 1);
+        ///	vec2 ContributionWeightsSqrt = vec2(0.5, 0.5) + vec2(0.5, -0.5) * unitNormal.y;
         ///	vec2 ContributionWeights = ContributionWeightsSqrt * ContributionWeightsSqrt;
         ///
-        ///	vec3 color = nDotProduct * vec3(1, 0.957, 0.839) / 3.14159;
-        ///	color += vec3(0.779, 0.716, 0.453) * ContributionWeights.y;
-        ///	color += vec3(0.368, 0.477, 0. [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///	vec3 color = nDotProduct * vec3(1, 0.957, 0.839) / 3.1415926535897932384626433832795028841971;
+        ///	color += vec3(0.779, 0.716,  [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         internal static string shader_fs {
             get {

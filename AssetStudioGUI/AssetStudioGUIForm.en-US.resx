@@ -233,9 +233,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_tabRight_page2.Text" xml:space="preserve">
     <value>Dump(JSON)</value>
   </data>
-  <data name="ui_statusLabel0_down.Text" xml:space="preserve">
-    <value>Ready to Go.</value>
-  </data>
   <data name="ui_menuFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 21</value>
   </data>

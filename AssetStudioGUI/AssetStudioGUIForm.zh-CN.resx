@@ -233,9 +233,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_tabRight_page2.Text" xml:space="preserve">
     <value>转储(JSON)</value>
   </data>
-  <data name="ui_statusLabel0_down.Text" xml:space="preserve">
-    <value>就绪</value>
-  </data>
   <data name="ui_menuFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 21</value>
   </data>
@@ -336,7 +333,7 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
     <value>筛选</value>
   </data>
   <data name="ui_menuFilter_0_all.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>100, 22</value>
   </data>
   <data name="ui_menuFilter_0_all.Text" xml:space="preserve">
     <value>全部</value>
@@ -546,19 +543,19 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
     <value>调试</value>
   </data>
   <data name="ui_menuDebug_showErrorMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="ui_menuDebug_showErrorMessage.Text" xml:space="preserve">
     <value>显示报错消息</value>
   </data>
   <data name="ui_menuDebug_exportClassStructures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="ui_menuDebug_exportClassStructures.Text" xml:space="preserve">
     <value>导出“类的结构”</value>
   </data>
   <data name="ui_TEST_ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="ui_menuOhmsExport.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 21</value>
@@ -654,13 +651,13 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
     <value>[明日方舟]</value>
   </data>
   <data name="ui_menuOhmsExport_arknights_sceneBundle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="ui_menuOhmsExport_arknights_sceneBundle.Text" xml:space="preserve">
     <value>Scene 包</value>
   </data>
   <data name="ui_menuOhmsExport_arknights_charartBundle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="ui_menuOhmsExport_arknights_charartBundle.Text" xml:space="preserve">
     <value>CharArt 包</value>

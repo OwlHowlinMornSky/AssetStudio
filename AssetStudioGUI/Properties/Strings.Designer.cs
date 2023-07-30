@@ -61,11 +61,56 @@ namespace AssetStudioGUI.Properties {
         }
         
         /// <summary>
-        ///   查找类似 %Exporting% 的本地化字符串。
+        ///   查找类似 %DEBUG:ExportClassStructure% 的本地化字符串。
         /// </summary>
-        internal static string Export_Exporting {
+        internal static string Debug_FinishExportClassStructure {
             get {
-                return ResourceManager.GetString("Export_Exporting", resourceCulture);
+                return ResourceManager.GetString("Debug_FinishExportClassStructure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Finish_Extract:{0}% 的本地化字符串。
+        /// </summary>
+        internal static string Export_FinishExtracting {
+            get {
+                return ResourceManager.GetString("Export_FinishExtracting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %No_Available% 的本地化字符串。
+        /// </summary>
+        internal static string Export_Nothing {
+            get {
+                return ResourceManager.GetString("Export_Nothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %No_Object% 的本地化字符串。
+        /// </summary>
+        internal static string Export_Object_Nothing {
+            get {
+                return ResourceManager.GetString("Export_Object_Nothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %No_Object_Selected% 的本地化字符串。
+        /// </summary>
+        internal static string Export_Object_Nothing_Selected {
+            get {
+                return ResourceManager.GetString("Export_Object_Nothing_Selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Select_Path% 的本地化字符串。
+        /// </summary>
+        internal static string Export_SaveFolderDialog_Title {
+            get {
+                return ResourceManager.GetString("Export_SaveFolderDialog_Title", resourceCulture);
             }
         }
         
@@ -88,7 +133,16 @@ namespace AssetStudioGUI.Properties {
         }
         
         /// <summary>
-        ///   查找类似 %{0}%{1}% 的本地化字符串。
+        ///   查找类似 %Failed_Reading:{0}% 的本地化字符串。
+        /// </summary>
+        internal static string Load_AndFailRead {
+            get {
+                return ResourceManager.GetString("Load_AndFailRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Finish_Loading:{0}/{1}% 的本地化字符串。
         /// </summary>
         internal static string Load_FinishLoading {
             get {
@@ -106,11 +160,56 @@ namespace AssetStudioGUI.Properties {
         }
         
         /// <summary>
-        ///   查找类似 %Format% 的本地化字符串。
+        ///   查找类似 %No_Unity_File_Can_be_Loaded.% 的本地化字符串。
+        /// </summary>
+        internal static string Load_NoThing {
+            get {
+                return ResourceManager.GetString("Load_NoThing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Cannot create folder. 的本地化字符串。
+        /// </summary>
+        internal static string OHMS_new_folder_failed {
+            get {
+                return ResourceManager.GetString("OHMS_new_folder_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Please check output directory 的本地化字符串。
+        /// </summary>
+        internal static string OHMS_new_folder_failed_title {
+            get {
+                return ResourceManager.GetString("OHMS_new_folder_failed_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Audio_Format% 的本地化字符串。
         /// </summary>
         internal static string Preview_Audio_formatHead {
             get {
                 return ResourceManager.GetString("Preview_Audio_formatHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Preview_Error-{0}:{1} % 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Exception {
+            get {
+                return ResourceManager.GetString("Preview_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Unsupported_Font% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Font_Unsupported {
+            get {
+                return ResourceManager.GetString("Preview_Font_Unsupported", resourceCulture);
             }
         }
         
@@ -129,6 +228,298 @@ namespace AssetStudioGUI.Properties {
         internal static string Preview_GL_unable {
             get {
                 return ResourceManager.GetString("Preview_GL_unable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %GL_Not_Supported1% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_GL_unable1 {
+            get {
+                return ResourceManager.GetString("Preview_GL_unable1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %OnlyExport_NoPreview% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_OnlyExport {
+            get {
+                return ResourceManager.GetString("Preview_OnlyExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %OnlyExport_NoPreview-Animator/Objects% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_OnlyExport_Animator {
+            get {
+                return ResourceManager.GetString("Preview_OnlyExport_Animator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %OnlyExport_NoPreview-FBX% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_OnlyExport_FBX {
+            get {
+                return ResourceManager.GetString("Preview_OnlyExport_FBX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Unable_to_Read_Serialized_Shader.% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Shader_Serialized {
+            get {
+                return ResourceManager.GetString("Preview_Shader_Serialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Width: {0}%
+        ///%Height: {1}% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Sprite_info {
+            get {
+                return ResourceManager.GetString("Preview_Sprite_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Unsupported_Sprite% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Sprite_unsupported {
+            get {
+                return ResourceManager.GetString("Preview_Sprite_unsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Channel_Toggle% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_Channel_Toggle {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_Channel_Toggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Width: {0}%
+        ///%Height: {1}%
+        ///%Format: {2}% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Channels%:  的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_channels {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_channels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %NONE% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_channels_none {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_channels_none", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %FilterMode: {0}% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_Filter_Mode {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_Filter_Mode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Bilinear% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_Filter_Mode_Bilinear {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_Filter_Mode_Bilinear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Point% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_Filter_Mode_Point {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_Filter_Mode_Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Trilinear% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_Filter_Mode_Trilinear {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_Filter_Mode_Trilinear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Anisotropic level: {0}%
+        ///%Mip map bias: {1}% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_mipmap {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_mipmap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Wrap mode:  的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_wrap {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_wrap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Clamp% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_wrap_clamp {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_wrap_clamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Repeat% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_info_wrap_repeat {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_info_wrap_repeat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Unsupported_Texture% 的本地化字符串。
+        /// </summary>
+        internal static string Preview_Tex2D_unsupported {
+            get {
+                return ResourceManager.GetString("Preview_Tex2D_unsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Ready2Go% 的本地化字符串。
+        /// </summary>
+        internal static string Status_Ready {
+            get {
+                return ResourceManager.GetString("Status_Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Building asset list...% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_BuildingAssetList {
+            get {
+                return ResourceManager.GetString("Studio_BuildingAssetList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Building tree structure...% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_BuildingTreeStructure {
+            get {
+                return ResourceManager.GetString("Studio_BuildingTreeStructure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Decompressing% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_Decompressing {
+            get {
+                return ResourceManager.GetString("Studio_Decompressing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Export {0}:{1} error% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_Export_Exception {
+            get {
+                return ResourceManager.GetString("Studio_Export_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Finished exporting {0} assets.% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_Export_FinishedExporting {
+            get {
+                return ResourceManager.GetString("Studio_Export_FinishedExporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Finished exporting asset list with {0} items.% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_Export_FinishedExporting_List {
+            get {
+                return ResourceManager.GetString("Studio_Export_FinishedExporting_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %{0} assets skipped.% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_Export_FinishedExporting_Skipped {
+            get {
+                return ResourceManager.GetString("Studio_Export_FinishedExporting_Skipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Nothing exported.% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_Export_NothingExported {
+            get {
+                return ResourceManager.GetString("Studio_Export_NothingExported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Exporting% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_Exporting {
+            get {
+                return ResourceManager.GetString("Studio_Exporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Finished OHMS_EXPORT_STRUCT% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_Finished_OHMS_EXPORT_STRUCT {
+            get {
+                return ResourceManager.GetString("Studio_Finished_OHMS_EXPORT_STRUCT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %Select Assembly Folder% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_SelectAssemblyFolder {
+            get {
+                return ResourceManager.GetString("Studio_SelectAssemblyFolder", resourceCulture);
             }
         }
     }

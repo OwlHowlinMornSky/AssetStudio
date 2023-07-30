@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Export_Exporting" xml:space="preserve">
-    <value>导出中</value>
+  <data name="Debug_FinishExportClassStructure" xml:space="preserve">
+    <value>调试：已经导出了类结构。</value>
+  </data>
+  <data name="Export_FinishExtracting" xml:space="preserve">
+    <value>已经提取了 {0} 个文件。</value>
+  </data>
+  <data name="Export_Nothing" xml:space="preserve">
+    <value>没有可导出的资料。</value>
+  </data>
+  <data name="Export_Object_Nothing" xml:space="preserve">
+    <value>没有可供导出的对象。</value>
+  </data>
+  <data name="Export_Object_Nothing_Selected" xml:space="preserve">
+    <value>所选的项中没有可供导出的对象。</value>
+  </data>
+  <data name="Export_SaveFolderDialog_Title" xml:space="preserve">
+    <value>选择输出位置</value>
   </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
     <value>语言改动将在重启后生效。</value>
@@ -126,14 +141,32 @@
   <data name="LangSet_OkMessageboxTitle" xml:space="preserve">
     <value>更改语言</value>
   </data>
+  <data name="Load_AndFailRead" xml:space="preserve">
+    <value>其中 {0} 个资料加载失败。</value>
+  </data>
   <data name="Load_FinishLoading" xml:space="preserve">
-    <value>加载了 {0} 个文件，共计 {1} 个可导出的资料。</value>
+    <value>已经加载了 {0} 个文件，共计 {1} 个可导出的资料。</value>
   </data>
   <data name="Load_NoProductName" xml:space="preserve">
     <value>无产品名</value>
   </data>
+  <data name="Load_NoThing" xml:space="preserve">
+    <value>没有可加载的 Unity 文件。</value>
+  </data>
+  <data name="OHMS_new_folder_failed" xml:space="preserve">
+    <value>无法创建文件夹。</value>
+  </data>
+  <data name="OHMS_new_folder_failed_title" xml:space="preserve">
+    <value>请检查输出目录</value>
+  </data>
   <data name="Preview_Audio_formatHead" xml:space="preserve">
     <value>编码格式：</value>
+  </data>
+  <data name="Preview_Exception" xml:space="preserve">
+    <value>预览 {0}:{1} 时出错。</value>
+  </data>
+  <data name="Preview_Font_Unsupported" xml:space="preserve">
+    <value>不支持预览的字体。请尝试导出。</value>
   </data>
   <data name="Preview_GL_info" xml:space="preserve">
     <value>使用的 OpenGL 的版本：{0}
@@ -141,6 +174,106 @@
 'Ctrl + W' = 线框 | 'Ctrl + S' = 阴影 | 'Ctrl + N' = 重算法线 | 'Ctrl + R' = 重置</value>
   </data>
   <data name="Preview_GL_unable" xml:space="preserve">
-    <value>无法预览该mesh</value>
+    <value>无法预览该 Mesh。</value>
+  </data>
+  <data name="Preview_GL_unable1" xml:space="preserve">
+    <value>该 Mesh 为空。</value>
+  </data>
+  <data name="Preview_OnlyExport" xml:space="preserve">
+    <value>该资料仅支持导出。</value>
+  </data>
+  <data name="Preview_OnlyExport_Animator" xml:space="preserve">
+    <value>该资料仅支持导出，可作为 Animator 或 对象 导出。</value>
+  </data>
+  <data name="Preview_OnlyExport_FBX" xml:space="preserve">
+    <value>该资料仅支持导出，可导出为 FBX 文件。</value>
+  </data>
+  <data name="Preview_Shader_Serialized" xml:space="preserve">
+    <value>无法读取序列化的着色器。</value>
+  </data>
+  <data name="Preview_Sprite_info" xml:space="preserve">
+    <value>宽：{0}
+高：{1}</value>
+  </data>
+  <data name="Preview_Sprite_unsupported" xml:space="preserve">
+    <value>不支持预览的 Sprite。</value>
+  </data>
+  <data name="Preview_Tex2D_Channel_Toggle" xml:space="preserve">
+    <value>切换通道。</value>
+  </data>
+  <data name="Preview_Tex2D_info" xml:space="preserve">
+    <value>宽: {0}
+高: {1}
+格式: {2}</value>
+  </data>
+  <data name="Preview_Tex2D_info_channels" xml:space="preserve">
+    <value>通道：</value>
+  </data>
+  <data name="Preview_Tex2D_info_channels_none" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="Preview_Tex2D_info_Filter_Mode" xml:space="preserve">
+    <value>过滤模式：{0}</value>
+  </data>
+  <data name="Preview_Tex2D_info_Filter_Mode_Bilinear" xml:space="preserve">
+    <value>双线性</value>
+  </data>
+  <data name="Preview_Tex2D_info_Filter_Mode_Point" xml:space="preserve">
+    <value>邻近</value>
+  </data>
+  <data name="Preview_Tex2D_info_Filter_Mode_Trilinear" xml:space="preserve">
+    <value>三线性</value>
+  </data>
+  <data name="Preview_Tex2D_info_mipmap" xml:space="preserve">
+    <value>各向异性等级：{0}
+Mipmap偏移量: {1}</value>
+  </data>
+  <data name="Preview_Tex2D_info_wrap" xml:space="preserve">
+    <value>循环模式：</value>
+  </data>
+  <data name="Preview_Tex2D_info_wrap_clamp" xml:space="preserve">
+    <value>拉伸</value>
+  </data>
+  <data name="Preview_Tex2D_info_wrap_repeat" xml:space="preserve">
+    <value>重复</value>
+  </data>
+  <data name="Preview_Tex2D_unsupported" xml:space="preserve">
+    <value>不支持预览的图像。</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>就绪。</value>
+  </data>
+  <data name="Studio_BuildingAssetList" xml:space="preserve">
+    <value>正在建立资料列表……</value>
+  </data>
+  <data name="Studio_BuildingTreeStructure" xml:space="preserve">
+    <value>正在建立树状结构……</value>
+  </data>
+  <data name="Studio_Decompressing" xml:space="preserve">
+    <value>正在解压</value>
+  </data>
+  <data name="Studio_Exporting" xml:space="preserve">
+    <value>正在导出</value>
+  </data>
+  <data name="Studio_Export_Exception" xml:space="preserve">
+    <value>导出 {0}:{1} 时出错。</value>
+  </data>
+  <data name="Studio_Export_FinishedExporting" xml:space="preserve">
+    <value>已经导出了 {0} 个资料.</value>
+  </data>
+  <data name="Studio_Export_FinishedExporting_List" xml:space="preserve">
+    <value>已经导出了 {0} 项内容的资源列表。</value>
+  </data>
+  <data name="Studio_Export_FinishedExporting_Skipped" xml:space="preserve">
+    <value>跳过了 {0} 个资料。(因为不可导出或者文件已存在)</value>
+  </data>
+  <data name="Studio_Export_NothingExported" xml:space="preserve">
+    <value>未导出任何内容。</value>
+  </data>
+  <data name="Studio_Finished_OHMS_EXPORT_STRUCT" xml:space="preserve">
+    <value>结构化导出完成</value>
+  </data>
+  <data name="Studio_SelectAssemblyFolder" xml:space="preserve">
+    <value>选择 Assembly 文件夹</value>
   </data>
 </root>

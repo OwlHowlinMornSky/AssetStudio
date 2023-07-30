@@ -15,10 +15,6 @@ using System.Timers;
 using System.Windows.Forms;
 using static AssetStudioGUI.Studio;
 using Font = AssetStudio.Font;
-using SpirV;
-using System.Globalization;
-using System.Reflection;
-using System.Threading;
 #if NET472
 using Vector3 = OpenTK.Vector3;
 using Vector4 = OpenTK.Vector4;
@@ -52,7 +48,7 @@ namespace AssetStudioGUI {
 
 		private GUILogger logger;
 
-		private string TextBase; // OHMS
+		private string m_TextBase; // OHMS
 		#endregion
 
 		private DirectBitmap m_imageTexture;
@@ -71,9 +67,9 @@ namespace AssetStudioGUI {
 			ui_tabRight_page0_FMODstatusLabel_Playing.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
 			ui_tabRight_page0_FMODstatusLabel_Paused.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
 
-			this.TextBase = $"AssetStudio v0.16.47-OHMS-v{Application.ProductVersion}";
+			m_TextBase = $"AssetStudio v0.16.47-OHMS-v{Application.ProductVersion}";
 
-			Text = this.TextBase;
+			Text = m_TextBase;
 			m_delayTimer = new System.Timers.Timer(800);
 			m_delayTimer.Elapsed += new ElapsedEventHandler(m_delayTimer_Elapsed);
 			ui_menuOptions_displayAllAssets.Checked = Properties.Settings.Default.displayAll;
@@ -88,6 +84,8 @@ namespace AssetStudioGUI {
 			Logger.Default = logger;
 			Progress.Default = new Progress<int>(SetProgressBarValue);
 			Studio.StatusStripUpdate = StatusStripUpdate;
+
+			StatusStripUpdate(Properties.Strings.Status_Ready);
 		}
 
 		[DllImport("gdi32.dll")]
@@ -96,19 +94,18 @@ namespace AssetStudioGUI {
 		#region Process
 		private async void BuildAssetStructures() {
 			if (assetsManager.assetsFileList.Count == 0) {
-				StatusStripUpdate("No Unity file can be loaded.");
+				//StatusStripUpdate("No Unity file can be loaded.");
+				StatusStripUpdate(Properties.Strings.Load_NoThing);
 				return;
 			}
 
 			(var productName, var treeNodeCollection) = await Task.Run(() => BuildAssetData());
 			var typeMap = await Task.Run(() => BuildClassStructure());
 
-			if (!string.IsNullOrEmpty(productName)) {
-				Text = this.TextBase + $" - {productName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
-			}
-			else {
-				Text = this.TextBase + $" - {Properties.Strings.Load_NoProductName} - {assetsManager.assetsFileList[0].unityVersion} - {assetsManager.assetsFileList[0].m_TargetPlatform}";
-			}
+			Text = m_TextBase +
+				$" - {(string.IsNullOrEmpty(productName) ? Properties.Strings.Load_NoProductName : productName)}" +
+				$" - {assetsManager.assetsFileList[0].unityVersion}" +
+				$" - {assetsManager.assetsFileList[0].m_TargetPlatform}";
 
 			ui_tabLeft_page1_listView.VirtualListSize = visibleAssets.Count;
 
@@ -148,13 +145,14 @@ namespace AssetStudioGUI {
 			var m_ObjectsCount = assetsManager.assetsFileList.Sum(x => x.m_Objects.Count);
 			var objectsCount = assetsManager.assetsFileList.Sum(x => x.Objects.Count);
 			if (m_ObjectsCount != objectsCount) {
-				log += $" and {m_ObjectsCount - objectsCount} assets failed to read";
+				//log += $" and {m_ObjectsCount - objectsCount} assets failed to read";
+				log += String.Format(Properties.Strings.Load_AndFailRead, m_ObjectsCount - objectsCount);
 			}
 			StatusStripUpdate(log);
 		}
 
 		private void ResetForm() {
-			Text = this.TextBase;
+			Text = this.m_TextBase;
 
 			// Studio things
 			assetsManager.Clear();
@@ -188,6 +186,7 @@ namespace AssetStudioGUI {
 				ui_menuFilter.DropDownItems.RemoveAt(1);
 			}
 
+			StatusStripUpdate(Properties.Strings.Status_Ready);
 		}
 
 		private void SetProgressBarValue(int value) {
@@ -201,7 +200,8 @@ namespace AssetStudioGUI {
 
 		private void StatusStripUpdate(string statusText) {
 			if (InvokeRequired) {
-				BeginInvoke(new Action(() => { ui_statusLabel0_down.Text = statusText; }));
+				var r = BeginInvoke(new Action(() => { ui_statusLabel0_down.Text = statusText; }));
+				EndInvoke(r);
 			}
 			else {
 				ui_statusLabel0_down.Text = statusText;
@@ -273,7 +273,8 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
-				StatusStripUpdate("No Objects available for export");
+				//StatusStripUpdate("No Objects available for export");
+				StatusStripUpdate(Properties.Strings.Export_Object_Nothing);
 			}
 		}
 
@@ -301,7 +302,8 @@ namespace AssetStudioGUI {
 					}
 				}
 				else {
-					StatusStripUpdate("No Object selected for export.");
+					//StatusStripUpdate("No Object selected for export.");
+					StatusStripUpdate(Properties.Strings.Export_Object_Nothing_Selected);
 				}
 			}
 		}
@@ -329,7 +331,8 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
-				StatusStripUpdate("No exportable assets loaded");
+				//StatusStripUpdate("No exportable assets loaded");
+				StatusStripUpdate(Properties.Strings.Export_Nothing);
 			}
 		}
 
@@ -358,7 +361,8 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
-				StatusStripUpdate("No exportable assets loaded");
+				//StatusStripUpdate("No exportable assets loaded");
+				StatusStripUpdate(Properties.Strings.Export_Nothing);
 			}
 		}
 
@@ -409,23 +413,23 @@ namespace AssetStudioGUI {
 			if (ui_tabRight_page0_glPreview.Visible) {
 				if (e.Control) {
 					switch (e.KeyCode) {
-					case System.Windows.Forms.Keys.W:
+					case Keys.W:
 						//Toggle WireFrame
 						wireFrameMode = (wireFrameMode + 1) % 3;
 						ui_tabRight_page0_glPreview.Invalidate();
 						break;
-					case System.Windows.Forms.Keys.S:
+					case Keys.S:
 						//Toggle Shade
 						shadeMode = (shadeMode + 1) % 2;
 						ui_tabRight_page0_glPreview.Invalidate();
 						break;
-					case System.Windows.Forms.Keys.N:
+					case Keys.N:
 						//Normal mode
 						normalMode = (normalMode + 1) % 2;
 						GL_CreateVAO();
 						ui_tabRight_page0_glPreview.Invalidate();
 						break;
-					case System.Windows.Forms.Keys.R:
+					case Keys.R:
 						wireFrameMode = 2;
 						shadeMode = 0;
 						normalMode = 0;
@@ -439,19 +443,19 @@ namespace AssetStudioGUI {
 				if (e.Control) {
 					var need = false;
 					switch (e.KeyCode) {
-					case System.Windows.Forms.Keys.B:
+					case Keys.B:
 						m_textureChannels[0] = !m_textureChannels[0];
 						need = true;
 						break;
-					case System.Windows.Forms.Keys.G:
+					case Keys.G:
 						m_textureChannels[1] = !m_textureChannels[1];
 						need = true;
 						break;
-					case System.Windows.Forms.Keys.R:
+					case Keys.R:
 						m_textureChannels[2] = !m_textureChannels[2];
 						need = true;
 						break;
-					case System.Windows.Forms.Keys.A:
+					case Keys.A:
 						m_textureChannels[3] = !m_textureChannels[3];
 						need = true;
 						break;
@@ -495,9 +499,6 @@ namespace AssetStudioGUI {
 			Process.Start(pfi);
 		}
 
-		#endregion
-
-		#region ContextMenu_OHMS
 		private void ui_conMenu_OHMS_ExportSelected_Click(object sender, EventArgs e) {
 			ExportAssetsOHMS(ExportFilter.Selected);
 		}
@@ -509,7 +510,7 @@ namespace AssetStudioGUI {
 		private void ui_conMenu_OHMS_ExportSelected_Struct_JSON_Click(object sender, EventArgs e) {
 			ExportAssetsStructured(ExportFilter.Selected, ExportListType.JSON);
 		}
-		#endregion // ContextMenu_OHMS
+		#endregion ContextMenu
 
 		#region Menu_File
 		private async void ui_menuFile_loadFile_Click(object sender, EventArgs e) {
@@ -538,12 +539,14 @@ namespace AssetStudioGUI {
 		private async void ui_menuFile_extractFile_Click(object sender, EventArgs e) {
 			if (ui_openFileDialog0.ShowDialog(this) == DialogResult.OK) {
 				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.Title = "Select the save folder";
+				//saveFolderDialog.Title = "Select the save folder";
+				saveFolderDialog.Title = Properties.Strings.Export_SaveFolderDialog_Title;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					var fileNames = ui_openFileDialog0.FileNames;
 					var savePath = saveFolderDialog.Folder;
 					var extractedCount = await Task.Run(() => ExtractFile(fileNames, savePath));
-					StatusStripUpdate($"Finished extracting {extractedCount} files.");
+					//StatusStripUpdate($"Finished extracting {extractedCount} files.");
+					StatusStripUpdate(String.Format(Properties.Strings.Export_FinishExtracting, extractedCount));
 				}
 			}
 		}
@@ -552,12 +555,14 @@ namespace AssetStudioGUI {
 			var openFolderDialog = new OpenFolderDialog();
 			if (openFolderDialog.ShowDialog(this) == DialogResult.OK) {
 				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.Title = "Select the save folder";
+				//saveFolderDialog.Title = "Select the save folder";
+				saveFolderDialog.Title = Properties.Strings.Export_SaveFolderDialog_Title;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					var path = openFolderDialog.Folder;
 					var savePath = saveFolderDialog.Folder;
 					var extractedCount = await Task.Run(() => ExtractFolder(path, savePath));
-					StatusStripUpdate($"Finished extracting {extractedCount} files.");
+					//StatusStripUpdate($"Finished extracting {extractedCount} files.");
+					StatusStripUpdate(String.Format(Properties.Strings.Export_FinishExtracting, extractedCount));
 				}
 			}
 		}
@@ -568,6 +573,11 @@ namespace AssetStudioGUI {
 		#endregion // Menu_File
 
 		#region Menu_Options
+		private void ui_menuOptions_language_Click(object sender, EventArgs e) {
+			var langOpt = new LanguageOptions();
+			langOpt.ShowDialog(this);
+		}
+
 		private void ui_menuOptions_displayAllAssets_CheckedChanged(object sender, EventArgs e) {
 			Properties.Settings.Default.displayAll = ui_menuOptions_displayAllAssets.Checked;
 			Properties.Settings.Default.Save();
@@ -633,7 +643,8 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
-				StatusStripUpdate("No Objects available for export");
+				//StatusStripUpdate("No Objects available for export");
+				StatusStripUpdate(Properties.Strings.Export_Object_Nothing);
 			}
 		}
 
@@ -755,11 +766,15 @@ namespace AssetStudioGUI {
 						Progress.Report(++i, count);
 					}
 
-					StatusStripUpdate("Finished exporting class structures");
+					//StatusStripUpdate("Finished exporting class structures");
+					StatusStripUpdate(Properties.Strings.Debug_FinishExportClassStructure);
 				}
 			}
 		}
-		#endregion // Menu_Debug
+
+		private void ui_TEST_ToolStripMenuItem_Click(object sender, EventArgs e) {
+		}
+		#endregion Menu_Debug
 
 		#region Menu_OHMS_Export
 		private void ui_menuOhmsExport_createANewFolder_CheckedChanged(object sender, EventArgs e) {
@@ -884,7 +899,6 @@ namespace AssetStudioGUI {
 				ui_tabLeft_page1_listSearch.ForeColor = SystemColors.GrayText;
 			}
 		}
-
 
 		private void ui_tabLeft_page1_ListSearchTextChanged(object sender, EventArgs e) {
 			if (enableFiltering) {
@@ -1064,7 +1078,7 @@ namespace AssetStudioGUI {
 
 			m_previewLoaded = 0;
 
-			StatusStripUpdate("");
+			//StatusStripUpdate("");
 		}
 
 		private void SwitchPreviewPage(PreviewType type) {
@@ -1169,16 +1183,19 @@ namespace AssetStudioGUI {
 					break;
 				case VideoClip _:
 				case MovieTexture _:
-					StatusStripUpdate("Only supported export.");
+					//StatusStripUpdate("Only supported export.");
+					StatusStripUpdate(Properties.Strings.Preview_OnlyExport);
 					break;
 				case Sprite m_Sprite:
 					PreviewSprite(assetItem, m_Sprite);
 					break;
 				case Animator _:
-					StatusStripUpdate("Can be exported to FBX file.");
+					//StatusStripUpdate("Can be exported to FBX file.");
+					StatusStripUpdate(Properties.Strings.Preview_OnlyExport_FBX);
 					break;
 				case AnimationClip _:
-					StatusStripUpdate("Can be exported with Animator or Objects");
+					//StatusStripUpdate("Can be exported with Animator or Objects");
+					StatusStripUpdate(Properties.Strings.Preview_OnlyExport_Animator);
 					break;
 				default:
 					PreviewText(DumpAsset(assetItem.Asset));
@@ -1195,7 +1212,10 @@ namespace AssetStudioGUI {
 				m_previewLoaded |= 1 << 0;
 			}
 			catch (Exception e) {
-				MessageBox.Show($"Preview {assetItem.Type}:{assetItem.Text} error\r\n{e.Message}\r\n{e.StackTrace}");
+				//MessageBox.Show($"Preview {assetItem.Type}:{assetItem.Text} error\r\n{e.Message}\r\n{e.StackTrace}");
+				MessageBox.Show(
+					String.Format(Properties.Strings.Preview_Exception, assetItem.Type, assetItem.Text)
+					+ "\n" + e.Message + "\n" + e.StackTrace);
 			}
 		}
 
@@ -1206,28 +1226,47 @@ namespace AssetStudioGUI {
 			if (image != null) {
 				var bitmap = new DirectBitmap(image.ConvertToBytes(), m_Texture2D.m_Width, m_Texture2D.m_Height);
 				image.Dispose();
-				assetItem.InfoText = $"Width: {m_Texture2D.m_Width}\nHeight: {m_Texture2D.m_Height}\nFormat: {m_Texture2D.m_TextureFormat}";
+				//assetItem.InfoText = $"Width: {m_Texture2D.m_Width}\nHeight: {m_Texture2D.m_Height}\nFormat: {m_Texture2D.m_TextureFormat}";
+				assetItem.InfoText = String.Format(Properties.Strings.Preview_Tex2D_info,
+					m_Texture2D.m_Width, m_Texture2D.m_Height, m_Texture2D.m_TextureFormat);
 				switch (m_Texture2D.m_TextureSettings.m_FilterMode) {
 				case 0:
-					assetItem.InfoText += "\nFilter Mode: Point ";
+					//assetItem.InfoText += "\nFilter Mode: Point ";
+					assetItem.InfoText += "\n" +
+						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
+						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Point);
 					break;
 				case 1:
-					assetItem.InfoText += "\nFilter Mode: Bilinear ";
+					//assetItem.InfoText += "\nFilter Mode: Bilinear ";
+					assetItem.InfoText += "\n" +
+						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
+						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Bilinear);
 					break;
 				case 2:
-					assetItem.InfoText += "\nFilter Mode: Trilinear ";
+					//assetItem.InfoText += "\nFilter Mode: Trilinear ";
+					assetItem.InfoText += "\n" +
+						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
+						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Trilinear);
 					break;
 				}
-				assetItem.InfoText += $"\nAnisotropic level: {m_Texture2D.m_TextureSettings.m_Aniso}\nMip map bias: {m_Texture2D.m_TextureSettings.m_MipBias}";
+				//assetItem.InfoText += $"\nAnisotropic level: {m_Texture2D.m_TextureSettings.m_Aniso}\nMip map bias: {m_Texture2D.m_TextureSettings.m_MipBias}";
+				assetItem.InfoText += "\n" +
+					String.Format(Properties.Strings.Preview_Tex2D_info_mipmap,
+					m_Texture2D.m_TextureSettings.m_Aniso, m_Texture2D.m_TextureSettings.m_MipBias);
 				switch (m_Texture2D.m_TextureSettings.m_WrapMode) {
 				case 0:
-					assetItem.InfoText += "\nWrap mode: Repeat";
+					assetItem.InfoText += "\n" +
+						//	"Wrap mode: Repeat";
+						Properties.Strings.Preview_Tex2D_info_wrap + Properties.Strings.Preview_Tex2D_info_wrap_repeat;
 					break;
 				case 1:
-					assetItem.InfoText += "\nWrap mode: Clamp";
+					assetItem.InfoText += "\n" +
+						//	"Wrap mode: Clamp";
+						Properties.Strings.Preview_Tex2D_info_wrap + Properties.Strings.Preview_Tex2D_info_wrap_clamp;
 					break;
 				}
-				assetItem.InfoText += "\nChannels: ";
+				//assetItem.InfoText += "\n" + "Channels: ";
+				assetItem.InfoText += "\n" + Properties.Strings.Preview_Tex2D_info_channels;
 				int validChannel = 0;
 				for (int i = 0; i < 4; i++) {
 					if (m_textureChannels[i]) {
@@ -1236,7 +1275,8 @@ namespace AssetStudioGUI {
 					}
 				}
 				if (validChannel == 0)
-					assetItem.InfoText += "None";
+					//assetItem.InfoText += "None";
+					assetItem.InfoText += Properties.Strings.Preview_Tex2D_info_channels_none;
 				if (validChannel != 4) {
 					var bytes = bitmap.Bits;
 					for (int i = 0; i < bitmap.Height; i++) {
@@ -1252,15 +1292,18 @@ namespace AssetStudioGUI {
 				}
 				PreviewTexture(bitmap);
 
-				StatusStripUpdate("'Ctrl'+'R'/'G'/'B'/'A' for Channel Toggle");
+				//StatusStripUpdate("'Ctrl' + 'R'/'G'/'B'/'A' " + "for Channel Toggle");
+				StatusStripUpdate("'Ctrl' + 'R'/'G'/'B'/'A' " + Properties.Strings.Preview_Tex2D_Channel_Toggle);
 			}
 			else {
-				StatusStripUpdate("Unsupported image for preview");
+				//StatusStripUpdate("Unsupported image for preview");
+				StatusStripUpdate(Properties.Strings.Preview_Tex2D_unsupported);
 			}
 		}
 
 		private void PreviewAudioClip(AssetItem assetItem, AudioClip m_AudioClip) {
 			//Info
+			assetItem.InfoText = Properties.Strings.Preview_Audio_formatHead;
 			if (m_AudioClip.version[0] < 5) {
 				switch (m_AudioClip.m_Type) {
 				case FMODSoundType.ACC:
@@ -1386,7 +1429,8 @@ namespace AssetStudioGUI {
 
 		private void PreviewShader(Shader m_Shader) {
 			var str = ShaderConverter.Convert(m_Shader);
-			PreviewText(str == null ? "Serialized Shader can't be read" : str.Replace("\n", "\r\n"));
+			//PreviewText(str == null ? "Serialized Shader can't be read" : str.Replace("\n", "\r\n"));
+			PreviewText(str == null ? Properties.Strings.Preview_Shader_Serialized : str.Replace("\n", "\r\n"));
 		}
 
 		private void PreviewTextAsset(TextAsset m_TextAsset) {
@@ -1447,7 +1491,8 @@ namespace AssetStudioGUI {
 					return;
 				}
 			}
-			StatusStripUpdate("Unsupported font for preview. Try to export.");
+			//StatusStripUpdate("Unsupported font for preview. Try to export.");
+			StatusStripUpdate(Properties.Strings.Preview_Font_Unsupported);
 		}
 
 		private void PreviewMesh(Mesh m_Mesh) {
@@ -1455,7 +1500,8 @@ namespace AssetStudioGUI {
 				GL_InitMatrices();
 				#region Vertices
 				if (m_Mesh.m_Vertices == null || m_Mesh.m_Vertices.Length == 0) {
-					StatusStripUpdate("Mesh can't be previewed.");
+					//StatusStripUpdate("Mesh can't be previewed.");
+					StatusStripUpdate(Properties.Strings.Preview_GL_unable1);
 					return;
 				}
 				int count = 3;
@@ -1581,11 +1627,14 @@ namespace AssetStudioGUI {
 			if (image != null) {
 				var bitmap = new DirectBitmap(image.ConvertToBytes(), image.Width, image.Height);
 				image.Dispose();
-				assetItem.InfoText = $"Width: {bitmap.Width}\nHeight: {bitmap.Height}\n";
+				//assetItem.InfoText = $"Width: {bitmap.Width}\nHeight: {bitmap.Height}\n";
+				assetItem.InfoText =
+					String.Format(Properties.Strings.Preview_Sprite_info + "\n", bitmap.Width, bitmap.Height);
 				PreviewTexture(bitmap);
 			}
 			else {
-				StatusStripUpdate("Unsupported sprite for preview.");
+				//StatusStripUpdate("Unsupported sprite for preview.");
+				StatusStripUpdate(Properties.Strings.Preview_Sprite_unsupported);
 			}
 		}
 
@@ -1997,18 +2046,18 @@ namespace AssetStudioGUI {
 			GL_ChangeSize(ui_tabRight_page0_glPreview.Size);
 			GL.ClearColor(System.Drawing.Color.CadetBlue);
 			pgmID = GL.CreateProgram();
-			GL_LoadShader("vs", ShaderType.VertexShader, pgmID, out int vsID);
-			GL_LoadShader("fs", ShaderType.FragmentShader, pgmID, out int fsID);
+			GL_LoadShader("shader_vs", ShaderType.VertexShader, pgmID, out int vsID);
+			GL_LoadShader("shader_fs", ShaderType.FragmentShader, pgmID, out int fsID);
 			GL.LinkProgram(pgmID);
 
 			pgmColorID = GL.CreateProgram();
-			GL_LoadShader("vs", ShaderType.VertexShader, pgmColorID, out vsID);
-			GL_LoadShader("fsColor", ShaderType.FragmentShader, pgmColorID, out fsID);
+			GL_LoadShader("shader_vs", ShaderType.VertexShader, pgmColorID, out vsID);
+			GL_LoadShader("shader_fsColor", ShaderType.FragmentShader, pgmColorID, out fsID);
 			GL.LinkProgram(pgmColorID);
 
 			pgmBlackID = GL.CreateProgram();
-			GL_LoadShader("vs", ShaderType.VertexShader, pgmBlackID, out vsID);
-			GL_LoadShader("fsBlack", ShaderType.FragmentShader, pgmBlackID, out fsID);
+			GL_LoadShader("shader_vs", ShaderType.VertexShader, pgmBlackID, out vsID);
+			GL_LoadShader("shader_fsBlack", ShaderType.FragmentShader, pgmBlackID, out fsID);
 			GL.LinkProgram(pgmBlackID);
 
 			attributeVertexPosition = GL.GetAttribLocation(pgmID, "vertexPosition");
@@ -2261,8 +2310,8 @@ namespace AssetStudioGUI {
 					}
 				}
 				if (t == null) {
-					StatusStripUpdate("Cannot create directory.");
-					MessageBox.Show("Please check directory.\n");
+					MessageBox.Show(Properties.Strings.OHMS_new_folder_failed,
+						Properties.Strings.OHMS_new_folder_failed_title);
 					return false;
 				}
 				oDir = t;
@@ -2306,7 +2355,7 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
-				StatusStripUpdate("No exportable assets loaded");
+				StatusStripUpdate(Properties.Strings.Export_Nothing);
 			}
 		}
 
@@ -2340,7 +2389,7 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
-				StatusStripUpdate("No exportable assets loaded");
+				StatusStripUpdate(Properties.Strings.Export_Nothing);
 			}
 		}
 
@@ -2380,7 +2429,7 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
-				StatusStripUpdate("No exportable assets loaded");
+				StatusStripUpdate(Properties.Strings.Export_Nothing);
 			}
 		}
 
@@ -2420,18 +2469,11 @@ namespace AssetStudioGUI {
 				}
 			}
 			else {
-				StatusStripUpdate("No exportable assets loaded");
+				StatusStripUpdate(Properties.Strings.Export_Nothing);
 			}
 		}
 
 		#endregion OHMS
 
-		private void ui_TEST_ToolStripMenuItem_Click(object sender, EventArgs e) {
-		}
-
-		private void ui_menuOptions_language_Click(object sender, EventArgs e) {
-			var langOpt = new LanguageOptions();
-			langOpt.ShowDialog(this);
-		}
 	}
 }
