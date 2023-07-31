@@ -1,5 +1,4 @@
 ﻿using AssetStudio;
-using OpenCvSharp;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
@@ -14,6 +13,7 @@ namespace AssetStudioGUI {
 			var res0 = ExportTexture2D_PNG(mainTex, savePath, out var rgbPath);
 			var res1 = ExportTexture2D_PNG(alphaTex, savePath, out var alphaPath);
 			if (res0 && res1) {
+				/*
 				Mat[] mat = new Mat[2];
 				mat[0] = Cv2.ImRead(rgbPath);
 				mat[1] = Cv2.ImRead(alphaPath);
@@ -40,7 +40,7 @@ namespace AssetStudioGUI {
 					File.Move(rgbPath, Path.Combine(savePath, "original", Path.GetFileName(rgbPath)));
 					File.Move(alphaPath, Path.Combine(savePath, "original", Path.GetFileName(alphaPath)));
 					File.Move(combPath, Path.Combine(savePath, mainTex.Text + ".png"));
-				}
+				}*/
 				return true;
 			}
 			return false;
