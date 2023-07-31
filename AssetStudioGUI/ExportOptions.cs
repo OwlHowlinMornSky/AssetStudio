@@ -1,6 +1,5 @@
 ﻿using AssetStudio;
 using System;
-using System.Net.Mime;
 using System.Windows.Forms;
 
 namespace AssetStudioGUI {
