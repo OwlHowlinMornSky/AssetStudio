@@ -96,6 +96,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="OpenCvSharp4" Version="4.5.3.20211207" />
+		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.5.3.20211207" />
 		<PackageReference Include="OpenTK" Version="4.6.7" />
 	</ItemGroup>
 

@@ -71,16 +71,14 @@
 			// 
 			resources.ApplyResources(OKbutton, "OKbutton");
 			OKbutton.Name = "OKbutton";
-			exportUvsTooltip.SetToolTip(OKbutton, resources.GetString("OKbutton.ToolTip"));
 			OKbutton.UseVisualStyleBackColor = true;
 			OKbutton.Click += OKbutton_Click;
 			// 
 			// Cancel
 			// 
-			resources.ApplyResources(Cancel, "Cancel");
 			Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			resources.ApplyResources(Cancel, "Cancel");
 			Cancel.Name = "Cancel";
-			exportUvsTooltip.SetToolTip(Cancel, resources.GetString("Cancel.ToolTip"));
 			Cancel.UseVisualStyleBackColor = true;
 			Cancel.Click += Cancel_Click;
 			// 
@@ -97,7 +95,6 @@
 			groupBox1.Controls.Add(converttexture);
 			groupBox1.Name = "groupBox1";
 			groupBox1.TabStop = false;
-			exportUvsTooltip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
 			// 
 			// jsonStructureCheckBox
 			// 
@@ -105,7 +102,6 @@
 			jsonStructureCheckBox.Checked = true;
 			jsonStructureCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
 			jsonStructureCheckBox.Name = "jsonStructureCheckBox";
-			exportUvsTooltip.SetToolTip(jsonStructureCheckBox, resources.GetString("jsonStructureCheckBox.ToolTip"));
 			jsonStructureCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// openAfterExport
@@ -114,7 +110,6 @@
 			openAfterExport.Checked = true;
 			openAfterExport.CheckState = System.Windows.Forms.CheckState.Checked;
 			openAfterExport.Name = "openAfterExport";
-			exportUvsTooltip.SetToolTip(openAfterExport, resources.GetString("openAfterExport.ToolTip"));
 			openAfterExport.UseVisualStyleBackColor = true;
 			// 
 			// restoreExtensionName
@@ -123,23 +118,20 @@
 			restoreExtensionName.Checked = true;
 			restoreExtensionName.CheckState = System.Windows.Forms.CheckState.Checked;
 			restoreExtensionName.Name = "restoreExtensionName";
-			exportUvsTooltip.SetToolTip(restoreExtensionName, resources.GetString("restoreExtensionName.ToolTip"));
 			restoreExtensionName.UseVisualStyleBackColor = true;
 			// 
 			// assetGroupOptions
 			// 
-			resources.ApplyResources(assetGroupOptions, "assetGroupOptions");
 			assetGroupOptions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			assetGroupOptions.FormattingEnabled = true;
 			assetGroupOptions.Items.AddRange(new object[] { resources.GetString("assetGroupOptions.Items"), resources.GetString("assetGroupOptions.Items1"), resources.GetString("assetGroupOptions.Items2"), resources.GetString("assetGroupOptions.Items3") });
+			resources.ApplyResources(assetGroupOptions, "assetGroupOptions");
 			assetGroupOptions.Name = "assetGroupOptions";
-			exportUvsTooltip.SetToolTip(assetGroupOptions, resources.GetString("assetGroupOptions.ToolTip"));
 			// 
 			// label6
 			// 
 			resources.ApplyResources(label6, "label6");
 			label6.Name = "label6";
-			exportUvsTooltip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
 			// 
 			// convertAudio
 			// 
@@ -147,48 +139,44 @@
 			convertAudio.Checked = true;
 			convertAudio.CheckState = System.Windows.Forms.CheckState.Checked;
 			convertAudio.Name = "convertAudio";
-			exportUvsTooltip.SetToolTip(convertAudio, resources.GetString("convertAudio.ToolTip"));
 			convertAudio.UseVisualStyleBackColor = true;
 			// 
 			// panel1
 			// 
-			resources.ApplyResources(panel1, "panel1");
 			panel1.Controls.Add(totga);
 			panel1.Controls.Add(tojpg);
 			panel1.Controls.Add(topng);
 			panel1.Controls.Add(tobmp);
+			resources.ApplyResources(panel1, "panel1");
 			panel1.Name = "panel1";
-			exportUvsTooltip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
 			// 
 			// totga
 			// 
 			resources.ApplyResources(totga, "totga");
 			totga.Name = "totga";
-			exportUvsTooltip.SetToolTip(totga, resources.GetString("totga.ToolTip"));
 			totga.UseVisualStyleBackColor = true;
+			totga.CheckedChanged += totga_CheckedChanged;
 			// 
 			// tojpg
 			// 
 			resources.ApplyResources(tojpg, "tojpg");
 			tojpg.Name = "tojpg";
-			exportUvsTooltip.SetToolTip(tojpg, resources.GetString("tojpg.ToolTip"));
 			tojpg.UseVisualStyleBackColor = true;
+			tojpg.CheckedChanged += tojpg_CheckedChanged;
 			// 
 			// topng
 			// 
 			resources.ApplyResources(topng, "topng");
-			topng.Checked = true;
 			topng.Name = "topng";
-			topng.TabStop = true;
-			exportUvsTooltip.SetToolTip(topng, resources.GetString("topng.ToolTip"));
 			topng.UseVisualStyleBackColor = true;
+			topng.CheckedChanged += topng_CheckedChanged;
 			// 
 			// tobmp
 			// 
 			resources.ApplyResources(tobmp, "tobmp");
 			tobmp.Name = "tobmp";
-			exportUvsTooltip.SetToolTip(tobmp, resources.GetString("tobmp.ToolTip"));
 			tobmp.UseVisualStyleBackColor = true;
+			tobmp.CheckedChanged += tobmp_CheckedChanged;
 			// 
 			// converttexture
 			// 
@@ -196,7 +184,6 @@
 			converttexture.Checked = true;
 			converttexture.CheckState = System.Windows.Forms.CheckState.Checked;
 			converttexture.Name = "converttexture";
-			exportUvsTooltip.SetToolTip(converttexture, resources.GetString("converttexture.ToolTip"));
 			converttexture.UseVisualStyleBackColor = true;
 			// 
 			// groupBox2
@@ -221,7 +208,6 @@
 			groupBox2.Controls.Add(eulerFilter);
 			groupBox2.Name = "groupBox2";
 			groupBox2.TabStop = false;
-			exportUvsTooltip.SetToolTip(groupBox2, resources.GetString("groupBox2.ToolTip"));
 			// 
 			// exportAllUvsAsDiffuseMaps
 			// 
@@ -236,7 +222,6 @@
 			exportBlendShape.Checked = true;
 			exportBlendShape.CheckState = System.Windows.Forms.CheckState.Checked;
 			exportBlendShape.Name = "exportBlendShape";
-			exportUvsTooltip.SetToolTip(exportBlendShape, resources.GetString("exportBlendShape.ToolTip"));
 			exportBlendShape.UseVisualStyleBackColor = true;
 			// 
 			// exportAnimations
@@ -245,66 +230,57 @@
 			exportAnimations.Checked = true;
 			exportAnimations.CheckState = System.Windows.Forms.CheckState.Checked;
 			exportAnimations.Name = "exportAnimations";
-			exportUvsTooltip.SetToolTip(exportAnimations, resources.GetString("exportAnimations.ToolTip"));
 			exportAnimations.UseVisualStyleBackColor = true;
 			// 
 			// scaleFactor
 			// 
-			resources.ApplyResources(scaleFactor, "scaleFactor");
 			scaleFactor.DecimalPlaces = 2;
 			scaleFactor.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+			resources.ApplyResources(scaleFactor, "scaleFactor");
 			scaleFactor.Name = "scaleFactor";
-			exportUvsTooltip.SetToolTip(scaleFactor, resources.GetString("scaleFactor.ToolTip"));
 			scaleFactor.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			// 
 			// label5
 			// 
 			resources.ApplyResources(label5, "label5");
 			label5.Name = "label5";
-			exportUvsTooltip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
 			// 
 			// fbxFormat
 			// 
-			resources.ApplyResources(fbxFormat, "fbxFormat");
 			fbxFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			fbxFormat.FormattingEnabled = true;
 			fbxFormat.Items.AddRange(new object[] { resources.GetString("fbxFormat.Items"), resources.GetString("fbxFormat.Items1") });
+			resources.ApplyResources(fbxFormat, "fbxFormat");
 			fbxFormat.Name = "fbxFormat";
-			exportUvsTooltip.SetToolTip(fbxFormat, resources.GetString("fbxFormat.ToolTip"));
 			// 
 			// label4
 			// 
 			resources.ApplyResources(label4, "label4");
 			label4.Name = "label4";
-			exportUvsTooltip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
 			// 
 			// fbxVersion
 			// 
-			resources.ApplyResources(fbxVersion, "fbxVersion");
 			fbxVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			fbxVersion.FormattingEnabled = true;
 			fbxVersion.Items.AddRange(new object[] { resources.GetString("fbxVersion.Items"), resources.GetString("fbxVersion.Items1"), resources.GetString("fbxVersion.Items2"), resources.GetString("fbxVersion.Items3"), resources.GetString("fbxVersion.Items4"), resources.GetString("fbxVersion.Items5") });
+			resources.ApplyResources(fbxVersion, "fbxVersion");
 			fbxVersion.Name = "fbxVersion";
-			exportUvsTooltip.SetToolTip(fbxVersion, resources.GetString("fbxVersion.ToolTip"));
 			// 
 			// label3
 			// 
 			resources.ApplyResources(label3, "label3");
 			label3.Name = "label3";
-			exportUvsTooltip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
 			// 
 			// boneSize
 			// 
 			resources.ApplyResources(boneSize, "boneSize");
 			boneSize.Name = "boneSize";
-			exportUvsTooltip.SetToolTip(boneSize, resources.GetString("boneSize.ToolTip"));
 			boneSize.Value = new decimal(new int[] { 10, 0, 0, 0 });
 			// 
 			// label2
 			// 
 			resources.ApplyResources(label2, "label2");
 			label2.Name = "label2";
-			exportUvsTooltip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
 			// 
 			// exportSkins
 			// 
@@ -312,29 +288,25 @@
 			exportSkins.Checked = true;
 			exportSkins.CheckState = System.Windows.Forms.CheckState.Checked;
 			exportSkins.Name = "exportSkins";
-			exportUvsTooltip.SetToolTip(exportSkins, resources.GetString("exportSkins.ToolTip"));
 			exportSkins.UseVisualStyleBackColor = true;
 			// 
 			// label1
 			// 
 			resources.ApplyResources(label1, "label1");
 			label1.Name = "label1";
-			exportUvsTooltip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
 			// 
 			// filterPrecision
 			// 
-			resources.ApplyResources(filterPrecision, "filterPrecision");
 			filterPrecision.DecimalPlaces = 2;
 			filterPrecision.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+			resources.ApplyResources(filterPrecision, "filterPrecision");
 			filterPrecision.Name = "filterPrecision";
-			exportUvsTooltip.SetToolTip(filterPrecision, resources.GetString("filterPrecision.ToolTip"));
 			filterPrecision.Value = new decimal(new int[] { 25, 0, 0, 131072 });
 			// 
 			// castToBone
 			// 
 			resources.ApplyResources(castToBone, "castToBone");
 			castToBone.Name = "castToBone";
-			exportUvsTooltip.SetToolTip(castToBone, resources.GetString("castToBone.ToolTip"));
 			castToBone.UseVisualStyleBackColor = true;
 			// 
 			// exportAllNodes
@@ -343,7 +315,6 @@
 			exportAllNodes.Checked = true;
 			exportAllNodes.CheckState = System.Windows.Forms.CheckState.Checked;
 			exportAllNodes.Name = "exportAllNodes";
-			exportUvsTooltip.SetToolTip(exportAllNodes, resources.GetString("exportAllNodes.ToolTip"));
 			exportAllNodes.UseVisualStyleBackColor = true;
 			// 
 			// eulerFilter
@@ -352,7 +323,6 @@
 			eulerFilter.Checked = true;
 			eulerFilter.CheckState = System.Windows.Forms.CheckState.Checked;
 			eulerFilter.Name = "eulerFilter";
-			exportUvsTooltip.SetToolTip(eulerFilter, resources.GetString("eulerFilter.ToolTip"));
 			eulerFilter.UseVisualStyleBackColor = true;
 			// 
 			// ExportOptions
@@ -371,7 +341,6 @@
 			Name = "ExportOptions";
 			ShowIcon = false;
 			ShowInTaskbar = false;
-			exportUvsTooltip.SetToolTip(this, resources.GetString("$this.ToolTip"));
 			TopMost = true;
 			groupBox1.ResumeLayout(false);
 			groupBox1.PerformLayout();

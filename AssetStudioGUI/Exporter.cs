@@ -36,6 +36,21 @@ namespace AssetStudioGUI {
 			}
 		}
 
+		public static bool ExportTexture2D_PNG(AssetItem item, string exportPath, out string exportFullPath) {
+			var m_Texture2D = (Texture2D)item.Asset;
+			if (!TryExportFile(exportPath, item, ".png", out exportFullPath))
+				return false;
+			var image = m_Texture2D.ConvertToImage(true);
+			if (image == null)
+				return false;
+			using (image) {
+				using (var file = File.OpenWrite(exportFullPath)) {
+					image.WriteToStream(file, ImageFormat.Png);
+				}
+				return true;
+			}
+		}
+
 		public static bool ExportAudioClip(AssetItem item, string exportPath) {
 			var m_AudioClip = (AudioClip)item.Asset;
 			var m_AudioData = m_AudioClip.m_AudioData.GetData();
@@ -76,6 +91,14 @@ namespace AssetStudioGUI {
 				}
 			}
 			if (!TryExportFile(exportPath, item, extension, out var exportFullPath))
+				return false;
+			File.WriteAllBytes(exportFullPath, m_TextAsset.m_Script);
+			return true;
+		}
+
+		public static bool ExportTextAsset_NoAppendingExtension(AssetItem item, string exportPath) {
+			var m_TextAsset = (TextAsset)(item.Asset);
+			if (!TryExportFile(exportPath, item, "", out var exportFullPath))
 				return false;
 			File.WriteAllBytes(exportFullPath, m_TextAsset.m_Script);
 			return true;

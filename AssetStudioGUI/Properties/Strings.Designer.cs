@@ -115,6 +115,24 @@ namespace AssetStudioGUI.Properties {
         }
         
         /// <summary>
+        ///   查找类似 %NotImplemented% 的本地化字符串。
+        /// </summary>
+        internal static string Global_NotImplemented {
+            get {
+                return ResourceManager.GetString("Global_NotImplemented", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 %NotSupported% 的本地化字符串。
+        /// </summary>
+        internal static string Global_NotSupported {
+            get {
+                return ResourceManager.GetString("Global_NotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 %Restart_To_Apply% 的本地化字符串。
         /// </summary>
         internal static string LangSet_OkMessageboxText {

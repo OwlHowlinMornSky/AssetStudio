@@ -2383,7 +2383,7 @@ namespace AssetStudioGUI {
 						Studio.ExportAssetsArknightsScene(outdir, exportableAssets, listType);
 						break;
 					case ExportArknightsFilter.CharArt:
-						Studio.ExportAssetsArknightsCharart(outdir, exportableAssets, listType);
+						Studio.ExportAssetsArknightsCharart(outdir, exportableAssets);
 						break;
 					}
 				}

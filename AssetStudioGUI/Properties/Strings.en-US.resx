@@ -135,6 +135,12 @@
   <data name="Export_SaveFolderDialog_Title" xml:space="preserve">
     <value>Select the save folder</value>
   </data>
+  <data name="Global_NotImplemented" xml:space="preserve">
+    <value>Not Implemented.</value>
+  </data>
+  <data name="Global_NotSupported" xml:space="preserve">
+    <value>Not Supported.</value>
+  </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
     <value>Restart to apply the change.</value>
   </data>

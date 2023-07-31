@@ -86,6 +86,7 @@ namespace AssetStudioGUI {
 			ui_menuFile_clear = new ToolStripMenuItem();
 			ui_menuOptions = new ToolStripMenuItem();
 			ui_menuOptions_language = new ToolStripMenuItem();
+			ui_menuOptions_exportOptions = new ToolStripMenuItem();
 			ui_menuOptions_separator0 = new ToolStripSeparator();
 			ui_menuOptions_displayAllAssets = new ToolStripMenuItem();
 			ui_menuOptions_enablePreview = new ToolStripMenuItem();
@@ -93,8 +94,6 @@ namespace AssetStudioGUI {
 			ui_menuOptions_separator1 = new ToolStripSeparator();
 			ui_menuOptions_specifyUnityVersion = new ToolStripMenuItem();
 			ui_menuOptions_specifyUnityVersion_specifyUnityVersion = new ToolStripTextBox();
-			ui_menuOptions_separator2 = new ToolStripSeparator();
-			ui_menuOptions_exportOptions = new ToolStripMenuItem();
 			ui_menuFilter = new ToolStripMenuItem();
 			ui_menuFilter_0_all = new ToolStripMenuItem();
 			ui_menuModel = new ToolStripMenuItem();
@@ -622,7 +621,7 @@ namespace AssetStudioGUI {
 			// ui_menuOptions
 			// 
 			resources.ApplyResources(ui_menuOptions, "ui_menuOptions");
-			ui_menuOptions.DropDownItems.AddRange(new ToolStripItem[] { ui_menuOptions_language, ui_menuOptions_separator0, ui_menuOptions_displayAllAssets, ui_menuOptions_enablePreview, ui_menuOptions_displayInfo, ui_menuOptions_separator1, ui_menuOptions_specifyUnityVersion, ui_menuOptions_separator2, ui_menuOptions_exportOptions });
+			ui_menuOptions.DropDownItems.AddRange(new ToolStripItem[] { ui_menuOptions_language, ui_menuOptions_exportOptions, ui_menuOptions_separator0, ui_menuOptions_displayAllAssets, ui_menuOptions_enablePreview, ui_menuOptions_displayInfo, ui_menuOptions_separator1, ui_menuOptions_specifyUnityVersion });
 			ui_menuOptions.Name = "ui_menuOptions";
 			// 
 			// ui_menuOptions_language
@@ -630,6 +629,12 @@ namespace AssetStudioGUI {
 			resources.ApplyResources(ui_menuOptions_language, "ui_menuOptions_language");
 			ui_menuOptions_language.Name = "ui_menuOptions_language";
 			ui_menuOptions_language.Click += ui_menuOptions_language_Click;
+			// 
+			// ui_menuOptions_exportOptions
+			// 
+			resources.ApplyResources(ui_menuOptions_exportOptions, "ui_menuOptions_exportOptions");
+			ui_menuOptions_exportOptions.Name = "ui_menuOptions_exportOptions";
+			ui_menuOptions_exportOptions.Click += ui_menuOptions_exportOptions_Click;
 			// 
 			// ui_menuOptions_separator0
 			// 
@@ -676,17 +681,6 @@ namespace AssetStudioGUI {
 			// 
 			resources.ApplyResources(ui_menuOptions_specifyUnityVersion_specifyUnityVersion, "ui_menuOptions_specifyUnityVersion_specifyUnityVersion");
 			ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Name = "ui_menuOptions_specifyUnityVersion_specifyUnityVersion";
-			// 
-			// ui_menuOptions_separator2
-			// 
-			resources.ApplyResources(ui_menuOptions_separator2, "ui_menuOptions_separator2");
-			ui_menuOptions_separator2.Name = "ui_menuOptions_separator2";
-			// 
-			// ui_menuOptions_exportOptions
-			// 
-			resources.ApplyResources(ui_menuOptions_exportOptions, "ui_menuOptions_exportOptions");
-			ui_menuOptions_exportOptions.Name = "ui_menuOptions_exportOptions";
-			ui_menuOptions_exportOptions.Click += ui_menuOptions_exportOptions_Click;
 			// 
 			// ui_menuFilter
 			// 
@@ -1314,7 +1308,6 @@ namespace AssetStudioGUI {
 		private ToolStripMenuItem ui_menuOptions_language;
 		private ToolStripSeparator ui_menuOptions_separator0;
 		private ToolStripSeparator ui_menuOptions_separator1;
-		private ToolStripSeparator ui_menuOptions_separator2;
 		private Button ui_tabRight_page0_FMODresumeButton;
 		private Label ui_tabRight_page0_FMODstatusLabel_Playing;
 		private Label ui_tabRight_page0_FMODstatusLabel_Paused;

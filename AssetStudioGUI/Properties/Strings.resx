@@ -135,6 +135,12 @@
   <data name="Export_SaveFolderDialog_Title" xml:space="preserve">
     <value>%Select_Path%</value>
   </data>
+  <data name="Global_NotImplemented" xml:space="preserve">
+    <value>%NotImplemented%</value>
+  </data>
+  <data name="Global_NotSupported" xml:space="preserve">
+    <value>%NotSupported%</value>
+  </data>
   <data name="LangSet_OkMessageboxText" xml:space="preserve">
     <value>%Restart_To_Apply%</value>
   </data>

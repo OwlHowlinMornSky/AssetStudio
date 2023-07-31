@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Data;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -649,51 +650,36 @@ namespace AssetStudioGUI {
 		}
 
 		public static void ExportAssetsArknightsScene(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
-
+			try {
+			}
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
+			}
+			//StatusStripUpdate("Finished exporting as [Arknights]Scene Bundle.");
+			MessageBox.Show(Properties.Strings.Global_NotImplemented);
+			return;
 		}
 
-		public static void ExportAssetsArknightsCharart(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+		public async static void ExportAssetsArknightsCharart(string savePath, List<AssetItem> allAssets) {
 			//List<MonoBehaviour> monoBehaviours =
 			//	toExportAssets.FindAll(x => x.Type == ClassIDType.MonoBehaviour).Select(x => (MonoBehaviour)x.Asset).ToList();
-
-			List<AssetItem> monoItems = toExportAssets.FindAll(x => x.Type == ClassIDType.MonoBehaviour);
-			
-			string str = "";
-			//monoItems.ForEach(x => { str += x.Text + "\n"; });
-			//MessageBox.Show(str);
-
-			AssetItem ark_building_item = monoItems.Find(x => x.Text == "VCharacter");
-			if (ark_building_item == null) {
-				MessageBox.Show("None!");
-				return;
+			try {
+				await System.Threading.Tasks.Task.Run(() => {
+					Progress.Reset();
+					Studio_OHMS.Export_CharArt_Building(in savePath, in allAssets);
+					Progress.Report(1, 4);
+					Studio_OHMS.Export_CharArt_Battle(in savePath, in allAssets);
+					Progress.Report(2, 4);
+					Studio_OHMS.Export_CharArt_Pictures(in savePath, in allAssets);
+					Progress.Report(4, 4);
+				});
 			}
-			MessageBox.Show(ark_building_item.m_PathID.ToString());
-			MonoBehaviour ark_building = (MonoBehaviour)ark_building_item.Asset;
-
-			//MessageBox.Show(ark_building.m_Script.m_PathID.ToString());
-			str = "";
-			ark_building.serializedType.m_Type.m_Nodes.ForEach(x => { str += x.m_Name + "\n"; });
-			//MessageBox.Show(str);
-
-			OrderedDictionary t = ark_building.ToType();
-			//str = "";
-			//foreach (DictionaryEntry i in t) {
-			//	str += i.Key + ": " + i.Value + "\n";
-			//}
-			//MessageBox.Show(str);
-
-			var tt = t["_skeleton"];
-			MessageBox.Show(tt.GetType().Equals(typeof(OrderedDictionary)) ? "1" : "0");
-			var r = (OrderedDictionary)tt;
-
-			var rr = r["m_PathID"];
-			MessageBox.Show(rr.GetType().Equals(typeof(long)) ? "1" : "0");
-			var rrr = (long)rr;
-
-			MessageBox.Show(rrr.ToString());
-
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
+			}
+			StatusStripUpdate("Finished exporting as [Arknights]CharArt Bundle.");
 			return;
-			List<long> longs = new List<long>();
+			/*List<long> longs = new List<long>();
 			foreach (var item in toExportAssets) {
 				if (item.Type == ClassIDType.Material) {
 					var m = (Material)item.Asset;
@@ -711,7 +697,7 @@ namespace AssetStudioGUI {
 			foreach (var n in longs) {
 				test += n.ToString() + "\n";
 			}
-			MessageBox.Show(test, "test");
+			MessageBox.Show(test, "test");*/
 		}
 
 		public static void ExportSplitObjects(string savePath, TreeNodeCollection nodes) {

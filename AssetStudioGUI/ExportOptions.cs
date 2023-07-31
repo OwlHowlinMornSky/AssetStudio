@@ -1,22 +1,42 @@
 ﻿using AssetStudio;
 using System;
+using System.Net.Mime;
 using System.Windows.Forms;
 
 namespace AssetStudioGUI {
 	public partial class ExportOptions : Form {
+
+		private ImageFormat m_newFormat;
+
 		public ExportOptions() {
 			InitializeComponent();
 			assetGroupOptions.SelectedIndex = Properties.Settings.Default.assetGroupOption;
 			restoreExtensionName.Checked = Properties.Settings.Default.restoreExtensionName;
 			converttexture.Checked = Properties.Settings.Default.convertTexture;
 			convertAudio.Checked = Properties.Settings.Default.convertAudio;
-			var str = Properties.Settings.Default.convertType.ToString();
+
+			m_newFormat = Properties.Settings.Default.convertType;
+			switch (m_newFormat) {
+			case ImageFormat.Jpeg:
+				tojpg.Checked = true;
+				break;
+			case ImageFormat.Png:
+				topng.Checked = true;
+				break;
+			case ImageFormat.Bmp:
+				tobmp.Checked = true;
+				break;
+			case ImageFormat.Tga:
+				totga.Checked = true;
+				break;
+			}
+			/*var str = Properties.Settings.Default.convertType.ToString();
 			foreach (Control c in panel1.Controls) {
 				if (c.Text == str) {
 					((RadioButton)c).Checked = true;
 					break;
 				}
-			}
+			}*/
 			openAfterExport.Checked = Properties.Settings.Default.openAfterExport;
 			eulerFilter.Checked = Properties.Settings.Default.eulerFilter;
 			filterPrecision.Value = Properties.Settings.Default.filterPrecision;
@@ -39,12 +59,15 @@ namespace AssetStudioGUI {
 			Properties.Settings.Default.restoreExtensionName = restoreExtensionName.Checked;
 			Properties.Settings.Default.convertTexture = converttexture.Checked;
 			Properties.Settings.Default.convertAudio = convertAudio.Checked;
-			foreach (Control c in panel1.Controls) {
+			/*foreach (Control c in panel1.Controls) {
 				if (((RadioButton)c).Checked) {
 					Properties.Settings.Default.convertType = (ImageFormat)Enum.Parse(typeof(ImageFormat), c.Text);
+					MessageBox.Show(Properties.Settings.Default.convertType.ToString());
 					break;
 				}
-			}
+			}*/
+			Properties.Settings.Default.convertType = m_newFormat;
+
 			Properties.Settings.Default.openAfterExport = openAfterExport.Checked;
 			Properties.Settings.Default.eulerFilter = eulerFilter.Checked;
 			Properties.Settings.Default.filterPrecision = filterPrecision.Value;
@@ -70,6 +93,30 @@ namespace AssetStudioGUI {
 		private void Cancel_Click(object sender, EventArgs e) {
 			DialogResult = DialogResult.Cancel;
 			Close();
+		}
+
+		private void tobmp_CheckedChanged(object sender, EventArgs e) {
+			if (tobmp.Checked) {
+				m_newFormat = ImageFormat.Bmp;
+			}
+		}
+
+		private void topng_CheckedChanged(object sender, EventArgs e) {
+			if (topng.Checked) {
+				m_newFormat = ImageFormat.Png;
+			}
+		}
+
+		private void tojpg_CheckedChanged(object sender, EventArgs e) {
+			if (tojpg.Checked) {
+				m_newFormat = ImageFormat.Jpeg;
+			}
+		}
+
+		private void totga_CheckedChanged(object sender, EventArgs e) {
+			if (totga.Checked) {
+				m_newFormat = ImageFormat.Tga;
+			}
 		}
 	}
 }
