@@ -1616,6 +1616,8 @@ namespace AssetStudioGUI {
 				SwitchPreviewPage(PreviewType.GL);
 				GL_CreateVAO();
 				StatusStripUpdate(String.Format(Properties.Strings.Preview_GL_info, GL.GetString(StringName.Version)));
+
+				ui_tabRight_page0_glPreview.Invalidate();
 			}
 			else {
 				StatusStripUpdate(Properties.Strings.Preview_GL_unable);
@@ -2173,7 +2175,7 @@ namespace AssetStudioGUI {
 			else if (m_cameraFOV < 1.0f) {
 				m_cameraFOV = 1.0f;
 			}
-			Matrix4.CreatePerspectiveFieldOfView(m_cameraFOV, k, 0.125f, 128.0f, out projMatrixData);
+			Matrix4.CreatePerspectiveFieldOfView(m_cameraFOV, k, 0.25f, 512.0f, out projMatrixData);
 		}
 
 		private void ui_tabRight_page0_glPreview_Load(object sender, EventArgs e) {
