@@ -647,19 +647,19 @@ namespace AssetStudioGUI {
 		}
 
 		public static void ExportAssetsArknightsScene(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
-			try {
-			}
-			catch (Exception ex) {
-				MessageBox.Show(ex.ToString());
-			}
-			//StatusStripUpdate("Finished exporting as [Arknights]Scene Bundle.");
-			MessageBox.Show(Properties.Strings.Global_NotImplemented);
+			MessageBox.Show(Properties.Strings.Global_NotImplemented, "Scene Bundle", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			return;
+			//try {
+			//	Studio_OHMS.Export_Scene(savePath, toExportAssets);
+			//}
+			//catch (Exception ex) {
+			//	MessageBox.Show(ex.ToString());
+			//}
+			//StatusStripUpdate("Finished exporting as [Arknights]Scene Bundle.");
+			//return;
 		}
 
 		public async static void ExportAssetsArknightsCharart(string savePath, List<AssetItem> allAssets) {
-			//List<MonoBehaviour> monoBehaviours =
-			//	toExportAssets.FindAll(x => x.Type == ClassIDType.MonoBehaviour).Select(x => (MonoBehaviour)x.Asset).ToList();
 			try {
 				await System.Threading.Tasks.Task.Run(() => {
 					Progress.Reset();
@@ -676,25 +676,6 @@ namespace AssetStudioGUI {
 			}
 			StatusStripUpdate("Finished exporting as [Arknights]CharArt Bundle.");
 			return;
-			/*List<long> longs = new List<long>();
-			foreach (var item in toExportAssets) {
-				if (item.Type == ClassIDType.Material) {
-					var m = (Material)item.Asset;
-					foreach (var pair in m.m_SavedProperties.m_TexEnvs) {
-						switch (pair.Key) {
-						case "_AlphaTex":
-						case "_MainTex":
-							longs.Add(pair.Value.m_Texture.m_PathID);
-							break;
-						}
-					}
-				}
-			}
-			var test = new string("");
-			foreach (var n in longs) {
-				test += n.ToString() + "\n";
-			}
-			MessageBox.Show(test, "test");*/
 		}
 
 		public static void ExportSplitObjects(string savePath, TreeNodeCollection nodes) {

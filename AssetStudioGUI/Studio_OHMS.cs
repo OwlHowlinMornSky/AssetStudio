@@ -1,4 +1,5 @@
 ﻿using AssetStudio;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
@@ -88,7 +89,7 @@ namespace AssetStudioGUI {
 
 		private static bool Export_CharArt_Building_ForAtlasAsset(in string savePath, in List<AssetItem> allAssets, long atlasFile_pathid) {
 			var atlasItems = allAssets.FindAll(x => x.m_PathID == atlasFile_pathid && x.Type == ClassIDType.MonoBehaviour);
-			if (atlasItems.Count() != 1) {
+			if (atlasItems.Count != 1) {
 				return false;
 			}
 			var atlasAsset = (MonoBehaviour)atlasItems[0].Asset;
@@ -111,7 +112,7 @@ namespace AssetStudioGUI {
 			var atlas_atlasFile_pathid = (long)atlas_atlasFile_pathid0;
 			{
 				var atlasFiles = allAssets.FindAll(x => x.m_PathID == atlas_atlasFile_pathid && x.Type == ClassIDType.TextAsset);
-				if (atlasFiles.Count() != 1) {
+				if (atlasFiles.Count != 1) {
 					return false;
 				}
 				Export_SpineTextAsset(in savePath, atlasFiles[0]);
@@ -135,7 +136,7 @@ namespace AssetStudioGUI {
 				}
 				var mat_pathid = (long)mat_pathid0;
 				var matItems = allAssets.FindAll(x => (x.m_PathID == mat_pathid && x.Type == ClassIDType.Material));
-				if (matItems.Count() != 1) {
+				if (matItems.Count != 1) {
 					continue;
 				}
 				var matItem = matItems[0];
@@ -144,11 +145,11 @@ namespace AssetStudioGUI {
 						continue;
 					}
 					var mainTexs = allAssets.FindAll(x => x.m_PathID == mainTexID && x.Type == ClassIDType.Texture2D);
-					if (mainTexs.Count() != 1) {
+					if (mainTexs.Count != 1) {
 						continue;
 					}
 					var alphaTexs = allAssets.FindAll(x => x.m_PathID == alphaTexID && x.Type == ClassIDType.Texture2D);
-					if (alphaTexs.Count() != 1) {
+					if (alphaTexs.Count != 1) {
 						continue;
 					}
 					//ExportTexture2D(mainTexs[0], savePath);
@@ -163,7 +164,7 @@ namespace AssetStudioGUI {
 
 		private static bool Export_CharArt_Building_ForSkeletonData(in string savePath, in List<AssetItem> allAssets, long skeletonDataAsset_pathid) {
 			var skeletonDataItems = allAssets.FindAll(x => x.m_PathID == skeletonDataAsset_pathid && x.Type == ClassIDType.MonoBehaviour);
-			if (skeletonDataItems.Count() != 1) {
+			if (skeletonDataItems.Count != 1) {
 				return false;
 			}
 			var skeletonDataAsset = (MonoBehaviour)skeletonDataItems[0].Asset;
@@ -187,7 +188,7 @@ namespace AssetStudioGUI {
 			//MessageBox.Show("skeletonJSON, m_PathID: " + skeletonData_skeletonJSON_pathid.ToString());
 			{
 				var skeletonJSONs = allAssets.FindAll(x => x.m_PathID == skeletonJSON_pathid && x.Type == ClassIDType.TextAsset);
-				if (skeletonJSONs.Count() != 1) {
+				if (skeletonJSONs.Count != 1) {
 					return false;
 				}
 				Export_SpineTextAsset(in savePath, skeletonJSONs[0]);
@@ -218,7 +219,7 @@ namespace AssetStudioGUI {
 
 		private static bool Export_CharArt_Building_ForSkeletonAnimation(in string savePath, in List<AssetItem> allAssets, long skeleton_pathid) {
 			var SkeletonAnimationItems = allAssets.FindAll(x => x.m_PathID == skeleton_pathid && x.Type == ClassIDType.MonoBehaviour);
-			if (SkeletonAnimationItems.Count() != 1) {
+			if (SkeletonAnimationItems.Count != 1) {
 				return false;
 			}
 			var SkeletonAnimationAsset = (MonoBehaviour)SkeletonAnimationItems[0].Asset;
@@ -308,7 +309,7 @@ namespace AssetStudioGUI {
 
 		private static bool Export_CharArt_Battle_ForCharacterAnimator(in string savePath, in List<AssetItem> allAssets) {
 			var CharAnimatorItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "CharacterAnimator"));
-			if (CharAnimatorItems.Count() < 1) {
+			if (CharAnimatorItems.Count < 1) {
 				return false;
 			}
 			foreach (var CharAnimatorItem in CharAnimatorItems) {
@@ -326,7 +327,7 @@ namespace AssetStudioGUI {
 
 		private static bool Export_CharArt_Battle_ForSingleSpineAnimator(in string savePath, in List<AssetItem> allAssets) {
 			var SingleAnimatorItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "SingleSpineAnimator"));
-			if (SingleAnimatorItems.Count() < 1) {
+			if (SingleAnimatorItems.Count < 1) {
 				return false;
 			}
 			foreach (var SingleAnimatorItem in SingleAnimatorItems) {
@@ -420,7 +421,7 @@ namespace AssetStudioGUI {
 		public static bool Export_CharArt_Building(in string savePath, in List<AssetItem> allAssets) {
 			Studio.StatusStripUpdate("Exporting The Spine Animations of Building.");
 			var VCharacterItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "VCharacter"));
-			if (VCharacterItems.Count() < 1) {
+			if (VCharacterItems.Count < 1) {
 				return false;
 			}
 			foreach (var VCharacterItem in VCharacterItems) {
@@ -466,49 +467,49 @@ namespace AssetStudioGUI {
 			string savePath = Path.Combine(outPath, "Illust");
 			var IllustsItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "Image"));
 			int i = 0;
-			int n = IllustsItems.Count();
-			foreach(var illust in IllustsItems) {
+			int n = IllustsItems.Count;
+			foreach (var illust in IllustsItems) {
 				if (!Export_CharArt_Illust_ForOneIllustGetIDs(illust, out var material_pathid, out var sprite_pathid)) {
 					continue;
 				}
 				var materialItems = allAssets.FindAll(x => (x.m_PathID == material_pathid && x.Type == ClassIDType.Material));
-				if (materialItems.Count() != 1) {
+				if (materialItems.Count != 1) {
 					continue;
 				}
 				var spriteItems = allAssets.FindAll(x => (x.m_PathID == sprite_pathid && x.Type == ClassIDType.Sprite));
-				if (spriteItems.Count() != 1) {
+				if (spriteItems.Count != 1) {
 					continue;
 				}
 				Export_CharArt_GetMaterialTextures(materialItems[0], out var mainTexID, out var alphaTexID);
 				Export_CharArt_GetSpriteTextures(spriteItems[0], out var mainTexID1, out var alphaTexID1);
-				if(mainTexID != mainTexID1) {
+				if (mainTexID != mainTexID1) {
 					if (mainTexID == 0) {
 						mainTexID = mainTexID1;
 					}
-					else if(mainTexID1 != 0){
+					else if (mainTexID1 != 0) {
 						continue;
 					}
 				}
-				if(alphaTexID != alphaTexID1) {
-					if(alphaTexID == 0) {
+				if (alphaTexID != alphaTexID1) {
+					if (alphaTexID == 0) {
 						alphaTexID = alphaTexID1;
 					}
-					else if(alphaTexID1 != 0) {
+					else if (alphaTexID1 != 0) {
 						continue;
 					}
 				}
-				if(mainTexID == 0 || alphaTexID == 0) {
+				if (mainTexID == 0 || alphaTexID == 0) {
 					continue;
 				}
 				//string name = ((Sprite)spriteItems[0].Asset).m_Name;
 				//MessageBox.Show(name);
 				{
 					var mainTexs = allAssets.FindAll(x => x.m_PathID == mainTexID && x.Type == ClassIDType.Texture2D);
-					if (mainTexs.Count() != 1) {
+					if (mainTexs.Count != 1) {
 						continue;
 					}
 					var alphaTexs = allAssets.FindAll(x => x.m_PathID == alphaTexID && x.Type == ClassIDType.Texture2D);
-					if (alphaTexs.Count() != 1) {
+					if (alphaTexs.Count != 1) {
 						continue;
 					}
 					var mainTex = mainTexs[0];
@@ -524,13 +525,119 @@ namespace AssetStudioGUI {
 		#endregion CharArt
 
 		#region Scene
+		private struct SubMeshRendererThings {
+			public ushort m_mapIndex;
+			public Vector4 m_mapOffset;
+
+			public SubMeshRendererThings(ushort i, float x, float y, float z, float w) {
+				m_mapIndex = i;
+				m_mapOffset = new Vector4(x, y, z, w);
+			}
+		}
+
+		private struct Mesh_OHMS {
+			public Mesh m_mesh;
+			public List<SubMeshRendererThings> m_renderers;
+			public int[] m_rendererRef;
+			public Mesh_OHMS(in Mesh m) {
+				m_mesh = m;
+				m_renderers = new();
+				m_rendererRef = new int[m.m_SubMeshes.Length];
+			}
+		}
+
+		private static bool Export_Scene_ForLightingTex(in string savePath, in List<AssetItem> allAssets) {
+			var allMeshes = allAssets.FindAll(x => x.Type == ClassIDType.LightmapSettings);
+			return true;
+		}
+
 		public static bool Export_Scene(in string savePath, in List<AssetItem> allAssets) {
-			var allMeshes = allAssets.FindAll(x => x.Type == ClassIDType.Mesh);
+			Export_Scene_ForLightingTex(in savePath, in allAssets);
+
+			Dictionary<long, Mesh_OHMS> l_meshes = new();
+			{
+				var allMeshes = allAssets.FindAll(x => x.Type == ClassIDType.Mesh);
+				foreach(var mesh in allMeshes) {
+					l_meshes.Add(mesh.m_PathID, new Mesh_OHMS((Mesh)mesh.Asset));
+				}
+			}
 			var allGameObjects = allAssets.FindAll(x => x.Type == ClassIDType.GameObject);
 			var allMeshRenderers = allAssets.FindAll(x => x.Type == ClassIDType.MeshRenderer);
 			var allMeshFilters = allAssets.FindAll(x => x.Type == ClassIDType.MeshFilter);
 
+			foreach (var rendererItem in allMeshRenderers) {
+				var ren = (MeshRenderer)rendererItem.Asset;
+				long m_Mesh_m_PathID = 0;
+				{
+					var objectItems = allGameObjects.FindAll(x => x.m_PathID == ren.m_GameObject.m_PathID);
+					if (objectItems.Count != 1) {
+						//throw new Exception($"0");
+						continue;
+					}
+					var obj = (GameObject)objectItems[0].Asset;
 
+					foreach (var component in obj.m_Components) {
+						var filters = allMeshFilters.FindAll(x => x.m_PathID == component.m_PathID);
+						if (filters.Count != 1) {
+							continue;
+						}
+						var filter = (MeshFilter)filters[0].Asset;
+						m_Mesh_m_PathID = filter.m_Mesh.m_PathID;
+						if (m_Mesh_m_PathID != 0) {
+							break;
+						}
+					}
+				}
+				if (m_Mesh_m_PathID == 0) {
+					continue;
+				}
+
+				var tree = ren.ToType();
+				var m_Enabled = tree["m_Enabled"];
+				if(m_Enabled == null || !m_Enabled.GetType().Equals(typeof(bool)) || !(bool)m_Enabled) {
+					//throw new Exception("1");
+					continue;
+				}
+				var m_LightmapIndex = tree["m_LightmapIndex"];
+
+				if (m_LightmapIndex == null) {
+					//throw new Exception("2");
+					continue;
+				}
+				if (!m_LightmapIndex.GetType().Equals(typeof(UInt16))) {
+					//throw new Exception("3");
+					continue;
+				}
+
+				var m_LightmapTilingOffset = tree["m_LightmapTilingOffset"];
+
+				if (m_LightmapTilingOffset == null) {
+					//throw new Exception("4");
+					continue;
+				}
+				if (!m_LightmapTilingOffset.GetType().Equals(typeof(OrderedDictionary))) {
+					//throw new Exception("5");
+					continue;
+				}
+				var LightmapTilingOffset = (OrderedDictionary)m_LightmapTilingOffset;
+				var x = (float)LightmapTilingOffset["x"];
+				var y = (float)LightmapTilingOffset["y"];
+				var z = (float)LightmapTilingOffset["z"];
+				var w = (float)LightmapTilingOffset["w"];
+				SubMeshRendererThings rendererThings = new((ushort)m_LightmapIndex, x, y, z, w);
+
+				Mesh_OHMS? l_m_n = l_meshes[m_Mesh_m_PathID];
+				if (l_m_n == null) {
+					//throw new Exception("6");
+					continue;
+				}
+				Mesh_OHMS l_m = (Mesh_OHMS)l_m_n;
+				l_m.m_renderers.Add(rendererThings);
+
+				for (uint i = 0; i < ren.m_StaticBatchInfo.subMeshCount; ++i) {
+					l_m.m_rendererRef[ren.m_StaticBatchInfo.firstSubMesh + i] = l_m.m_renderers.Count - 1;
+				}
+			}
 			return true;
 		}
 		#endregion Scene
