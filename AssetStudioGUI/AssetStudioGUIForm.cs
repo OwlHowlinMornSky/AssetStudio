@@ -1497,7 +1497,6 @@ namespace AssetStudioGUI {
 
 		private void PreviewMesh(Mesh m_Mesh) {
 			if (m_Mesh.m_VertexCount > 0) {
-				GL_InitMatrices();
 				#region Vertices
 				if (m_Mesh.m_Vertices == null || m_Mesh.m_Vertices.Length == 0) {
 					//StatusStripUpdate("Mesh can't be previewed.");
@@ -1533,6 +1532,8 @@ namespace AssetStudioGUI {
 					dist[i] = max[i] - min[i];
 				}
 				float d = Math.Max(1e-5f, dist.Length);
+				//if (d > 64.0f)
+				//	d = 64.0f;
 				m_cameraPos.Z = m_defaultCameraDis = d;
 				GL_updateViewMatrix();
 
@@ -1617,6 +1618,7 @@ namespace AssetStudioGUI {
 				GL_CreateVAO();
 				StatusStripUpdate(String.Format(Properties.Strings.Preview_GL_info, GL.GetString(StringName.Version)));
 
+				GL_InitMatrices();
 				ui_tabRight_page0_glPreview.Invalidate();
 			}
 			else {
@@ -2142,7 +2144,7 @@ namespace AssetStudioGUI {
 		}
 
 		private void GL_InitMatrices() {
-			m_cameraPos = new Vector3(0.0f, 0.0f, m_defaultCameraDis);
+			m_cameraPos = new Vector3(0.0f, 0.0f, 64.0f);
 			m_cameraRot = Vector3.Zero;
 			m_modelRot = Vector3.Zero;
 			m_modelScale = 1.0f;
@@ -2156,7 +2158,7 @@ namespace AssetStudioGUI {
 				Matrix4.CreateRotationZ(m_modelRot.Z) *
 				Matrix4.CreateRotationX(m_modelRot.X) *
 				Matrix4.CreateRotationY(m_modelRot.Y);
-			modelMatrixData = Matrix4.CreateScale(m_modelScale) * modelRotMatrix;
+			modelMatrixData = Matrix4.CreateScale(m_modelScale * 64.0f / m_defaultCameraDis) * modelRotMatrix;
 		}
 
 		private void GL_updateViewMatrix() {
@@ -2175,7 +2177,7 @@ namespace AssetStudioGUI {
 			else if (m_cameraFOV < 1.0f) {
 				m_cameraFOV = 1.0f;
 			}
-			Matrix4.CreatePerspectiveFieldOfView(m_cameraFOV, k, 0.25f, 512.0f, out projMatrixData);
+			Matrix4.CreatePerspectiveFieldOfView(m_cameraFOV, k, 0.25f, 256.0f, out projMatrixData);
 		}
 
 		private void ui_tabRight_page0_glPreview_Load(object sender, EventArgs e) {

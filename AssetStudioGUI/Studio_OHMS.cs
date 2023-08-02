@@ -50,6 +50,7 @@ namespace AssetStudioGUI {
 			return ExportTextAsset_NoAppendingExtension(item, savePath);
 		}
 
+		#region CharArt
 		private static bool Export_CharArt_GetMaterialTextures(in AssetItem item, out long mainTexID, out long alphaTexID) {
 			mainTexID = 0;
 			alphaTexID = 0;
@@ -520,6 +521,18 @@ namespace AssetStudioGUI {
 			}
 			return true;
 		}
+		#endregion CharArt
 
+		#region Scene
+		public static bool Export_Scene(in string savePath, in List<AssetItem> allAssets) {
+			var allMeshes = allAssets.FindAll(x => x.Type == ClassIDType.Mesh);
+			var allGameObjects = allAssets.FindAll(x => x.Type == ClassIDType.GameObject);
+			var allMeshRenderers = allAssets.FindAll(x => x.Type == ClassIDType.MeshRenderer);
+			var allMeshFilters = allAssets.FindAll(x => x.Type == ClassIDType.MeshFilter);
+
+
+			return true;
+		}
+		#endregion Scene
 	}
 }
