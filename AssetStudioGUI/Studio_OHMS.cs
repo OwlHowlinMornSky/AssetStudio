@@ -9,7 +9,6 @@ using static AssetStudioGUI.Exporter;
 
 namespace AssetStudioGUI {
 	internal static class Studio_OHMS {
-		internal static Action<string> StatusStripUpdate = x => { };
 
 		private static bool Export_Textures_CombineRGBA(in string savePath, in AssetItem mainTex, in AssetItem alphaTex) {
 			var res0 = ExportTexture2D_PNG(mainTex, savePath, out var rgbPath);
@@ -420,7 +419,7 @@ namespace AssetStudioGUI {
 		}
 
 		public static bool Export_CharArt_Building(in string savePath, in List<AssetItem> allAssets) {
-			StatusStripUpdate("Exporting The Spine Animations of Building.");
+			StudioCore.StatusStripUpdate("Exporting The Spine Animations of Building.");
 			var VCharacterItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "VCharacter"));
 			if (VCharacterItems.Count < 1) {
 				return false;
@@ -455,7 +454,7 @@ namespace AssetStudioGUI {
 		}
 
 		public static bool Export_CharArt_Battle(in string savePath, in List<AssetItem> allAssets) {
-			StatusStripUpdate("Exporting The Spine Animations of Battle.");
+			StudioCore.StatusStripUpdate("Exporting The Spine Animations of Battle.");
 			//return Export_CharArt_Battle_ForCharacterAnimator(in savePath, in allAssets) ||
 			//	Export_CharArt_Battle_ForSingleSpineAnimator(in savePath, in allAssets);
 			Export_CharArt_Battle_ForCharacterAnimator(in savePath, in allAssets);
@@ -464,7 +463,7 @@ namespace AssetStudioGUI {
 		}
 
 		public static bool Export_CharArt_Pictures(in string outPath, in List<AssetItem> allAssets) {
-			StatusStripUpdate("Exporting Pictures.");
+			StudioCore.StatusStripUpdate("Exporting Pictures.");
 			string savePath = Path.Combine(outPath, "Illust");
 			var IllustsItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "Image"));
 			int i = 0;

@@ -85,8 +85,7 @@ namespace AssetStudioGUI {
 			Logger.Default = logger;
 			Progress.Default = new Progress<int>(SetProgressBarValue);
 
-			m_studio.StatusStripUpdate = StatusStripUpdate;
-			Studio_OHMS.StatusStripUpdate = StatusStripUpdate;
+			StudioCore.StatusStripUpdate = StatusStripUpdate;
 
 			StatusStripUpdate(Properties.Strings.Status_Ready);
 		}
@@ -272,7 +271,7 @@ namespace AssetStudioGUI {
 							animationList = null;
 						}
 					}
-					m_studio.ExportObjectsWithAnimationClip(exportPath, ui_tabLeft_page0_treeView.Nodes, animationList);
+					StudioCore.ExportObjectsWithAnimationClip(exportPath, ui_tabLeft_page0_treeView.Nodes, animationList);
 				}
 			}
 			else {
@@ -284,7 +283,7 @@ namespace AssetStudioGUI {
 		private void ExportMergeObjects(bool animation) {
 			if (ui_tabLeft_page0_treeView.Nodes.Count > 0) {
 				var gameObjects = new List<GameObject>();
-				m_studio.GetSelectedParentNode(ui_tabLeft_page0_treeView.Nodes, gameObjects);
+				StudioCore.GetSelectedParentNode(ui_tabLeft_page0_treeView.Nodes, gameObjects);
 				if (gameObjects.Count > 0) {
 					var saveFileDialog = new SaveFileDialog();
 					saveFileDialog.FileName = gameObjects[0].m_Name + " (merge).fbx";
@@ -301,7 +300,7 @@ namespace AssetStudioGUI {
 								animationList = null;
 							}
 						}
-						m_studio.ExportObjectsMergeWithAnimationClip(exportPath, gameObjects, animationList);
+						StudioCore.ExportObjectsMergeWithAnimationClip(exportPath, gameObjects, animationList);
 					}
 				}
 				else {
@@ -330,7 +329,7 @@ namespace AssetStudioGUI {
 						toExportAssets = m_studio.visibleAssets;
 						break;
 					}
-					m_studio.ExportAssets(saveFolderDialog.Folder, toExportAssets, exportType);
+					StudioCore.ExportAssets(saveFolderDialog.Folder, toExportAssets, exportType);
 				}
 			}
 			else {
@@ -360,7 +359,7 @@ namespace AssetStudioGUI {
 						toExportAssets = m_studio.visibleAssets;
 						break;
 					}
-					m_studio.ExportAssetsList(saveFolderDialog.Folder, toExportAssets, filetype);
+					StudioCore.ExportAssetsList(saveFolderDialog.Folder, toExportAssets, filetype);
 				}
 			}
 			else {
@@ -388,7 +387,7 @@ namespace AssetStudioGUI {
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					var exportPath = Path.Combine(saveFolderDialog.Folder, "Animator") + Path.DirectorySeparatorChar;
-					m_studio.ExportAnimatorWithAnimationClip(animator, animationList, exportPath);
+					StudioCore.ExportAnimatorWithAnimationClip(animator, animationList, exportPath);
 				}
 			}
 		}
@@ -547,7 +546,7 @@ namespace AssetStudioGUI {
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					var fileNames = ui_openFileDialog0.FileNames;
 					var savePath = saveFolderDialog.Folder;
-					var extractedCount = await Task.Run(() => m_studio.ExtractFile(fileNames, savePath));
+					var extractedCount = await Task.Run(() => StudioCore.ExtractFile(fileNames, savePath));
 					//StatusStripUpdate($"Finished extracting {extractedCount} files.");
 					StatusStripUpdate(String.Format(Properties.Strings.Export_FinishExtracting, extractedCount));
 				}
@@ -563,7 +562,7 @@ namespace AssetStudioGUI {
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					var path = openFolderDialog.Folder;
 					var savePath = saveFolderDialog.Folder;
-					var extractedCount = await Task.Run(() => m_studio.ExtractFolder(path, savePath));
+					var extractedCount = await Task.Run(() => StudioCore.ExtractFolder(path, savePath));
 					//StatusStripUpdate($"Finished extracting {extractedCount} files.");
 					StatusStripUpdate(String.Format(Properties.Strings.Export_FinishExtracting, extractedCount));
 				}
@@ -642,11 +641,10 @@ namespace AssetStudioGUI {
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					var savePath = saveFolderDialog.Folder + Path.DirectorySeparatorChar;
-					m_studio.ExportSplitObjects(savePath, ui_tabLeft_page0_treeView.Nodes);
+					StudioCore.ExportSplitObjects(savePath, ui_tabLeft_page0_treeView.Nodes);
 				}
 			}
 			else {
-				//StatusStripUpdate("No Objects available for export");
 				StatusStripUpdate(Properties.Strings.Export_Object_Nothing);
 			}
 		}
@@ -2387,10 +2385,10 @@ namespace AssetStudioGUI {
 					}
 					switch (type) {
 					case ExportArknightsFilter.Scene:
-						m_studio.ExportAssetsArknightsScene(outdir, m_studio.exportableAssets, listType);
+						StudioCore.ExportAssetsArknightsScene(outdir, m_studio.exportableAssets, listType);
 						break;
 					case ExportArknightsFilter.CharArt:
-						m_studio.ExportAssetsArknightsCharart(outdir, m_studio.exportableAssets);
+						StudioCore.ExportAssetsArknightsCharart(outdir, m_studio.exportableAssets);
 						break;
 					}
 				}
@@ -2432,7 +2430,7 @@ namespace AssetStudioGUI {
 						toExportAssets = m_studio.visibleAssets.Where(x => x.Type == ClassIDType.Sprite).ToList();
 						break;
 					}
-					m_studio.ExportAssets(outdir, toExportAssets, ExportType.Convert);
+					StudioCore.ExportAssets(outdir, toExportAssets, ExportType.Convert);
 				}
 			}
 			else {
@@ -2472,7 +2470,7 @@ namespace AssetStudioGUI {
 						toExportAssets = m_studio.visibleAssets;
 						break;
 					}
-					m_studio.ExportAssets(outdir, toExportAssets, ExportType.ConvertOHMS);
+					StudioCore.ExportAssets(outdir, toExportAssets, ExportType.ConvertOHMS);
 				}
 			}
 			else {
