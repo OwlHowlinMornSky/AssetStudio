@@ -173,5 +173,6 @@ namespace AssetStudioGUI {
 			}
 		}
 		#endregion Changes
+
 	}
 }
