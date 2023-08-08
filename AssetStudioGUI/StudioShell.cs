@@ -468,7 +468,7 @@ namespace AssetStudioGUI {
 		}
 	}
 
-	internal class Studio {
+	internal class StudioShell {
 		public AssetsManager assetsManager = new AssetsManager();
 		public AssemblyLoader assemblyLoader = new AssemblyLoader();
 		public List<AssetItem> exportableAssets = new List<AssetItem>();

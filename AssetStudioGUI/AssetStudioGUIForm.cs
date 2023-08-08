@@ -29,7 +29,7 @@ namespace AssetStudioGUI {
 		private AssetItem lastSelectedItem;
 		private string tempClipboard;
 
-		public static Studio m_studio = new();
+		public static StudioShell m_studio = new();
 
 		#region Member_LeftView
 		//asset list sorting
