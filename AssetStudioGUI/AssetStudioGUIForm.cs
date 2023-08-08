@@ -580,6 +580,11 @@ namespace AssetStudioGUI {
 			langOpt.ShowDialog(this);
 		}
 
+		private void ui_menuOptions_exportOptions_Click(object sender, EventArgs e) {
+			var exportOpt = new ExportOptions();
+			exportOpt.ShowDialog(this);
+		}
+
 		private void ui_menuOptions_displayAllAssets_CheckedChanged(object sender, EventArgs e) {
 			Properties.Settings.Default.displayAll = ui_menuOptions_displayAllAssets.Checked;
 			Properties.Settings.Default.Save();
@@ -609,11 +614,6 @@ namespace AssetStudioGUI {
 
 			Properties.Settings.Default.displayInfo = ui_menuOptions_displayInfo.Checked;
 			Properties.Settings.Default.Save();
-		}
-
-		private void ui_menuOptions_exportOptions_Click(object sender, EventArgs e) {
-			var exportOpt = new ExportOptions();
-			exportOpt.ShowDialog(this);
 		}
 		#endregion // Menu_Options
 
@@ -2480,5 +2480,9 @@ namespace AssetStudioGUI {
 
 		#endregion OHMS
 
+		private void tESTToolStripMenuItem_Click(object sender, EventArgs e) {
+			var test = new Studio_Special_Arknights();
+			test.ShowDialog(this);
+		}
 	}
 }
