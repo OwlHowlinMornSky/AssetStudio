@@ -39,14 +39,14 @@ namespace AssetStudioGUI {
 		JSON
 	}
 
-	internal static class Studio {
-		public static AssetsManager assetsManager = new AssetsManager();
-		public static AssemblyLoader assemblyLoader = new AssemblyLoader();
-		public static List<AssetItem> exportableAssets = new List<AssetItem>();
-		public static List<AssetItem> visibleAssets = new List<AssetItem>();
-		internal static Action<string> StatusStripUpdate = x => { };
+	internal class Studio {
+		public AssetsManager assetsManager = new AssetsManager();
+		public AssemblyLoader assemblyLoader = new AssemblyLoader();
+		public List<AssetItem> exportableAssets = new List<AssetItem>();
+		public List<AssetItem> visibleAssets = new List<AssetItem>();
+		internal Action<string> StatusStripUpdate = x => { };
 
-		public static int ExtractFolder(string path, string savePath) {
+		public int ExtractFolder(string path, string savePath) {
 			int extractedCount = 0;
 			Progress.Reset();
 			var files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
@@ -60,7 +60,7 @@ namespace AssetStudioGUI {
 			return extractedCount;
 		}
 
-		public static int ExtractFile(string[] fileNames, string savePath) {
+		public int ExtractFile(string[] fileNames, string savePath) {
 			int extractedCount = 0;
 			Progress.Reset();
 			for (var i = 0; i < fileNames.Length; i++) {
@@ -71,7 +71,7 @@ namespace AssetStudioGUI {
 			return extractedCount;
 		}
 
-		public static int ExtractFile(string fileName, string savePath) {
+		public int ExtractFile(string fileName, string savePath) {
 			int extractedCount = 0;
 			var reader = new FileReader(fileName);
 			if (reader.FileType == FileType.BundleFile)
@@ -83,7 +83,7 @@ namespace AssetStudioGUI {
 			return extractedCount;
 		}
 
-		private static int ExtractBundleFile(FileReader reader, string savePath) {
+		private int ExtractBundleFile(FileReader reader, string savePath) {
 			//StatusStripUpdate($"Decompressing {reader.FileName} ...");
 			StatusStripUpdate(Properties.Strings.Studio_Decompressing + $" {reader.FileName} ...");
 			var bundleFile = new BundleFile(reader);
@@ -95,7 +95,7 @@ namespace AssetStudioGUI {
 			return 0;
 		}
 
-		private static int ExtractWebDataFile(FileReader reader, string savePath) {
+		private int ExtractWebDataFile(FileReader reader, string savePath) {
 			//StatusStripUpdate($"Decompressing {reader.FileName} ...");
 			StatusStripUpdate(Properties.Strings.Studio_Decompressing + $" {reader.FileName} ...");
 			var webFile = new WebFile(reader);
@@ -107,7 +107,7 @@ namespace AssetStudioGUI {
 			return 0;
 		}
 
-		private static int ExtractStreamFile(string extractPath, StreamFile[] fileList) {
+		private int ExtractStreamFile(string extractPath, StreamFile[] fileList) {
 			int extractedCount = 0;
 			foreach (var file in fileList) {
 				var filePath = Path.Combine(extractPath, file.path);
@@ -126,7 +126,7 @@ namespace AssetStudioGUI {
 			return extractedCount;
 		}
 
-		public static (string, List<TreeNode>) BuildAssetData() {
+		public (string, List<TreeNode>) BuildAssetData() {
 			//StatusStripUpdate("Building asset list...");
 			StatusStripUpdate(Properties.Strings.Studio_BuildingAssetList);
 
@@ -303,7 +303,7 @@ namespace AssetStudioGUI {
 			return (productName, treeNodeCollection);
 		}
 
-		public static Dictionary<string, SortedDictionary<int, TypeTreeItem>> BuildClassStructure() {
+		public Dictionary<string, SortedDictionary<int, TypeTreeItem>> BuildClassStructure() {
 			var typeMap = new Dictionary<string, SortedDictionary<int, TypeTreeItem>>();
 			foreach (var assetsFile in assetsManager.assetsFileList) {
 				if (typeMap.TryGetValue(assetsFile.unityVersion, out var curVer)) {
@@ -331,7 +331,7 @@ namespace AssetStudioGUI {
 			return typeMap;
 		}
 
-		public static void ExportAssets(string savePath, List<AssetItem> toExportAssets, ExportType exportType) {
+		public void ExportAssets(string savePath, List<AssetItem> toExportAssets, ExportType exportType) {
 			ThreadPool.QueueUserWorkItem(state => {
 				Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
@@ -427,7 +427,7 @@ namespace AssetStudioGUI {
 			});
 		}
 
-		public static void ExportAssetsList(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+		public void ExportAssetsList(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
 			ThreadPool.QueueUserWorkItem(state => {
 				Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
@@ -500,7 +500,7 @@ namespace AssetStudioGUI {
 			});
 		}
 
-		public static void ExportAssetsStructuredLIST(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+		public void ExportAssetsStructuredLIST(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
 			switch (exportListType) {
 			case ExportListType.XML: {
 				var filename = Path.Combine(savePath, "assets.xml");
@@ -578,7 +578,7 @@ namespace AssetStudioGUI {
 			}
 		}
 
-		public static void ExportAssetsStructured(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+		public void ExportAssetsStructured(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
 			ThreadPool.QueueUserWorkItem(state => {
 				Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
@@ -646,7 +646,7 @@ namespace AssetStudioGUI {
 			});
 		}
 
-		public static void ExportAssetsArknightsScene(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
+		public void ExportAssetsArknightsScene(string savePath, List<AssetItem> toExportAssets, ExportListType exportListType) {
 			MessageBox.Show(Properties.Strings.Global_NotImplemented, "Scene Bundle", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			return;
 			//try {
@@ -659,7 +659,7 @@ namespace AssetStudioGUI {
 			//return;
 		}
 
-		public async static void ExportAssetsArknightsCharart(string savePath, List<AssetItem> allAssets) {
+		public async void ExportAssetsArknightsCharart(string savePath, List<AssetItem> allAssets) {
 			try {
 				await System.Threading.Tasks.Task.Run(() => {
 					Progress.Reset();
@@ -678,7 +678,7 @@ namespace AssetStudioGUI {
 			return;
 		}
 
-		public static void ExportSplitObjects(string savePath, TreeNodeCollection nodes) {
+		public void ExportSplitObjects(string savePath, TreeNodeCollection nodes) {
 			ThreadPool.QueueUserWorkItem(state => {
 				var count = nodes.Cast<TreeNode>().Sum(x => x.Nodes.Count);
 				int k = 0;
@@ -728,14 +728,14 @@ namespace AssetStudioGUI {
 			});
 		}
 
-		private static void CollectNode(GameObjectTreeNode node, List<GameObject> gameObjects) {
+		private void CollectNode(GameObjectTreeNode node, List<GameObject> gameObjects) {
 			gameObjects.Add(node.gameObject);
 			foreach (GameObjectTreeNode i in node.Nodes) {
 				CollectNode(i, gameObjects);
 			}
 		}
 
-		public static void ExportAnimatorWithAnimationClip(AssetItem animator, List<AssetItem> animationList, string exportPath) {
+		public void ExportAnimatorWithAnimationClip(AssetItem animator, List<AssetItem> animationList, string exportPath) {
 			ThreadPool.QueueUserWorkItem(state => {
 				Progress.Reset();
 				StatusStripUpdate($"Exporting {animator.Text}");
@@ -754,7 +754,7 @@ namespace AssetStudioGUI {
 			});
 		}
 
-		public static void ExportObjectsWithAnimationClip(string exportPath, TreeNodeCollection nodes, List<AssetItem> animationList = null) {
+		public void ExportObjectsWithAnimationClip(string exportPath, TreeNodeCollection nodes, List<AssetItem> animationList = null) {
 			ThreadPool.QueueUserWorkItem(state => {
 				var gameObjects = new List<GameObject>();
 				GetSelectedParentNode(nodes, gameObjects);
@@ -785,7 +785,7 @@ namespace AssetStudioGUI {
 			});
 		}
 
-		public static void ExportObjectsMergeWithAnimationClip(string exportPath, List<GameObject> gameObjects, List<AssetItem> animationList = null) {
+		public void ExportObjectsMergeWithAnimationClip(string exportPath, List<GameObject> gameObjects, List<AssetItem> animationList = null) {
 			ThreadPool.QueueUserWorkItem(state => {
 				var name = Path.GetFileName(exportPath);
 				Progress.Reset();
@@ -805,7 +805,7 @@ namespace AssetStudioGUI {
 			});
 		}
 
-		public static void GetSelectedParentNode(TreeNodeCollection nodes, List<GameObject> gameObjects) {
+		public void GetSelectedParentNode(TreeNodeCollection nodes, List<GameObject> gameObjects) {
 			foreach (TreeNode i in nodes) {
 				if (i is GameObjectTreeNode gameObjectTreeNode && i.Checked) {
 					gameObjects.Add(gameObjectTreeNode.gameObject);
@@ -816,7 +816,7 @@ namespace AssetStudioGUI {
 			}
 		}
 
-		public static TypeTree MonoBehaviourToTypeTree(MonoBehaviour m_MonoBehaviour) {
+		public TypeTree MonoBehaviourToTypeTree(MonoBehaviour m_MonoBehaviour) {
 			if (!assemblyLoader.Loaded) {
 				var openFolderDialog = new OpenFolderDialog();
 				//openFolderDialog.Title = "Select Assembly Folder";
@@ -831,7 +831,7 @@ namespace AssetStudioGUI {
 			return m_MonoBehaviour.ConvertToTypeTree(assemblyLoader);
 		}
 
-		public static string DumpAsset(Object obj) {
+		public string DumpAsset(Object obj) {
 			var str = obj.Dump();
 			if (str == null && obj is MonoBehaviour m_MonoBehaviour) {
 				var type = MonoBehaviourToTypeTree(m_MonoBehaviour);
@@ -840,7 +840,7 @@ namespace AssetStudioGUI {
 			return str;
 		}
 
-		public static string DumpAssetJson(Object obj) {
+		public string DumpAssetJson(Object obj) {
 			var type = obj.ToType();
 			if (type == null && obj is MonoBehaviour m_MonoBehaviour) {
 				var m_Type = MonoBehaviourToTypeTree(m_MonoBehaviour);
@@ -850,7 +850,7 @@ namespace AssetStudioGUI {
 			return str;
 		}
 
-		public static void OpenFolderInExplorer(string path) {
+		public void OpenFolderInExplorer(string path) {
 			var info = new ProcessStartInfo(path);
 			info.UseShellExecute = true;
 			Process.Start(info);

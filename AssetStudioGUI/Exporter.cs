@@ -110,7 +110,7 @@ namespace AssetStudioGUI {
 			var m_MonoBehaviour = (MonoBehaviour)item.Asset;
 			var type = m_MonoBehaviour.ToType();
 			if (type == null) {
-				var m_Type = Studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
+				var m_Type = AssetStudioGUIForm.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
 				type = m_MonoBehaviour.ToType(m_Type);
 			}
 			var str = JsonConvert.SerializeObject(type, Formatting.Indented);
@@ -469,7 +469,7 @@ namespace AssetStudioGUI {
 				return false;
 			var str = item.Asset.Dump();
 			if (str == null && item.Asset is MonoBehaviour m_MonoBehaviour) {
-				var m_Type = Studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
+				var m_Type = AssetStudioGUIForm.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
 				str = m_MonoBehaviour.Dump(m_Type);
 			}
 			if (str != null) {
@@ -484,7 +484,7 @@ namespace AssetStudioGUI {
 				return false;
 			var type = item.Asset.ToType();
 			if (type == null && item.Asset is MonoBehaviour m_MonoBehaviour) {
-				var m_Type = Studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
+				var m_Type = AssetStudioGUIForm.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
 				type = m_MonoBehaviour.ToType(m_Type);
 			}
 			var str = JsonConvert.SerializeObject(type, Formatting.Indented);
