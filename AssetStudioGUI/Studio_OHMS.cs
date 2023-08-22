@@ -401,9 +401,9 @@ namespace AssetStudioGUI {
 				}
 				sprite_pathid = (long)image_sprite_pathid0;
 			}
-			if (material_pathid == 0 || sprite_pathid == 0) {
-				return false;
-			}
+			//if (material_pathid == 0 || sprite_pathid == 0) {
+			//	return false;
+			//}
 			return true;
 		}
 
@@ -473,16 +473,21 @@ namespace AssetStudioGUI {
 				if (!Export_CharArt_Illust_ForOneIllustGetIDs(illust, out var material_pathid, out var sprite_pathid)) {
 					continue;
 				}
+
+				long mainTexID = 0;
+				long mainTexID1 = 0;
+				long alphaTexID = 0;
+				long alphaTexID1 = 0;
+
 				var materialItems = allAssets.FindAll(x => (x.m_PathID == material_pathid && x.Type == ClassIDType.Material));
-				if (materialItems.Count != 1) {
-					continue;
+				if (materialItems.Count == 1) {
+					Export_CharArt_GetMaterialTextures(materialItems[0], out mainTexID, out alphaTexID);
 				}
 				var spriteItems = allAssets.FindAll(x => (x.m_PathID == sprite_pathid && x.Type == ClassIDType.Sprite));
-				if (spriteItems.Count != 1) {
-					continue;
+				if (spriteItems.Count == 1) {
+					Export_CharArt_GetSpriteTextures(spriteItems[0], out mainTexID1, out alphaTexID1);
 				}
-				Export_CharArt_GetMaterialTextures(materialItems[0], out var mainTexID, out var alphaTexID);
-				Export_CharArt_GetSpriteTextures(spriteItems[0], out var mainTexID1, out var alphaTexID1);
+
 				if (mainTexID != mainTexID1) {
 					if (mainTexID == 0) {
 						mainTexID = mainTexID1;
@@ -499,26 +504,30 @@ namespace AssetStudioGUI {
 						continue;
 					}
 				}
-				if (mainTexID == 0 || alphaTexID == 0) {
+				if (mainTexID == 0) {
 					continue;
 				}
-				//string name = ((Sprite)spriteItems[0].Asset).m_Name;
-				//MessageBox.Show(name);
-				{
-					var mainTexs = allAssets.FindAll(x => x.m_PathID == mainTexID && x.Type == ClassIDType.Texture2D);
-					if (mainTexs.Count != 1) {
-						continue;
-					}
+
+				var mainTexs = allAssets.FindAll(x => x.m_PathID == mainTexID && x.Type == ClassIDType.Texture2D);
+				if (mainTexs.Count != 1) {
+					continue;
+				}
+				var mainTex = mainTexs[0];
+
+				if (alphaTexID == 0) {
+					ExportTexture2D_PNG(mainTex, savePath, out var rgbPath);
+				}
+				else {
 					var alphaTexs = allAssets.FindAll(x => x.m_PathID == alphaTexID && x.Type == ClassIDType.Texture2D);
 					if (alphaTexs.Count != 1) {
 						continue;
 					}
-					var mainTex = mainTexs[0];
 					var alphaTex = alphaTexs[0];
 					if (!Export_Textures_CombineRGBA(in savePath, in mainTex, in alphaTex)) {
 						MessageBox.Show("Error");
 					}
 				}
+
 				Progress.Report(++i + n, n + n);
 			}
 			return true;
