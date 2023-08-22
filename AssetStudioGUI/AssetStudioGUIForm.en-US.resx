@@ -18,7 +18,7 @@
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
     <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing"">Blue</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
         <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
@@ -180,7 +180,7 @@
     <value>Resume</value>
   </data>
   <data name="ui_tabRight_page0_FMODcopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 338</value>
+    <value>163, 338</value>
   </data>
   <data name="ui_tabRight_page0_FMODcopyright.Size" type="System.Drawing.Size, System.Drawing">
     <value>406, 20</value>
@@ -287,6 +287,12 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuOptions_language.Text" xml:space="preserve">
     <value>UI Language</value>
   </data>
+  <data name="ui_menuOptions_exportOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 22</value>
+  </data>
+  <data name="ui_menuOptions_exportOptions.Text" xml:space="preserve">
+    <value>Export options</value>
+  </data>
   <data name="ui_menuOptions_separator0.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 6</value>
   </data>
@@ -316,15 +322,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_menuOptions_specifyUnityVersion.Text" xml:space="preserve">
     <value>Specify Unity version</value>
-  </data>
-  <data name="ui_menuOptions_separator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 6</value>
-  </data>
-  <data name="ui_menuOptions_exportOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
-  </data>
-  <data name="ui_menuOptions_exportOptions.Text" xml:space="preserve">
-    <value>Export options</value>
   </data>
   <data name="ui_menuFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 21</value>
@@ -653,6 +650,12 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuOhmsExport_arknights.Text" xml:space="preserve">
     <value>[Arknights]</value>
   </data>
+  <data name="tESTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 6</value>
+  </data>
   <data name="ui_menuOhmsExport_arknights_sceneBundle.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 22</value>
   </data>
@@ -729,6 +732,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
     <value>XML list</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>AssetStudioGUI [EN]</value>
+    <value>AssetStudioGUI [English (United States)]</value>
   </data>
 </root>

@@ -1,5 +1,8 @@
 ﻿using AssetStudio;
 using Newtonsoft.Json;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -49,6 +52,59 @@ namespace AssetStudioGUI {
 				}
 				return true;
 			}
+		}
+
+		public static bool ExportTexture2D_Combine(AssetItem itemRGB, AssetItem itemA, string exportPath) {
+			try {
+				var m_Texture2D_RGB = (Texture2D)itemRGB.Asset;
+				var m_Texture2D_A = (Texture2D)itemA.Asset;
+
+				ImageFormat type;
+				type = Properties.Settings.Default.convertTexture ?
+					Properties.Settings.Default.convertType : ImageFormat.Png;
+
+				if (!TryExportFile(exportPath, itemRGB, "." + type.ToString().ToLower(), out var exportFullPath)) {
+					throw new System.Exception("0");
+				}
+
+				var image0 = m_Texture2D_RGB.ConvertToImage(true);
+				var image1 = m_Texture2D_A.ConvertToImage(true);
+				
+				if (image0 == null || image1 == null) {
+					throw new System.Exception("1");
+				}
+
+				if (image1.Size() != image0.Size()) {
+					var sampler = new SixLabors.ImageSharp.Processing.Processors.Transforms.BicubicResampler();
+					image1.Mutate(a => a.Resize(image0.Size(), sampler, true));
+				}
+
+
+
+				for(int i = 0; i < image0.Width; i++) {
+					for(int j = 0; j < image0.Height; j++) {
+						var oc = image0[i, j];
+						image0[i, j] = new Bgra32(oc.R, oc.G, oc.B, image1[i, j].R);
+					}
+				}
+				using (image0) {
+					using (var file = File.OpenWrite(exportFullPath)) {
+						image0.WriteToStream(file, type);
+					}
+				}
+			}
+			catch (System.Exception e) {
+				var res0 = ExportTexture2D(itemRGB, exportPath);
+				var res1 = ExportTexture2D(itemA, exportPath);
+				return res0 || res1;
+			}
+
+			var np = Path.Combine(exportPath, "original");
+
+			ExportTexture2D(itemRGB, np);
+			ExportTexture2D(itemA, np);
+
+			return true;
 		}
 
 		public static bool ExportAudioClip(AssetItem item, string exportPath) {
@@ -294,7 +350,7 @@ namespace AssetStudioGUI {
 			for (int v = 0; v < m_Mesh.m_VertexCount; v++) {
 				sb.Append($"v ");
 
-				switch(c_V) {
+				switch (c_V) {
 				case 3:
 					sb.AppendFormat("{0} {1} {2}", m_Mesh.m_Vertices[v * c_V], m_Mesh.m_Vertices[v * c_V + 1], -m_Mesh.m_Vertices[v * c_V + 2]);
 					break;
@@ -310,7 +366,7 @@ namespace AssetStudioGUI {
 					sb.Append($" {m_Mesh.m_UV1[v * c_UV1 + i]}");
 				}
 
-				switch(c_N) {
+				switch (c_N) {
 				case 3:
 					sb.AppendFormat(" {0} {1} {2}", m_Mesh.m_Normals[v * c_N], m_Mesh.m_Normals[v * c_N + 1], -m_Mesh.m_Normals[v * c_N + 2]);
 					break;
@@ -560,7 +616,8 @@ namespace AssetStudioGUI {
 		}
 
 		public static string FixFileName(string str) {
-			if (str.Length >= 260) return Path.GetRandomFileName();
+			if (str.Length >= 260)
+				return Path.GetRandomFileName();
 			return Path.GetInvalidFileNameChars().Aggregate(str, (current, c) => current.Replace(c, '_'));
 		}
 	}

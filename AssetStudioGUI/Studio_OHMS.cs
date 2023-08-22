@@ -11,11 +11,12 @@ namespace AssetStudioGUI {
 	internal static class Studio_OHMS {
 
 		private static bool Export_Textures_CombineRGBA(in string savePath, in AssetItem mainTex, in AssetItem alphaTex) {
+			//return ExportTexture2D_Combine(mainTex, alphaTex, savePath);
+
 			var res0 = ExportTexture2D_PNG(mainTex, savePath, out var rgbPath);
 			var res1 = ExportTexture2D_PNG(alphaTex, savePath, out var alphaPath);
 			if (res0 && res1) {
-				/*
-				Mat[] mat = new Mat[2];
+				/* Mat[] mat = new Mat[2];
 				mat[0] = Cv2.ImRead(rgbPath);
 				mat[1] = Cv2.ImRead(alphaPath);
 
@@ -557,7 +558,7 @@ namespace AssetStudioGUI {
 			Dictionary<long, Mesh_OHMS> l_meshes = new();
 			{
 				var allMeshes = allAssets.FindAll(x => x.Type == ClassIDType.Mesh);
-				foreach(var mesh in allMeshes) {
+				foreach (var mesh in allMeshes) {
 					l_meshes.Add(mesh.m_PathID, new Mesh_OHMS((Mesh)mesh.Asset));
 				}
 			}
@@ -594,7 +595,7 @@ namespace AssetStudioGUI {
 
 				var tree = ren.ToType();
 				var m_Enabled = tree["m_Enabled"];
-				if(m_Enabled == null || !m_Enabled.GetType().Equals(typeof(bool)) || !(bool)m_Enabled) {
+				if (m_Enabled == null || !m_Enabled.GetType().Equals(typeof(bool)) || !(bool)m_Enabled) {
 					//throw new Exception("1");
 					continue;
 				}

@@ -18,7 +18,7 @@
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
     <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing"">Blue</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
         <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ui_tabLeft_page0.Text" xml:space="preserve">
+    <value>场景层次</value>
+  </data>
   <data name="ui_tabLeft_page0_treeSearch.Text" xml:space="preserve">
     <value> 搜索 </value>
   </data>
-  <data name="ui_tabLeft_page0.Text" xml:space="preserve">
-    <value>场景层次</value>
+  <data name="ui_tabLeft_page1.Text" xml:space="preserve">
+    <value>资料</value>
   </data>
   <data name="ui_tabLeft_page1_listView_columnHeader_Name.Text" xml:space="preserve">
     <value>名称</value>
@@ -148,8 +151,8 @@
   <data name="ui_tabLeft_page1_listSearch.Text" xml:space="preserve">
     <value> 过滤 </value>
   </data>
-  <data name="ui_tabLeft_page1.Text" xml:space="preserve">
-    <value>资料</value>
+  <data name="ui_tabLeft_page2.Text" xml:space="preserve">
+    <value>资料类</value>
   </data>
   <data name="ui_tabLeft_page2_listView_columnHeader_Name.Text" xml:space="preserve">
     <value>名称</value>
@@ -157,8 +160,8 @@
   <data name="ui_tabLeft_page2_listView_columnHeader_ID.Text" xml:space="preserve">
     <value>ID</value>
   </data>
-  <data name="ui_tabLeft_page2.Text" xml:space="preserve">
-    <value>资料类</value>
+  <data name="ui_tabRight_page0.Text" xml:space="preserve">
+    <value>预览</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ui_tabRight_page0_FMODstatusLabel_Playing.Size" type="System.Drawing.Size, System.Drawing">
@@ -177,13 +180,13 @@
     <value>继续</value>
   </data>
   <data name="ui_tabRight_page0_FMODcopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 338</value>
+    <value>207, 338</value>
   </data>
   <data name="ui_tabRight_page0_FMODcopyright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>335, 20</value>
+    <value>315, 20</value>
   </data>
   <data name="ui_tabRight_page0_FMODcopyright.Text" xml:space="preserve">
-    <value>音频引擎 由 FMOD by Firelight Technologies 提供</value>
+    <value>音频引擎 FMOD 由 Firelight Technologies 提供</value>
   </data>
   <data name="ui_tabRight_page0_FMODinfoLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>357, 231</value>
@@ -224,9 +227,6 @@ The quick brown fox jumps over the lazy dog. 1234567890
 
 The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
-  <data name="ui_tabRight_page0.Text" xml:space="preserve">
-    <value>预览</value>
-  </data>
   <data name="ui_tabRight_page1.Text" xml:space="preserve">
     <value>转储</value>
   </data>
@@ -236,57 +236,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_statusLabel0_down.ToolTipText" xml:space="preserve">
     <value>状态信息</value>
   </data>
-  <data name="ui_menuFile_loadFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuFile_loadFile.Text" xml:space="preserve">
-    <value>打开文件</value>
-  </data>
-  <data name="ui_menuFile_loadFile.ToolTipText" xml:space="preserve">
-    <value>选择若干文件打开。</value>
-  </data>
-  <data name="ui_menuFile_loadFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuFile_loadFolder.Text" xml:space="preserve">
-    <value>打开文件夹</value>
-  </data>
-  <data name="ui_menuFile_loadFolder.ToolTipText" xml:space="preserve">
-    <value>选择一个文件夹，打开其中包含的所有可以打开的文件。</value>
-  </data>
-  <data name="ui_menuFile_separator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
-  </data>
-  <data name="ui_menuFile_extractFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuFile_extractFile.Text" xml:space="preserve">
-    <value>提取文件</value>
-  </data>
-  <data name="ui_menuFile_extractFile.ToolTipText" xml:space="preserve">
-    <value>选择若干文件，将其中的所有内容直接导出到指定的文件夹。</value>
-  </data>
-  <data name="ui_menuFile_extractFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuFile_extractFolder.Text" xml:space="preserve">
-    <value>提取文件夹</value>
-  </data>
-  <data name="ui_menuFile_extractFolder.ToolTipText" xml:space="preserve">
-    <value>选择一个文件夹，将其中的所有文件包含的所有内容直接导出到指定的文件夹。</value>
-  </data>
-  <data name="ui_menuFile_separator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
-  </data>
-  <data name="ui_menuFile_clear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuFile_clear.Text" xml:space="preserve">
-    <value>清空</value>
-  </data>
-  <data name="ui_menuFile_clear.ToolTipText" xml:space="preserve">
-    <value>重设加载状态。</value>
-  </data>
   <data name="ui_menuFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 21</value>
   </data>
@@ -295,6 +244,66 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_menuFile.ToolTipText" xml:space="preserve">
     <value>关于处理外部文件的项目</value>
+  </data>
+  <data name="ui_menuFile_loadFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuFile_loadFile.Text" xml:space="preserve">
+    <value>打开文件</value>
+  </data>
+  <data name="ui_menuFile_loadFile.ToolTipText" xml:space="preserve">
+    <value>选择若干文件打开。</value>
+  </data>
+  <data name="ui_menuFile_loadFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuFile_loadFolder.Text" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
+  <data name="ui_menuFile_loadFolder.ToolTipText" xml:space="preserve">
+    <value>选择一个文件夹，打开其中包含的所有可以打开的文件。</value>
+  </data>
+  <data name="ui_menuFile_separator0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 6</value>
+  </data>
+  <data name="ui_menuFile_extractFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuFile_extractFile.Text" xml:space="preserve">
+    <value>提取文件</value>
+  </data>
+  <data name="ui_menuFile_extractFile.ToolTipText" xml:space="preserve">
+    <value>选择若干文件，将其中的所有内容直接导出到指定的文件夹。</value>
+  </data>
+  <data name="ui_menuFile_extractFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuFile_extractFolder.Text" xml:space="preserve">
+    <value>提取文件夹</value>
+  </data>
+  <data name="ui_menuFile_extractFolder.ToolTipText" xml:space="preserve">
+    <value>选择一个文件夹，将其中的所有文件包含的所有内容直接导出到指定的文件夹。</value>
+  </data>
+  <data name="ui_menuFile_separator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 6</value>
+  </data>
+  <data name="ui_menuFile_clear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuFile_clear.Text" xml:space="preserve">
+    <value>清空</value>
+  </data>
+  <data name="ui_menuFile_clear.ToolTipText" xml:space="preserve">
+    <value>重设加载状态。</value>
+  </data>
+  <data name="ui_menuOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="ui_menuOptions.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="ui_menuOptions.ToolTipText" xml:space="preserve">
+    <value>关于软件工作方式的项目</value>
   </data>
   <data name="ui_menuOptions_language.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 22</value>
@@ -355,21 +364,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuOptions_specifyUnityVersion.Text" xml:space="preserve">
     <value>指定 Unity 版本</value>
   </data>
-  <data name="ui_menuOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 21</value>
-  </data>
-  <data name="ui_menuOptions.Text" xml:space="preserve">
-    <value>选项</value>
-  </data>
-  <data name="ui_menuOptions.ToolTipText" xml:space="preserve">
-    <value>关于软件工作方式的项目</value>
-  </data>
-  <data name="ui_menuFilter_0_all.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuFilter_0_all.Text" xml:space="preserve">
-    <value>全部</value>
-  </data>
   <data name="ui_menuFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 21</value>
   </data>
@@ -378,6 +372,18 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_menuFilter.ToolTipText" xml:space="preserve">
     <value>筛选已加载的资料</value>
+  </data>
+  <data name="ui_menuFilter_0_all.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 22</value>
+  </data>
+  <data name="ui_menuFilter_0_all.Text" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="ui_menuModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="ui_menuModel.Text" xml:space="preserve">
+    <value>模型</value>
   </data>
   <data name="ui_menuModel_exportAllObjectsSplit.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 22</value>
@@ -412,11 +418,14 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Text" xml:space="preserve">
     <value>导出选择的对象 (分离) + 选择的 AnimationClips</value>
   </data>
-  <data name="ui_menuModel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ui_menuExport.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 21</value>
   </data>
-  <data name="ui_menuModel.Text" xml:space="preserve">
-    <value>模型</value>
+  <data name="ui_menuExport.Text" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="ui_menuExport.ToolTipText" xml:space="preserve">
+    <value>关于将若干资料输出的项目</value>
   </data>
   <data name="ui_menuExport_allAssets.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 22</value>
@@ -460,24 +469,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuExport_separator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 6</value>
   </data>
-  <data name="ui_menuExport_Raw_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuExport_Raw_allAssets.Text" xml:space="preserve">
-    <value>全部资料</value>
-  </data>
-  <data name="ui_menuExport_Raw_slectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuExport_Raw_slectedAssets.Text" xml:space="preserve">
-    <value>选择的资料</value>
-  </data>
-  <data name="ui_menuExport_Raw_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuExport_Raw_filteredAssets.Text" xml:space="preserve">
-    <value>筛选后的资料</value>
-  </data>
   <data name="ui_menuExport_Raw.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 22</value>
   </data>
@@ -487,22 +478,22 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuExport_Raw.ToolTipText" xml:space="preserve">
     <value>输出原始数据。原始数据对人类没有可读性。</value>
   </data>
-  <data name="ui_menuExport_Dump_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_Raw_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_Dump_allAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_Raw_allAssets.Text" xml:space="preserve">
     <value>全部资料</value>
   </data>
-  <data name="ui_menuExport_Dump_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_Raw_slectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_Dump_selectedAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_Raw_slectedAssets.Text" xml:space="preserve">
     <value>选择的资料</value>
   </data>
-  <data name="ui_menuExport_Dump_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_Raw_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_Dump_filteredAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_Raw_filteredAssets.Text" xml:space="preserve">
     <value>筛选后的资料</value>
   </data>
   <data name="ui_menuExport_Dump.Size" type="System.Drawing.Size, System.Drawing">
@@ -514,22 +505,22 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuExport_Dump.ToolTipText" xml:space="preserve">
     <value>将程序内加载出的数据参数内容输出。</value>
   </data>
-  <data name="ui_menuExport_dumpJson_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_Dump_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_dumpJson_allAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_Dump_allAssets.Text" xml:space="preserve">
     <value>全部资料</value>
   </data>
-  <data name="ui_menuExport_dumpJson_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_Dump_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_dumpJson_selectedAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_Dump_selectedAssets.Text" xml:space="preserve">
     <value>选择的资料</value>
   </data>
-  <data name="ui_menuExport_dumpJson_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_Dump_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_dumpJson_filteredAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_Dump_filteredAssets.Text" xml:space="preserve">
     <value>筛选后的资料</value>
   </data>
   <data name="ui_menuExport_dumpJson.Size" type="System.Drawing.Size, System.Drawing">
@@ -541,26 +532,26 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuExport_dumpJson.ToolTipText" xml:space="preserve">
     <value>将程序内加载出的数据参数内容序列化为JSON输出。</value>
   </data>
-  <data name="ui_menuExport_separator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 6</value>
+  <data name="ui_menuExport_dumpJson_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_assetsListToXml_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuExport_assetsListToXml_allAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_dumpJson_allAssets.Text" xml:space="preserve">
     <value>全部资料</value>
   </data>
-  <data name="ui_menuExport_assetsListToXml_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_dumpJson_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_assetsListToXml_selectedAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_dumpJson_selectedAssets.Text" xml:space="preserve">
     <value>选择的资料</value>
   </data>
-  <data name="ui_menuExport_assetsListToXml_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_dumpJson_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_assetsListToXml_filteredAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_dumpJson_filteredAssets.Text" xml:space="preserve">
     <value>筛选后的资料</value>
+  </data>
+  <data name="ui_menuExport_separator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>263, 6</value>
   </data>
   <data name="ui_menuExport_assetsListToXml.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 22</value>
@@ -571,22 +562,22 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuExport_assetsListToXml.ToolTipText" xml:space="preserve">
     <value>以XML格式输出资料列表。</value>
   </data>
-  <data name="ui_menuExport_assetListToJson_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_assetsListToXml_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_assetListToJson_allAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_assetsListToXml_allAssets.Text" xml:space="preserve">
     <value>全部资料</value>
   </data>
-  <data name="ui_menuExport_assetListToJson_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_assetsListToXml_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_assetListToJson_selectedAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_assetsListToXml_selectedAssets.Text" xml:space="preserve">
     <value>选择的资料</value>
   </data>
-  <data name="ui_menuExport_assetListToJson_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_assetsListToXml_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport_assetListToJson_filteredAssets.Text" xml:space="preserve">
+  <data name="ui_menuExport_assetsListToXml_filteredAssets.Text" xml:space="preserve">
     <value>筛选后的资料</value>
   </data>
   <data name="ui_menuExport_assetListToJson.Size" type="System.Drawing.Size, System.Drawing">
@@ -598,35 +589,50 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuExport_assetListToJson.ToolTipText" xml:space="preserve">
     <value>以JSON格式输出资料列表。</value>
   </data>
-  <data name="ui_menuExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 21</value>
+  <data name="ui_menuExport_assetListToJson_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuExport.Text" xml:space="preserve">
-    <value>导出</value>
+  <data name="ui_menuExport_assetListToJson_allAssets.Text" xml:space="preserve">
+    <value>全部资料</value>
   </data>
-  <data name="ui_menuExport.ToolTipText" xml:space="preserve">
-    <value>关于将若干资料输出的项目</value>
+  <data name="ui_menuExport_assetListToJson_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuDebug_showErrorMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_assetListToJson_selectedAssets.Text" xml:space="preserve">
+    <value>选择的资料</value>
   </data>
-  <data name="ui_menuDebug_showErrorMessage.Text" xml:space="preserve">
-    <value>显示报错消息</value>
+  <data name="ui_menuExport_assetListToJson_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
   </data>
-  <data name="ui_menuDebug_exportClassStructures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuDebug_exportClassStructures.Text" xml:space="preserve">
-    <value>导出“类的结构”</value>
-  </data>
-  <data name="ui_TEST_ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuExport_assetListToJson_filteredAssets.Text" xml:space="preserve">
+    <value>筛选后的资料</value>
   </data>
   <data name="ui_menuDebug.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 21</value>
   </data>
   <data name="ui_menuDebug.Text" xml:space="preserve">
     <value>调试</value>
+  </data>
+  <data name="ui_menuDebug_showErrorMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="ui_menuDebug_showErrorMessage.Text" xml:space="preserve">
+    <value>显示报错消息</value>
+  </data>
+  <data name="ui_menuDebug_exportClassStructures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="ui_menuDebug_exportClassStructures.Text" xml:space="preserve">
+    <value>导出“类的结构”</value>
+  </data>
+  <data name="ui_TEST_ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="ui_menuOhmsExport.Text" xml:space="preserve">
+    <value>[OHMS]导出</value>
   </data>
   <data name="ui_menuOhmsExport_createANewFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
@@ -658,24 +664,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuOhmsExport_separator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>217, 6</value>
   </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_allAssets.Text" xml:space="preserve">
-    <value>全部资料</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_selectedAssets.Text" xml:space="preserve">
-    <value>选择的资料</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_displayedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_displayedAssets.Text" xml:space="preserve">
-    <value>显示的资料</value>
-  </data>
   <data name="ui_menuOhmsExport_structuredJsonList.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
   </data>
@@ -688,22 +676,22 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
 
 </value>
   </data>
-  <data name="ui_menuOhmsExport_StructXml_All.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuOhmsExport_structuredJsonList_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
   </data>
-  <data name="ui_menuOhmsExport_StructXml_All.Text" xml:space="preserve">
+  <data name="ui_menuOhmsExport_structuredJsonList_allAssets.Text" xml:space="preserve">
     <value>全部资料</value>
   </data>
-  <data name="ui_menuOhmsExport_StructXml_selected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuOhmsExport_structuredJsonList_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
   </data>
-  <data name="ui_menuOhmsExport_StructXml_selected.Text" xml:space="preserve">
+  <data name="ui_menuOhmsExport_structuredJsonList_selectedAssets.Text" xml:space="preserve">
     <value>选择的资料</value>
   </data>
-  <data name="ui_menuOhmsExport_StructXml_filtered.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="ui_menuOhmsExport_structuredJsonList_displayedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
   </data>
-  <data name="ui_menuOhmsExport_StructXml_filtered.Text" xml:space="preserve">
+  <data name="ui_menuOhmsExport_structuredJsonList_displayedAssets.Text" xml:space="preserve">
     <value>显示的资料</value>
   </data>
   <data name="ui_menuOhmsExport_structuredXmlList.Size" type="System.Drawing.Size, System.Drawing">
@@ -716,19 +704,26 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
     <value>以 [资料序号].ttbin 为名称将资料导出到 ./thing/ 下，
 同时在 ./ 生成相应的列表 (assets.xml)，方便使用其他自动化程序处理。</value>
   </data>
+  <data name="ui_menuOhmsExport_StructXml_All.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_All.Text" xml:space="preserve">
+    <value>全部资料</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_selected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_selected.Text" xml:space="preserve">
+    <value>选择的资料</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_filtered.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_filtered.Text" xml:space="preserve">
+    <value>显示的资料</value>
+  </data>
   <data name="ui_menuOhmsExport_separator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>217, 6</value>
-  </data>
-  <data name="ui_menuOhmsExport_arknights_sceneBundle.Text" xml:space="preserve">
-    <value>Scene 包</value>
-  </data>
-  <data name="ui_menuOhmsExport_arknights_charartBundle.Text" xml:space="preserve">
-    <value>CharArt 包</value>
-  </data>
-  <data name="ui_menuOhmsExport_arknights_charartBundle.ToolTipText" xml:space="preserve">
-    <value>将一个 Asset Bundle 作为 明日方舟 的 CharArt 包
-或者 SkinPack 包，导出其中的有用信息，
-并处理好它们。</value>
   </data>
   <data name="ui_menuOhmsExport_arknights.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
@@ -739,14 +734,34 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuOhmsExport_arknights.ToolTipText" xml:space="preserve">
     <value>该导出方法适用于 明日方舟 的数据包</value>
   </data>
-  <data name="ui_menuOhmsExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 21</value>
+  <data name="tESTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
   </data>
-  <data name="ui_menuOhmsExport.Text" xml:space="preserve">
-    <value>[OHMS]导出</value>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 6</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_sceneBundle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_sceneBundle.Text" xml:space="preserve">
+    <value>Scene 包</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_charartBundle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_charartBundle.Text" xml:space="preserve">
+    <value>CharArt 包</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_charartBundle.ToolTipText" xml:space="preserve">
+    <value>将一个 Asset Bundle 作为 明日方舟 的 CharArt 包
+或者 SkinPack 包，导出其中的有用信息，
+并处理好它们。</value>
   </data>
   <data name="ui_openFileDialog0.Filter" xml:space="preserve">
     <value>所有类型|*.*</value>
+  </data>
+  <data name="ui_contextMenuStrip0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 164</value>
   </data>
   <data name="ui_conMenu_copyText.Size" type="System.Drawing.Size, System.Drawing">
     <value>282, 22</value>
@@ -787,6 +802,12 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_conMenu_OHMS_ExportSelected.Text" xml:space="preserve">
     <value>[OHMS] 导出所选资料</value>
   </data>
+  <data name="ui_conMenu_OHMS_ExportSelected_Struct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
+  </data>
+  <data name="ui_conMenu_OHMS_ExportSelected_Struct.Text" xml:space="preserve">
+    <value>[OHMS] 导出所选资料 (结构化)</value>
+  </data>
   <data name="ui_conMenu_OHMS_ExportSelected_Struct_JSON.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 22</value>
   </data>
@@ -798,15 +819,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_conMenu_OHMS_ExportSelected_Struct_XML.Text" xml:space="preserve">
     <value>XML 格式的列表</value>
-  </data>
-  <data name="ui_conMenu_OHMS_ExportSelected_Struct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>282, 22</value>
-  </data>
-  <data name="ui_conMenu_OHMS_ExportSelected_Struct.Text" xml:space="preserve">
-    <value>[OHMS] 导出所选资料 (结构化)</value>
-  </data>
-  <data name="ui_contextMenuStrip0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 164</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
