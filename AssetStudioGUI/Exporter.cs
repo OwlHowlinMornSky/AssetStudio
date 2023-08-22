@@ -76,10 +76,8 @@ namespace AssetStudioGUI {
 
 				if (image1.Size() != image0.Size()) {
 					var sampler = new SixLabors.ImageSharp.Processing.Processors.Transforms.BicubicResampler();
-					image1.Mutate(a => a.Resize(image0.Size(), sampler, true));
+					image1.Mutate(a => a.Resize(image0.Size(), sampler, false));
 				}
-
-
 
 				for(int i = 0; i < image0.Width; i++) {
 					for(int j = 0; j < image0.Height; j++) {
