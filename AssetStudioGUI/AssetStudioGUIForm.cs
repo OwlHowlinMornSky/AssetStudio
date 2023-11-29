@@ -913,6 +913,9 @@ namespace AssetStudioGUI {
 			}
 		}
 
+		[System.Runtime.InteropServices.DllImport("Shlwapi.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+		private static extern int StrCmpLogicalW(string psz1, string psz2);
+
 		private void ui_tabLeft_page1_listView_ColumnClick(object sender, ColumnClickEventArgs e) {
 			if (sortColumn != e.Column) {
 				reverseSort = false;
@@ -939,11 +942,18 @@ namespace AssetStudioGUI {
 					return reverseSort ? pathID_Y.CompareTo(pathID_X) : pathID_X.CompareTo(pathID_Y);
 				});
 			}
-			else {
+			else if (sortColumn == 2) { // Type
 				m_studio.visibleAssets.Sort((a, b) => {
 					var at = a.SubItems[sortColumn].Text;
 					var bt = b.SubItems[sortColumn].Text;
 					return reverseSort ? bt.CompareTo(at) : at.CompareTo(bt);
+				});
+			}
+			else {
+				m_studio.visibleAssets.Sort((a, b) => {
+					var at = a.SubItems[sortColumn].Text;
+					var bt = b.SubItems[sortColumn].Text;
+					return reverseSort ? StrCmpLogicalW(bt, at) : StrCmpLogicalW(at, bt);
 				});
 			}
 			ui_tabLeft_page1_listView.EndUpdate();
