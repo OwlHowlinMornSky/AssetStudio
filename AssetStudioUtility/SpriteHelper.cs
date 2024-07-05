@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AssetStudio {
 	public static class SpriteHelper {
@@ -19,7 +20,14 @@ namespace AssetStudio {
 			}
 			else {
 				if (m_Sprite.m_RD.texture.TryGet(out var m_Texture2D)) {
-					return CutImage(m_Sprite, m_Texture2D, m_Sprite.m_RD.textureRect, m_Sprite.m_RD.textureRectOffset, m_Sprite.m_RD.downscaleMultiplier, m_Sprite.m_RD.settingsRaw);
+					if (m_Sprite.m_RD.alphaTexture.TryGet(out var m_TextureA)) {
+						var tex1 = CutImage(m_Sprite, m_Texture2D, m_Sprite.m_RD.textureRect, m_Sprite.m_RD.textureRectOffset, m_Sprite.m_RD.downscaleMultiplier, m_Sprite.m_RD.settingsRaw);
+						var tex2 = CutImage(m_Sprite, m_TextureA, m_Sprite.m_RD.textureRect, m_Sprite.m_RD.textureRectOffset, m_Sprite.m_RD.downscaleMultiplier, m_Sprite.m_RD.settingsRaw);
+						return CombineChannelA(tex1, tex2);
+					}
+					else {
+						return CutImage(m_Sprite, m_Texture2D, m_Sprite.m_RD.textureRect, m_Sprite.m_RD.textureRectOffset, m_Sprite.m_RD.downscaleMultiplier, m_Sprite.m_RD.settingsRaw);
+					}
 				}
 			}
 			return null;
@@ -148,5 +156,17 @@ namespace AssetStudio {
 				return triangles.ToArray();
 			}
 		}
+
+		private static Image<Bgra32> CombineChannelA(Image<Bgra32> im0, Image<Bgra32> im1) {
+			for (int j = 0, m = Math.Min(im0.Width, im1.Width), n = Math.Min(im0.Height, im1.Height); j < n; ++j) {
+				var r0 = im0.GetPixelRowSpan(j);
+				var r1 = im1.GetPixelRowSpan(j);
+				for (int i = 0; i < m; ++i) {
+					r0[i].A = r1[i].R;
+				}
+			}
+			return im0;
+		}
+
 	}
 }
