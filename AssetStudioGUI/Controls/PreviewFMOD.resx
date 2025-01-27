@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 21</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.Text" xml:space="preserve">
+    <value>%Playing</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Playing.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODstatusLabel_Playing</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Playing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Playing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Playing.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 1</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 21</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.Text" xml:space="preserve">
+    <value>%Paused</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Paused.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODstatusLabel_Paused</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Paused.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Paused.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Paused.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODresumeButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODresumeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 186</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODresumeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODresumeButton.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODresumeButton.Text" xml:space="preserve">
+    <value>%Resume</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODresumeButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODresumeButton.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODresumeButton</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODresumeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODresumeButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODresumeButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODdurationLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODdurationLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODdurationLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODdurationLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 43</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODdurationLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 21</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODdurationLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODdurationLabel.Text" xml:space="preserve">
+    <value>00:00.00</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODdurationLabel.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODdurationLabel</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODdurationLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODdurationLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODdurationLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODcopyright.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODcopyright.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 10pt</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODcopyright.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODcopyright.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 150</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODcopyright.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 20</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODcopyright.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODcopyright.Text" xml:space="preserve">
+    <value>%Audio Engine supplied by FMOD by Firelight Technologies.</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODcopyright.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODcopyright</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODcopyright.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODcopyright.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODcopyright.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODinfoLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODinfoLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODinfoLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODinfoLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 43</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODinfoLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 21</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODinfoLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODinfoLabel.Text" xml:space="preserve">
+    <value>Hz</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODinfoLabel.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODinfoLabel</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODinfoLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODinfoLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODinfoLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODtimerLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODtimerLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODtimerLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODtimerLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 43</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODtimerLabel.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODtimerLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 21</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODtimerLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODtimerLabel.Text" xml:space="preserve">
+    <value>00:00.00</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODtimerLabel.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODtimerLabel</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODtimerLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODtimerLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODtimerLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 43</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.Text" xml:space="preserve">
+    <value>%Stopped</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Stopped.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODstatusLabel_Stopped</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Stopped.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Stopped.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstatusLabel_Stopped.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODprogressBar.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODprogressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODprogressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 65</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODprogressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 22</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODprogressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODprogressBar.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODprogressBar</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODprogressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODprogressBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODprogressBar.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODvolumeBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODvolumeBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 92</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODvolumeBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 45</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODvolumeBar.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODvolumeBar.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODvolumeBar</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODvolumeBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODvolumeBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODvolumeBar.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODloopButton.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODloopButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODloopButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 92</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODloopButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODloopButton.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODloopButton.Text" xml:space="preserve">
+    <value>%Loop</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODloopButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODloopButton.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODloopButton</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODloopButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODloopButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODloopButton.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstopButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstopButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 92</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstopButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstopButton.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODstopButton.Text" xml:space="preserve">
+    <value>%Stop</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstopButton.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODstopButton</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstopButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstopButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODstopButton.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODpauseButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODpauseButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 92</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODpauseButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODpauseButton.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODpauseButton.Text" xml:space="preserve">
+    <value>%Pause</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODpauseButton.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODpauseButton</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODpauseButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODpauseButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODpauseButton.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODplayButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODplayButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 92</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODplayButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODplayButton.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="ui_tabRight_page0_FMODplayButton.Text" xml:space="preserve">
+    <value>%Play</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODplayButton.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODplayButton</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODplayButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODplayButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODplayButton.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <metadata name="ui_tabRight_page0_FMODtimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>423, 236</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODtimer.Name" xml:space="preserve">
+    <value>ui_tabRight_page0_FMODtimer</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page0_FMODtimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>PreviewFMOD</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
