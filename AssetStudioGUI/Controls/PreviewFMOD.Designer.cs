@@ -25,160 +25,169 @@
 		private void InitializeComponent() {
 			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewFMOD));
-			ui_tabRight_page0_FMODstatusLabel_Playing = new System.Windows.Forms.Label();
-			ui_tabRight_page0_FMODstatusLabel_Paused = new System.Windows.Forms.Label();
-			ui_tabRight_page0_FMODresumeButton = new System.Windows.Forms.Button();
-			ui_tabRight_page0_FMODdurationLabel = new System.Windows.Forms.Label();
-			ui_tabRight_page0_FMODcopyright = new System.Windows.Forms.Label();
-			ui_tabRight_page0_FMODinfoLabel = new System.Windows.Forms.Label();
-			ui_tabRight_page0_FMODtimerLabel = new System.Windows.Forms.Label();
-			ui_tabRight_page0_FMODstatusLabel_Stopped = new System.Windows.Forms.Label();
-			ui_tabRight_page0_FMODprogressBar = new System.Windows.Forms.TrackBar();
-			ui_tabRight_page0_FMODvolumeBar = new System.Windows.Forms.TrackBar();
-			ui_tabRight_page0_FMODloopButton = new System.Windows.Forms.CheckBox();
-			ui_tabRight_page0_FMODstopButton = new System.Windows.Forms.Button();
-			ui_tabRight_page0_FMODpauseButton = new System.Windows.Forms.Button();
-			ui_tabRight_page0_FMODplayButton = new System.Windows.Forms.Button();
-			ui_tabRight_page0_FMODtimer = new System.Windows.Forms.Timer(components);
-			((System.ComponentModel.ISupportInitialize)ui_tabRight_page0_FMODprogressBar).BeginInit();
-			((System.ComponentModel.ISupportInitialize)ui_tabRight_page0_FMODvolumeBar).BeginInit();
+			label_playing = new System.Windows.Forms.Label();
+			label_paused = new System.Windows.Forms.Label();
+			button_resume = new System.Windows.Forms.Button();
+			label_duration = new System.Windows.Forms.Label();
+			label_copyright = new System.Windows.Forms.Label();
+			label_sampleRate = new System.Windows.Forms.Label();
+			label_timer = new System.Windows.Forms.Label();
+			label_stopped = new System.Windows.Forms.Label();
+			progressBar1 = new System.Windows.Forms.TrackBar();
+			volumeBar = new System.Windows.Forms.TrackBar();
+			button_loop = new System.Windows.Forms.CheckBox();
+			button_stop = new System.Windows.Forms.Button();
+			button_pause = new System.Windows.Forms.Button();
+			button_play = new System.Windows.Forms.Button();
+			timer1 = new System.Windows.Forms.Timer(components);
+			((System.ComponentModel.ISupportInitialize)progressBar1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)volumeBar).BeginInit();
 			SuspendLayout();
 			// 
-			// ui_tabRight_page0_FMODstatusLabel_Playing
+			// label_playing
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODstatusLabel_Playing, "ui_tabRight_page0_FMODstatusLabel_Playing");
-			ui_tabRight_page0_FMODstatusLabel_Playing.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			ui_tabRight_page0_FMODstatusLabel_Playing.Name = "ui_tabRight_page0_FMODstatusLabel_Playing";
+			resources.ApplyResources(label_playing, "label_playing");
+			label_playing.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			label_playing.Name = "label_playing";
 			// 
-			// ui_tabRight_page0_FMODstatusLabel_Paused
+			// label_paused
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODstatusLabel_Paused, "ui_tabRight_page0_FMODstatusLabel_Paused");
-			ui_tabRight_page0_FMODstatusLabel_Paused.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			ui_tabRight_page0_FMODstatusLabel_Paused.Name = "ui_tabRight_page0_FMODstatusLabel_Paused";
+			resources.ApplyResources(label_paused, "label_paused");
+			label_paused.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			label_paused.Name = "label_paused";
 			// 
-			// ui_tabRight_page0_FMODresumeButton
+			// button_resume
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODresumeButton, "ui_tabRight_page0_FMODresumeButton");
-			ui_tabRight_page0_FMODresumeButton.Name = "ui_tabRight_page0_FMODresumeButton";
-			ui_tabRight_page0_FMODresumeButton.UseVisualStyleBackColor = true;
+			resources.ApplyResources(button_resume, "button_resume");
+			button_resume.Name = "button_resume";
+			button_resume.UseVisualStyleBackColor = true;
+			button_resume.Click += Button_Pause_Click;
 			// 
-			// ui_tabRight_page0_FMODdurationLabel
+			// label_duration
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODdurationLabel, "ui_tabRight_page0_FMODdurationLabel");
-			ui_tabRight_page0_FMODdurationLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			ui_tabRight_page0_FMODdurationLabel.Name = "ui_tabRight_page0_FMODdurationLabel";
+			resources.ApplyResources(label_duration, "label_duration");
+			label_duration.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			label_duration.Name = "label_duration";
 			// 
-			// ui_tabRight_page0_FMODcopyright
+			// label_copyright
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODcopyright, "ui_tabRight_page0_FMODcopyright");
-			ui_tabRight_page0_FMODcopyright.ForeColor = System.Drawing.SystemColors.ControlLight;
-			ui_tabRight_page0_FMODcopyright.Name = "ui_tabRight_page0_FMODcopyright";
+			resources.ApplyResources(label_copyright, "label_copyright");
+			label_copyright.ForeColor = System.Drawing.SystemColors.ControlLight;
+			label_copyright.Name = "label_copyright";
 			// 
-			// ui_tabRight_page0_FMODinfoLabel
+			// label_sampleRate
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODinfoLabel, "ui_tabRight_page0_FMODinfoLabel");
-			ui_tabRight_page0_FMODinfoLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			ui_tabRight_page0_FMODinfoLabel.Name = "ui_tabRight_page0_FMODinfoLabel";
+			resources.ApplyResources(label_sampleRate, "label_sampleRate");
+			label_sampleRate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			label_sampleRate.Name = "label_sampleRate";
 			// 
-			// ui_tabRight_page0_FMODtimerLabel
+			// label_timer
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODtimerLabel, "ui_tabRight_page0_FMODtimerLabel");
-			ui_tabRight_page0_FMODtimerLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			ui_tabRight_page0_FMODtimerLabel.Name = "ui_tabRight_page0_FMODtimerLabel";
+			resources.ApplyResources(label_timer, "label_timer");
+			label_timer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			label_timer.Name = "label_timer";
 			// 
-			// ui_tabRight_page0_FMODstatusLabel_Stopped
+			// label_stopped
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODstatusLabel_Stopped, "ui_tabRight_page0_FMODstatusLabel_Stopped");
-			ui_tabRight_page0_FMODstatusLabel_Stopped.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			ui_tabRight_page0_FMODstatusLabel_Stopped.Name = "ui_tabRight_page0_FMODstatusLabel_Stopped";
+			resources.ApplyResources(label_stopped, "label_stopped");
+			label_stopped.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			label_stopped.Name = "label_stopped";
 			// 
-			// ui_tabRight_page0_FMODprogressBar
+			// progressBar1
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODprogressBar, "ui_tabRight_page0_FMODprogressBar");
-			ui_tabRight_page0_FMODprogressBar.Maximum = 1000;
-			ui_tabRight_page0_FMODprogressBar.Name = "ui_tabRight_page0_FMODprogressBar";
-			ui_tabRight_page0_FMODprogressBar.TickStyle = System.Windows.Forms.TickStyle.None;
+			resources.ApplyResources(progressBar1, "progressBar1");
+			progressBar1.Maximum = 1000;
+			progressBar1.Name = "progressBar1";
+			progressBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+			progressBar1.Scroll += ProgressBar_Scroll;
+			progressBar1.MouseDown += ProgressBar_MouseDown;
+			progressBar1.MouseUp += ProgressBar_MouseUp;
 			// 
-			// ui_tabRight_page0_FMODvolumeBar
+			// volumeBar
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODvolumeBar, "ui_tabRight_page0_FMODvolumeBar");
-			ui_tabRight_page0_FMODvolumeBar.LargeChange = 2;
-			ui_tabRight_page0_FMODvolumeBar.Name = "ui_tabRight_page0_FMODvolumeBar";
-			ui_tabRight_page0_FMODvolumeBar.TickStyle = System.Windows.Forms.TickStyle.Both;
-			ui_tabRight_page0_FMODvolumeBar.Value = 8;
+			resources.ApplyResources(volumeBar, "volumeBar");
+			volumeBar.LargeChange = 2;
+			volumeBar.Name = "volumeBar";
+			volumeBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+			volumeBar.Value = 8;
+			volumeBar.ValueChanged += VolumeBar_ValueChanged;
 			// 
-			// ui_tabRight_page0_FMODloopButton
+			// button_loop
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODloopButton, "ui_tabRight_page0_FMODloopButton");
-			ui_tabRight_page0_FMODloopButton.Name = "ui_tabRight_page0_FMODloopButton";
-			ui_tabRight_page0_FMODloopButton.UseVisualStyleBackColor = true;
+			resources.ApplyResources(button_loop, "button_loop");
+			button_loop.Name = "button_loop";
+			button_loop.UseVisualStyleBackColor = true;
+			button_loop.CheckedChanged += Button_Loop_CheckedChanged;
 			// 
-			// ui_tabRight_page0_FMODstopButton
+			// button_stop
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODstopButton, "ui_tabRight_page0_FMODstopButton");
-			ui_tabRight_page0_FMODstopButton.Name = "ui_tabRight_page0_FMODstopButton";
-			ui_tabRight_page0_FMODstopButton.UseVisualStyleBackColor = true;
+			resources.ApplyResources(button_stop, "button_stop");
+			button_stop.Name = "button_stop";
+			button_stop.UseVisualStyleBackColor = true;
+			button_stop.Click += Button_Stop_Click;
 			// 
-			// ui_tabRight_page0_FMODpauseButton
+			// button_pause
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODpauseButton, "ui_tabRight_page0_FMODpauseButton");
-			ui_tabRight_page0_FMODpauseButton.Name = "ui_tabRight_page0_FMODpauseButton";
-			ui_tabRight_page0_FMODpauseButton.UseVisualStyleBackColor = true;
+			resources.ApplyResources(button_pause, "button_pause");
+			button_pause.Name = "button_pause";
+			button_pause.UseVisualStyleBackColor = true;
+			button_pause.Click += Button_Pause_Click;
 			// 
-			// ui_tabRight_page0_FMODplayButton
+			// button_play
 			// 
-			resources.ApplyResources(ui_tabRight_page0_FMODplayButton, "ui_tabRight_page0_FMODplayButton");
-			ui_tabRight_page0_FMODplayButton.Name = "ui_tabRight_page0_FMODplayButton";
-			ui_tabRight_page0_FMODplayButton.UseVisualStyleBackColor = true;
+			resources.ApplyResources(button_play, "button_play");
+			button_play.Name = "button_play";
+			button_play.UseVisualStyleBackColor = true;
+			button_play.Click += Button_Play_Click;
 			// 
-			// ui_tabRight_page0_FMODtimer
+			// timer1
 			// 
-			ui_tabRight_page0_FMODtimer.Tick += Ui_tabRight_page0_FMODtimer_Tick;
+			timer1.Tick += Timer_Tick;
 			// 
 			// PreviewFMOD
 			// 
 			resources.ApplyResources(this, "$this");
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			BackColor = System.Drawing.SystemColors.ControlDark;
-			Controls.Add(ui_tabRight_page0_FMODstatusLabel_Playing);
-			Controls.Add(ui_tabRight_page0_FMODstatusLabel_Paused);
-			Controls.Add(ui_tabRight_page0_FMODresumeButton);
-			Controls.Add(ui_tabRight_page0_FMODdurationLabel);
-			Controls.Add(ui_tabRight_page0_FMODcopyright);
-			Controls.Add(ui_tabRight_page0_FMODinfoLabel);
-			Controls.Add(ui_tabRight_page0_FMODtimerLabel);
-			Controls.Add(ui_tabRight_page0_FMODstatusLabel_Stopped);
-			Controls.Add(ui_tabRight_page0_FMODprogressBar);
-			Controls.Add(ui_tabRight_page0_FMODvolumeBar);
-			Controls.Add(ui_tabRight_page0_FMODloopButton);
-			Controls.Add(ui_tabRight_page0_FMODstopButton);
-			Controls.Add(ui_tabRight_page0_FMODpauseButton);
-			Controls.Add(ui_tabRight_page0_FMODplayButton);
+			Controls.Add(label_playing);
+			Controls.Add(label_paused);
+			Controls.Add(button_resume);
+			Controls.Add(label_duration);
+			Controls.Add(label_copyright);
+			Controls.Add(label_sampleRate);
+			Controls.Add(label_timer);
+			Controls.Add(label_stopped);
+			Controls.Add(progressBar1);
+			Controls.Add(volumeBar);
+			Controls.Add(button_loop);
+			Controls.Add(button_stop);
+			Controls.Add(button_pause);
+			Controls.Add(button_play);
 			Name = "PreviewFMOD";
 			Load += PreviewFMOD_Load;
-			ClientSizeChanged += FMOD_Preview_ClientSizeChanged;
-			((System.ComponentModel.ISupportInitialize)ui_tabRight_page0_FMODprogressBar).EndInit();
-			((System.ComponentModel.ISupportInitialize)ui_tabRight_page0_FMODvolumeBar).EndInit();
+			ClientSizeChanged += PreviewFMOD_ClientSizeChanged;
+			((System.ComponentModel.ISupportInitialize)progressBar1).EndInit();
+			((System.ComponentModel.ISupportInitialize)volumeBar).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
 
-		private System.Windows.Forms.Label ui_tabRight_page0_FMODstatusLabel_Playing;
-		private System.Windows.Forms.Label ui_tabRight_page0_FMODstatusLabel_Paused;
-		private System.Windows.Forms.Button ui_tabRight_page0_FMODresumeButton;
-		private System.Windows.Forms.Label ui_tabRight_page0_FMODdurationLabel;
-		private System.Windows.Forms.Label ui_tabRight_page0_FMODcopyright;
-		private System.Windows.Forms.Label ui_tabRight_page0_FMODinfoLabel;
-		private System.Windows.Forms.Label ui_tabRight_page0_FMODtimerLabel;
-		private System.Windows.Forms.Label ui_tabRight_page0_FMODstatusLabel_Stopped;
-		private System.Windows.Forms.TrackBar ui_tabRight_page0_FMODprogressBar;
-		private System.Windows.Forms.TrackBar ui_tabRight_page0_FMODvolumeBar;
-		private System.Windows.Forms.CheckBox ui_tabRight_page0_FMODloopButton;
-		private System.Windows.Forms.Button ui_tabRight_page0_FMODstopButton;
-		private System.Windows.Forms.Button ui_tabRight_page0_FMODpauseButton;
-		private System.Windows.Forms.Button ui_tabRight_page0_FMODplayButton;
-		private System.Windows.Forms.Timer ui_tabRight_page0_FMODtimer;
+		private System.Windows.Forms.Label label_playing;
+		private System.Windows.Forms.Label label_paused;
+		private System.Windows.Forms.Button button_resume;
+		private System.Windows.Forms.Label label_duration;
+		private System.Windows.Forms.Label label_copyright;
+		private System.Windows.Forms.Label label_sampleRate;
+		private System.Windows.Forms.Label label_timer;
+		private System.Windows.Forms.Label label_stopped;
+		private System.Windows.Forms.TrackBar progressBar1;
+		private System.Windows.Forms.TrackBar volumeBar;
+		private System.Windows.Forms.CheckBox button_loop;
+		private System.Windows.Forms.Button button_stop;
+		private System.Windows.Forms.Button button_pause;
+		private System.Windows.Forms.Button button_play;
+		private System.Windows.Forms.Timer timer1;
 	}
 }

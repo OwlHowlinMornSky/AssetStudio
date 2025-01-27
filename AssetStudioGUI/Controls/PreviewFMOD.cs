@@ -9,489 +9,465 @@ namespace AssetStudioGUI.Controls {
 	public partial class PreviewFMOD : UserControl {
 		public PreviewFMOD() {
 			InitializeComponent();
+			/// 保存工作区初始大小。
 			m_prevSize = ClientSize;
+			/// 把 暂停、继续 的按钮设置到同一位置。
+			button_resume.Top = button_pause.Top;
+			/// 把 停止、暂停、播放 的标签设置到同一位置。
+			label_playing.Top = label_stopped.Top;
+			label_paused.Top = label_stopped.Top;
 		}
 
-		internal void PreviewAudioClip(AssetItem assetItem, AudioClip m_AudioClip) {
-			//Info
+		public void Reset() {
+			timer1.Stop();
+
+			SuspendLayout();
+
+			progressBar1.Value = 0;
+			label_timer.Text = "00:00.00";
+			label_duration.Text = "00:00.00";
+
+			label_playing.Visible = false;
+			label_paused.Visible = false;
+			label_stopped.Visible = true;
+
+			button_pause.Visible = true;
+			button_resume.Visible = false;
+
+			label_sampleRate.Text = "";
+
+			ResumeLayout();
+
+			FMOD_Reset();
+		}
+
+		internal void Preview(AssetItem assetItem, AudioClip audioClip) {
+			/// 计算 Info。
 			assetItem.InfoText = Properties.Strings.Preview_Audio_formatHead;
-			if (m_AudioClip.version[0] < 5) {
-				switch (m_AudioClip.m_Type) {
-				case FMODSoundType.ACC:
-					assetItem.InfoText += "ACC";
-					break;
-				case FMODSoundType.AIFF:
-					assetItem.InfoText += "AIFF";
-					break;
-				case FMODSoundType.IT:
-					assetItem.InfoText += "Impulse tracker";
-					break;
-				case FMODSoundType.MOD:
-					assetItem.InfoText += "Protracker / Fasttracker MOD";
-					break;
-				case FMODSoundType.MPEG:
-					assetItem.InfoText += "MP2/MP3 MPEG";
-					break;
-				case FMODSoundType.OGGVORBIS:
-					assetItem.InfoText += "Ogg vorbis";
-					break;
-				case FMODSoundType.S3M:
-					assetItem.InfoText += "ScreamTracker 3";
-					break;
-				case FMODSoundType.WAV:
-					assetItem.InfoText += "Microsoft WAV";
-					break;
-				case FMODSoundType.XM:
-					assetItem.InfoText += "FastTracker 2 XM";
-					break;
-				case FMODSoundType.XMA:
-					assetItem.InfoText += "Xbox360 XMA";
-					break;
-				case FMODSoundType.VAG:
-					assetItem.InfoText += "PlayStation Portable ADPCM";
-					break;
-				case FMODSoundType.AUDIOQUEUE:
-					assetItem.InfoText += "iPhone";
-					break;
-				default:
-					assetItem.InfoText += "Unknown";
-					break;
-				}
+			if (audioClip.version[0] < 5) {
+				assetItem.InfoText += audioClip.m_Type switch {
+					FMODSoundType.ACC => "ACC",
+					FMODSoundType.AIFF => "AIFF",
+					FMODSoundType.IT => "Impulse tracker",
+					FMODSoundType.MOD => "Protracker / Fasttracker MOD",
+					FMODSoundType.MPEG => "MP2/MP3 MPEG",
+					FMODSoundType.OGGVORBIS => "Ogg vorbis",
+					FMODSoundType.S3M => "ScreamTracker 3",
+					FMODSoundType.WAV => "Microsoft WAV",
+					FMODSoundType.XM => "FastTracker 2 XM",
+					FMODSoundType.XMA => "Xbox360 XMA",
+					FMODSoundType.VAG => "PlayStation Portable ADPCM",
+					FMODSoundType.AUDIOQUEUE => "iPhone",
+					_ => "Unknown",
+				};
 			}
 			else {
-				switch (m_AudioClip.m_CompressionFormat) {
-				case AudioCompressionFormat.PCM:
-					assetItem.InfoText += "PCM";
-					break;
-				case AudioCompressionFormat.Vorbis:
-					assetItem.InfoText += "Vorbis";
-					break;
-				case AudioCompressionFormat.ADPCM:
-					assetItem.InfoText += "ADPCM";
-					break;
-				case AudioCompressionFormat.MP3:
-					assetItem.InfoText += "MP3";
-					break;
-				case AudioCompressionFormat.PSMVAG:
-					assetItem.InfoText += "PlayStation Portable ADPCM";
-					break;
-				case AudioCompressionFormat.HEVAG:
-					assetItem.InfoText += "PSVita ADPCM";
-					break;
-				case AudioCompressionFormat.XMA:
-					assetItem.InfoText += "Xbox360 XMA";
-					break;
-				case AudioCompressionFormat.AAC:
-					assetItem.InfoText += "AAC";
-					break;
-				case AudioCompressionFormat.GCADPCM:
-					assetItem.InfoText += "Nintendo 3DS/Wii DSP";
-					break;
-				case AudioCompressionFormat.ATRAC9:
-					assetItem.InfoText += "PSVita ATRAC9";
-					break;
-				default:
-					assetItem.InfoText += "Unknown";
-					break;
-				}
+				assetItem.InfoText += audioClip.m_CompressionFormat switch {
+					AudioCompressionFormat.PCM => "PCM",
+					AudioCompressionFormat.Vorbis => "Vorbis",
+					AudioCompressionFormat.ADPCM => "ADPCM",
+					AudioCompressionFormat.MP3 => "MP3",
+					AudioCompressionFormat.PSMVAG => "PlayStation Portable ADPCM",
+					AudioCompressionFormat.HEVAG => "PSVita ADPCM",
+					AudioCompressionFormat.XMA => "Xbox360 XMA",
+					AudioCompressionFormat.AAC => "AAC",
+					AudioCompressionFormat.GCADPCM => "Nintendo 3DS/Wii DSP",
+					AudioCompressionFormat.ATRAC9 => "PSVita ATRAC9",
+					_ => "Unknown",
+				};
 			}
-			FMODreset();
+			FMOD_Reset();
 
-			var m_AudioData = m_AudioClip.m_AudioData.GetData();
-			if (m_AudioData == null || m_AudioData.Length == 0)
+			var audioData = audioClip.m_AudioData.GetData();
+			if (audioData == null || audioData.Length == 0)
 				return;
 			var exinfo = new FMOD.CREATESOUNDEXINFO();
 
 			exinfo.cbsize = Marshal.SizeOf(exinfo);
-			exinfo.length = (uint)m_AudioClip.m_Size;
+			exinfo.length = (uint)audioClip.m_Size;
 
-			var result = system.createSound(m_AudioData, FMOD.MODE.OPENMEMORY | loopMode, ref exinfo, out sound);
-			if (FMOD_CHECK(result))
+			var result = m_system.createSound(audioData, FMOD.MODE.OPENMEMORY | m_loopMode, ref exinfo, out m_sound);
+			if (FMOD_Check(result))
 				return;
 
-			sound.getNumSubSounds(out var numsubsounds);
+			m_sound.getNumSubSounds(out var numsubsounds);
 
 			if (numsubsounds > 0) {
-				result = sound.getSubSound(0, out var subsound);
+				result = m_sound.getSubSound(0, out var subsound);
 				if (result == FMOD.RESULT.OK) {
-					sound = subsound;
+					m_sound = subsound;
 				}
 			}
 
-			result = sound.getLength(out FMODlenms, FMOD.TIMEUNIT.MS);
-			if (FMOD_CHECK(result))
+			result = m_sound.getLength(out m_durationInMilliseconds, FMOD.TIMEUNIT.MS);
+			if (FMOD_Check(result))
 				return;
 
-			result = system.playSound(sound, null, true, out channel);
-			if (FMOD_CHECK(result))
+			result = m_system.playSound(m_sound, null, true, out m_channel);
+			if (FMOD_Check(result))
 				return;
 
-			//SwitchPreviewPage(PreviewType.FMOD);
-
-			result = channel.getFrequency(out var frequency);
-			if (FMOD_CHECK(result))
+			result = m_channel.getFrequency(out var frequency);
+			if (FMOD_Check(result))
 				return;
 		}
 
+		/// <summary>
+		/// 本控件加载时初始化FMOD。
+		/// </summary>
+		private void PreviewFMOD_Load(object sender, EventArgs e) {
+			if (Program.Runtime)
+				FMOD_Init();
+		}
+
+		/// <summary>
+		/// 用 客户区大小变化量 来决定 内部控件的移动。
+		/// </summary>
 		private Size m_prevSize;
-		private void FMOD_Preview_ClientSizeChanged(object sender, EventArgs e) {
+		private void PreviewFMOD_ClientSizeChanged(object sender, EventArgs e) {
 			int dx = ClientSize.Width - m_prevSize.Width;
 			int dy = ClientSize.Height - m_prevSize.Height;
 
 			m_prevSize = ClientSize;
 
+			/// 大小变化量直接除以2，会导致变化量误差，所以把误差加进 prevSize 保存起来。
 			m_prevSize.Width -= dx % 2;
 			m_prevSize.Height -= dy % 2;
 			dx /= 2;
 			dy /= 2;
 
+			/// Update positions of children controls。
 			SuspendLayout();
-
 			foreach (Control item in Controls) {
 				item.Left += dx;
 				item.Top += dy;
 			}
-
 			ResumeLayout();
 		}
 
+		/// <summary>
+		/// Click "Play" button.
+		/// </summary>
+		private void Button_Play_Click(object sender, EventArgs e) {
+			if (m_sound == null && m_channel == null)
+				return;
+
+			timer1.Start();
+
+			var result = m_channel.isPlaying(out var playing);
+			if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+				if (FMOD_Check(result)) {
+					return;
+				}
+			}
+
+			if (playing) {
+				result = m_channel.stop();
+				if (FMOD_Check(result)) {
+					return;
+				}
+
+				result = m_system.playSound(m_sound, null, false, out m_channel);
+				if (FMOD_Check(result)) {
+					return;
+				}
+
+				/// Switch to "Pause" button.
+				button_pause.Visible = true;
+				button_resume.Visible = false;
+			}
+			else {
+				result = m_system.playSound(m_sound, null, false, out m_channel);
+				if (FMOD_Check(result)) {
+					return;
+				}
+
+				/// Show "Playing".
+				label_playing.Visible = true;
+				label_paused.Visible = false;
+				label_stopped.Visible = false;
+
+				if (progressBar1.Value > 0) {
+					uint newms = m_durationInMilliseconds / 1000 * (uint)progressBar1.Value;
+
+					result = m_channel.setPosition(newms, FMOD.TIMEUNIT.MS);
+					if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+						if (FMOD_Check(result)) {
+							return;
+						}
+					}
+
+				}
+			}
+		}
+
+		/// <summary>
+		/// Click "Pause"/"Resume" button.
+		/// </summary>
+		private void Button_Pause_Click(object sender, EventArgs e) {
+			if (m_sound != null && m_channel != null) {
+				var result = m_channel.isPlaying(out var playing);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					if (FMOD_Check(result)) {
+						return;
+					}
+				}
+
+				if (playing) {
+					result = m_channel.getPaused(out var paused);
+					if (FMOD_Check(result)) {
+						return;
+					}
+					result = m_channel.setPaused(!paused);
+					if (FMOD_Check(result)) {
+						return;
+					}
+
+					if (paused) {
+						/// Show "Playing".
+						label_playing.Visible = true;
+						label_paused.Visible = false;
+						label_stopped.Visible = false;
+
+						/// Show "Pause" button.
+						button_pause.Visible = true;
+						button_resume.Visible = false;
+
+						timer1.Start();
+					}
+					else {
+						/// Show "Paused".
+						label_playing.Visible = false;
+						label_paused.Visible = true;
+						label_stopped.Visible = false;
+
+						/// Show "Resume" button.
+						button_pause.Visible = false;
+						button_resume.Visible = true;
+
+						timer1.Stop();
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Click "Stop" button.
+		/// </summary>
+		private void Button_Stop_Click(object sender, EventArgs e) {
+			if (m_channel != null) {
+				var result = m_channel.isPlaying(out var playing);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					if (FMOD_Check(result)) {
+						return;
+					}
+				}
+
+				if (playing) {
+					result = m_channel.stop();
+					if (FMOD_Check(result)) {
+						return;
+					}
+					//channel = null;
+					/// don't FMOD_Reset, it will nullify the sound
+					timer1.Stop();
+					progressBar1.Value = 0;
+					label_timer.Text = "00:00.00";
+
+					/// Show "Stopped".
+					label_playing.Visible = false;
+					label_paused.Visible = false;
+					label_stopped.Visible = true;
+
+					/// Show "Pause" button.
+					button_pause.Visible = true;
+					button_resume.Visible = false;
+				}
+			}
+		}
+
+		private void Button_Loop_CheckedChanged(object sender, EventArgs e) {
+			FMOD.RESULT result;
+
+			m_loopMode = button_loop.Checked ? FMOD.MODE.LOOP_NORMAL : FMOD.MODE.LOOP_OFF;
+
+			if (m_sound != null) {
+				result = m_sound.setMode(m_loopMode);
+				if (FMOD_Check(result)) {
+					return;
+				}
+			}
+
+			if (m_channel != null) {
+				result = m_channel.isPlaying(out var playing);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					if (FMOD_Check(result)) {
+						return;
+					}
+				}
+
+				result = m_channel.getPaused(out var paused);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					if (FMOD_Check(result)) {
+						return;
+					}
+				}
+
+				if (playing || paused) {
+					result = m_channel.setMode(m_loopMode);
+					if (FMOD_Check(result)) {
+						return;
+					}
+				}
+			}
+		}
+
+		private void VolumeBar_ValueChanged(object sender, EventArgs e) {
+			m_volume = Convert.ToSingle(volumeBar.Value) / 10;
+
+			var result = m_masterSoundGroup.setVolume(m_volume);
+			if (FMOD_Check(result)) {
+				return;
+			}
+		}
+
+		private void ProgressBar_Scroll(object sender, EventArgs e) {
+			if (m_channel != null) {
+				uint newms = m_durationInMilliseconds / 1000 * (uint)progressBar1.Value;
+				label_timer.Text = string.Format("{0:D2}:{1:D2}.{2:D2}", newms / 1000 / 60, newms / 1000 % 60, newms / 10 % 100);
+			}
+		}
+
+		private void ProgressBar_MouseDown(object sender, MouseEventArgs e) {
+			timer1.Stop();
+		}
+
+		private void ProgressBar_MouseUp(object sender, MouseEventArgs e) {
+			if (m_channel != null) {
+				uint newms = m_durationInMilliseconds / 1000 * (uint)progressBar1.Value;
+
+				var result = m_channel.setPosition(newms, FMOD.TIMEUNIT.MS);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					if (FMOD_Check(result)) {
+						return;
+					}
+				}
 
 
-		private FMOD.System system;
-		private FMOD.Sound sound;
-		private FMOD.Channel channel;
-		private FMOD.SoundGroup masterSoundGroup;
-		private FMOD.MODE loopMode = FMOD.MODE.LOOP_OFF;
-		private uint FMODlenms;
-		private float FMODVolume = 0.8f;
+				result = m_channel.isPlaying(out var playing);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					if (FMOD_Check(result)) {
+						return;
+					}
+				}
 
-		private void FMODinit() {
-			FMODreset();
+				if (playing) {
+					timer1.Start();
+				}
+			}
+		}
 
-			var result = FMOD.Factory.System_Create(out system);
-			if (FMOD_CHECK(result)) {
+		private void Timer_Tick(object sender, EventArgs e) {
+			uint ms = 0;
+			bool playing = false;
+			bool paused = false;
+
+			if (m_channel != null) {
+				var result = m_channel.getPosition(out ms, FMOD.TIMEUNIT.MS);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					FMOD_Check(result);
+				}
+
+				result = m_channel.isPlaying(out playing);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					FMOD_Check(result);
+				}
+
+				result = m_channel.getPaused(out paused);
+				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
+					FMOD_Check(result);
+				}
+			}
+
+			label_timer.Text = string.Format("{0:D2}:{1:D2}.{2:D2}", ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100);
+			progressBar1.Value = (int)(ms * 1000 / m_durationInMilliseconds);
+
+			if (paused) {
+				label_playing.Visible = false;
+				label_paused.Visible = true;
+				label_stopped.Visible = false;
+			}
+			else if (playing) {
+				label_playing.Visible = true;
+				label_paused.Visible = false;
+				label_stopped.Visible = false;
+			}
+			else {
+				label_playing.Visible = false;
+				label_paused.Visible = false;
+				label_stopped.Visible = true;
+			}
+
+			if (m_system != null && m_channel != null) {
+				m_system.update();
+			}
+		}
+
+		private FMOD.System m_system;
+		private FMOD.Sound m_sound;
+		private FMOD.Channel m_channel;
+		private FMOD.SoundGroup m_masterSoundGroup;
+		private FMOD.MODE m_loopMode = FMOD.MODE.LOOP_OFF;
+		private uint m_durationInMilliseconds;
+		private float m_volume = 0.8f;
+
+		private void FMOD_Init() {
+			FMOD_Reset();
+
+			var result = FMOD.Factory.System_Create(out m_system);
+			if (FMOD_Check(result)) {
 				return;
 			}
 
-			result = system.getVersion(out var version);
-			FMOD_CHECK(result);
+			result = m_system.getVersion(out var version);
+			FMOD_Check(result);
 			if (version < FMOD.VERSION.number) {
 				MessageBox.Show($"Error!  You are using an old version of FMOD {version:X}.  This program requires {FMOD.VERSION.number:X}.");
 				Application.Exit();
 			}
 
-			result = system.init(2, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
-			if (FMOD_CHECK(result)) {
+			result = m_system.init(2, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
+			if (FMOD_Check(result)) {
 				return;
 			}
 
-			result = system.getMasterSoundGroup(out masterSoundGroup);
-			if (FMOD_CHECK(result)) {
+			result = m_system.getMasterSoundGroup(out m_masterSoundGroup);
+			if (FMOD_Check(result)) {
 				return;
 			}
 
-			result = masterSoundGroup.setVolume(FMODVolume);
-			if (FMOD_CHECK(result)) {
+			result = m_masterSoundGroup.setVolume(m_volume);
+			if (FMOD_Check(result)) {
 				return;
 			}
 		}
 
-		private void FMODreset() {
-			ui_tabRight_page0_FMODtimer.Stop();
-			ui_tabRight_page0_FMODprogressBar.Value = 0;
-			ui_tabRight_page0_FMODtimerLabel.Text = "00:00.00";
-			ui_tabRight_page0_FMODdurationLabel.Text = "00:00.00";
-
-			//ui_tabRight_page0_FMODstatusLabel_Stopped.Text = "Stopped";
-			ui_tabRight_page0_FMODstatusLabel_Stopped.Visible = true;
-			ui_tabRight_page0_FMODstatusLabel_Playing.Visible = false;
-			ui_tabRight_page0_FMODstatusLabel_Paused.Visible = false;
-
-			ui_tabRight_page0_FMODinfoLabel.Text = "";
-
-			if (sound != null && sound.isValid()) {
-				var result = sound.release();
-				FMOD_CHECK(result);
-				sound = null;
+		private void FMOD_Reset() {
+			if (m_sound != null && m_sound.isValid()) {
+				var result = m_sound.release();
+				FMOD_Check(result);
+				m_sound = null;
 			}
 		}
 
-		private bool FMOD_CHECK(FMOD.RESULT result) {
+		private bool FMOD_Check(FMOD.RESULT result) {
 			if (result != FMOD.RESULT.OK) {
-				FMODreset();
+				FMOD_Reset();
 				//StatusStripUpdate($"FMOD error! {result} - {FMOD.Error.String(result)}");
 				return true;
 			}
 			return false;
 		}
 
-		private void ui_tabRight_page0_FMODplayButton_Click(object sender, EventArgs e) {
-			if (sound != null && channel != null) {
-				ui_tabRight_page0_FMODtimer.Start();
-				var result = channel.isPlaying(out var playing);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-				}
-
-				if (playing) {
-					result = channel.stop();
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-
-					result = system.playSound(sound, null, false, out channel);
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-
-					//ui_tabRight_page0_FMODpauseButton.Text = "Pause";
-					ui_tabRight_page0_FMODpauseButton.Visible = true;
-					ui_tabRight_page0_FMODresumeButton.Visible = false;
-				}
-				else {
-					result = system.playSound(sound, null, false, out channel);
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-					//ui_tabRight_page0_FMODstatusLabel_Stopped.Text = "Playing";
-					ui_tabRight_page0_FMODstatusLabel_Stopped.Visible = false;
-					ui_tabRight_page0_FMODstatusLabel_Playing.Visible = true;
-					ui_tabRight_page0_FMODstatusLabel_Paused.Visible = false;
-
-					if (ui_tabRight_page0_FMODprogressBar.Value > 0) {
-						uint newms = FMODlenms / 1000 * (uint)ui_tabRight_page0_FMODprogressBar.Value;
-
-						result = channel.setPosition(newms, FMOD.TIMEUNIT.MS);
-						if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-							if (FMOD_CHECK(result)) {
-								return;
-							}
-						}
-
-					}
-				}
-			}
-		}
-
-		private void ui_tabRight_page0_FMODpauseButton_Click(object sender, EventArgs e) {
-			if (sound != null && channel != null) {
-				var result = channel.isPlaying(out var playing);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-				}
-
-				if (playing) {
-					result = channel.getPaused(out var paused);
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-					result = channel.setPaused(!paused);
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-
-					if (paused) {
-						//ui_tabRight_page0_FMODstatusLabel_Stopped.Text = "Playing";
-						//ui_tabRight_page0_FMODpauseButton.Text = "Pause";
-						ui_tabRight_page0_FMODstatusLabel_Stopped.Visible = false;
-						ui_tabRight_page0_FMODstatusLabel_Playing.Visible = true;
-						ui_tabRight_page0_FMODstatusLabel_Paused.Visible = false;
-						ui_tabRight_page0_FMODpauseButton.Visible = true;
-						ui_tabRight_page0_FMODresumeButton.Visible = false;
-
-						ui_tabRight_page0_FMODtimer.Start();
-					}
-					else {
-						//ui_tabRight_page0_FMODstatusLabel_Stopped.Text = "Paused";
-						//ui_tabRight_page0_FMODpauseButton.Text = "Resume";
-						ui_tabRight_page0_FMODstatusLabel_Stopped.Visible = false;
-						ui_tabRight_page0_FMODstatusLabel_Playing.Visible = false;
-						ui_tabRight_page0_FMODstatusLabel_Paused.Visible = true;
-						ui_tabRight_page0_FMODpauseButton.Visible = false;
-						ui_tabRight_page0_FMODresumeButton.Visible = true;
-
-						ui_tabRight_page0_FMODtimer.Stop();
-					}
-				}
-			}
-		}
-
-		private void ui_tabRight_page0_FMODstopButton_Click(object sender, EventArgs e) {
-			if (channel != null) {
-				var result = channel.isPlaying(out var playing);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-				}
-
-				if (playing) {
-					result = channel.stop();
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-					//channel = null;
-					//don't FMODreset, it will nullify the sound
-					ui_tabRight_page0_FMODtimer.Stop();
-					ui_tabRight_page0_FMODprogressBar.Value = 0;
-					ui_tabRight_page0_FMODtimerLabel.Text = "00:00.00";
-					//FMODdurationLabel.Text = "0:0.0";
-
-					//ui_tabRight_page0_FMODstatusLabel_Stopped.Text = "Stopped";
-					ui_tabRight_page0_FMODstatusLabel_Stopped.Visible = true;
-					ui_tabRight_page0_FMODstatusLabel_Playing.Visible = false;
-					ui_tabRight_page0_FMODstatusLabel_Paused.Visible = false;
-
-					//ui_tabRight_page0_FMODpauseButton.Text = "Pause";
-					ui_tabRight_page0_FMODpauseButton.Visible = true;
-					ui_tabRight_page0_FMODresumeButton.Visible = false;
-				}
-			}
-		}
-
-		private void ui_tabRight_page0_FMODloopButton_CheckedChanged(object sender, EventArgs e) {
-			FMOD.RESULT result;
-
-			loopMode = ui_tabRight_page0_FMODloopButton.Checked ? FMOD.MODE.LOOP_NORMAL : FMOD.MODE.LOOP_OFF;
-
-			if (sound != null) {
-				result = sound.setMode(loopMode);
-				if (FMOD_CHECK(result)) {
-					return;
-				}
-			}
-
-			if (channel != null) {
-				result = channel.isPlaying(out var playing);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-				}
-
-				result = channel.getPaused(out var paused);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-				}
-
-				if (playing || paused) {
-					result = channel.setMode(loopMode);
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-				}
-			}
-		}
-
-		private void ui_tabRight_page0_FMODvolumeBar_ValueChanged(object sender, EventArgs e) {
-			FMODVolume = Convert.ToSingle(ui_tabRight_page0_FMODvolumeBar.Value) / 10;
-
-			var result = masterSoundGroup.setVolume(FMODVolume);
-			if (FMOD_CHECK(result)) {
-				return;
-			}
-		}
-
-		private void ui_tabRight_page0_FMODprogressBar_Scroll(object sender, EventArgs e) {
-			if (channel != null) {
-				uint newms = FMODlenms / 1000 * (uint)ui_tabRight_page0_FMODprogressBar.Value;
-				//ui_tabRight_page0_FMODtimerLabel.Text = $"{newms / 1000 / 60}:{newms / 1000 % 60}.{newms / 10 % 100}";
-				//FMODdurationLabel.Text = $"{FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
-				ui_tabRight_page0_FMODtimerLabel.Text = String.Format("{0:D2}:{1:D2}.{2:D2}", newms / 1000 / 60, newms / 1000 % 60, newms / 10 % 100);
-			}
-		}
-
-		private void ui_tabRight_page0_FMODprogressBar_MouseDown(object sender, MouseEventArgs e) {
-			ui_tabRight_page0_FMODtimer.Stop();
-		}
-
-		private void ui_tabRight_page0_FMODprogressBar_MouseUp(object sender, MouseEventArgs e) {
-			if (channel != null) {
-				uint newms = FMODlenms / 1000 * (uint)ui_tabRight_page0_FMODprogressBar.Value;
-
-				var result = channel.setPosition(newms, FMOD.TIMEUNIT.MS);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-				}
-
-
-				result = channel.isPlaying(out var playing);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					if (FMOD_CHECK(result)) {
-						return;
-					}
-				}
-
-				if (playing) {
-					ui_tabRight_page0_FMODtimer.Start();
-				}
-			}
-		}
-
-		private void Ui_tabRight_page0_FMODtimer_Tick(object sender, EventArgs e) {
-			uint ms = 0;
-			bool playing = false;
-			bool paused = false;
-
-			if (channel != null) {
-				var result = channel.getPosition(out ms, FMOD.TIMEUNIT.MS);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					FMOD_CHECK(result);
-				}
-
-				result = channel.isPlaying(out playing);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					FMOD_CHECK(result);
-				}
-
-				result = channel.getPaused(out paused);
-				if ((result != FMOD.RESULT.OK) && (result != FMOD.RESULT.ERR_INVALID_HANDLE)) {
-					FMOD_CHECK(result);
-				}
-			}
-
-			//ui_tabRight_page0_FMODtimerLabel.Text = $"{ms / 1000 / 60}:{ms / 1000 % 60}.{ms / 10 % 100}";
-			//FMODdurationLabel.Text = $"{FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
-			ui_tabRight_page0_FMODtimerLabel.Text = String.Format("{0:D2}:{1:D2}.{2:D2}", ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100);
-			ui_tabRight_page0_FMODprogressBar.Value = (int)(ms * 1000 / FMODlenms);
-
-			//ui_tabRight_page0_FMODstatusLabel_Stopped.Text = paused ? "Paused " : playing ? "Playing" : "Stopped";
-			if (paused) {
-				ui_tabRight_page0_FMODstatusLabel_Stopped.Visible = false;
-				ui_tabRight_page0_FMODstatusLabel_Playing.Visible = false;
-				ui_tabRight_page0_FMODstatusLabel_Paused.Visible = true;
-			}
-			else if (playing) {
-				ui_tabRight_page0_FMODstatusLabel_Stopped.Visible = false;
-				ui_tabRight_page0_FMODstatusLabel_Playing.Visible = true;
-				ui_tabRight_page0_FMODstatusLabel_Paused.Visible = false;
-			}
-			else {
-				ui_tabRight_page0_FMODstatusLabel_Stopped.Visible = true;
-				ui_tabRight_page0_FMODstatusLabel_Playing.Visible = false;
-				ui_tabRight_page0_FMODstatusLabel_Paused.Visible = false;
-			}
-
-			if (system != null && channel != null) {
-				system.update();
-			}
-		}
-
-		private void PreviewFMOD_Load(object sender, EventArgs e) {
-			if (Program.Runtime)
-				FMODinit();
-
-			ui_tabRight_page0_FMODresumeButton.Top = ui_tabRight_page0_FMODpauseButton.Top;
-			ui_tabRight_page0_FMODstatusLabel_Playing.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
-			ui_tabRight_page0_FMODstatusLabel_Paused.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
-		}
 	}
 }
