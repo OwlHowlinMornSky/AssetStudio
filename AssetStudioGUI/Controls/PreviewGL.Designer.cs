@@ -45,6 +45,7 @@ namespace AssetStudioGUI.Controls {
 			ui_tabRight_page0_glPreview.Name = "ui_tabRight_page0_glPreview";
 			ui_tabRight_page0_glPreview.Profile = OpenTK.Windowing.Common.ContextProfile.Core;
 			ui_tabRight_page0_glPreview.VSync = false;
+			ui_tabRight_page0_glPreview.Load += Ui_tabRight_page0_glPreview_Load;
 			ui_tabRight_page0_glPreview.Paint += Ui_tabRight_page0_glPreview_Paint;
 			ui_tabRight_page0_glPreview.MouseWheel += Ui_tabRight_page0_glPreview_MouseWheel;
 			ui_tabRight_page0_glPreview.Resize += Ui_tabRight_page0_glPreview_Resize;
@@ -68,6 +69,6 @@ namespace AssetStudioGUI.Controls {
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private MyGLControl ui_tabRight_page0_glPreview;
+		protected MyGLControl ui_tabRight_page0_glPreview;
 	}
 }

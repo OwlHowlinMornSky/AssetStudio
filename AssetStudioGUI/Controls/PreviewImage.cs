@@ -1,0 +1,154 @@
+﻿using AssetStudio;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AssetStudioGUI.Controls {
+	public partial class PreviewImage : UserControl {
+		public PreviewImage() {
+			InitializeComponent();
+		}
+
+		private DirectBitmap m_image;
+		private static char[] m_textureChannelNames = ['B', 'G', 'R', 'A'];
+		private bool[] m_textureChannels = [true, true, true, true];
+
+		internal void PreviewTexture2D(AssetItem assetItem, Texture2D texture) {
+			using var image = texture.ConvertToImage(true);
+			if (image != null) {
+				var bitmap = new DirectBitmap(image.ConvertToBytes(), texture.m_Width, texture.m_Height);
+
+				assetItem.InfoText = String.Format(Properties.Strings.Preview_Tex2D_info,
+					texture.m_Width, texture.m_Height, texture.m_TextureFormat);
+				switch (texture.m_TextureSettings.m_FilterMode) {
+				case 0:
+					assetItem.InfoText += "\n" +
+						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
+						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Point);
+					break;
+				case 1:
+					assetItem.InfoText += "\n" +
+						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
+						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Bilinear);
+					break;
+				case 2:
+					assetItem.InfoText += "\n" +
+						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
+						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Trilinear);
+					break;
+				}
+				assetItem.InfoText += "\n" +
+					String.Format(Properties.Strings.Preview_Tex2D_info_mipmap,
+					texture.m_TextureSettings.m_Aniso, texture.m_TextureSettings.m_MipBias);
+				switch (texture.m_TextureSettings.m_WrapMode) {
+				case 0:
+					assetItem.InfoText += "\n" +
+						//	"Wrap mode: Repeat";
+						Properties.Strings.Preview_Tex2D_info_wrap + Properties.Strings.Preview_Tex2D_info_wrap_repeat;
+					break;
+				case 1:
+					assetItem.InfoText += "\n" +
+						//	"Wrap mode: Clamp";
+						Properties.Strings.Preview_Tex2D_info_wrap + Properties.Strings.Preview_Tex2D_info_wrap_clamp;
+					break;
+				}
+				//assetItem.InfoText += "\n" + "Channels: ";
+				assetItem.InfoText += "\n" + Properties.Strings.Preview_Tex2D_info_channels;
+				int validChannel = 0;
+				for (int i = 0; i < 4; i++) {
+					if (m_textureChannels[i]) {
+						assetItem.InfoText += m_textureChannelNames[i];
+						validChannel++;
+					}
+				}
+				if (validChannel == 0)
+					//assetItem.InfoText += "None";
+					assetItem.InfoText += Properties.Strings.Preview_Tex2D_info_channels_none;
+				if (validChannel != 4) {
+					var bytes = bitmap.Bits;
+					for (int i = 0; i < bitmap.Height; i++) {
+						int offset = Math.Abs(bitmap.Stride) * i;
+						for (int j = 0; j < bitmap.Width; j++) {
+							bytes[offset] = m_textureChannels[0] ? bytes[offset] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
+							bytes[offset + 1] = m_textureChannels[1] ? bytes[offset + 1] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
+							bytes[offset + 2] = m_textureChannels[2] ? bytes[offset + 2] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
+							bytes[offset + 3] = m_textureChannels[3] ? bytes[offset + 3] : byte.MaxValue;
+							offset += 4;
+						}
+					}
+				}
+				Preview(bitmap);
+
+				//StatusStripUpdate("'Ctrl' + 'R'/'G'/'B'/'A' " + "for Channel Toggle");
+				//StatusStripUpdate("'Ctrl' + 'R'/'G'/'B'/'A' " + Properties.Strings.Preview_Tex2D_Channel_Toggle);
+			}
+			else {
+				//StatusStripUpdate("Unsupported image for preview");
+				//StatusStripUpdate(Properties.Strings.Preview_Tex2D_unsupported);
+			}
+		}
+
+		internal void PreviewSprite(AssetItem assetItem, Sprite m_Sprite) {
+			using var image = m_Sprite.GetImage();
+			if (image != null) {
+				var bitmap = new DirectBitmap(image.ConvertToBytes(), image.Width, image.Height);
+
+				//assetItem.InfoText = $"Width: {bitmap.Width}\nHeight: {bitmap.Height}\n";
+				assetItem.InfoText =
+					String.Format(Properties.Strings.Preview_Sprite_info + "\n", bitmap.Width, bitmap.Height);
+				Preview(bitmap);
+			}
+			else {
+				//StatusStripUpdate("Unsupported sprite for preview.");
+				//StatusStripUpdate(Properties.Strings.Preview_Sprite_unsupported);
+			}
+		}
+
+		public void Reset() {
+			m_image?.Dispose();
+			m_image = null;
+		}
+
+		private void Preview(DirectBitmap bitmap) {
+			pictureBox1.Image = m_image.Bitmap;
+			/*if (m_imageTexture.Width > ui_tabRight_page0.Width || m_imageTexture.Height > ui_tabRight_page0.Height)
+				ui_tabRight_page0.BackgroundImageLayout = ImageLayout.Zoom;
+			else
+				ui_tabRight_page0.BackgroundImageLayout = ImageLayout.Center;*/
+			//SwitchPreviewPage(PreviewType.None);
+		}
+
+		private void PreviewImage_KeyDown(object sender, KeyEventArgs e) {
+			/*if (e.Control) {
+				var changed = false;
+				switch (e.KeyCode) {
+				case Keys.B:
+					m_textureChannels[0] = !m_textureChannels[0];
+					changed = true;
+					break;
+				case Keys.G:
+					m_textureChannels[1] = !m_textureChannels[1];
+					changed = true;
+					break;
+				case Keys.R:
+					m_textureChannels[2] = !m_textureChannels[2];
+					changed = true;
+					break;
+				case Keys.A:
+					m_textureChannels[3] = !m_textureChannels[3];
+					changed = true;
+					break;
+				}
+				if (changed && m_image != null) {
+					Preview(m_image);
+				}
+			}*/
+		}
+	}
+}

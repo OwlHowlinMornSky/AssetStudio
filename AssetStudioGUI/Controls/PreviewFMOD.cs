@@ -1,27 +1,15 @@
 ﻿using AssetStudio;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AssetStudioGUI.Controls {
 	public partial class PreviewFMOD : UserControl {
 		public PreviewFMOD() {
 			InitializeComponent();
-
-			FMODinit();
-
 			m_prevSize = ClientSize;
-
-			ui_tabRight_page0_FMODresumeButton.Top = ui_tabRight_page0_FMODpauseButton.Top;
-			ui_tabRight_page0_FMODstatusLabel_Playing.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
-			ui_tabRight_page0_FMODstatusLabel_Paused.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
 		}
 
 		internal void PreviewAudioClip(AssetItem assetItem, AudioClip m_AudioClip) {
@@ -497,5 +485,13 @@ namespace AssetStudioGUI.Controls {
 			}
 		}
 
+		private void PreviewFMOD_Load(object sender, EventArgs e) {
+			if (Program.Runtime)
+				FMODinit();
+
+			ui_tabRight_page0_FMODresumeButton.Top = ui_tabRight_page0_FMODpauseButton.Top;
+			ui_tabRight_page0_FMODstatusLabel_Playing.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
+			ui_tabRight_page0_FMODstatusLabel_Paused.Top = ui_tabRight_page0_FMODstatusLabel_Stopped.Top;
+		}
 	}
 }

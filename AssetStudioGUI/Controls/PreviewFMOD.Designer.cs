@@ -155,6 +155,7 @@
 			Controls.Add(ui_tabRight_page0_FMODpauseButton);
 			Controls.Add(ui_tabRight_page0_FMODplayButton);
 			Name = "PreviewFMOD";
+			Load += PreviewFMOD_Load;
 			ClientSizeChanged += FMOD_Preview_ClientSizeChanged;
 			((System.ComponentModel.ISupportInitialize)ui_tabRight_page0_FMODprogressBar).EndInit();
 			((System.ComponentModel.ISupportInitialize)ui_tabRight_page0_FMODvolumeBar).EndInit();

@@ -1,6 +1,6 @@
 ﻿using AssetStudio;
+using AssetStudioGUI.Controls;
 using Newtonsoft.Json;
-using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,19 +14,13 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using Font = AssetStudio.Font;
-#if NET472
-using Vector3 = OpenTK.Vector3;
-using Vector4 = OpenTK.Vector4;
-#else
-using Vector3 = OpenTK.Mathematics.Vector3;
-using Vector4 = OpenTK.Mathematics.Vector4;
-using Matrix4 = OpenTK.Mathematics.Matrix4;
-#endif
 
 namespace AssetStudioGUI {
 
 	partial class AssetStudioGUIForm : Form {
-		private AssetItem lastSelectedItem;
+#nullable enable
+		private AssetItem? lastSelectedItem;
+#nullable disable
 		private string tempClipboard;
 
 		public static StudioShell m_studio = new();
@@ -51,8 +45,6 @@ namespace AssetStudioGUI {
 
 		private string m_TextBase; // OHMS
 		#endregion
-
-		private DirectBitmap m_imageTexture;
 
 		public AssetStudioGUIForm() {
 			LanguageOptions.initWhenOpenForm();
@@ -82,9 +74,6 @@ namespace AssetStudioGUI {
 
 			StatusStripUpdate(Properties.Strings.Status_Ready);
 		}
-
-		[DllImport("gdi32.dll")]
-		private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
 
 		#region Process
 		private async void BuildAssetStructures() {
@@ -160,10 +149,8 @@ namespace AssetStudioGUI {
 			ui_tabLeft_page1_listView.Items.Clear();
 			ui_tabLeft_page2_classesListView.Items.Clear();
 			ui_tabLeft_page2_classesListView.Groups.Clear();
-			m_imageTexture?.Dispose();
-			m_imageTexture = null;
 
-			ResetPreview();
+			previewPanel1.PreviewAsset(null);
 
 			lastSelectedItem = null;
 			sortColumn = -1;
@@ -308,7 +295,7 @@ namespace AssetStudioGUI {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					ui_tabRight_page0_FMODtimer.Stop();
+					//ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					List<AssetItem> toExportAssets = null;
 					switch (type) {
@@ -338,7 +325,7 @@ namespace AssetStudioGUI {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					ui_tabRight_page0_FMODtimer.Stop();
+					//ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					List<AssetItem> toExportAssets = null;
 					switch (type) {
@@ -405,35 +392,6 @@ namespace AssetStudioGUI {
 		}
 
 		private void AssetStudioForm_KeyDown(object sender, KeyEventArgs e) {
-			if (ui_tabRight_page0_previewPanel.Visible) {
-				if (e.Control) {
-					var need = false;
-					switch (e.KeyCode) {
-					case Keys.B:
-						m_textureChannels[0] = !m_textureChannels[0];
-						need = true;
-						break;
-					case Keys.G:
-						m_textureChannels[1] = !m_textureChannels[1];
-						need = true;
-						break;
-					case Keys.R:
-						m_textureChannels[2] = !m_textureChannels[2];
-						need = true;
-						break;
-					case Keys.A:
-						m_textureChannels[3] = !m_textureChannels[3];
-						need = true;
-						break;
-					}
-					if (need) {
-						if (lastSelectedItem != null) {
-							PreviewAsset(lastSelectedItem);
-							ui_tabRight_page0_assetInfoLabel.Text = lastSelectedItem.InfoText;
-						}
-					}
-				}
-			}
 		}
 		#endregion // AssetStudioGUIForm
 
@@ -555,27 +513,13 @@ namespace AssetStudioGUI {
 		}
 
 		private void ui_menuOptions_enablePreview_Check(object sender, EventArgs e) {
-			if (ui_tabRight_tab.SelectedIndex == 0) {
-				if (lastSelectedItem != null && ui_menuOptions_enablePreview.Checked) {
-					PreviewAsset(lastSelectedItem);
-				}
-				else {
-					ResetPreview();
-				}
-			}
+			previewPanel1.PreviewAsset(ui_menuOptions_enablePreview.Checked ? lastSelectedItem : null);
 
 			Properties.Settings.Default.enablePreview = ui_menuOptions_enablePreview.Checked;
 			Properties.Settings.Default.Save();
 		}
 
 		private void ui_menuOptions_displayAssetInfo_Check(object sender, EventArgs e) {
-			if (ui_menuOptions_displayInfo.Checked && ui_tabRight_page0_assetInfoLabel.Text != null) {
-				ui_tabRight_page0_assetInfoLabel.Visible = true;
-			}
-			else {
-				ui_tabRight_page0_assetInfoLabel.Visible = false;
-			}
-
 			Properties.Settings.Default.displayInfo = ui_menuOptions_displayInfo.Checked;
 			Properties.Settings.Default.Save();
 		}
@@ -952,39 +896,13 @@ namespace AssetStudioGUI {
 		}
 
 		private void ui_tabLeft_page1_listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
-			if (e.IsSelected) {
-				lastSelectedItem = (AssetItem)e.Item;
-				m_previewLoaded = 0;
-				switch (ui_tabRight_tab.SelectedIndex) {
-				case 0:
-					if (ui_menuOptions_enablePreview.Checked) {
-						PreviewAsset(lastSelectedItem);
-					}
-					else {
-						ResetPreview();
-					}
-					break;
-				case 1:
-					PreviewDump(lastSelectedItem);
-					break;
-				case 2:
-					PreviewDumpJSON(lastSelectedItem);
-					break;
-				}
-			}
-			else {
-				lastSelectedItem = null;
-				ResetPreview();
-			}
+			lastSelectedItem = e.IsSelected ? (AssetItem)e.Item : null;
+			previewPanel1.PreviewAsset(lastSelectedItem);
 		}
 
 		private void ui_tabLeft_page2_classesListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
 			StatusStripUpdate("");
-			if (e.IsSelected) {
-				ui_tabRight_page0_classTextPreview.Text = ((TypeTreeItem)ui_tabLeft_page2_classesListView.SelectedItems[0]).ToString();
-				m_previewLoaded = 1 << 3;
-				SwitchPreviewPage(PreviewType.ClassText);
-			}
+
 		}
 
 		private void m_delayTimer_Elapsed(object sender, ElapsedEventArgs e) {
@@ -995,408 +913,8 @@ namespace AssetStudioGUI {
 
 		#region RightTabPage
 		private void ui_tabRight_tab_SelectedIndexChanged(object sender, EventArgs e) {
-			if ((m_previewLoaded & (1 << 3)) != 0) {
-				return;
-			}
-			if (lastSelectedItem == null) {
-				ResetPreview();
-				return;
-			}
-			switch (ui_tabRight_tab.SelectedIndex) {
-			case 0:
-				if (Properties.Settings.Default.enablePreview)
-					PreviewAsset(lastSelectedItem);
-				break;
-			case 1:
-				PreviewDump(lastSelectedItem);
-				break;
-			case 2:
-				PreviewDumpJSON(lastSelectedItem);
-				break;
-			}
 		}
 		#endregion RightTabPage
-
-		#region Preview
-		private int m_previewLoaded;
-
-		private void ui_tabRight_page0_previewPanel_Resize(object sender, EventArgs e) {
-
-			}
-
-		enum PreviewType {
-			None = 0,
-			FMOD,
-			Font,
-			GL,
-			Text,
-			ClassText,
-			Dump,
-			DumpJson,
-			COUNT
-		}
-
-		private void ResetPreview() {
-			ui_tabRight_page0_previewPanel.BackgroundImage = Properties.Resources.preview;
-			ui_tabRight_page0_previewPanel.BackgroundImageLayout = ImageLayout.Center;
-
-			SwitchPreviewPage(PreviewType.None);
-
-			ui_tabRight_page0_assetInfoLabel.Visible = false;
-			ui_tabRight_page0_assetInfoLabel.Text = null;
-
-			ui_tabRight_page1_dumpTextBox.Text = null;
-			ui_tabRight_page2_dumpJsonTextBox.Text = null;
-
-			m_previewLoaded = 0;
-
-			//StatusStripUpdate("");
-		}
-
-		private void SwitchPreviewPage(PreviewType type) {
-			switch (type) {
-			case PreviewType.None:
-				ui_tabRight_page0_FMODpanel.Visible = false;
-				FMODreset();
-				ui_tabRight_page0_fontPreviewBox.Visible = false;
-				ui_tabRight_page0_glPreview.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Text = null;
-				ui_tabRight_page0_classTextPreview.Visible = false;
-				ui_tabRight_page0_classTextPreview.Text = null;
-				ui_tabRight_page1_dumpTextBox.Text = null;
-				ui_tabRight_page2_dumpJsonTextBox.Text = null;
-				break;
-			case PreviewType.FMOD:
-				ui_tabRight_page0_FMODpanel.Visible = true;
-				ui_tabRight_page0_fontPreviewBox.Visible = false;
-				ui_tabRight_page0_glPreview.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Text = null;
-				ui_tabRight_page0_classTextPreview.Visible = false;
-				ui_tabRight_page0_classTextPreview.Text = null;
-				break;
-			case PreviewType.Font:
-				ui_tabRight_page0_fontPreviewBox.Visible = true;
-				ui_tabRight_page0_FMODpanel.Visible = false;
-				FMODreset();
-				ui_tabRight_page0_glPreview.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Text = null;
-				ui_tabRight_page0_classTextPreview.Visible = false;
-				ui_tabRight_page0_classTextPreview.Text = null;
-				break;
-			case PreviewType.GL:
-				ui_tabRight_page0_glPreview.Visible = true;
-				ui_tabRight_page0_FMODpanel.Visible = false;
-				FMODreset();
-				ui_tabRight_page0_fontPreviewBox.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Text = null;
-				ui_tabRight_page0_classTextPreview.Visible = false;
-				ui_tabRight_page0_classTextPreview.Text = null;
-				break;
-			case PreviewType.Text:
-				ui_tabRight_page0_textPreviewBox.Visible = true;
-				ui_tabRight_page0_FMODpanel.Visible = false;
-				FMODreset();
-				ui_tabRight_page0_fontPreviewBox.Visible = false;
-				ui_tabRight_page0_glPreview.Visible = false;
-				ui_tabRight_page0_classTextPreview.Visible = false;
-				ui_tabRight_page0_classTextPreview.Text = null;
-				break;
-			case PreviewType.ClassText:
-				ui_tabRight_page0_classTextPreview.Visible = true;
-				ui_tabRight_page0_FMODpanel.Visible = false;
-				FMODreset();
-				ui_tabRight_page0_fontPreviewBox.Visible = false;
-				ui_tabRight_page0_glPreview.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Visible = false;
-				ui_tabRight_page0_textPreviewBox.Text = null;
-				ui_tabRight_page0_assetInfoLabel.Visible = false;
-				ui_tabRight_page0_assetInfoLabel.Text = null;
-				ui_tabRight_page1_dumpTextBox.Text = null;
-				;
-				ui_tabRight_page2_dumpJsonTextBox.Text = null;
-				break;
-			}
-		}
-
-		private void PreviewAsset(AssetItem assetItem) {
-			if (assetItem == null) {
-				ResetPreview();
-				return;
-			}
-			if ((m_previewLoaded & (1 << 0)) != 0) {
-				return;
-			}
-			try {
-				switch (assetItem.Asset) {
-				case Texture2D m_Texture2D:
-					PreviewTexture2D(assetItem, m_Texture2D);
-					break;
-				case AudioClip m_AudioClip:
-					PreviewAudioClip(assetItem, m_AudioClip);
-					break;
-				case Shader m_Shader:
-					PreviewShader(m_Shader);
-					break;
-				case TextAsset m_TextAsset:
-					PreviewTextAsset(m_TextAsset);
-					break;
-				case MonoBehaviour m_MonoBehaviour:
-					PreviewMonoBehaviour(m_MonoBehaviour);
-					break;
-				case Font m_Font:
-					PreviewFont(m_Font);
-					break;
-				case Mesh m_Mesh:
-					PreviewMesh(m_Mesh);
-					break;
-				case VideoClip _:
-				case MovieTexture _:
-					//StatusStripUpdate("Only supported export.");
-					StatusStripUpdate(Properties.Strings.Preview_OnlyExport);
-					break;
-				case Sprite m_Sprite:
-					PreviewSprite(assetItem, m_Sprite);
-					break;
-				case Animator _:
-					//StatusStripUpdate("Can be exported to FBX file.");
-					StatusStripUpdate(Properties.Strings.Preview_OnlyExport_FBX);
-					break;
-				case AnimationClip _:
-					//StatusStripUpdate("Can be exported with Animator or Objects");
-					StatusStripUpdate(Properties.Strings.Preview_OnlyExport_Animator);
-					break;
-				default:
-					PreviewText(m_studio.DumpAsset(assetItem.Asset));
-					break;
-				}
-				if (ui_menuOptions_displayInfo.Checked && lastSelectedItem.InfoText != null) {
-					ui_tabRight_page0_assetInfoLabel.Text = lastSelectedItem.InfoText;
-					ui_tabRight_page0_assetInfoLabel.Visible = true;
-				}
-				else {
-					ui_tabRight_page0_assetInfoLabel.Text = null;
-					ui_tabRight_page0_assetInfoLabel.Visible = false;
-				}
-				m_previewLoaded |= 1 << 0;
-			}
-			catch (Exception e) {
-				//MessageBox.Show($"Preview {assetItem.Type}:{assetItem.Text} error\r\n{e.Message}\r\n{e.StackTrace}");
-				MessageBox.Show(
-					String.Format(Properties.Strings.Preview_Exception, assetItem.Type, assetItem.Text)
-					+ "\n" + e.Message + "\n" + e.StackTrace);
-			}
-		}
-
-		private static char[] m_textureChannelNames = new[] { 'B', 'G', 'R', 'A' };
-		private bool[] m_textureChannels = new[] { true, true, true, true };
-		private void PreviewTexture2D(AssetItem assetItem, Texture2D m_Texture2D) {
-			var image = m_Texture2D.ConvertToImage(true);
-			if (image != null) {
-				var bitmap = new DirectBitmap(image.ConvertToBytes(), m_Texture2D.m_Width, m_Texture2D.m_Height);
-				image.Dispose();
-				//assetItem.InfoText = $"Width: {m_Texture2D.m_Width}\nHeight: {m_Texture2D.m_Height}\nFormat: {m_Texture2D.m_TextureFormat}";
-				assetItem.InfoText = String.Format(Properties.Strings.Preview_Tex2D_info,
-					m_Texture2D.m_Width, m_Texture2D.m_Height, m_Texture2D.m_TextureFormat);
-				switch (m_Texture2D.m_TextureSettings.m_FilterMode) {
-				case 0:
-					//assetItem.InfoText += "\nFilter Mode: Point ";
-					assetItem.InfoText += "\n" +
-						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
-						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Point);
-					break;
-				case 1:
-					//assetItem.InfoText += "\nFilter Mode: Bilinear ";
-					assetItem.InfoText += "\n" +
-						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
-						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Bilinear);
-					break;
-				case 2:
-					//assetItem.InfoText += "\nFilter Mode: Trilinear ";
-					assetItem.InfoText += "\n" +
-						String.Format(Properties.Strings.Preview_Tex2D_info_Filter_Mode,
-						Properties.Strings.Preview_Tex2D_info_Filter_Mode_Trilinear);
-					break;
-				}
-				//assetItem.InfoText += $"\nAnisotropic level: {m_Texture2D.m_TextureSettings.m_Aniso}\nMip map bias: {m_Texture2D.m_TextureSettings.m_MipBias}";
-				assetItem.InfoText += "\n" +
-					String.Format(Properties.Strings.Preview_Tex2D_info_mipmap,
-					m_Texture2D.m_TextureSettings.m_Aniso, m_Texture2D.m_TextureSettings.m_MipBias);
-				switch (m_Texture2D.m_TextureSettings.m_WrapMode) {
-				case 0:
-					assetItem.InfoText += "\n" +
-						//	"Wrap mode: Repeat";
-						Properties.Strings.Preview_Tex2D_info_wrap + Properties.Strings.Preview_Tex2D_info_wrap_repeat;
-					break;
-				case 1:
-					assetItem.InfoText += "\n" +
-						//	"Wrap mode: Clamp";
-						Properties.Strings.Preview_Tex2D_info_wrap + Properties.Strings.Preview_Tex2D_info_wrap_clamp;
-					break;
-				}
-				//assetItem.InfoText += "\n" + "Channels: ";
-				assetItem.InfoText += "\n" + Properties.Strings.Preview_Tex2D_info_channels;
-				int validChannel = 0;
-				for (int i = 0; i < 4; i++) {
-					if (m_textureChannels[i]) {
-						assetItem.InfoText += m_textureChannelNames[i];
-						validChannel++;
-					}
-				}
-				if (validChannel == 0)
-					//assetItem.InfoText += "None";
-					assetItem.InfoText += Properties.Strings.Preview_Tex2D_info_channels_none;
-				if (validChannel != 4) {
-					var bytes = bitmap.Bits;
-					for (int i = 0; i < bitmap.Height; i++) {
-						int offset = Math.Abs(bitmap.Stride) * i;
-						for (int j = 0; j < bitmap.Width; j++) {
-							bytes[offset] = m_textureChannels[0] ? bytes[offset] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
-							bytes[offset + 1] = m_textureChannels[1] ? bytes[offset + 1] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
-							bytes[offset + 2] = m_textureChannels[2] ? bytes[offset + 2] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
-							bytes[offset + 3] = m_textureChannels[3] ? bytes[offset + 3] : byte.MaxValue;
-							offset += 4;
-						}
-					}
-				}
-				PreviewTexture(bitmap);
-
-				//StatusStripUpdate("'Ctrl' + 'R'/'G'/'B'/'A' " + "for Channel Toggle");
-				StatusStripUpdate("'Ctrl' + 'R'/'G'/'B'/'A' " + Properties.Strings.Preview_Tex2D_Channel_Toggle);
-			}
-			else {
-				//StatusStripUpdate("Unsupported image for preview");
-				StatusStripUpdate(Properties.Strings.Preview_Tex2D_unsupported);
-			}
-		}
-
-		private void PreviewShader(Shader m_Shader) {
-			var str = ShaderConverter.Convert(m_Shader);
-			//PreviewText(str == null ? "Serialized Shader can't be read" : str.Replace("\n", "\r\n"));
-			PreviewText(str == null ? Properties.Strings.Preview_Shader_Serialized : str.Replace("\n", "\r\n"));
-		}
-
-		private void PreviewTextAsset(TextAsset m_TextAsset) {
-			var text = Encoding.UTF8.GetString(m_TextAsset.m_Script);
-			text = text.Replace("\n", "\r\n").Replace("\0", "");
-			PreviewText(text);
-		}
-
-		private void PreviewMonoBehaviour(MonoBehaviour m_MonoBehaviour) {
-			var obj = m_MonoBehaviour.ToType();
-			if (obj == null) {
-				var type = m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
-				obj = m_MonoBehaviour.ToType(type);
-			}
-			var str = JsonConvert.SerializeObject(obj, Formatting.Indented);
-			PreviewText(str);
-		}
-
-		private void PreviewFont(Font m_Font) {
-			if (m_Font.m_FontData != null) {
-				var data = Marshal.AllocCoTaskMem(m_Font.m_FontData.Length);
-				Marshal.Copy(m_Font.m_FontData, 0, data, m_Font.m_FontData.Length);
-
-				uint cFonts = 0;
-				var re = AddFontMemResourceEx(data, (uint)m_Font.m_FontData.Length, IntPtr.Zero, ref cFonts);
-				if (re != IntPtr.Zero) {
-					using (var pfc = new PrivateFontCollection()) {
-						pfc.AddMemoryFont(data, m_Font.m_FontData.Length);
-						Marshal.FreeCoTaskMem(data);
-						if (pfc.Families.Length > 0) {
-							ui_tabRight_page0_fontPreviewBox.SelectionStart = 0;
-							ui_tabRight_page0_fontPreviewBox.SelectionLength = 80;
-							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 16, FontStyle.Regular);
-							ui_tabRight_page0_fontPreviewBox.SelectionStart = 81;
-							ui_tabRight_page0_fontPreviewBox.SelectionLength = 56;
-							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 12, FontStyle.Regular);
-							ui_tabRight_page0_fontPreviewBox.SelectionStart = 138;
-							ui_tabRight_page0_fontPreviewBox.SelectionLength = 56;
-							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 18, FontStyle.Regular);
-							ui_tabRight_page0_fontPreviewBox.SelectionStart = 195;
-							ui_tabRight_page0_fontPreviewBox.SelectionLength = 56;
-							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 24, FontStyle.Regular);
-							ui_tabRight_page0_fontPreviewBox.SelectionStart = 252;
-							ui_tabRight_page0_fontPreviewBox.SelectionLength = 56;
-							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 36, FontStyle.Regular);
-							ui_tabRight_page0_fontPreviewBox.SelectionStart = 309;
-							ui_tabRight_page0_fontPreviewBox.SelectionLength = 56;
-							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 48, FontStyle.Regular);
-							ui_tabRight_page0_fontPreviewBox.SelectionStart = 366;
-							ui_tabRight_page0_fontPreviewBox.SelectionLength = 56;
-							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 60, FontStyle.Regular);
-							ui_tabRight_page0_fontPreviewBox.SelectionStart = 423;
-							ui_tabRight_page0_fontPreviewBox.SelectionLength = 55;
-							ui_tabRight_page0_fontPreviewBox.SelectionFont = new System.Drawing.Font(pfc.Families[0], 72, FontStyle.Regular);
-							SwitchPreviewPage(PreviewType.Font);
-						}
-					}
-					return;
-				}
-			}
-			//StatusStripUpdate("Unsupported font for preview. Try to export.");
-			StatusStripUpdate(Properties.Strings.Preview_Font_Unsupported);
-		}
-
-		private void PreviewMesh(Mesh m_Mesh) {
-				SwitchPreviewPage(PreviewType.GL);
-		}
-
-		private void PreviewSprite(AssetItem assetItem, Sprite m_Sprite) {
-			var image = m_Sprite.GetImage();
-			if (image != null) {
-				var bitmap = new DirectBitmap(image.ConvertToBytes(), image.Width, image.Height);
-				image.Dispose();
-				//assetItem.InfoText = $"Width: {bitmap.Width}\nHeight: {bitmap.Height}\n";
-				assetItem.InfoText =
-					String.Format(Properties.Strings.Preview_Sprite_info + "\n", bitmap.Width, bitmap.Height);
-				PreviewTexture(bitmap);
-			}
-			else {
-				//StatusStripUpdate("Unsupported sprite for preview.");
-				StatusStripUpdate(Properties.Strings.Preview_Sprite_unsupported);
-			}
-		}
-
-		private void PreviewTexture(DirectBitmap bitmap) {
-			m_imageTexture?.Dispose();
-			m_imageTexture = bitmap;
-			ui_tabRight_page0_previewPanel.BackgroundImage = m_imageTexture.Bitmap;
-			if (m_imageTexture.Width > ui_tabRight_page0_previewPanel.Width || m_imageTexture.Height > ui_tabRight_page0_previewPanel.Height)
-				ui_tabRight_page0_previewPanel.BackgroundImageLayout = ImageLayout.Zoom;
-			else
-				ui_tabRight_page0_previewPanel.BackgroundImageLayout = ImageLayout.Center;
-			SwitchPreviewPage(PreviewType.None);
-		}
-
-		private void PreviewText(string text) {
-			ui_tabRight_page0_textPreviewBox.Text = text;
-			SwitchPreviewPage(PreviewType.Text);
-		}
-
-		private void PreviewDump(AssetItem assetItem) {
-			if ((m_previewLoaded & (1 << 1)) != 0)
-				return;
-			ui_tabRight_page1_dumpTextBox.Text = m_studio.DumpAsset(assetItem.Asset);
-			m_previewLoaded |= 1 << 1;
-			SwitchPreviewPage(PreviewType.Dump);
-		}
-
-		private void PreviewDumpJSON(AssetItem assetItem) {
-			if ((m_previewLoaded & (1 << 2)) != 0)
-				return;
-			ui_tabRight_page2_dumpJsonTextBox.Text = m_studio.DumpAssetJson(assetItem.Asset);
-			m_previewLoaded |= 1 << 2;
-			SwitchPreviewPage(PreviewType.DumpJson);
-		}
-		#endregion Preview
-
-		#region FMOD_Controller
-		#endregion FMOD_Controller
-
 
 		#region OHMS
 		private bool GetANewFolder(string iDir, out string oDir) {
@@ -1433,7 +951,7 @@ namespace AssetStudioGUI {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					ui_tabRight_page0_FMODtimer.Stop();
+					//ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
 					Properties.SettingsOHMS.Default.Save();
@@ -1473,7 +991,7 @@ namespace AssetStudioGUI {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					ui_tabRight_page0_FMODtimer.Stop();
+					//ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
 					Properties.SettingsOHMS.Default.Save();
@@ -1507,7 +1025,7 @@ namespace AssetStudioGUI {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					ui_tabRight_page0_FMODtimer.Stop();
+					//ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
 					Properties.SettingsOHMS.Default.Save();
@@ -1547,7 +1065,7 @@ namespace AssetStudioGUI {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					ui_tabRight_page0_FMODtimer.Stop();
+					//ui_tabRight_page0_FMODtimer.Stop();
 					saveDirectoryBackup = saveFolderDialog.Folder;
 					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
 					Properties.SettingsOHMS.Default.Save();

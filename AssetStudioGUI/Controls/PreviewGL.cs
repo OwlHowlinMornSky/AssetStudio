@@ -3,8 +3,15 @@ using System.Drawing;
 using System.Windows.Forms;
 using OpenTK;
 using OpenTK.WinForms;
-using OpenTK.Mathematics;
 using OpenTK.Graphics.OpenGL;
+#if NET472
+using Vector3 = OpenTK.Vector3;
+using Vector4 = OpenTK.Vector4;
+#else
+using Vector3 = OpenTK.Mathematics.Vector3;
+using Vector4 = OpenTK.Mathematics.Vector4;
+using Matrix4 = OpenTK.Mathematics.Matrix4;
+#endif
 
 namespace AssetStudioGUI.Controls {
 
@@ -12,8 +19,6 @@ namespace AssetStudioGUI.Controls {
 
 		public PreviewGL() {
 			InitializeComponent();
-
-			GLInit();
 		}
 
 		public void PreviewMesh(AssetStudio.Mesh m_Mesh) {
@@ -150,7 +155,7 @@ namespace AssetStudioGUI.Controls {
 		private int uniformModelMatrix;
 		private int uniformViewMatrix;
 		private int uniformProjMatrix;
-		private int vao;
+		private int vao = 0;
 		private Vector3[] vertexData;
 		private Vector3[] normalData;
 		private Vector3[] normal2Data;
@@ -181,6 +186,9 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private void OpenTK_Init() {
+			if (ui_tabRight_page0_glPreview.IsDesignMode)
+				return;
+
 			GL_ChangeSize(ui_tabRight_page0_glPreview.Size);
 			GL.ClearColor(System.Drawing.Color.CadetBlue);
 			pgmID = GL.CreateProgram();
@@ -206,7 +214,12 @@ namespace AssetStudioGUI.Controls {
 			uniformProjMatrix = GL.GetUniformLocation(pgmID, "projMatrix");
 		}
 
-		private static void GL_LoadShader(string filename, ShaderType type, int program, out int address) {
+		private void GL_LoadShader(string filename, ShaderType type, int program, out int address) {
+			if (ui_tabRight_page0_glPreview.IsDesignMode) {
+				address = 0;
+				return;
+			}
+
 			address = GL.CreateShader(type);
 			var str = (string)Properties.Resources.ResourceManager.GetObject(filename);
 			GL.ShaderSource(address, str);
@@ -215,7 +228,12 @@ namespace AssetStudioGUI.Controls {
 			GL.DeleteShader(address);
 		}
 
-		private static void GL_CreateVBO(out int vboAddress, Vector3[] data, int address) {
+		private void GL_CreateVBO(out int vboAddress, Vector3[] data, int address) {
+			if (ui_tabRight_page0_glPreview.IsDesignMode) {
+				vboAddress = 0;
+				return;
+			}
+
 			GL.GenBuffers(1, out vboAddress);
 			GL.BindBuffer(BufferTarget.ArrayBuffer, vboAddress);
 			GL.BufferData(
@@ -228,7 +246,12 @@ namespace AssetStudioGUI.Controls {
 			GL.EnableVertexAttribArray(address);
 		}
 
-		private static void GL_CreateVBO(out int vboAddress, Vector4[] data, int address) {
+		private void GL_CreateVBO(out int vboAddress, Vector4[] data, int address) {
+			if (ui_tabRight_page0_glPreview.IsDesignMode) {
+				vboAddress = 0;
+				return;
+			}
+
 			GL.GenBuffers(1, out vboAddress);
 			GL.BindBuffer(BufferTarget.ArrayBuffer, vboAddress);
 			GL.BufferData(
@@ -241,12 +264,22 @@ namespace AssetStudioGUI.Controls {
 			GL.EnableVertexAttribArray(address);
 		}
 
-		private static void GL_CreateVBO(out int vboAddress, Matrix4 data, int address) {
+		private void GL_CreateVBO(out int vboAddress, Matrix4 data, int address) {
+			if (ui_tabRight_page0_glPreview.IsDesignMode) {
+				vboAddress = 0;
+				return;
+			}
+
 			GL.GenBuffers(1, out vboAddress);
 			GL.UniformMatrix4(address, false, ref data);
 		}
 
-		private static void GL_CreateEBO(out int address, int[] data) {
+		private void GL_CreateEBO(out int address, int[] data) {
+			if (ui_tabRight_page0_glPreview.IsDesignMode) {
+				address = 0;
+				return;
+			}
+
 			GL.GenBuffers(1, out address);
 			GL.BindBuffer(BufferTarget.ElementArrayBuffer, address);
 			GL.BufferData(
@@ -258,6 +291,9 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private void GL_CreateVAO() {
+			if (ui_tabRight_page0_glPreview.IsDesignMode)
+				return;
+
 			GL.DeleteVertexArray(vao);
 			GL.GenVertexArrays(1, out vao);
 			GL.BindVertexArray(vao);
@@ -279,6 +315,9 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private void GL_ChangeSize(Size size) {
+			if (ui_tabRight_page0_glPreview.IsDesignMode)
+				return;
+
 			GL.Viewport(0, 0, size.Width, size.Height);
 			GL_updateProjMatrix(size);
 		}
@@ -322,11 +361,17 @@ namespace AssetStudioGUI.Controls {
 
 
 		private void PreviewGL_Load(object sender, EventArgs e) {
-			OpenTK_Init();
+			if (ui_tabRight_page0_glPreview.IsDesignMode)
+				return;
+			GLInit();
 		}
 
 		private void Ui_tabRight_page0_glPreview_Paint(object sender, PaintEventArgs e) {
+			if (ui_tabRight_page0_glPreview.IsDesignMode)
+				return;
+
 			ui_tabRight_page0_glPreview.MakeCurrent();
+
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 			GL.Enable(EnableCap.DepthTest);
 			GL.DepthFunc(DepthFunction.Lequal);
@@ -335,44 +380,47 @@ namespace AssetStudioGUI.Controls {
 			//GL.Enable(EnableCap.PolygonSmooth);
 			//GL.Hint(HintTarget.PolygonSmoothHint, HintMode.Nicest);
 
-			GL.BindVertexArray(vao);
-			switch (wireFrameMode) {
-			case 0:
-				GL.UseProgram(shadeMode == 0 ? pgmID : pgmColorID);
-				GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
-				GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
-				GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
-				GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
-				GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-				break;
-			case 1:
-				GL.UseProgram(pgmBlackID);
-				GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
-				GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
-				GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
-				GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-				GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-				break;
-			case 2:
-				GL.Enable(EnableCap.PolygonOffsetFill);
-				GL.PolygonOffset(1, 1);
-				GL.UseProgram(shadeMode == 0 ? pgmID : pgmColorID);
-				GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
-				GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
-				GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
-				GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
-				GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-				GL.Disable(EnableCap.PolygonOffsetFill);
-				GL.UseProgram(pgmBlackID);
-				GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
-				GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
-				GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
-				GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-				GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-				break;
+			if (vao != 0) {
+				GL.BindVertexArray(vao);
+				switch (wireFrameMode) {
+				case 0:
+					GL.UseProgram(shadeMode == 0 ? pgmID : pgmColorID);
+					GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
+					GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
+					GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
+					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+					GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
+					break;
+				case 1:
+					GL.UseProgram(pgmBlackID);
+					GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
+					GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
+					GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
+					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+					GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
+					break;
+				case 2:
+					GL.Enable(EnableCap.PolygonOffsetFill);
+					GL.PolygonOffset(1, 1);
+					GL.UseProgram(shadeMode == 0 ? pgmID : pgmColorID);
+					GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
+					GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
+					GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
+					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+					GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
+					GL.Disable(EnableCap.PolygonOffsetFill);
+					GL.UseProgram(pgmBlackID);
+					GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
+					GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
+					GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
+					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+					GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
+					break;
+				}
+
+				GL.BindVertexArray(0);
 			}
 
-			GL.BindVertexArray(0);
 			GL.Flush();
 			ui_tabRight_page0_glPreview.SwapBuffers();
 		}
@@ -462,15 +510,19 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private void Ui_tabRight_page0_glPreview_Resize(object sender, EventArgs e) {
-			if (glControlLoaded && ui_tabRight_page0_glPreview.Visible) {
-				GL_ChangeSize(ui_tabRight_page0_glPreview.Size);
-				ui_tabRight_page0_glPreview.Invalidate();
-			}
+			GL_ChangeSize(ui_tabRight_page0_glPreview.Size);
+			ui_tabRight_page0_glPreview.Invalidate();
 		}
 
+		private void Ui_tabRight_page0_glPreview_Load(object sender, EventArgs e) {
+			if (ui_tabRight_page0_glPreview.IsDesignMode)
+				return;
+			OpenTK_Init();
+		}
 	}
 
-	public class MyGLControl() :
-		GLControl(new GLControlSettings { NumberOfSamples = 4 }) {
+	public class MyGLControl : GLControl {
+		public MyGLControl() : base(new GLControlSettings { NumberOfSamples = 4 }) {
+		}
 	}
 }
