@@ -27,7 +27,7 @@ namespace AssetStudioGUI.Controls {
 		private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewGL));
 			label1 = new System.Windows.Forms.Label();
-			ui_tabRight_page0_glPreview = new MyGLControl();
+			myGlControl1 = new MyGLControl();
 			SuspendLayout();
 			// 
 			// label1
@@ -35,26 +35,26 @@ namespace AssetStudioGUI.Controls {
 			resources.ApplyResources(label1, "label1");
 			label1.Name = "label1";
 			// 
-			// ui_tabRight_page0_glPreview
+			// myGlControl1
 			// 
-			ui_tabRight_page0_glPreview.API = OpenTK.Windowing.Common.ContextAPI.OpenGL;
-			ui_tabRight_page0_glPreview.APIVersion = new System.Version(3, 3, 0, 0);
-			resources.ApplyResources(ui_tabRight_page0_glPreview, "ui_tabRight_page0_glPreview");
-			ui_tabRight_page0_glPreview.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
-			ui_tabRight_page0_glPreview.IsEventDriven = true;
-			ui_tabRight_page0_glPreview.Name = "ui_tabRight_page0_glPreview";
-			ui_tabRight_page0_glPreview.Profile = OpenTK.Windowing.Common.ContextProfile.Core;
-			ui_tabRight_page0_glPreview.VSync = false;
-			ui_tabRight_page0_glPreview.Load += Ui_tabRight_page0_glPreview_Load;
-			ui_tabRight_page0_glPreview.Paint += Ui_tabRight_page0_glPreview_Paint;
-			ui_tabRight_page0_glPreview.MouseWheel += Ui_tabRight_page0_glPreview_MouseWheel;
-			ui_tabRight_page0_glPreview.Resize += Ui_tabRight_page0_glPreview_Resize;
+			myGlControl1.API = OpenTK.Windowing.Common.ContextAPI.OpenGL;
+			myGlControl1.APIVersion = new System.Version(3, 3, 0, 0);
+			resources.ApplyResources(myGlControl1, "myGlControl1");
+			myGlControl1.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
+			myGlControl1.IsEventDriven = true;
+			myGlControl1.Name = "myGlControl1";
+			myGlControl1.Profile = OpenTK.Windowing.Common.ContextProfile.Core;
+			myGlControl1.VSync = false;
+			myGlControl1.Load += MyGlControl_Load;
+			myGlControl1.Paint += MyGlControl_Paint;
+			myGlControl1.MouseWheel += PreviewGL_MouseWheel;
+			myGlControl1.Resize += MyGlControl_Resize;
 			// 
 			// PreviewGL
 			// 
 			resources.ApplyResources(this, "$this");
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			Controls.Add(ui_tabRight_page0_glPreview);
+			Controls.Add(myGlControl1);
 			Controls.Add(label1);
 			Name = "PreviewGL";
 			Load += PreviewGL_Load;
@@ -69,6 +69,6 @@ namespace AssetStudioGUI.Controls {
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		protected MyGLControl ui_tabRight_page0_glPreview;
+		protected MyGLControl myGlControl1;
 	}
 }

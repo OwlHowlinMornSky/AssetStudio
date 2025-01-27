@@ -4,14 +4,10 @@ using System.Windows.Forms;
 using OpenTK;
 using OpenTK.WinForms;
 using OpenTK.Graphics.OpenGL;
-#if NET472
-using Vector3 = OpenTK.Vector3;
-using Vector4 = OpenTK.Vector4;
-#else
+using AssetStudio;
 using Vector3 = OpenTK.Mathematics.Vector3;
 using Vector4 = OpenTK.Mathematics.Vector4;
 using Matrix4 = OpenTK.Mathematics.Matrix4;
-#endif
 
 namespace AssetStudioGUI.Controls {
 
@@ -21,34 +17,45 @@ namespace AssetStudioGUI.Controls {
 			InitializeComponent();
 		}
 
-		public void PreviewMesh(AssetStudio.Mesh m_Mesh) {
+		public void Reset() {
+			m_vertexData = null;
+			m_indiceData = null;
+			m_normalData = null;
+			m_normal2Data = null;
+			m_colorData = null;
+
+			GL_Reset();
+		}
+
+		public void Preview(Mesh mesh) {
 			#region Vertices
-			if (m_Mesh.m_Vertices == null || m_Mesh.m_Vertices.Length == 0) {
+			if (mesh.m_Vertices == null || mesh.m_Vertices.Length == 0) {
 				//StatusStripUpdate("Mesh can't be previewed.");
 				label1.Text = Properties.Strings.Preview_GL_unable1;
 				return;
 			}
 			int count = 3;
-			if (m_Mesh.m_Vertices.Length == m_Mesh.m_VertexCount * 4) {
+			if (mesh.m_Vertices.Length == mesh.m_VertexCount * 4) {
 				count = 4;
 			}
-			vertexData = new Vector3[m_Mesh.m_VertexCount];
+			m_vertexData = new Vector3[mesh.m_VertexCount];
+
 			// Calculate Bounding
 			float[] min = new float[3];
 			float[] max = new float[3];
 			for (int i = 0; i < 3; i++) {
-				min[i] = m_Mesh.m_Vertices[i];
-				max[i] = m_Mesh.m_Vertices[i];
+				min[i] = mesh.m_Vertices[i];
+				max[i] = mesh.m_Vertices[i];
 			}
-			for (int v = 0; v < m_Mesh.m_VertexCount; v++) {
+			for (int v = 0; v < mesh.m_VertexCount; v++) {
 				for (int i = 0; i < 3; i++) {
-					min[i] = Math.Min(min[i], m_Mesh.m_Vertices[v * count + i]);
-					max[i] = Math.Max(max[i], m_Mesh.m_Vertices[v * count + i]);
+					min[i] = Math.Min(min[i], mesh.m_Vertices[v * count + i]);
+					max[i] = Math.Max(max[i], mesh.m_Vertices[v * count + i]);
 				}
-				vertexData[v] = new Vector3(
-					m_Mesh.m_Vertices[v * count],
-					m_Mesh.m_Vertices[v * count + 1],
-					-m_Mesh.m_Vertices[v * count + 2]);
+				m_vertexData[v] = new Vector3(
+					mesh.m_Vertices[v * count],
+					mesh.m_Vertices[v * count + 1],
+					-mesh.m_Vertices[v * count + 2]);
 			}
 
 			// Calculate modelMatrix
@@ -60,83 +67,83 @@ namespace AssetStudioGUI.Controls {
 			//if (d > 64.0f)
 			//	d = 64.0f;
 			m_cameraPos.Z = m_defaultCameraDis = d;
-			GL_updateViewMatrix();
+			GL_UpdateViewMatrix();
 
 			#endregion
 
 			#region Indicies
-			indiceData = new int[m_Mesh.m_Indices.Count];
-			for (int i = 0; i < m_Mesh.m_Indices.Count; i = i + 3) {
-				indiceData[i] = (int)m_Mesh.m_Indices[i + 2];
-				indiceData[i + 1] = (int)m_Mesh.m_Indices[i + 1];
-				indiceData[i + 2] = (int)m_Mesh.m_Indices[i];
+			m_indiceData = new int[mesh.m_Indices.Count];
+			for (int i = 0; i < mesh.m_Indices.Count; i = i + 3) {
+				m_indiceData[i] = (int)mesh.m_Indices[i + 2];
+				m_indiceData[i + 1] = (int)mesh.m_Indices[i + 1];
+				m_indiceData[i + 2] = (int)mesh.m_Indices[i];
 			}
 			#endregion
 			#region Normals
-			if (m_Mesh.m_Normals != null && m_Mesh.m_Normals.Length > 0) {
-				if (m_Mesh.m_Normals.Length == m_Mesh.m_VertexCount * 3)
+			if (mesh.m_Normals != null && mesh.m_Normals.Length > 0) {
+				if (mesh.m_Normals.Length == mesh.m_VertexCount * 3)
 					count = 3;
-				else if (m_Mesh.m_Normals.Length == m_Mesh.m_VertexCount * 4)
+				else if (mesh.m_Normals.Length == mesh.m_VertexCount * 4)
 					count = 4;
-				normalData = new Vector3[m_Mesh.m_VertexCount];
-				for (int n = 0; n < m_Mesh.m_VertexCount; n++) {
-					normalData[n] = new Vector3(
-						m_Mesh.m_Normals[n * count],
-						m_Mesh.m_Normals[n * count + 1],
-						-m_Mesh.m_Normals[n * count + 2]);
+				m_normalData = new Vector3[mesh.m_VertexCount];
+				for (int n = 0; n < mesh.m_VertexCount; n++) {
+					m_normalData[n] = new Vector3(
+						mesh.m_Normals[n * count],
+						mesh.m_Normals[n * count + 1],
+						-mesh.m_Normals[n * count + 2]);
 				}
 			}
 			else
-				normalData = null;
+				m_normalData = null;
 			// calculate normal by ourself
-			normal2Data = new Vector3[m_Mesh.m_VertexCount];
-			int[] normalCalculatedCount = new int[m_Mesh.m_VertexCount];
-			for (int i = 0; i < m_Mesh.m_VertexCount; i++) {
-				normal2Data[i] = Vector3.Zero;
+			m_normal2Data = new Vector3[mesh.m_VertexCount];
+			int[] normalCalculatedCount = new int[mesh.m_VertexCount];
+			for (int i = 0; i < mesh.m_VertexCount; i++) {
+				m_normal2Data[i] = Vector3.Zero;
 				normalCalculatedCount[i] = 0;
 			}
-			for (int i = 0; i < m_Mesh.m_Indices.Count; i = i + 3) {
-				Vector3 dir1 = vertexData[indiceData[i + 1]] - vertexData[indiceData[i]];
-				Vector3 dir2 = vertexData[indiceData[i + 2]] - vertexData[indiceData[i]];
+			for (int i = 0; i < mesh.m_Indices.Count; i = i + 3) {
+				Vector3 dir1 = m_vertexData[m_indiceData[i + 1]] - m_vertexData[m_indiceData[i]];
+				Vector3 dir2 = m_vertexData[m_indiceData[i + 2]] - m_vertexData[m_indiceData[i]];
 				Vector3 normal = Vector3.Cross(dir1, dir2);
 				normal.Normalize();
 				for (int j = 0; j < 3; j++) {
-					normal2Data[indiceData[i + j]] += normal;
-					normalCalculatedCount[indiceData[i + j]]++;
+					m_normal2Data[m_indiceData[i + j]] += normal;
+					normalCalculatedCount[m_indiceData[i + j]]++;
 				}
 			}
-			for (int i = 0; i < m_Mesh.m_VertexCount; i++) {
+			for (int i = 0; i < mesh.m_VertexCount; i++) {
 				if (normalCalculatedCount[i] == 0)
-					normal2Data[i] = new Vector3(0, 1, 0);
+					m_normal2Data[i] = new Vector3(0, 1, 0);
 				else
-					normal2Data[i] /= normalCalculatedCount[i];
+					m_normal2Data[i] /= normalCalculatedCount[i];
 			}
 			#endregion
 			#region Colors
-			if (m_Mesh.m_Colors != null && m_Mesh.m_Colors.Length == m_Mesh.m_VertexCount * 3) {
-				colorData = new Vector4[m_Mesh.m_VertexCount];
-				for (int c = 0; c < m_Mesh.m_VertexCount; c++) {
-					colorData[c] = new Vector4(
-						m_Mesh.m_Colors[c * 3],
-						m_Mesh.m_Colors[c * 3 + 1],
-						m_Mesh.m_Colors[c * 3 + 2],
+			if (mesh.m_Colors != null && mesh.m_Colors.Length == mesh.m_VertexCount * 3) {
+				m_colorData = new Vector4[mesh.m_VertexCount];
+				for (int c = 0; c < mesh.m_VertexCount; c++) {
+					m_colorData[c] = new Vector4(
+						mesh.m_Colors[c * 3],
+						mesh.m_Colors[c * 3 + 1],
+						mesh.m_Colors[c * 3 + 2],
 						1.0f);
 				}
 			}
-			else if (m_Mesh.m_Colors != null && m_Mesh.m_Colors.Length == m_Mesh.m_VertexCount * 4) {
-				colorData = new Vector4[m_Mesh.m_VertexCount];
-				for (int c = 0; c < m_Mesh.m_VertexCount; c++) {
-					colorData[c] = new Vector4(
-					m_Mesh.m_Colors[c * 4],
-					m_Mesh.m_Colors[c * 4 + 1],
-					m_Mesh.m_Colors[c * 4 + 2],
-					m_Mesh.m_Colors[c * 4 + 3]);
+			else if (mesh.m_Colors != null && mesh.m_Colors.Length == mesh.m_VertexCount * 4) {
+				m_colorData = new Vector4[mesh.m_VertexCount];
+				for (int c = 0; c < mesh.m_VertexCount; c++) {
+					m_colorData[c] = new Vector4(
+					mesh.m_Colors[c * 4],
+					mesh.m_Colors[c * 4 + 1],
+					mesh.m_Colors[c * 4 + 2],
+					mesh.m_Colors[c * 4 + 3]);
 				}
 			}
 			else {
-				colorData = new Vector4[m_Mesh.m_VertexCount];
-				for (int c = 0; c < m_Mesh.m_VertexCount; c++) {
-					colorData[c] = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
+				m_colorData = new Vector4[mesh.m_VertexCount];
+				for (int c = 0; c < mesh.m_VertexCount; c++) {
+					m_colorData[c] = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
 				}
 			}
 			#endregion
@@ -146,24 +153,195 @@ namespace AssetStudioGUI.Controls {
 			GL_InitMatrices();
 		}
 
-		private int mdx, mdy;
-		private bool lmdown, rmdown;
-		private int pgmID, pgmColorID, pgmBlackID;
-		private int attributeVertexPosition;
-		private int attributeNormalDirection;
-		private int attributeVertexColor;
-		private int uniformModelMatrix;
-		private int uniformViewMatrix;
-		private int uniformProjMatrix;
-		private int vao = 0;
-		private Vector3[] vertexData;
-		private Vector3[] normalData;
-		private Vector3[] normal2Data;
-		private Vector4[] colorData;
-		private Matrix4 modelMatrixData;
-		private Matrix4 viewMatrixData;
-		private Matrix4 projMatrixData;
-		private Matrix4 viewRotMatrix;
+		private void PreviewGL_Load(object sender, EventArgs e) {
+			//if (ui_tabRight_page0_glPreview.IsDesignMode)
+			//	return;
+			GL_Init();
+		}
+
+		private void PreviewGL_MouseWheel(object sender, MouseEventArgs e) {
+			if (myGlControl1.Visible) {
+				Vector4 front = new(0, 0, -1, 0);
+				front *= m_viewRotMatrix.Inverted();
+
+				if ((ModifierKeys & System.Windows.Forms.Keys.Control) == System.Windows.Forms.Keys.Control)
+					m_cameraPos += front.Xyz * e.Delta / 50.0f;
+				else
+					m_cameraPos += front.Xyz * e.Delta / 200.0f;
+
+				GL_UpdateViewMatrix();
+
+				myGlControl1.Invalidate();
+			}
+		}
+
+		private void PreviewGL_MouseDown(object sender, MouseEventArgs e) {
+			m_mousePreviousLocation = e.Location;
+			if (e.Button == MouseButtons.Left) {
+				m_mouseLeftDown = true;
+			}
+			if (e.Button == MouseButtons.Right) {
+				m_mouseRightDown = true;
+			}
+		}
+
+		private void PreviewGL_MouseMove(object sender, MouseEventArgs e) {
+			if (m_mouseLeftDown || m_mouseRightDown) {
+				float dx = m_mousePreviousLocation.X - e.X;
+				float dy = m_mousePreviousLocation.Y - e.Y;
+				m_mousePreviousLocation = e.Location;
+
+				if (m_mouseLeftDown) {
+					m_modelRot -= new Vector3(dy * 0.005f, dx * 0.005f, 0.0f);
+					GL_UpdateModelMatrix();
+				}
+				if (m_mouseRightDown) {
+					m_cameraRot -= new Vector3(dy * 0.005f, dx * 0.005f, 0.0f);
+					GL_UpdateViewMatrix();
+				}
+				myGlControl1.Invalidate();
+			}
+		}
+
+		private void PreviewGL_MouseUp(object sender, MouseEventArgs e) {
+			if (e.Button == MouseButtons.Left) {
+				m_mouseLeftDown = false;
+			}
+			if (e.Button == MouseButtons.Right) {
+				m_mouseRightDown = false;
+			}
+		}
+
+		private void PreviewGL_KeyDown(object sender, KeyEventArgs e) {
+			if (e.Control) {
+				switch (e.KeyCode) {
+				case Keys.W:
+					//Toggle WireFrame
+					m_wireFrameMode = (m_wireFrameMode + 1) % 3;
+					myGlControl1.Invalidate();
+					break;
+				case Keys.S:
+					//Toggle Shade
+					m_shadeMode = (m_shadeMode + 1) % 2;
+					myGlControl1.Invalidate();
+					break;
+				case Keys.N:
+					//Normal mode
+					m_normalMode = (m_normalMode + 1) % 2;
+					GL_CreateVAO();
+					myGlControl1.Invalidate();
+					break;
+				case Keys.R:
+					m_wireFrameMode = 2;
+					m_shadeMode = 0;
+					m_normalMode = 0;
+					GL_InitMatrices();
+					myGlControl1.Invalidate();
+					break;
+				}
+			}
+		}
+
+		private void MyGlControl_Load(object sender, EventArgs e) {
+			if (myGlControl1.IsDesignMode)
+				return;
+			OpenTK_Init();
+		}
+
+		private void MyGlControl_Resize(object sender, EventArgs e) {
+			GL_ChangeSize(myGlControl1.Size);
+			myGlControl1.Invalidate();
+		}
+
+		private void MyGlControl_Paint(object sender, PaintEventArgs e) {
+			if (myGlControl1.IsDesignMode)
+				return;
+
+			myGlControl1.MakeCurrent();
+
+			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+			GL.Enable(EnableCap.DepthTest);
+			GL.DepthFunc(DepthFunction.Lequal);
+			//GL.Enable(EnableCap.LineSmooth);
+			//GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
+			//GL.Enable(EnableCap.PolygonSmooth);
+			//GL.Hint(HintTarget.PolygonSmoothHint, HintMode.Nicest);
+
+			if (m_vao != 0) {
+				GL.BindVertexArray(m_vao);
+				switch (m_wireFrameMode) {
+				case 0:
+					GL.UseProgram(m_shadeMode == 0 ? m_programID : m_programColorID);
+					GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m_modelMatrixData);
+					GL.UniformMatrix4(m_programUniformViewMatrix, false, ref m_viewMatrixData);
+					GL.UniformMatrix4(m_programUniformProjMatrix, false, ref m_projMatrixData);
+					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+					GL.DrawElements(BeginMode.Triangles, m_indiceData.Length, DrawElementsType.UnsignedInt, 0);
+					break;
+				case 1:
+					GL.UseProgram(m_programBlackID);
+					GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m_modelMatrixData);
+					GL.UniformMatrix4(m_programUniformViewMatrix, false, ref m_viewMatrixData);
+					GL.UniformMatrix4(m_programUniformProjMatrix, false, ref m_projMatrixData);
+					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+					GL.DrawElements(BeginMode.Triangles, m_indiceData.Length, DrawElementsType.UnsignedInt, 0);
+					break;
+				case 2:
+					GL.Enable(EnableCap.PolygonOffsetFill);
+					GL.PolygonOffset(1, 1);
+					GL.UseProgram(m_shadeMode == 0 ? m_programID : m_programColorID);
+					GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m_modelMatrixData);
+					GL.UniformMatrix4(m_programUniformViewMatrix, false, ref m_viewMatrixData);
+					GL.UniformMatrix4(m_programUniformProjMatrix, false, ref m_projMatrixData);
+					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+					GL.DrawElements(BeginMode.Triangles, m_indiceData.Length, DrawElementsType.UnsignedInt, 0);
+					GL.Disable(EnableCap.PolygonOffsetFill);
+					GL.UseProgram(m_programBlackID);
+					GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m_modelMatrixData);
+					GL.UniformMatrix4(m_programUniformViewMatrix, false, ref m_viewMatrixData);
+					GL.UniformMatrix4(m_programUniformProjMatrix, false, ref m_projMatrixData);
+					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+					GL.DrawElements(BeginMode.Triangles, m_indiceData.Length, DrawElementsType.UnsignedInt, 0);
+					break;
+				}
+
+				GL.BindVertexArray(0);
+			}
+
+			GL.Flush();
+			myGlControl1.SwapBuffers();
+		}
+
+		/// <summary>
+		/// For moving and rotating.
+		/// </summary>
+		private Point m_mousePreviousLocation;
+		private bool m_mouseLeftDown, m_mouseRightDown;
+
+		/// <summary>
+		/// For shader programs.
+		/// </summary>
+		private int m_programID, m_programColorID, m_programBlackID;
+		private int m_programAttributeVertexPosition;
+		private int m_programAttributeNormalDirection;
+		private int m_programAttributeVertexColor;
+		private int m_programUniformModelMatrix;
+		private int m_programUniformViewMatrix;
+		private int m_programUniformProjMatrix;
+
+		/// <summary>
+		/// For model.
+		/// </summary>
+		private int m_vao = 0;
+		private Vector3[] m_vertexData;
+		private int[] m_indiceData;
+		private Vector3[] m_normalData;
+		private Vector3[] m_normal2Data;
+		private Vector4[] m_colorData;
+		private Matrix4 m_modelMatrixData;
+		private Matrix4 m_viewMatrixData;
+		private Matrix4 m_projMatrixData;
+		private Matrix4 m_viewRotMatrix;
 
 		private float m_modelScale;
 		private Vector3 m_modelRot;
@@ -172,54 +350,40 @@ namespace AssetStudioGUI.Controls {
 		private float m_cameraFOV;
 		private float m_defaultCameraDis;
 
-		private int[] indiceData;
-		private int wireFrameMode = 2;
-		private int shadeMode;
-		private int normalMode;
-
-		private void GLInit() {
-			m_modelScale = 1.0f;
-			m_modelRot = Vector3.Zero;
-			m_cameraPos = Vector3.Zero;
-			m_cameraRot = Vector3.Zero;
-			m_cameraFOV = (float)Math.PI / 4.0f;
-		}
+		private int m_wireFrameMode = 2; // Face = 0, LineFrame, FaceAndLine;
+		private int m_shadeMode; // Color = 0, Light;
+		private int m_normalMode;
 
 		private void OpenTK_Init() {
-			if (ui_tabRight_page0_glPreview.IsDesignMode)
+			if (myGlControl1.IsDesignMode)
 				return;
 
-			GL_ChangeSize(ui_tabRight_page0_glPreview.Size);
+			GL_ChangeSize(myGlControl1.Size);
 			GL.ClearColor(System.Drawing.Color.CadetBlue);
-			pgmID = GL.CreateProgram();
-			GL_LoadShader("shader_vs", ShaderType.VertexShader, pgmID, out int vsID);
-			GL_LoadShader("shader_fs", ShaderType.FragmentShader, pgmID, out int fsID);
-			GL.LinkProgram(pgmID);
+			m_programID = GL.CreateProgram();
+			GL_LoadShader("shader_vs", ShaderType.VertexShader, m_programID, out int vsID);
+			GL_LoadShader("shader_fs", ShaderType.FragmentShader, m_programID, out int fsID);
+			GL.LinkProgram(m_programID);
 
-			pgmColorID = GL.CreateProgram();
-			GL_LoadShader("shader_vs", ShaderType.VertexShader, pgmColorID, out vsID);
-			GL_LoadShader("shader_fsColor", ShaderType.FragmentShader, pgmColorID, out fsID);
-			GL.LinkProgram(pgmColorID);
+			m_programColorID = GL.CreateProgram();
+			GL_LoadShader("shader_vs", ShaderType.VertexShader, m_programColorID, out vsID);
+			GL_LoadShader("shader_fsColor", ShaderType.FragmentShader, m_programColorID, out fsID);
+			GL.LinkProgram(m_programColorID);
 
-			pgmBlackID = GL.CreateProgram();
-			GL_LoadShader("shader_vs", ShaderType.VertexShader, pgmBlackID, out vsID);
-			GL_LoadShader("shader_fsBlack", ShaderType.FragmentShader, pgmBlackID, out fsID);
-			GL.LinkProgram(pgmBlackID);
+			m_programBlackID = GL.CreateProgram();
+			GL_LoadShader("shader_vs", ShaderType.VertexShader, m_programBlackID, out vsID);
+			GL_LoadShader("shader_fsBlack", ShaderType.FragmentShader, m_programBlackID, out fsID);
+			GL.LinkProgram(m_programBlackID);
 
-			attributeVertexPosition = GL.GetAttribLocation(pgmID, "vertexPosition");
-			attributeNormalDirection = GL.GetAttribLocation(pgmID, "normalDirection");
-			attributeVertexColor = GL.GetAttribLocation(pgmColorID, "vertexColor");
-			uniformModelMatrix = GL.GetUniformLocation(pgmID, "modelMatrix");
-			uniformViewMatrix = GL.GetUniformLocation(pgmID, "viewMatrix");
-			uniformProjMatrix = GL.GetUniformLocation(pgmID, "projMatrix");
+			m_programAttributeVertexPosition = GL.GetAttribLocation(m_programID, "vertexPosition");
+			m_programAttributeNormalDirection = GL.GetAttribLocation(m_programID, "normalDirection");
+			m_programAttributeVertexColor = GL.GetAttribLocation(m_programColorID, "vertexColor");
+			m_programUniformModelMatrix = GL.GetUniformLocation(m_programID, "modelMatrix");
+			m_programUniformViewMatrix = GL.GetUniformLocation(m_programID, "viewMatrix");
+			m_programUniformProjMatrix = GL.GetUniformLocation(m_programID, "projMatrix");
 		}
 
-		private void GL_LoadShader(string filename, ShaderType type, int program, out int address) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode) {
-				address = 0;
-				return;
-			}
-
+		private static void GL_LoadShader(string filename, ShaderType type, int program, out int address) {
 			address = GL.CreateShader(type);
 			var str = (string)Properties.Resources.ResourceManager.GetObject(filename);
 			GL.ShaderSource(address, str);
@@ -228,12 +392,57 @@ namespace AssetStudioGUI.Controls {
 			GL.DeleteShader(address);
 		}
 
-		private void GL_CreateVBO(out int vboAddress, Vector3[] data, int address) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode) {
-				vboAddress = 0;
-				return;
-			}
+		private void GL_Init() {
+			m_modelScale = 1.0f;
+			m_modelRot = Vector3.Zero;
+			m_cameraPos = Vector3.Zero;
+			m_cameraRot = Vector3.Zero;
+			m_cameraFOV = (float)Math.PI / 4.0f;
+		}
 
+		private void GL_Reset() {
+			if (myGlControl1.IsDesignMode)
+				return;
+
+			if (m_vao != 0)
+				GL.DeleteVertexArray(m_vao);
+		}
+
+		private void GL_InitMatrices() {
+			m_cameraPos = new Vector3(0.0f, 0.0f, 64.0f);
+			m_cameraRot = Vector3.Zero;
+			m_modelRot = Vector3.Zero;
+			m_modelScale = 1.0f;
+			m_cameraFOV = (float)Math.PI / 4.0f;
+			GL_UpdateModelMatrix();
+			GL_UpdateViewMatrix();
+		}
+
+		private void GL_CreateVAO() {
+			if (myGlControl1.IsDesignMode)
+				return;
+
+			GL.DeleteVertexArray(m_vao);
+			GL.GenVertexArrays(1, out m_vao);
+			GL.BindVertexArray(m_vao);
+			GL_CreateVBO(out _, m_vertexData, m_programAttributeVertexPosition);
+			if (m_normalMode == 0) {
+				GL_CreateVBO(out _, m_normal2Data, m_programAttributeNormalDirection);
+			}
+			else {
+				if (m_normalData != null)
+					GL_CreateVBO(out _, m_normalData, m_programAttributeNormalDirection);
+			}
+			GL_CreateVBO(out _, m_colorData, m_programAttributeVertexColor);
+			GL_CreateVBO(out _, m_modelMatrixData, m_programUniformModelMatrix);
+			GL_CreateVBO(out _, m_viewMatrixData, m_programUniformViewMatrix);
+			GL_CreateVBO(out _, m_projMatrixData, m_programUniformProjMatrix);
+			GL_CreateEBO(out _, m_indiceData);
+			GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+			GL.BindVertexArray(0);
+		}
+
+		private static void GL_CreateVBO(out int vboAddress, Vector3[] data, int address) {
 			GL.GenBuffers(1, out vboAddress);
 			GL.BindBuffer(BufferTarget.ArrayBuffer, vboAddress);
 			GL.BufferData(
@@ -246,12 +455,7 @@ namespace AssetStudioGUI.Controls {
 			GL.EnableVertexAttribArray(address);
 		}
 
-		private void GL_CreateVBO(out int vboAddress, Vector4[] data, int address) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode) {
-				vboAddress = 0;
-				return;
-			}
-
+		private static void GL_CreateVBO(out int vboAddress, Vector4[] data, int address) {
 			GL.GenBuffers(1, out vboAddress);
 			GL.BindBuffer(BufferTarget.ArrayBuffer, vboAddress);
 			GL.BufferData(
@@ -264,22 +468,12 @@ namespace AssetStudioGUI.Controls {
 			GL.EnableVertexAttribArray(address);
 		}
 
-		private void GL_CreateVBO(out int vboAddress, Matrix4 data, int address) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode) {
-				vboAddress = 0;
-				return;
-			}
-
+		private static void GL_CreateVBO(out int vboAddress, Matrix4 data, int address) {
 			GL.GenBuffers(1, out vboAddress);
 			GL.UniformMatrix4(address, false, ref data);
 		}
 
-		private void GL_CreateEBO(out int address, int[] data) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode) {
-				address = 0;
-				return;
-			}
-
+		private static void GL_CreateEBO(out int address, int[] data) {
 			GL.GenBuffers(1, out address);
 			GL.BindBuffer(BufferTarget.ElementArrayBuffer, address);
 			GL.BufferData(
@@ -290,65 +484,31 @@ namespace AssetStudioGUI.Controls {
 			);
 		}
 
-		private void GL_CreateVAO() {
-			if (ui_tabRight_page0_glPreview.IsDesignMode)
-				return;
-
-			GL.DeleteVertexArray(vao);
-			GL.GenVertexArrays(1, out vao);
-			GL.BindVertexArray(vao);
-			GL_CreateVBO(out var vboPositions, vertexData, attributeVertexPosition);
-			if (normalMode == 0) {
-				GL_CreateVBO(out var vboNormals, normal2Data, attributeNormalDirection);
-			}
-			else {
-				if (normalData != null)
-					GL_CreateVBO(out var vboNormals, normalData, attributeNormalDirection);
-			}
-			GL_CreateVBO(out var vboColors, colorData, attributeVertexColor);
-			GL_CreateVBO(out var vboModelMatrix, modelMatrixData, uniformModelMatrix);
-			GL_CreateVBO(out var vboViewMatrix, viewMatrixData, uniformViewMatrix);
-			GL_CreateVBO(out var vboProjMatrix, projMatrixData, uniformProjMatrix);
-			GL_CreateEBO(out var eboElements, indiceData);
-			GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-			GL.BindVertexArray(0);
-		}
-
 		private void GL_ChangeSize(Size size) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode)
+			if (myGlControl1.IsDesignMode)
 				return;
 
 			GL.Viewport(0, 0, size.Width, size.Height);
-			GL_updateProjMatrix(size);
+			GL_UpdateProjMatrix(size);
 		}
 
-		private void GL_InitMatrices() {
-			m_cameraPos = new Vector3(0.0f, 0.0f, 64.0f);
-			m_cameraRot = Vector3.Zero;
-			m_modelRot = Vector3.Zero;
-			m_modelScale = 1.0f;
-			m_cameraFOV = (float)Math.PI / 4.0f;
-			GL_updateModelMatrix();
-			GL_updateViewMatrix();
-		}
-
-		private void GL_updateModelMatrix() {
+		private void GL_UpdateModelMatrix() {
 			var modelRotMatrix =
 				Matrix4.CreateRotationZ(m_modelRot.Z) *
 				Matrix4.CreateRotationX(m_modelRot.X) *
 				Matrix4.CreateRotationY(m_modelRot.Y);
-			modelMatrixData = Matrix4.CreateScale(m_modelScale * 64.0f / m_defaultCameraDis) * modelRotMatrix;
+			m_modelMatrixData = Matrix4.CreateScale(m_modelScale * 64.0f / m_defaultCameraDis) * modelRotMatrix;
 		}
 
-		private void GL_updateViewMatrix() {
-			viewRotMatrix =
+		private void GL_UpdateViewMatrix() {
+			m_viewRotMatrix =
 				Matrix4.CreateRotationY(m_cameraRot.Y) *
 				Matrix4.CreateRotationX(m_cameraRot.X) *
 				Matrix4.CreateRotationZ(m_cameraRot.Z);
-			viewMatrixData = Matrix4.CreateTranslation(-m_cameraPos) * viewRotMatrix;
+			m_viewMatrixData = Matrix4.CreateTranslation(-m_cameraPos) * m_viewRotMatrix;
 		}
 
-		private void GL_updateProjMatrix(Size size) {
+		private void GL_UpdateProjMatrix(Size size) {
 			float k = 1.0f * size.Width / size.Height;
 			if (m_cameraFOV > 175.0f) {
 				m_cameraFOV = 175.0f;
@@ -356,169 +516,9 @@ namespace AssetStudioGUI.Controls {
 			else if (m_cameraFOV < 1.0f) {
 				m_cameraFOV = 1.0f;
 			}
-			Matrix4.CreatePerspectiveFieldOfView(m_cameraFOV, k, 0.25f, 256.0f, out projMatrixData);
+			Matrix4.CreatePerspectiveFieldOfView(m_cameraFOV, k, 0.25f, 256.0f, out m_projMatrixData);
 		}
 
-
-		private void PreviewGL_Load(object sender, EventArgs e) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode)
-				return;
-			GLInit();
-		}
-
-		private void Ui_tabRight_page0_glPreview_Paint(object sender, PaintEventArgs e) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode)
-				return;
-
-			ui_tabRight_page0_glPreview.MakeCurrent();
-
-			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-			GL.Enable(EnableCap.DepthTest);
-			GL.DepthFunc(DepthFunction.Lequal);
-			//GL.Enable(EnableCap.LineSmooth);
-			//GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
-			//GL.Enable(EnableCap.PolygonSmooth);
-			//GL.Hint(HintTarget.PolygonSmoothHint, HintMode.Nicest);
-
-			if (vao != 0) {
-				GL.BindVertexArray(vao);
-				switch (wireFrameMode) {
-				case 0:
-					GL.UseProgram(shadeMode == 0 ? pgmID : pgmColorID);
-					GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
-					GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
-					GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
-					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
-					GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-					break;
-				case 1:
-					GL.UseProgram(pgmBlackID);
-					GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
-					GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
-					GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
-					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-					GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-					break;
-				case 2:
-					GL.Enable(EnableCap.PolygonOffsetFill);
-					GL.PolygonOffset(1, 1);
-					GL.UseProgram(shadeMode == 0 ? pgmID : pgmColorID);
-					GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
-					GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
-					GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
-					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
-					GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-					GL.Disable(EnableCap.PolygonOffsetFill);
-					GL.UseProgram(pgmBlackID);
-					GL.UniformMatrix4(uniformModelMatrix, false, ref modelMatrixData);
-					GL.UniformMatrix4(uniformViewMatrix, false, ref viewMatrixData);
-					GL.UniformMatrix4(uniformProjMatrix, false, ref projMatrixData);
-					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-					GL.DrawElements(BeginMode.Triangles, indiceData.Length, DrawElementsType.UnsignedInt, 0);
-					break;
-				}
-
-				GL.BindVertexArray(0);
-			}
-
-			GL.Flush();
-			ui_tabRight_page0_glPreview.SwapBuffers();
-		}
-
-		private void Ui_tabRight_page0_glPreview_MouseWheel(object sender, MouseEventArgs e) {
-			if (ui_tabRight_page0_glPreview.Visible) {
-				Vector4 front = new Vector4(0, 0, -1, 0);
-				front = front * viewRotMatrix.Inverted();
-
-				if ((ModifierKeys & System.Windows.Forms.Keys.Control) == System.Windows.Forms.Keys.Control)
-					m_cameraPos += front.Xyz * e.Delta / 50.0f;
-				else
-					m_cameraPos += front.Xyz * e.Delta / 200.0f;
-
-				GL_updateViewMatrix();
-
-				ui_tabRight_page0_glPreview.Invalidate();
-			}
-		}
-
-		private void PreviewGL_MouseDown(object sender, MouseEventArgs e) {
-			mdx = e.X;
-			mdy = e.Y;
-			if (e.Button == MouseButtons.Left) {
-				lmdown = true;
-			}
-			if (e.Button == MouseButtons.Right) {
-				rmdown = true;
-			}
-		}
-
-		private void PreviewGL_MouseMove(object sender, MouseEventArgs e) {
-			if (lmdown || rmdown) {
-				float dx = mdx - e.X;
-				float dy = mdy - e.Y;
-				mdx = e.X;
-				mdy = e.Y;
-				if (lmdown) {
-					m_modelRot -= new Vector3(dy * 0.005f, dx * 0.005f, 0.0f);
-					GL_updateModelMatrix();
-				}
-				if (rmdown) {
-					m_cameraRot -= new Vector3(dy * 0.005f, dx * 0.005f, 0.0f);
-					GL_updateViewMatrix();
-				}
-				ui_tabRight_page0_glPreview.Invalidate();
-			}
-		}
-
-		private void PreviewGL_MouseUp(object sender, MouseEventArgs e) {
-			if (e.Button == MouseButtons.Left) {
-				lmdown = false;
-			}
-			if (e.Button == MouseButtons.Right) {
-				rmdown = false;
-			}
-		}
-
-		private void PreviewGL_KeyDown(object sender, KeyEventArgs e) {
-			if (e.Control) {
-				switch (e.KeyCode) {
-				case Keys.W:
-					//Toggle WireFrame
-					wireFrameMode = (wireFrameMode + 1) % 3;
-					ui_tabRight_page0_glPreview.Invalidate();
-					break;
-				case Keys.S:
-					//Toggle Shade
-					shadeMode = (shadeMode + 1) % 2;
-					ui_tabRight_page0_glPreview.Invalidate();
-					break;
-				case Keys.N:
-					//Normal mode
-					normalMode = (normalMode + 1) % 2;
-					GL_CreateVAO();
-					ui_tabRight_page0_glPreview.Invalidate();
-					break;
-				case Keys.R:
-					wireFrameMode = 2;
-					shadeMode = 0;
-					normalMode = 0;
-					GL_InitMatrices();
-					ui_tabRight_page0_glPreview.Invalidate();
-					break;
-				}
-			}
-		}
-
-		private void Ui_tabRight_page0_glPreview_Resize(object sender, EventArgs e) {
-			GL_ChangeSize(ui_tabRight_page0_glPreview.Size);
-			ui_tabRight_page0_glPreview.Invalidate();
-		}
-
-		private void Ui_tabRight_page0_glPreview_Load(object sender, EventArgs e) {
-			if (ui_tabRight_page0_glPreview.IsDesignMode)
-				return;
-			OpenTK_Init();
-		}
 	}
 
 	public class MyGLControl : GLControl {
