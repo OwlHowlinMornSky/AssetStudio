@@ -460,6 +460,14 @@ namespace AssetStudioGUI.Controls {
 				}
 			}
 		}
+
+		private void Ui_tabRight_page0_glPreview_Resize(object sender, EventArgs e) {
+			if (glControlLoaded && ui_tabRight_page0_glPreview.Visible) {
+				GL_ChangeSize(ui_tabRight_page0_glPreview.Size);
+				ui_tabRight_page0_glPreview.Invalidate();
+			}
+		}
+
 	}
 
 	public class MyGLControl() :

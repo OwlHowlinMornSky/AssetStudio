@@ -1021,11 +1021,8 @@ namespace AssetStudioGUI {
 		private int m_previewLoaded;
 
 		private void ui_tabRight_page0_previewPanel_Resize(object sender, EventArgs e) {
-			if (glControlLoaded && ui_tabRight_page0_glPreview.Visible) {
-				GL_ChangeSize(ui_tabRight_page0_glPreview.Size);
-				ui_tabRight_page0_glPreview.Invalidate();
+
 			}
-		}
 
 		enum PreviewType {
 			None = 0,

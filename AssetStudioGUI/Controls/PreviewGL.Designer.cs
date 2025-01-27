@@ -47,6 +47,7 @@ namespace AssetStudioGUI.Controls {
 			ui_tabRight_page0_glPreview.VSync = false;
 			ui_tabRight_page0_glPreview.Paint += Ui_tabRight_page0_glPreview_Paint;
 			ui_tabRight_page0_glPreview.MouseWheel += Ui_tabRight_page0_glPreview_MouseWheel;
+			ui_tabRight_page0_glPreview.Resize += Ui_tabRight_page0_glPreview_Resize;
 			// 
 			// PreviewGL
 			// 
