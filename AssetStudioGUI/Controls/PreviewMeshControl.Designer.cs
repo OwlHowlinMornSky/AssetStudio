@@ -1,7 +1,7 @@
 ﻿using AssetStudioGUI.Properties;
 
 namespace AssetStudioGUI.Controls {
-	partial class PreviewGL {
+	partial class PreviewMeshControl {
 		/// <summary> 
 		/// 必需的设计器变量。
 		/// </summary>
@@ -25,7 +25,7 @@ namespace AssetStudioGUI.Controls {
 		/// 使用代码编辑器修改此方法的内容。
 		/// </summary>
 		private void InitializeComponent() {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewGL));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewMeshControl));
 			label1 = new System.Windows.Forms.Label();
 			myGlControl1 = new MyGLControl();
 			SuspendLayout();
@@ -50,13 +50,13 @@ namespace AssetStudioGUI.Controls {
 			myGlControl1.MouseWheel += PreviewGL_MouseWheel;
 			myGlControl1.Resize += MyGlControl_Resize;
 			// 
-			// PreviewGL
+			// PreviewMeshControl
 			// 
 			resources.ApplyResources(this, "$this");
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			Controls.Add(myGlControl1);
 			Controls.Add(label1);
-			Name = "PreviewGL";
+			Name = "PreviewMeshControl";
 			Load += PreviewGL_Load;
 			KeyDown += PreviewGL_KeyDown;
 			MouseDown += PreviewGL_MouseDown;

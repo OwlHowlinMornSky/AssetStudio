@@ -1,5 +1,5 @@
 ﻿namespace AssetStudioGUI.Controls {
-	partial class PreviewFMOD {
+	partial class PreviewAudioControl {
 		/// <summary> 
 		/// 必需的设计器变量。
 		/// </summary>
@@ -24,7 +24,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewFMOD));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewAudioControl));
 			label_playing = new System.Windows.Forms.Label();
 			label_paused = new System.Windows.Forms.Label();
 			button_resume = new System.Windows.Forms.Button();
@@ -144,7 +144,7 @@
 			// 
 			timer1.Tick += Timer_Tick;
 			// 
-			// PreviewFMOD
+			// PreviewAudioControl
 			// 
 			resources.ApplyResources(this, "$this");
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -163,7 +163,7 @@
 			Controls.Add(button_stop);
 			Controls.Add(button_pause);
 			Controls.Add(button_play);
-			Name = "PreviewFMOD";
+			Name = "PreviewAudioControl";
 			Load += PreviewFMOD_Load;
 			ClientSizeChanged += PreviewFMOD_ClientSizeChanged;
 			((System.ComponentModel.ISupportInitialize)progressBar1).EndInit();

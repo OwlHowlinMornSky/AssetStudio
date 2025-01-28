@@ -11,13 +11,13 @@ using Matrix4 = OpenTK.Mathematics.Matrix4;
 
 namespace AssetStudioGUI.Controls {
 
-	public partial class PreviewGL : UserControl {
+	public partial class PreviewMeshControl : UserControl, IPreviewControl {
 
-		public PreviewGL() {
+		public PreviewMeshControl() {
 			InitializeComponent();
 		}
 
-		public void Reset() {
+		public void ResetPreview() {
 			m_vertexData = null;
 			m_indiceData = null;
 			m_normalData = null;

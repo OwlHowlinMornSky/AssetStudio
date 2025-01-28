@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AssetStudioGUI.Controls {
-	public partial class PreviewImage : UserControl {
-		public PreviewImage() {
+	public partial class PreviewImageControl : UserControl, IPreviewControl {
+		public PreviewImageControl() {
 			InitializeComponent();
 		}
 
@@ -110,7 +110,7 @@ namespace AssetStudioGUI.Controls {
 			}
 		}
 
-		public void Reset() {
+		public void ResetPreview() {
 			m_image?.Dispose();
 			m_image = null;
 		}

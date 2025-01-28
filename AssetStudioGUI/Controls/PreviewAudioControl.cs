@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace AssetStudioGUI.Controls {
-	public partial class PreviewFMOD : UserControl {
-		public PreviewFMOD() {
+	public partial class PreviewAudioControl : UserControl, IPreviewControl {
+		public PreviewAudioControl() {
 			InitializeComponent();
 			/// 保存工作区初始大小。
 			m_prevSize = ClientSize;
@@ -18,7 +18,7 @@ namespace AssetStudioGUI.Controls {
 			label_paused.Top = label_stopped.Top;
 		}
 
-		public void Reset() {
+		public void ResetPreview() {
 			timer1.Stop();
 
 			SuspendLayout();
@@ -41,7 +41,10 @@ namespace AssetStudioGUI.Controls {
 			FMOD_Reset();
 		}
 
-		internal void Preview(AssetItem assetItem, AudioClip audioClip) {
+		internal void PreviewAudioClip(AssetItem assetItem, AudioClip audioClip) {
+			if (Program.Runtime)
+				FMOD_Init();
+
 			/// 计算 Info。
 			assetItem.InfoText = Properties.Strings.Preview_Audio_formatHead;
 			if (audioClip.version[0] < 5) {
@@ -116,8 +119,6 @@ namespace AssetStudioGUI.Controls {
 		/// 本控件加载时初始化FMOD。
 		/// </summary>
 		private void PreviewFMOD_Load(object sender, EventArgs e) {
-			if (Program.Runtime)
-				FMOD_Init();
 		}
 
 		/// <summary>
@@ -413,32 +414,37 @@ namespace AssetStudioGUI.Controls {
 			}
 		}
 
-		private FMOD.System m_system;
-		private FMOD.Sound m_sound;
-		private FMOD.Channel m_channel;
-		private FMOD.SoundGroup m_masterSoundGroup;
+		private static FMOD.System m_system = null;
+
+		private FMOD.SoundGroup m_masterSoundGroup = null;
+		private FMOD.Channel m_channel = null;
+		private FMOD.Sound m_sound = null;
 		private FMOD.MODE m_loopMode = FMOD.MODE.LOOP_OFF;
-		private uint m_durationInMilliseconds;
+		private uint m_durationInMilliseconds = 1000;
 		private float m_volume = 0.8f;
 
 		private void FMOD_Init() {
 			FMOD_Reset();
 
-			var result = FMOD.Factory.System_Create(out m_system);
-			if (FMOD_Check(result)) {
-				return;
-			}
+			FMOD.RESULT result;
 
-			result = m_system.getVersion(out var version);
-			FMOD_Check(result);
-			if (version < FMOD.VERSION.number) {
-				MessageBox.Show($"Error!  You are using an old version of FMOD {version:X}.  This program requires {FMOD.VERSION.number:X}.");
-				Application.Exit();
-			}
+			if (m_system == null) {
+				result = FMOD.Factory.System_Create(out m_system);
+				if (FMOD_Check(result)) {
+					return;
+				}
 
-			result = m_system.init(2, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
-			if (FMOD_Check(result)) {
-				return;
+				result = m_system.getVersion(out var version);
+				FMOD_Check(result);
+				if (version < FMOD.VERSION.number) {
+					MessageBox.Show($"Error!  You are using an old version of FMOD {version:X}.  This program requires {FMOD.VERSION.number:X}.");
+					return;
+				}
+
+				result = m_system.init(2, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
+				if (FMOD_Check(result)) {
+					return;
+				}
 			}
 
 			result = m_system.getMasterSoundGroup(out m_masterSoundGroup);
@@ -463,7 +469,7 @@ namespace AssetStudioGUI.Controls {
 		private bool FMOD_Check(FMOD.RESULT result) {
 			if (result != FMOD.RESULT.OK) {
 				FMOD_Reset();
-				//StatusStripUpdate($"FMOD error! {result} - {FMOD.Error.String(result)}");
+				Logger.Default.Log(LoggerEvent.Error, $"FMOD error! {result} - {FMOD.Error.String(result)}");
 				return true;
 			}
 			return false;

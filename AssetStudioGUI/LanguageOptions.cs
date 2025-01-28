@@ -43,7 +43,7 @@ namespace AssetStudioGUI {
 			ui_button_ok.Enabled = false;
 
 			m_oldLangChoice = (Language)Properties.SettingsOHMS.Default.language;
-			m_oldLang = computeLanguage(m_oldLangChoice);
+			m_oldLang = ComputeLanguage(m_oldLangChoice);
 			m_newLangChoice = m_oldLangChoice;
 
 			ui_label_restart_note.Visible = (m_oldLang != m_veryFirstLang);
@@ -64,7 +64,7 @@ namespace AssetStudioGUI {
 		}
 
 		public static void update(Language lang) {
-			lang = computeLanguage(lang);
+			lang = ComputeLanguage(lang);
 			switch (lang) {
 			case Language.en_US:
 				Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
@@ -78,7 +78,7 @@ namespace AssetStudioGUI {
 			}
 		}
 
-		public static Language computeLanguage(Language i) {
+		public static Language ComputeLanguage(Language i) {
 			switch (i) {
 			case Language.auto:
 				return m_detectedLang;
@@ -94,7 +94,7 @@ namespace AssetStudioGUI {
 			detectAuto();
 
 			m_veryFirstLangChoice = (Language)Properties.SettingsOHMS.Default.language;
-			m_veryFirstLang = computeLanguage(m_veryFirstLangChoice);
+			m_veryFirstLang = ComputeLanguage(m_veryFirstLangChoice);
 
 			update(m_veryFirstLang);
 		}
@@ -129,7 +129,7 @@ namespace AssetStudioGUI {
 
 		private void ui_button_ok_Click(object sender, EventArgs e) {
 			if (m_newLangChoice != m_oldLangChoice) {
-				Language newLang = computeLanguage(m_newLangChoice);
+				Language newLang = ComputeLanguage(m_newLangChoice);
 
 				if (newLang != m_oldLang) {
 					update(newLang);

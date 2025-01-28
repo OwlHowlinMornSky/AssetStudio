@@ -1,15 +1,11 @@
-﻿using AssetStudio;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using AssetStudio;
 
 namespace AssetStudioGUI {
-	class GUILogger : ILogger {
+	internal class GUILogger(Action<string> action) : ILogger {
 		public bool ShowErrorMessage = true;
-		private Action<string> action;
-
-		public GUILogger(Action<string> action) {
-			this.action = action;
-		}
+		private readonly Action<string> action = action;
 
 		public void Log(LoggerEvent loggerEvent, string message) {
 			switch (loggerEvent) {
@@ -22,7 +18,7 @@ namespace AssetStudioGUI {
 				action(message);
 				break;
 			}
-
 		}
+
 	}
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -117,125 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ui_tabLeft_page0.Text" xml:space="preserve">
-    <value>场景层次</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeSearch.Text" xml:space="preserve">
-    <value> 搜索 </value>
-  </data>
-  <data name="ui_tabLeft_page1.Text" xml:space="preserve">
-    <value>资料</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Name.Text" xml:space="preserve">
-    <value>名称</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Container.Text" xml:space="preserve">
-    <value>容器</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Type.Text" xml:space="preserve">
-    <value>类型</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Text" xml:space="preserve">
-    <value>路径 ID</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Text" xml:space="preserve">
-    <value>大小(字节)</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="ui_tabLeft_page1_listSearch.Text" xml:space="preserve">
-    <value> 过滤 </value>
-  </data>
-  <data name="ui_tabLeft_page2.Text" xml:space="preserve">
-    <value>资料类</value>
-  </data>
-  <data name="ui_tabLeft_page2_listView_columnHeader_Name.Text" xml:space="preserve">
-    <value>名称</value>
-  </data>
-  <data name="ui_tabLeft_page2_listView_columnHeader_ID.Text" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="ui_tabRight_page0.Text" xml:space="preserve">
-    <value>预览</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 21</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODstatusLabel_Playing.Text" xml:space="preserve">
-    <value>播放中</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 21</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODstatusLabel_Paused.Text" xml:space="preserve">
-    <value>已暂停</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODresumeButton.Text" xml:space="preserve">
-    <value>继续</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODcopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 338</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODcopyright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 20</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODcopyright.Text" xml:space="preserve">
-    <value>音频引擎 FMOD 由 Firelight Technologies 提供</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODinfoLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 231</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 21</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODstatusLabel_Stopped.Text" xml:space="preserve">
-    <value>已停止</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODloopButton.Text" xml:space="preserve">
-    <value>循环</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODstopButton.Text" xml:space="preserve">
-    <value>停止</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODpauseButton.Text" xml:space="preserve">
-    <value>暂停</value>
-  </data>
-  <data name="ui_tabRight_page0_FMODplayButton.Text" xml:space="preserve">
-    <value>播放</value>
-  </data>
-  <data name="ui_tabRight_page0_fontPreviewBox.Text" xml:space="preserve">
-    <value>abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWYZ
-1234567890.:,;'\"(!?)+-*/=
-
-The quick brown fox jumps over the lazy dog. 1234567890
-
-The quick brown fox jumps over the lazy dog. 1234567890
-
-The quick brown fox jumps over the lazy dog. 1234567890
-
-The quick brown fox jumps over the lazy dog. 1234567890
-
-The quick brown fox jumps over the lazy dog. 1234567890
-
-The quick brown fox jumps over the lazy dog. 1234567890
-
-The quick brown fox jumps over the lazy dog. 1234567890</value>
-  </data>
-  <data name="ui_tabRight_page1.Text" xml:space="preserve">
-    <value>转储</value>
-  </data>
-  <data name="ui_tabRight_page2.Text" xml:space="preserve">
-    <value>转储(JSON)</value>
-  </data>
   <data name="ui_statusLabel0_down.ToolTipText" xml:space="preserve">
     <value>状态信息</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ui_menuFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 21</value>
   </data>
@@ -244,6 +129,57 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_menuFile.ToolTipText" xml:space="preserve">
     <value>关于处理外部文件的项目</value>
+  </data>
+  <data name="ui_menuOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="ui_menuOptions.Text" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="ui_menuOptions.ToolTipText" xml:space="preserve">
+    <value>关于软件工作方式的项目</value>
+  </data>
+  <data name="ui_menuFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="ui_menuFilter.Text" xml:space="preserve">
+    <value>筛选</value>
+  </data>
+  <data name="ui_menuFilter.ToolTipText" xml:space="preserve">
+    <value>筛选已加载的资料</value>
+  </data>
+  <data name="ui_menuModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="ui_menuModel.Text" xml:space="preserve">
+    <value>模型</value>
+  </data>
+  <data name="ui_menuExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="ui_menuExport.Text" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="ui_menuExport.ToolTipText" xml:space="preserve">
+    <value>关于将若干资料输出的项目</value>
+  </data>
+  <data name="ui_menuDebug.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="ui_menuDebug.Text" xml:space="preserve">
+    <value>调试</value>
+  </data>
+  <data name="ui_menuOhmsExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="ui_menuOhmsExport.Text" xml:space="preserve">
+    <value>[OHMS]导出</value>
+  </data>
+  <data name="previewsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="previewsToolStripMenuItem.Text" xml:space="preserve">
+    <value>预览</value>
   </data>
   <data name="ui_menuFile_loadFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 22</value>
@@ -295,15 +231,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_menuFile_clear.ToolTipText" xml:space="preserve">
     <value>重设加载状态。</value>
-  </data>
-  <data name="ui_menuOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 21</value>
-  </data>
-  <data name="ui_menuOptions.Text" xml:space="preserve">
-    <value>选项</value>
-  </data>
-  <data name="ui_menuOptions.ToolTipText" xml:space="preserve">
-    <value>关于软件工作方式的项目</value>
   </data>
   <data name="ui_menuOptions_language.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 22</value>
@@ -364,26 +291,11 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuOptions_specifyUnityVersion.Text" xml:space="preserve">
     <value>指定 Unity 版本</value>
   </data>
-  <data name="ui_menuFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 21</value>
-  </data>
-  <data name="ui_menuFilter.Text" xml:space="preserve">
-    <value>筛选</value>
-  </data>
-  <data name="ui_menuFilter.ToolTipText" xml:space="preserve">
-    <value>筛选已加载的资料</value>
-  </data>
   <data name="ui_menuFilter_0_all.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 22</value>
   </data>
   <data name="ui_menuFilter_0_all.Text" xml:space="preserve">
     <value>全部</value>
-  </data>
-  <data name="ui_menuModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 21</value>
-  </data>
-  <data name="ui_menuModel.Text" xml:space="preserve">
-    <value>模型</value>
   </data>
   <data name="ui_menuModel_exportAllObjectsSplit.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 22</value>
@@ -417,15 +329,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Text" xml:space="preserve">
     <value>导出选择的对象 (分离) + 选择的 AnimationClips</value>
-  </data>
-  <data name="ui_menuExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 21</value>
-  </data>
-  <data name="ui_menuExport.Text" xml:space="preserve">
-    <value>导出</value>
-  </data>
-  <data name="ui_menuExport.ToolTipText" xml:space="preserve">
-    <value>关于将若干资料输出的项目</value>
   </data>
   <data name="ui_menuExport_allAssets.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 22</value>
@@ -607,12 +510,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   <data name="ui_menuExport_assetListToJson_filteredAssets.Text" xml:space="preserve">
     <value>筛选后的资料</value>
   </data>
-  <data name="ui_menuDebug.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 21</value>
-  </data>
-  <data name="ui_menuDebug.Text" xml:space="preserve">
-    <value>调试</value>
-  </data>
   <data name="ui_menuDebug_showErrorMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
   </data>
@@ -627,12 +524,6 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_TEST_ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
-  </data>
-  <data name="ui_menuOhmsExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 21</value>
-  </data>
-  <data name="ui_menuOhmsExport.Text" xml:space="preserve">
-    <value>[OHMS]导出</value>
   </data>
   <data name="ui_menuOhmsExport_createANewFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
@@ -819,6 +710,46 @@ The quick brown fox jumps over the lazy dog. 1234567890</value>
   </data>
   <data name="ui_conMenu_OHMS_ExportSelected_Struct_XML.Text" xml:space="preserve">
     <value>XML 格式的列表</value>
+  </data>
+  <data name="ui_tabLeft_page0.Text" xml:space="preserve">
+    <value>场景层次</value>
+  </data>
+  <data name="ui_tabLeft_page0_treeSearch.PlaceholderText" xml:space="preserve">
+    <value> 搜索 </value>
+  </data>
+  <data name="ui_tabLeft_page1.Text" xml:space="preserve">
+    <value>资料</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Name.Text" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Container.Text" xml:space="preserve">
+    <value>容器</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Type.Text" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Text" xml:space="preserve">
+    <value>路径 ID</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Text" xml:space="preserve">
+    <value>大小(字节)</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="ui_tabLeft_page1_listSearch.PlaceholderText" xml:space="preserve">
+    <value> 过滤 </value>
+  </data>
+  <data name="ui_tabLeft_page2.Text" xml:space="preserve">
+    <value>资料类</value>
+  </data>
+  <data name="ui_tabLeft_page2_listView_columnHeader_Name.Text" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="ui_tabLeft_page2_listView_columnHeader_ID.Text" xml:space="preserve">
+    <value>ID</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">

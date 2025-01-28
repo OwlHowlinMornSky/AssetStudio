@@ -1,16 +1,15 @@
-﻿using AssetStudio;
+﻿using System.IO;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+using AssetStudio;
 
 namespace AssetStudioGUI {
-
 	internal static class Exporter {
 
 		public static bool g_ohms_export_with_structure = false;
@@ -69,7 +68,7 @@ namespace AssetStudioGUI {
 
 				var image0 = m_Texture2D_RGB.ConvertToImage(true);
 				var image1 = m_Texture2D_A.ConvertToImage(true);
-				
+
 				if (image0 == null || image1 == null) {
 					throw new System.Exception("1");
 				}
@@ -79,8 +78,8 @@ namespace AssetStudioGUI {
 					image1.Mutate(a => a.Resize(image0.Size(), sampler, false));
 				}
 
-				for(int i = 0; i < image0.Width; i++) {
-					for(int j = 0; j < image0.Height; j++) {
+				for (int i = 0; i < image0.Width; i++) {
+					for (int j = 0; j < image0.Height; j++) {
 						var oc = image0[i, j];
 						image0[i, j] = new Bgra32(oc.R, oc.G, oc.B, image1[i, j].R);
 					}
@@ -164,7 +163,7 @@ namespace AssetStudioGUI {
 			var m_MonoBehaviour = (MonoBehaviour)item.Asset;
 			var type = m_MonoBehaviour.ToType();
 			if (type == null) {
-				var m_Type = AssetStudioGUIForm.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
+				var m_Type = StudioCore.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
 				type = m_MonoBehaviour.ToType(m_Type);
 			}
 			var str = JsonConvert.SerializeObject(type, Formatting.Indented);
@@ -523,7 +522,7 @@ namespace AssetStudioGUI {
 				return false;
 			var str = item.Asset.Dump();
 			if (str == null && item.Asset is MonoBehaviour m_MonoBehaviour) {
-				var m_Type = AssetStudioGUIForm.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
+				var m_Type = StudioCore.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
 				str = m_MonoBehaviour.Dump(m_Type);
 			}
 			if (str != null) {
@@ -538,7 +537,7 @@ namespace AssetStudioGUI {
 				return false;
 			var type = item.Asset.ToType();
 			if (type == null && item.Asset is MonoBehaviour m_MonoBehaviour) {
-				var m_Type = AssetStudioGUIForm.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
+				var m_Type = StudioCore.m_studio.MonoBehaviourToTypeTree(m_MonoBehaviour);
 				type = m_MonoBehaviour.ToType(m_Type);
 			}
 			var str = JsonConvert.SerializeObject(type, Formatting.Indented);
@@ -618,5 +617,6 @@ namespace AssetStudioGUI {
 				return Path.GetRandomFileName();
 			return Path.GetInvalidFileNameChars().Aggregate(str, (current, c) => current.Replace(c, '_'));
 		}
+
 	}
 }

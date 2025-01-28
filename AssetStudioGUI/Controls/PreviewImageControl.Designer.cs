@@ -1,5 +1,5 @@
 ﻿namespace AssetStudioGUI.Controls {
-	partial class PreviewImage {
+	partial class PreviewImageControl {
 		/// <summary> 
 		/// 必需的设计器变量。
 		/// </summary>
