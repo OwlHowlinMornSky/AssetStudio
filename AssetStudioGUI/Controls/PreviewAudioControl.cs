@@ -114,6 +114,7 @@ namespace AssetStudioGUI.Controls {
 				return;
 
 			label_sampleRate.Text = $"{frequency} Hz";
+			label_duration.Text = $"{m_durationInMilliseconds / 1000 / 60:D2}:{m_durationInMilliseconds / 1000 % 60:D2}:{m_durationInMilliseconds % 1000 / 10:D2}";
 		}
 
 		/// <summary>
