@@ -36,12 +36,12 @@
 			ui_tabRight_page0_fontPreviewBox.TabIndex = 0;
 			ui_tabRight_page0_fontPreviewBox.Text = resources.GetString("ui_tabRight_page0_fontPreviewBox.Text");
 			// 
-			// PreviewFont
+			// PreviewFontControl
 			// 
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			Controls.Add(ui_tabRight_page0_fontPreviewBox);
-			Name = "PreviewFont";
+			Name = "PreviewFontControl";
 			Size = new System.Drawing.Size(527, 436);
 			ResumeLayout(false);
 		}

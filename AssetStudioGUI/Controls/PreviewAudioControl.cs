@@ -79,7 +79,6 @@ namespace AssetStudioGUI.Controls {
 					_ => "Unknown",
 				};
 			}
-			FMOD_Reset();
 
 			var audioData = audioClip.m_AudioData.GetData();
 			if (audioData == null || audioData.Length == 0)
@@ -113,6 +112,8 @@ namespace AssetStudioGUI.Controls {
 			result = m_channel.getFrequency(out var frequency);
 			if (FMOD_Check(result))
 				return;
+
+			label_sampleRate.Text = $"{frequency} Hz";
 		}
 
 		/// <summary>
@@ -414,8 +415,7 @@ namespace AssetStudioGUI.Controls {
 			}
 		}
 
-		private static FMOD.System m_system = null;
-
+		private FMOD.System m_system = null;
 		private FMOD.SoundGroup m_masterSoundGroup = null;
 		private FMOD.Channel m_channel = null;
 		private FMOD.Sound m_sound = null;
@@ -428,23 +428,21 @@ namespace AssetStudioGUI.Controls {
 
 			FMOD.RESULT result;
 
-			if (m_system == null) {
-				result = FMOD.Factory.System_Create(out m_system);
-				if (FMOD_Check(result)) {
-					return;
-				}
+			result = FMOD.Factory.System_Create(out m_system);
+			if (FMOD_Check(result)) {
+				return;
+			}
 
-				result = m_system.getVersion(out var version);
-				FMOD_Check(result);
-				if (version < FMOD.VERSION.number) {
-					MessageBox.Show($"Error!  You are using an old version of FMOD {version:X}.  This program requires {FMOD.VERSION.number:X}.");
-					return;
-				}
+			result = m_system.getVersion(out var version);
+			FMOD_Check(result);
+			if (version < FMOD.VERSION.number) {
+				MessageBox.Show($"Error!  You are using an old version of FMOD {version:X}.  This program requires {FMOD.VERSION.number:X}.");
+				return;
+			}
 
-				result = m_system.init(2, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
-				if (FMOD_Check(result)) {
-					return;
-				}
+			result = m_system.init(2, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
+			if (FMOD_Check(result)) {
+				return;
 			}
 
 			result = m_system.getMasterSoundGroup(out m_masterSoundGroup);
@@ -459,16 +457,36 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private void FMOD_Reset() {
-			if (m_sound != null && m_sound.isValid()) {
+			/*if (m_channel?.isValid() ?? false) {
+				var result = m_channel.stop();
+				FMOD_Check(result);
+			}
+			m_channel = null;*/
+
+			if (m_sound?.isValid() ?? false) {
 				var result = m_sound.release();
 				FMOD_Check(result);
-				m_sound = null;
 			}
+			m_sound = null;
+
+			/*if (m_masterSoundGroup?.isValid() ?? false) {
+				var result = m_masterSoundGroup.release();
+				FMOD_Check(result);
+			}
+			m_masterSoundGroup = null;*/
+
+			if (m_system?.isValid() ?? false) {
+				var result = m_system.close();
+				FMOD_Check(result);
+				result = m_system.release();
+				FMOD_Check(result);
+			}
+			m_system = null;
 		}
 
 		private bool FMOD_Check(FMOD.RESULT result) {
 			if (result != FMOD.RESULT.OK) {
-				FMOD_Reset();
+				//FMOD_Reset();
 				Logger.Default.Log(LoggerEvent.Error, $"FMOD error! {result} - {FMOD.Error.String(result)}");
 				return true;
 			}

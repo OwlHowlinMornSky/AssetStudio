@@ -26,14 +26,8 @@ namespace AssetStudioGUI.Controls {
 		/// </summary>
 		private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewMeshControl));
-			label1 = new System.Windows.Forms.Label();
 			myGlControl1 = new MyGLControl();
 			SuspendLayout();
-			// 
-			// label1
-			// 
-			resources.ApplyResources(label1, "label1");
-			label1.Name = "label1";
 			// 
 			// myGlControl1
 			// 
@@ -55,7 +49,6 @@ namespace AssetStudioGUI.Controls {
 			resources.ApplyResources(this, "$this");
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			Controls.Add(myGlControl1);
-			Controls.Add(label1);
 			Name = "PreviewMeshControl";
 			Load += PreviewGL_Load;
 			KeyDown += PreviewGL_KeyDown;
@@ -63,12 +56,9 @@ namespace AssetStudioGUI.Controls {
 			MouseMove += PreviewGL_MouseMove;
 			MouseUp += PreviewGL_MouseUp;
 			ResumeLayout(false);
-			PerformLayout();
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Label label1;
 		protected MyGLControl myGlControl1;
 	}
 }

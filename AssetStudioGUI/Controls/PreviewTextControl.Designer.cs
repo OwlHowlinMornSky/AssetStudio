@@ -23,26 +23,21 @@
 		/// 使用代码编辑器修改此方法的内容。
 		/// </summary>
 		private void InitializeComponent() {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewTextControl));
 			textBox1 = new System.Windows.Forms.TextBox();
 			SuspendLayout();
 			// 
 			// textBox1
 			// 
-			textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			textBox1.Location = new System.Drawing.Point(0, 0);
-			textBox1.Multiline = true;
+			resources.ApplyResources(textBox1, "textBox1");
 			textBox1.Name = "textBox1";
-			textBox1.Size = new System.Drawing.Size(546, 308);
-			textBox1.TabIndex = 0;
-			textBox1.Text = "[No text to show]";
 			// 
-			// PreviewText
+			// PreviewTextControl
 			// 
-			AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+			resources.ApplyResources(this, "$this");
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			Controls.Add(textBox1);
-			Name = "PreviewText";
-			Size = new System.Drawing.Size(546, 308);
+			Name = "PreviewTextControl";
 			ResumeLayout(false);
 			PerformLayout();
 		}

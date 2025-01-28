@@ -282,4 +282,7 @@ Mip map bias: {1}</value>
   <data name="Studio_SelectAssemblyFolder" xml:space="preserve">
     <value>Select Assembly Folder</value>
   </data>
+  <data name="Studio_UsingStudio" xml:space="preserve">
+    <value>Please wait for current operation finishing.</value>
+  </data>
 </root>

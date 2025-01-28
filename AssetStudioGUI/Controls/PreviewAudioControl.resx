@@ -117,443 +117,461 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label_playing.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;button_play.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label_playing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 12pt</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label_playing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_playing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="label_playing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 21</value>
-  </data>
-  <data name="label_playing.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="label_playing.Text" xml:space="preserve">
-    <value>%Playing</value>
-  </data>
-  <data name="label_playing.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label_playing.Name" xml:space="preserve">
-    <value>label_playing</value>
-  </data>
-  <data name="&gt;&gt;label_playing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_playing.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label_sampleRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 43</value>
   </data>
   <data name="&gt;&gt;label_playing.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label_paused.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_paused.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 12pt</value>
-  </data>
-  <data name="label_paused.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_paused.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 1</value>
-  </data>
-  <data name="label_paused.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 21</value>
-  </data>
-  <data name="label_paused.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="label_paused.Text" xml:space="preserve">
-    <value>%Paused</value>
-  </data>
-  <data name="label_paused.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label_paused.Name" xml:space="preserve">
-    <value>label_paused</value>
-  </data>
-  <data name="&gt;&gt;label_paused.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_paused.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label_paused.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_resume.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_resume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 186</value>
-  </data>
-  <data name="button_resume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 42</value>
-  </data>
-  <data name="button_resume.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="button_resume.Text" xml:space="preserve">
-    <value>%Resume</value>
-  </data>
-  <data name="button_resume.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;button_resume.Name" xml:space="preserve">
-    <value>button_resume</value>
-  </data>
-  <data name="&gt;&gt;button_resume.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_resume.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button_resume.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label_duration.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_duration.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 12pt</value>
-  </data>
-  <data name="label_duration.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_duration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>334, 43</value>
-  </data>
-  <data name="label_duration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 21</value>
-  </data>
-  <data name="label_duration.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="label_duration.Text" xml:space="preserve">
-    <value>00:00.00</value>
-  </data>
-  <data name="&gt;&gt;label_duration.Name" xml:space="preserve">
-    <value>label_duration</value>
-  </data>
-  <data name="&gt;&gt;label_duration.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_duration.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label_duration.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label_copyright.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_copyright.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 10pt</value>
-  </data>
-  <data name="label_copyright.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_copyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 150</value>
-  </data>
-  <data name="label_copyright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>418, 20</value>
-  </data>
-  <data name="label_copyright.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="label_copyright.Text" xml:space="preserve">
-    <value>%Audio Engine supplied by FMOD by Firelight Technologies.</value>
-  </data>
-  <data name="&gt;&gt;label_copyright.Name" xml:space="preserve">
-    <value>label_copyright</value>
-  </data>
-  <data name="&gt;&gt;label_copyright.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_playing.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_copyright.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label_copyright.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="volumeBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 45</value>
   </data>
-  <data name="label_sampleRate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;label_paused.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="label_sampleRate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 12pt</value>
-  </data>
-  <data name="label_sampleRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_loop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label_sampleRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 43</value>
+  <data name="label_paused.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 21</value>
   </data>
-  <data name="label_sampleRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 21</value>
-  </data>
-  <data name="label_sampleRate.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="label_sampleRate.Text" xml:space="preserve">
-    <value>Hz</value>
-  </data>
-  <data name="&gt;&gt;label_sampleRate.Name" xml:space="preserve">
-    <value>label_sampleRate</value>
-  </data>
-  <data name="&gt;&gt;label_sampleRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_sampleRate.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label_sampleRate.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label_timer.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_timer.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 12pt</value>
-  </data>
-  <data name="label_timer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_timer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 43</value>
-  </data>
-  <data name="label_timer.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="label_timer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 21</value>
-  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label_timer.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="label_timer.Text" xml:space="preserve">
-    <value>00:00.00</value>
-  </data>
-  <data name="&gt;&gt;label_timer.Name" xml:space="preserve">
-    <value>label_timer</value>
-  </data>
-  <data name="&gt;&gt;label_timer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_timer.Parent" xml:space="preserve">
+  <data name="&gt;&gt;button_pause.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label_timer.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label_stopped.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_stopped.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 12pt</value>
-  </data>
-  <data name="label_stopped.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="label_playing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label_stopped.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 43</value>
+  <data name="&gt;&gt;button_resume.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="label_stopped.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="label_stopped.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="label_stopped.Text" xml:space="preserve">
-    <value>%Stopped</value>
-  </data>
-  <data name="&gt;&gt;label_stopped.Name" xml:space="preserve">
-    <value>label_stopped</value>
-  </data>
-  <data name="&gt;&gt;label_stopped.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_stopped.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label_stopped.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="progressBar1.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 65</value>
-  </data>
-  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 22</value>
-  </data>
-  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
-    <value>progressBar1</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;label_duration.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="volumeBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="volumeBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>303, 92</value>
-  </data>
-  <data name="volumeBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 45</value>
-  </data>
-  <data name="volumeBar.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
   <data name="&gt;&gt;volumeBar.Name" xml:space="preserve">
     <value>volumeBar</value>
   </data>
-  <data name="&gt;&gt;volumeBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;volumeBar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;volumeBar.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="button_loop.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="button_loop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_loop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 92</value>
-  </data>
-  <data name="button_loop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 42</value>
-  </data>
-  <data name="button_loop.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="button_loop.Text" xml:space="preserve">
-    <value>%Loop</value>
-  </data>
-  <data name="button_loop.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;button_loop.Name" xml:space="preserve">
-    <value>button_loop</value>
-  </data>
-  <data name="&gt;&gt;button_loop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_loop.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button_loop.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="button_stop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_stop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 92</value>
-  </data>
-  <data name="button_stop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 42</value>
+  <data name="progressBar1.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="button_stop.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="button_stop.Text" xml:space="preserve">
-    <value>%Stop</value>
-  </data>
-  <data name="&gt;&gt;button_stop.Name" xml:space="preserve">
-    <value>button_stop</value>
-  </data>
-  <data name="&gt;&gt;button_stop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;button_pause.Name" xml:space="preserve">
+    <value>button_pause</value>
   </data>
   <data name="&gt;&gt;button_stop.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button_stop.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="button_pause.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="button_pause.Location" type="System.Drawing.Point, System.Drawing">
     <value>93, 92</value>
   </data>
-  <data name="button_pause.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="button_stop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 92</value>
+  </data>
+  <data name="label_paused.Text" xml:space="preserve">
+    <value>%Paused</value>
+  </data>
+  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
+    <value>timer1</value>
+  </data>
+  <data name="&gt;&gt;button_loop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label_copyright.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 20</value>
+  </data>
+  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;label_paused.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_stopped.Name" xml:space="preserve">
+    <value>label_stopped</value>
+  </data>
+  <data name="&gt;&gt;label_sampleRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_resume.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_copyright.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_sampleRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 21</value>
+  </data>
+  <data name="button_resume.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 42</value>
   </data>
-  <data name="button_pause.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 22</value>
+  </data>
+  <data name="label_duration.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;button_loop.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label_playing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button_play.Text" xml:space="preserve">
+    <value>%Play</value>
+  </data>
+  <data name="label_playing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 21</value>
+  </data>
+  <data name="label_duration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 43</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>PreviewAudioControl</value>
+  </data>
+  <data name="label_paused.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_copyright.Text" xml:space="preserve">
+    <value>%Audio Engine supplied by FMOD by Firelight Technologies.</value>
+  </data>
+  <data name="button_loop.Text" xml:space="preserve">
+    <value>%Loop</value>
   </data>
   <data name="button_pause.Text" xml:space="preserve">
     <value>%Pause</value>
   </data>
-  <data name="&gt;&gt;button_pause.Name" xml:space="preserve">
-    <value>button_pause</value>
+  <data name="&gt;&gt;label_duration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_pause.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label_copyright.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 150</value>
   </data>
-  <data name="&gt;&gt;button_pause.Parent" xml:space="preserve">
+  <data name="&gt;&gt;button_loop.Name" xml:space="preserve">
+    <value>button_loop</value>
+  </data>
+  <data name="&gt;&gt;button_play.Name" xml:space="preserve">
+    <value>button_play</value>
+  </data>
+  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_playing.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;volumeBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="volumeBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_timer.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="&gt;&gt;label_stopped.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button_pause.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="button_play.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="label_stopped.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="volumeBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 92</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
+    <value>progressBar1</value>
+  </data>
+  <data name="label_duration.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="&gt;&gt;button_stop.Name" xml:space="preserve">
+    <value>button_stop</value>
+  </data>
+  <data name="&gt;&gt;label_sampleRate.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_resume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 186</value>
+  </data>
+  <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;button_play.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="button_loop.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="button_play.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 92</value>
   </data>
-  <data name="button_play.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 42</value>
+  <data name="&gt;&gt;button_play.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_duration.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label_paused.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="label_sampleRate.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="button_stop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;button_stop.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label_paused.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label_timer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 21</value>
+  </data>
+  <data name="label_copyright.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;label_sampleRate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label_stopped.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 43</value>
+  </data>
+  <data name="label_playing.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;button_pause.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_timer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="label_playing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="label_sampleRate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="&gt;&gt;label_duration.Name" xml:space="preserve">
+    <value>label_duration</value>
+  </data>
+  <data name="button_stop.Text" xml:space="preserve">
+    <value>%Stop</value>
+  </data>
+  <data name="label_stopped.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="label_sampleRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;button_stop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_paused.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="label_copyright.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_stopped.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="label_paused.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 1</value>
+  </data>
+  <data name="label_stopped.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="volumeBar.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;label_playing.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_copyright.Name" xml:space="preserve">
+    <value>label_copyright</value>
+  </data>
+  <data name="button_play.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_timer.Text" xml:space="preserve">
+    <value>00:00.00</value>
+  </data>
+  <data name="label_playing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="&gt;&gt;label_timer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_timer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_playing.Text" xml:space="preserve">
+    <value>%Playing</value>
+  </data>
+  <data name="&gt;&gt;label_stopped.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label_stopped.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_play.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="button_play.Text" xml:space="preserve">
-    <value>%Play</value>
+  <data name="&gt;&gt;label_copyright.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;button_play.Name" xml:space="preserve">
-    <value>button_play</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>423, 236</value>
   </data>
-  <data name="&gt;&gt;button_play.Type" xml:space="preserve">
+  <data name="label_copyright.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_sampleRate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;button_resume.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_play.Parent" xml:space="preserve">
+  <data name="label_sampleRate.Text" xml:space="preserve">
+    <value>Hz</value>
+  </data>
+  <data name="button_play.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="&gt;&gt;label_sampleRate.Name" xml:space="preserve">
+    <value>label_sampleRate</value>
+  </data>
+  <data name="&gt;&gt;volumeBar.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button_play.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="button_pause.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;label_playing.Name" xml:space="preserve">
+    <value>label_playing</value>
+  </data>
+  <data name="label_copyright.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 10pt</value>
+  </data>
+  <data name="button_resume.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_loop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 92</value>
+  </data>
+  <data name="label_timer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 43</value>
+  </data>
+  <data name="button_loop.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="label_duration.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;button_loop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;volumeBar.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label_timer.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label_duration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 21</value>
+  </data>
+  <data name="&gt;&gt;label_paused.Name" xml:space="preserve">
+    <value>label_paused</value>
+  </data>
+  <data name="&gt;&gt;button_resume.Name" xml:space="preserve">
+    <value>button_resume</value>
+  </data>
+  <data name="button_resume.Text" xml:space="preserve">
+    <value>%Resume</value>
+  </data>
+  <data name="label_stopped.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button_loop.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;label_paused.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label_stopped.Text" xml:space="preserve">
+    <value>%Stopped</value>
+  </data>
+  <data name="button_stop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="label_paused.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_timer.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label_timer.Name" xml:space="preserve">
+    <value>label_timer</value>
+  </data>
+  <data name="button_loop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="&gt;&gt;button_resume.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="button_pause.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_resume.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="label_duration.Text" xml:space="preserve">
+    <value>00:00.00</value>
+  </data>
+  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 65</value>
+  </data>
+  <data name="label_duration.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="button_pause.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 42</value>
+  </data>
+  <data name="label_timer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -561,22 +579,4 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 17</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>423, 236</value>
-  </data>
-  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
-    <value>timer1</value>
-  </data>
-  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>PreviewAudioControl</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
 </root>

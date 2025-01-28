@@ -117,773 +117,1404 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;ui_menuFilter_0_all.Name" xml:space="preserve">
-    <value>ui_menuFilter_0_all</value>
-  </data>
-  <data name="ui_menuExport_dumpJson_selectedAssets.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_TEST_ToolStripMenuItem.Name" xml:space="preserve">
-    <value>ui_TEST_ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_arknights.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_arknights</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ui_tabLeft_page2_listView_columnHeader_Name.Width" type="System.Int32, mscorlib">
-    <value>300</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_separator1.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_separator1</value>
-  </data>
-  <data name="ui_menuOhmsExport_displayedAssets.Text" xml:space="preserve">
-    <value>%Displayed assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_displayedAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ui_tabLeft_page1_listView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetsListToXml_selectedAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_assetsListToXml_selectedAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2_classesListView.Parent" xml:space="preserve">
-    <value>ui_tabLeft_page2</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ui_tabLeft_page1_listView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 23</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>%AssetStudioGUI</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport</value>
-  </data>
-  <data name="ui_menuModel_separator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>425, 6</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_tab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_statusStrip0_down.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0_treeSearch.Name" xml:space="preserve">
-    <value>ui_tabLeft_page0_treeSearch</value>
-  </data>
-  <data name="ui_menuFile.Text" xml:space="preserve">
-    <value>%File</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_displayedAssets.Text" xml:space="preserve">
-    <value>%Displayed assets</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2_listView_columnHeader_ID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport_arknights.Text" xml:space="preserve">
-    <value>%[Arknights]</value>
-  </data>
-  <data name="ui_menuExport_dumpJson_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_dumpJson_filteredAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_createANewFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_assetListToJson_selectedAssets.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_openFileDialog0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_Raw_slectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ui_progressBar0_down.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ui_menuExport_Dump_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_extractFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_tab.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_extractFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 21</value>
-  </data>
-  <data name="ui_menuExport_filteredAssets.Text" xml:space="preserve">
-    <value>%Filtered assets</value>
-  </data>
-  <data name="ui_menuFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 21</value>
-  </data>
-  <data name="&gt;&gt;splitter1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ui_menuModel_exportSelectedObjectsSplit.Text" xml:space="preserve">
-    <value>%Export selected objects (split)</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_filtered.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_StructXml_filtered</value>
-  </data>
-  <data name="&gt;&gt;ui_progressBar0_down.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 656</value>
-  </data>
-  <data name="ui_menuOhmsExport_arknights_charartBundle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="ui_menuExport_exportAnimatorAndSelectedAnimationClips.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
+  <data name="&gt;&gt;ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ui_statusStrip0_down.Name" xml:space="preserve">
     <value>ui_statusStrip0_down</value>
   </data>
-  <data name="ui_tabLeft_tab.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ui_menuExport_assetsListToXml_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="ui_tabLeft_page2_classesListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 609</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ui_tabLeft_page1_listView_columnHeader_Container.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_dumpJson_filteredAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_dumpJson_filteredAssets</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ui_tabLeft_page1_listSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="ui_menuExport_assetListToJson_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="ui_menuFile_extractFolder.Text" xml:space="preserve">
+    <value>%Extract folder</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Type.Text" xml:space="preserve">
+    <value>%Type</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_allAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_tabLeft_page2_classesListView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;ui_menuOptions_displayInfo.Name" xml:space="preserve">
-    <value>ui_menuOptions_displayInfo</value>
+  <data name="&gt;&gt;ui_menuExport_Raw_allAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_menuFile_separator0.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuExport_assetsListToXml_selectedAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_assetsListToXml_selectedAssets</value>
+  </data>
+  <data name="ui_menuExport_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView.Parent" xml:space="preserve">
+    <value>ui_tabLeft_page1</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel_exportAllObjectsSplit.Name" xml:space="preserve">
+    <value>ui_menuModel_exportAllObjectsSplit</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listSearch.Parent" xml:space="preserve">
+    <value>ui_tabLeft_page1</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_selectedAssets.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_selectedAssets</value>
+  </data>
+  <data name="ui_menuOptions_language.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="ui_menuExport_assetsListToXml_allAssets.Text" xml:space="preserve">
+    <value>%All assets</value>
+  </data>
+  <data name="ui_menuExport_Dump_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_separator0.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_statusLabel0_down.Name" xml:space="preserve">
-    <value>ui_statusLabel0_down</value>
+  <data name="ui_tabLeft_tab.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>17, 3</value>
   </data>
-  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsMerge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ui_menuExport_Raw_filteredAssets.Text" xml:space="preserve">
+    <value>%Filtered assets</value>
   </data>
-  <data name="&gt;&gt;ui_menuExport_exportAnimatorAndSelectedAnimationClips.Name" xml:space="preserve">
-    <value>ui_menuExport_exportAnimatorAndSelectedAnimationClips</value>
+  <data name="ui_conMenu_OHMS_ExportSelected_Struct_XML.Text" xml:space="preserve">
+    <value>%XML list</value>
   </data>
-  <data name="&gt;&gt;ui_menuOptions_displayInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ui_conMenu_OHMS_ExportSelected_Struct_JSON.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredJsonList_displayedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_selectedAssets.Text" xml:space="preserve">
+    <value>%Selected assets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFilter_0_all.Name" xml:space="preserve">
+    <value>ui_menuFilter_0_all</value>
+  </data>
+  <data name="ui_menuOhmsExport_displayedAssets.Text" xml:space="preserve">
+    <value>%Displayed assets</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0_treeSearch.Parent" xml:space="preserve">
+    <value>ui_tabLeft_page0</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listSearch.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="ui_menuExport_assetsListToXml.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_separator0.Name" xml:space="preserve">
+    <value>ui_menuFile_separator0</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="ui_conMenu_goToSceneHierarchy.Text" xml:space="preserve">
     <value>%Go to scene hierarchy</value>
   </data>
-  <data name="&gt;&gt;ui_menuOptions_displayAllAssets.Name" xml:space="preserve">
-    <value>ui_menuOptions_displayAllAssets</value>
+  <data name="&gt;&gt;ui_menuExport_Dump.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_menuExport_dumpJson_allAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_dumpJson_allAssets</value>
+  <data name="ui_tabLeft_page2_listView_columnHeader_Name.DisplayIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="ui_tabLeft_page1_listSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="ui_menuExport.Text" xml:space="preserve">
+    <value>%Export</value>
   </data>
-  <data name="&gt;&gt;ui_menuOptions_separator1.Name" xml:space="preserve">
-    <value>ui_menuOptions_separator1</value>
+  <data name="&gt;&gt;ui_menuModel_exportAllObjectsSplit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AssetStudioGUIForm</value>
+  <data name="&gt;&gt;ui_menuOptions_specifyUnityVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ui_conMenu_exportAnimatorAndSelectedAnimationClips.Visible" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetsListToXml_allAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_conMenu_showOriginalFile.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Text" xml:space="preserve">
-    <value>%PathID</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_exportOptions.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_conMenu_copyText.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ui_conMenu_OHMS_ExportSelected_Struct.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ui_menuOhmsExport_structuredJsonList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Name" xml:space="preserve">
+    <value>ui_menuOptions_specifyUnityVersion_specifyUnityVersion</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_loadFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_assetListToJson_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Dump_allAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_Dump_allAssets</value>
+  </data>
+  <data name="ui_menuExport_assetListToJson_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_separator0.Name" xml:space="preserve">
+    <value>ui_menuExport_separator0</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuStrip0_up.Name" xml:space="preserve">
+    <value>ui_menuStrip0_up</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_separator0.Name" xml:space="preserve">
+    <value>ui_conMenu_separator0</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1.Name" xml:space="preserve">
+    <value>ui_tabLeft_page1</value>
+  </data>
+  <data name="ui_conMenu_OHMS_ExportSelected.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 22</value>
   </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_All.Type" xml:space="preserve">
+  <data name="ui_menuExport_assetsListToXml_selectedAssets.Text" xml:space="preserve">
+    <value>%Selected assets</value>
+  </data>
+  <data name="ui_tabLeft_page2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ui_menuFile_separator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 6</value>
+  </data>
+  <data name="ui_TEST_ToolStripMenuItem.Text" xml:space="preserve">
+    <value>!!!!!!!!</value>
+  </data>
+  <data name="&gt;&gt;ui_menuDebug_showErrorMessage.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Name" xml:space="preserve">
-    <value>ui_menuModel_exportSelectedObjectsMergeWithAnimationClips</value>
+  <data name="ui_conMenu_copyText.Text" xml:space="preserve">
+    <value>%Copy text</value>
   </data>
-  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected.Type" xml:space="preserve">
+  <data name="ui_menuExport_Raw_slectedAssets.Text" xml:space="preserve">
+    <value>%Selected assets</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredXmlList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_tabLeft_page2_classesListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_dumpJson.Name" xml:space="preserve">
+    <value>ui_menuExport_dumpJson</value>
+  </data>
+  <data name="ui_tabLeft_page0.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected.Name" xml:space="preserve">
+    <value>ui_conMenu_OHMS_ExportSelected</value>
+  </data>
+  <data name="ui_tabLeft_page0_treeView.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_separator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_filteredAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuFile.Text" xml:space="preserve">
+    <value>%File</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_selectedAssets.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_structuredJsonList_selectedAssets</value>
+  </data>
+  <data name="ui_conMenu_exportSelectedAssets.Text" xml:space="preserve">
+    <value>%Export selected assets</value>
+  </data>
+  <data name="ui_tabLeft_page0_treeSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport</value>
+  </data>
+  <data name="&gt;&gt;ui_TEST_ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_exportAnimatorAndSelectedAnimationClips.Name" xml:space="preserve">
+    <value>ui_conMenu_exportAnimatorAndSelectedAnimationClips</value>
+  </data>
+  <data name="ui_menuOptions_language.Text" xml:space="preserve">
+    <value>%Language</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetsListToXml_filteredAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_assetsListToXml_filteredAssets</value>
+  </data>
+  <data name="ui_tabLeft_page2.Text" xml:space="preserve">
+    <value>%Asset Classes</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_selected.Text" xml:space="preserve">
+    <value>%Selected assets</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_copyText.Name" xml:space="preserve">
+    <value>ui_conMenu_copyText</value>
+  </data>
+  <data name="ui_menuExport_Raw_allAssets.Text" xml:space="preserve">
+    <value>%All assets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_displayedAssets.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_structuredJsonList_displayedAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_createANewFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0.Name" xml:space="preserve">
+    <value>ui_tabLeft_page0</value>
+  </data>
+  <data name="&gt;&gt;ui_contextMenuStrip0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_allAssets.Text" xml:space="preserve">
+    <value>%All assets</value>
+  </data>
+  <data name="ui_menuModel_exportSelectedObjectsSplit.Text" xml:space="preserve">
+    <value>%Export selected objects (split)</value>
+  </data>
+  <data name="ui_conMenu_OHMS_ExportSelected.Text" xml:space="preserve">
+    <value>%[OHMS] Export selected assets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_filtered.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_StructXml_filtered</value>
+  </data>
+  <data name="previewsToolStripMenuItem.Text" xml:space="preserve">
+    <value>%Previews</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0_treeView.Parent" xml:space="preserve">
+    <value>ui_tabLeft_page0</value>
+  </data>
+  <data name="ui_tabLeft_page0.Text" xml:space="preserve">
+    <value>%Scene Hierarchy</value>
+  </data>
+  <data name="ui_menuModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 21</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions.Name" xml:space="preserve">
+    <value>ui_menuOptions</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct_JSON.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="ui_tabLeft_page2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_separator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredJsonList_displayedAssets.Text" xml:space="preserve">
+    <value>%Displayed assets</value>
+  </data>
+  <data name="ui_menuStrip0_up.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_extractFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ui_menuStrip0_up.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>620, 372</value>
+  <data name="ui_menuFile_loadFolder.Text" xml:space="preserve">
+    <value>%Load folder</value>
   </data>
-  <data name="ui_tabLeft_page2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;ui_menuModel_separator0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuModel.Text" xml:space="preserve">
+    <value>%Model</value>
+  </data>
+  <data name="ui_progressBar0_down.Size" type="System.Drawing.Size, System.Drawing">
+    <value>612, 17</value>
+  </data>
+  <data name="ui_menuExport_Dump_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="ui_statusLabel0_down.Size" type="System.Drawing.Size, System.Drawing">
+    <value>634, 17</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Type.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="ui_menuExport_separator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>292, 6</value>
+  </data>
+  <data name="ui_menuExport_dumpJson_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="ui_tabLeft_page2_listView_columnHeader_ID.DisplayIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ui_menuExport_dumpJson_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="&gt;&gt;closeAllToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_arknights_charartBundle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_dumpJson_allAssets.Text" xml:space="preserve">
+    <value>%All assets</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_tab.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_charartBundle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="ui_menuExport_selectedAssets.Text" xml:space="preserve">
+    <value>%Selected assets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_exportOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_separator0.Name" xml:space="preserve">
+    <value>ui_menuOptions_separator0</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1.Parent" xml:space="preserve">
+    <value>ui_tabLeft_tab</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_allAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_progressBar0_down.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="ui_menuExport_Dump_allAssets.Text" xml:space="preserve">
+    <value>%All assets</value>
+  </data>
+  <data name="ui_menuDebug.Text" xml:space="preserve">
+    <value>%Debug</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Size.Name" xml:space="preserve">
+    <value>ui_tabLeft_page1_listView_columnHeader_Size</value>
+  </data>
+  <data name="ui_menuExport_assetsListToXml_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="ui_tabLeft_tab.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredJsonList.Text" xml:space="preserve">
+    <value>%Structured(JSON list)</value>
+  </data>
+  <data name="ui_menuExport_Dump.Text" xml:space="preserve">
+    <value>%Dump</value>
+  </data>
+  <data name="ui_menuFile_clear.Text" xml:space="preserve">
+    <value>%Clear</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;ui_contextMenuStrip0.Name" xml:space="preserve">
+    <value>ui_contextMenuStrip0</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="ui_conMenu_goToSceneHierarchy.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_sceneBundle.Text" xml:space="preserve">
+    <value>%Scene Bundle</value>
+  </data>
+  <data name="ui_menuExport_Raw_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Splitter, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_All.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuStrip0_up.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_menuExport_Dump.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="ui_tabLeft_page1.Text" xml:space="preserve">
+    <value>%Asset List</value>
+  </data>
+  <data name="ui_tabLeft_page0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 609</value>
+  </data>
+  <data name="ui_tabLeft_tab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>612, 639</value>
+  </data>
+  <data name="ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Text" xml:space="preserve">
+    <value>%Export selected objects (merge) + selected AnimationClips</value>
+  </data>
+  <data name="ui_menuExport_assetsListToXml.Text" xml:space="preserve">
+    <value>%Asset list to XML</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_separator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2_classesListView.Parent" xml:space="preserve">
+    <value>ui_tabLeft_page2</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_exportOptions.Name" xml:space="preserve">
+    <value>ui_menuOptions_exportOptions</value>
+  </data>
+  <data name="ui_menuOptions.Text" xml:space="preserve">
+    <value>%Options</value>
+  </data>
+  <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ui_statusLabel0_down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ui_menuModel_exportSelectedObjectsWithAnimationClip.Text" xml:space="preserve">
     <value>%Export selected objects (split) + selected AnimationClips</value>
   </data>
-  <data name="ui_menuExport_assetListToJson_allAssets.Text" xml:space="preserve">
+  <data name="&gt;&gt;ui_tabLeft_page2_classesListView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>612, 656</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2_classesListView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetListToJson.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_clear.Name" xml:space="preserve">
+    <value>ui_menuFile_clear</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2_listView_columnHeader_ID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuStrip0_up.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="ui_conMenu_exportAnimatorAndSelectedAnimationClips.Text" xml:space="preserve">
+    <value>%Export Animator + selected AnimationClips</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsSplit.Name" xml:space="preserve">
+    <value>ui_menuModel_exportSelectedObjectsSplit</value>
+  </data>
+  <data name="&gt;&gt;ui_openFileDialog0.Name" xml:space="preserve">
+    <value>ui_openFileDialog0</value>
+  </data>
+  <data name="ui_menuOptions_displayInfo.ToolTipText" xml:space="preserve">
+    <value>Toggle the overlay that shows information about each asset, eg. image size, format, audio bitrate, etc.</value>
+  </data>
+  <data name="ui_progressBar0_down.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 639</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_separator0.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_separator0</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct.Name" xml:space="preserve">
+    <value>ui_conMenu_OHMS_ExportSelected_Struct</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2_listView_columnHeader_ID.Name" xml:space="preserve">
+    <value>ui_tabLeft_page2_listView_columnHeader_ID</value>
+  </data>
+  <data name="&gt;&gt;ui_progressBar0_down.Name" xml:space="preserve">
+    <value>ui_progressBar0_down</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_separator0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_conMenu_separator0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>336, 6</value>
+  </data>
+  <data name="ui_menuFilter_0_all.Text" xml:space="preserve">
+    <value>%All</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredJsonList_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetListToJson_selectedAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_assetListToJson_selectedAssets</value>
+  </data>
+  <data name="ui_menuDebug_showErrorMessage.Text" xml:space="preserve">
+    <value>%Show error message</value>
+  </data>
+  <data name="ui_menuModel_exportSelectedObjectsMerge.Text" xml:space="preserve">
+    <value>%Export selected objects (merge)</value>
+  </data>
+  <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>3, 656</value>
+  </data>
+  <data name="ui_TEST_ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetListToJson.Name" xml:space="preserve">
+    <value>ui_menuExport_assetListToJson</value>
+  </data>
+  <data name="ui_menuFile_loadFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_displayAllAssets.Name" xml:space="preserve">
+    <value>ui_menuOptions_displayAllAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_separator0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_statusStrip0_down.Size" type="System.Drawing.Size, System.Drawing">
+    <value>649, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2_listView_columnHeader_Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0_treeView.Type" xml:space="preserve">
+    <value>AssetStudioGUI.GOHierarchy, AssetStudioGUI, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="ui_menuFile_extractFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="ui_menuDebug_exportClassStructures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_displayInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_displayInfo.Name" xml:space="preserve">
+    <value>ui_menuOptions_displayInfo</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 681</value>
+  </data>
+  <data name="ui_menuOptions_separator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 6</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_dumpJson_allAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 21</value>
+  </data>
+  <data name="ui_conMenu_exportSelectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_statusLabel0_down.Name" xml:space="preserve">
+    <value>ui_statusLabel0_down</value>
+  </data>
+  <data name="ui_menuOptions_specifyUnityVersion.Text" xml:space="preserve">
+    <value>%Specify Unity version</value>
+  </data>
+  <data name="ui_menuOptions_displayAllAssets.ToolTipText" xml:space="preserve">
+    <value>Check this option will display all types assets. Not extractable assets can export the RAW file.</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Dump_selectedAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_Dump_selectedAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_filteredAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_filteredAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_displayedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ui_menuModel_exportAllObjectsSplit.Text" xml:space="preserve">
+    <value>%Export all objects (split)</value>
+  </data>
+  <data name="ui_conMenu_OHMS_ExportSelected_Struct_JSON.Text" xml:space="preserve">
+    <value>%JSON list</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Name.Text" xml:space="preserve">
+    <value>%Name</value>
+  </data>
+  <data name="ui_menuExport_Raw_slectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="ui_menuOptions_displayInfo.Text" xml:space="preserve">
+    <value>%Display asset infromation</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetsListToXml_allAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_assetsListToXml_allAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuDebug_exportClassStructures.Name" xml:space="preserve">
+    <value>ui_menuDebug_exportClassStructures</value>
+  </data>
+  <data name="ui_progressBar0_down.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2_classesListView.Name" xml:space="preserve">
+    <value>ui_tabLeft_page2_classesListView</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AssetStudioGUIForm</value>
+  </data>
+  <data name="&gt;&gt;previewsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_dumpJson_filteredAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ui_tabLeft_page0_treeSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="ui_conMenu_OHMS_ExportSelected_Struct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="ui_conMenu_showOriginalFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="ui_menuExport_separator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>292, 6</value>
+  </data>
+  <data name="&gt;&gt;ui_statusStrip0_down.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ui_menuOptions_displayInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Raw_filteredAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;previewsToolStripMenuItem.Name" xml:space="preserve">
+    <value>previewsToolStripMenuItem</value>
+  </data>
+  <data name="ui_tabLeft_page1_listSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 23</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_separator0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Type.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_statusStrip0_down.Location" type="System.Drawing.Point, System.Drawing">
+    <value>615, 659</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_selectedAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_selectedAssets</value>
+  </data>
+  <data name="ui_menuDebug.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="ui_menuExport_Dump_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0_treeView.Name" xml:space="preserve">
+    <value>ui_tabLeft_page0_treeView</value>
+  </data>
+  <data name="ui_tabLeft_tab.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredJsonList_allAssets.Text" xml:space="preserve">
     <value>%All assets</value>
   </data>
   <data name="&gt;&gt;ui_menuExport_assetListToJson_filteredAssets.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView.Name" xml:space="preserve">
-    <value>ui_tabLeft_page1_listView</value>
+  <data name="previewsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 21</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ui_menuFile_clear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
   </data>
-  <data name="ui_menuFilter_0_all.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 22</value>
+  <data name="ui_menuExport_exportAnimatorAndSelectedAnimationClips.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
   </data>
-  <data name="&gt;&gt;ui_menuOptions_language.Name" xml:space="preserve">
-    <value>ui_menuOptions_language</value>
-  </data>
-  <data name="ui_tabLeft_page2_listView_columnHeader_ID.Text" xml:space="preserve">
-    <value>%ID</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listSearch.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetListToJson_selectedAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_assetListToJson_selectedAssets</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 681</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Container.Text" xml:space="preserve">
-    <value>%Container</value>
-  </data>
-  <data name="&gt;&gt;ui_menuStrip0_up.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Width" type="System.Int32, mscorlib">
-    <value>180</value>
-  </data>
-  <data name="ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Text" xml:space="preserve">
-    <value>%Export selected objects (merge) + selected AnimationClips</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsWithAnimationClip.Name" xml:space="preserve">
-    <value>ui_menuModel_exportSelectedObjectsWithAnimationClip</value>
-  </data>
-  <data name="ui_menuExport_selectedAssets.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_tab.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_exportOptions.Name" xml:space="preserve">
-    <value>ui_menuOptions_exportOptions</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetListToJson.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_language.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_selectedAssets.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_selectedAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Dump_selectedAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_Dump_selectedAssets</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
-  </data>
-  <data name="ui_conMenu_OHMS_ExportSelected_Struct.Text" xml:space="preserve">
-    <value>%[OHMS] Export selected assets (Structured)</value>
-  </data>
-  <data name="ui_conMenu_goToSceneHierarchy.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ui_conMenu_OHMS_ExportSelected.Text" xml:space="preserve">
-    <value>%[OHMS] Export selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport.Name" xml:space="preserve">
-    <value>ui_menuExport</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="ui_menuOhmsExport_createANewFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredXmlList.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_structuredXmlList</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2_listView_columnHeader_Name.Name" xml:space="preserve">
-    <value>ui_tabLeft_page2_listView_columnHeader_Name</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_goToSceneHierarchy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_selectedAssets.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_separator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_clear.Name" xml:space="preserve">
-    <value>ui_menuFile_clear</value>
-  </data>
-  <data name="ui_menuExport_assetsListToXml_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Text" xml:space="preserve">
+    <value>%PathID</value>
   </data>
   <data name="ui_menuModel_exportSelectedObjectsMerge.Size" type="System.Drawing.Size, System.Drawing">
     <value>428, 22</value>
   </data>
-  <data name="ui_tabLeft_page0_treeView.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ui_menuDebug_exportClassStructures.Text" xml:space="preserve">
-    <value>%Export class structures</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 6</value>
-  </data>
-  <data name="ui_conMenu_OHMS_ExportSelected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFilter.Name" xml:space="preserve">
-    <value>ui_menuFilter</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_separator2.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_separator2</value>
-  </data>
-  <data name="ui_menuFile_extractFile.Text" xml:space="preserve">
-    <value>%Extract file</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_extractFile.Name" xml:space="preserve">
-    <value>ui_menuFile_extractFile</value>
-  </data>
-  <data name="ui_conMenu_showOriginalFile.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Size.Name" xml:space="preserve">
-    <value>ui_tabLeft_page1_listView_columnHeader_Size</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listSearch.Parent" xml:space="preserve">
-    <value>ui_tabLeft_page1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_filtered.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_filteredAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_filteredAssets</value>
-  </data>
-  <data name="ui_tabLeft_page2_classesListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;tESTToolStripMenuItem.Name" xml:space="preserve">
+    <value>tESTToolStripMenuItem</value>
   </data>
   <data name="ui_menuExport_assetListToJson_filteredAssets.Text" xml:space="preserve">
     <value>%Filtered assets</value>
   </data>
-  <data name="ui_menuExport_separator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 6</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct_JSON.Name" xml:space="preserve">
-    <value>ui_conMenu_OHMS_ExportSelected_Struct_JSON</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_selectedAssets.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_conMenu_exportAnimatorAndSelectedAnimationClips.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetsListToXml_filteredAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_assetsListToXml_filteredAssets</value>
-  </data>
-  <data name="ui_tabLeft_page2_classesListView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;ui_menuDebug_exportClassStructures.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="ui_tabLeft_tab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 639</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_assetListToJson_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ui_tabLeft_tab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_tab.Name" xml:space="preserve">
-    <value>ui_tabLeft_tab</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_statusStrip0_down.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_allAssets.Text" xml:space="preserve">
-    <value>%All assets</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0_treeView.Name" xml:space="preserve">
-    <value>ui_tabLeft_page0_treeView</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected.Name" xml:space="preserve">
-    <value>ui_conMenu_OHMS_ExportSelected</value>
-  </data>
-  <data name="ui_menuOptions_displayAllAssets.ToolTipText" xml:space="preserve">
-    <value>Check this option will display all types assets. Not extractable assets can export the RAW file.</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_separator0.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_separator0</value>
-  </data>
-  <data name="ui_menuExport_assetsListToXml_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ui_menuExport_assetsListToXml_filteredAssets.Text" xml:space="preserve">
-    <value>%Filtered assets</value>
-  </data>
-  <data name="ui_menuOhmsExport_allAssets.Text" xml:space="preserve">
-    <value>%All assets</value>
-  </data>
-  <data name="ui_menuExport_dumpJson_allAssets.Text" xml:space="preserve">
-    <value>%All assets</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Type.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Container.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_selectedAssets.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_structuredJsonList_selectedAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_loadFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Name.Text" xml:space="preserve">
-    <value>%Name</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct.Name" xml:space="preserve">
-    <value>ui_conMenu_OHMS_ExportSelected_Struct</value>
-  </data>
-  <data name="ui_statusStrip0_down.Location" type="System.Drawing.Point, System.Drawing">
-    <value>615, 659</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Raw_filteredAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_Dump.Text" xml:space="preserve">
-    <value>%Dump</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tESTToolStripMenuItem.Text" xml:space="preserve">
-    <value>TEST</value>
-  </data>
-  <data name="ui_menuFile_loadFolder.Text" xml:space="preserve">
-    <value>%Load folder</value>
-  </data>
-  <data name="ui_menuOhmsExport_separator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 6</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Name.Width" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2_listView_columnHeader_ID.Name" xml:space="preserve">
-    <value>ui_tabLeft_page2_listView_columnHeader_ID</value>
-  </data>
-  <data name="&gt;&gt;ui_menuStrip0_up.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="ui_progressBar0_down.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="ui_menuOhmsExport_StructXml_All.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_displayedAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_Raw_slectedAssets.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuDebug_showErrorMessage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport_separator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 6</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="ui_menuDebug.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 21</value>
-  </data>
-  <data name="ui_menuModel_exportAllObjectsSplit.Text" xml:space="preserve">
-    <value>%Export all objects (split)</value>
-  </data>
-  <data name="ui_menuExport_Raw_filteredAssets.Text" xml:space="preserve">
-    <value>%Filtered assets</value>
-  </data>
-  <data name="ui_menuExport_Dump.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_loadFile.Name" xml:space="preserve">
-    <value>ui_menuFile_loadFile</value>
-  </data>
-  <data name="ui_menuFilter.Text" xml:space="preserve">
-    <value>%Filter</value>
-  </data>
-  <data name="ui_statusStrip0_down.Text" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_specifyUnityVersion.Name" xml:space="preserve">
-    <value>ui_menuOptions_specifyUnityVersion</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listSearch.Name" xml:space="preserve">
-    <value>ui_tabLeft_page1_listSearch</value>
   </data>
   <data name="ui_menuExport_dumpJson.Text" xml:space="preserve">
     <value>%Dump(Json)</value>
   </data>
-  <data name="&gt;&gt;ui_tabLeft_page2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ui_menuFile_loadFile.Name" xml:space="preserve">
+    <value>ui_menuFile_loadFile</value>
   </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_separator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ui_tabLeft_page0_treeSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="ui_tabLeft_page1_listSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ui_menuDebug_showErrorMessage.Text" xml:space="preserve">
-    <value>%Show error message</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_allAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_allAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuDebug_showErrorMessage.Name" xml:space="preserve">
-    <value>ui_menuDebug_showErrorMessage</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions.Name" xml:space="preserve">
-    <value>ui_menuOptions</value>
-  </data>
-  <data name="ui_TEST_ToolStripMenuItem.Text" xml:space="preserve">
-    <value>!!!!!!!!</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFilter.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_selectedAssets.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_statusStrip0_down.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="ui_menuModel_exportSelectedObjectsSplit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 22</value>
   </data>
-  <data name="ui_conMenu_exportAnimatorAndSelectedAnimationClips.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
+  <data name="ui_tabLeft_page1_listView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;ui_conMenu_exportAnimatorAndSelectedAnimationClips.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuOhmsExport_arknights.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_menuModel_separator0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Name" xml:space="preserve">
+    <value>ui_menuModel_exportSelectedObjectsMergeWithAnimationClips</value>
   </data>
-  <data name="&gt;&gt;ui_menuOptions_specifyUnityVersion.Type" xml:space="preserve">
+  <data name="$this.Text" xml:space="preserve">
+    <value>%AssetStudioGUI</value>
+  </data>
+  <data name="&gt;&gt;ui_statusStrip0_down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_assetsListToXml_filteredAssets.Text" xml:space="preserve">
+    <value>%Filtered assets</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredXmlList.Text" xml:space="preserve">
+    <value>%Structured(XML list)</value>
+  </data>
+  <data name="ui_tabLeft_page0_treeSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 23</value>
+  </data>
+  <data name="&gt;&gt;tESTToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_conMenu_separator0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ui_contextMenuStrip0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>340, 164</value>
   </data>
-  <data name="ui_menuExport_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
+  <data name="tESTToolStripMenuItem.Text" xml:space="preserve">
+    <value>TEST</value>
   </data>
-  <data name="ui_menuExport_dumpJson_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+  <data name="ui_tabLeft_page1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 609</value>
   </data>
-  <data name="ui_menuOhmsExport_arknights_charartBundle.Text" xml:space="preserve">
-    <value>%CharArt Bundle</value>
+  <data name="tESTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
   </data>
-  <data name="&gt;&gt;ui_tabLeft_page0_treeSearch.Type" xml:space="preserve">
+  <data name="ui_menuFile_separator0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 6</value>
+  </data>
+  <data name="ui_menuOptions_displayAllAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="ui_menuOhmsExport_separator0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 6</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_separator1.Name" xml:space="preserve">
+    <value>ui_menuOptions_separator1</value>
+  </data>
+  <data name="ui_menuStrip0_up.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 25</value>
+  </data>
+  <data name="ui_menuFilter_0_all.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listSearch.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_menuExport_Dump_filteredAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ui_menuFile_extractFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
   </data>
-  <data name="ui_conMenu_OHMS_ExportSelected_Struct_XML.Text" xml:space="preserve">
-    <value>%XML list</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Raw_allAssets.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuFilter_0_all.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ui_tabLeft_page1_listView.Size" type="System.Drawing.Size, System.Drawing">
     <value>604, 586</value>
   </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Type.Name" xml:space="preserve">
-    <value>ui_tabLeft_page1_listView_columnHeader_Type</value>
+  <data name="&gt;&gt;ui_menuStrip0_up.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ui_menuExport_Dump_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+  <data name="ui_menuExport_dumpJson_selectedAssets.Text" xml:space="preserve">
+    <value>%Selected assets</value>
   </data>
-  <data name="ui_menuModel_exportSelectedObjectsWithAnimationClip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>428, 22</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="ui_menuOptions_exportOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_copyText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2_classesListView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOptions_separator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 6</value>
-  </data>
-  <data name="ui_menuExport_Raw.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_openFileDialog0.Name" xml:space="preserve">
-    <value>ui_openFileDialog0</value>
-  </data>
-  <data name="ui_tabLeft_page2_classesListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 609</value>
-  </data>
-  <data name="ui_conMenu_exportAnimatorAndSelectedAnimationClips.Text" xml:space="preserve">
-    <value>%Export Animator + selected AnimationClips</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Dump.Name" xml:space="preserve">
-    <value>ui_menuExport_Dump</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_separator2.Name" xml:space="preserve">
-    <value>ui_menuExport_separator2</value>
-  </data>
-  <data name="ui_conMenu_OHMS_ExportSelected_Struct_XML.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 22</value>
-  </data>
-  <data name="previewsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 21</value>
-  </data>
-  <data name="ui_menuExport_assetListToJson.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetsListToXml_selectedAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOptions_displayInfo.ToolTipText" xml:space="preserve">
-    <value>Toggle the overlay that shows information about each asset, eg. image size, format, audio bitrate, etc.</value>
-  </data>
-  <data name="ui_menuOhmsExport_StructXml_filtered.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 23</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeSearch.PlaceholderText" xml:space="preserve">
-    <value>%Search%</value>
+  <data name="&gt;&gt;ui_menuOhmsExport_separator2.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_separator2</value>
   </data>
   <data name="ui_menuExport_assetsListToXml_allAssets.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 22</value>
   </data>
-  <data name="&gt;&gt;ui_menuOptions_separator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ui_tabLeft_tab.Name" xml:space="preserve">
+    <value>ui_tabLeft_tab</value>
   </data>
-  <data name="&gt;&gt;splitter1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Splitter, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
-  <data name="ui_menuOhmsExport_arknights.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
+  <data name="&gt;&gt;ui_menuExport_assetListToJson_selectedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_menuFile.Name" xml:space="preserve">
-    <value>ui_menuFile</value>
-  </data>
-  <data name="ui_menuFile_loadFile.Text" xml:space="preserve">
-    <value>%Load file</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_selected.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_StructXml_selected</value>
-  </data>
-  <data name="ui_tabLeft_page1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;ui_tabLeft_page0_treeSearch.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ui_menuOhmsExport_structuredJsonList.Text" xml:space="preserve">
-    <value>%Structured(JSON list)</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetListToJson_allAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_assetListToJson_allAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Name.Name" xml:space="preserve">
-    <value>ui_tabLeft_page1_listView_columnHeader_Name</value>
-  </data>
-  <data name="ui_menuExport_Dump_selectedAssets.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="ui_menuOhmsExport_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuFile_extractFolder.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct_XML.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuOhmsExport_arknights_charartBundle.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_arknights_charartBundle</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredXmlList.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_structuredXmlList</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Dump_filteredAssets.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_menuDebug_exportClassStructures.Name" xml:space="preserve">
-    <value>ui_menuDebug_exportClassStructures</value>
+  <data name="ui_tabLeft_page0_treeView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 23</value>
   </data>
-  <data name="ui_menuModel_exportSelectedObjectsSplit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>428, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView.Parent" xml:space="preserve">
-    <value>ui_tabLeft_page1</value>
-  </data>
-  <data name="&gt;&gt;ui_progressBar0_down.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_selectedAssets.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuExport_exportAnimatorAndSelectedAnimationClips.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ui_menuExport_separator1.Name" xml:space="preserve">
     <value>ui_menuExport_separator1</value>
   </data>
-  <data name="ui_menuOptions_language.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuStrip0_up.Name" xml:space="preserve">
-    <value>ui_menuStrip0_up</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_arknights_sceneBundle.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_arknights_sceneBundle</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_displayedAssets.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ui_menuOhmsExport_StructXml_selected.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
   </data>
-  <data name="ui_menuFile_extractFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
+  <data name="&gt;&gt;ui_progressBar0_down.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="ui_menuDebug.Text" xml:space="preserve">
-    <value>%Debug</value>
+  <data name="ui_menuExport_exportAnimatorAndSelectedAnimationClips.Text" xml:space="preserve">
+    <value>%Animator + selected AnimationClips</value>
   </data>
-  <data name="ui_menuExport_assetListToJson_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsMerge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_tabLeft_page0_treeView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 586</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_separator1.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_separator1</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel.Name" xml:space="preserve">
+    <value>ui_menuModel</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_filtered.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_tabLeft_page0_treeSearch.PlaceholderText" xml:space="preserve">
+    <value>%Search%</value>
+  </data>
+  <data name="ui_tabLeft_page2_listView_columnHeader_Name.Width" type="System.Int32, mscorlib">
+    <value>300</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsWithAnimationClip.Name" xml:space="preserve">
+    <value>ui_menuModel_exportSelectedObjectsWithAnimationClip</value>
+  </data>
+  <data name="ui_menuOptions_exportOptions.Text" xml:space="preserve">
+    <value>%Export options</value>
+  </data>
+  <data name="ui_menuFile_loadFile.Text" xml:space="preserve">
+    <value>%Load file</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_showOriginalFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_tabLeft_page1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0_treeSearch.Name" xml:space="preserve">
+    <value>ui_tabLeft_page0_treeSearch</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_PathID.Name" xml:space="preserve">
+    <value>ui_tabLeft_page1_listView_columnHeader_PathID</value>
+  </data>
+  <data name="ui_menuOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 21</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFilter.Name" xml:space="preserve">
+    <value>ui_menuFilter</value>
+  </data>
+  <data name="ui_menuExport_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="&gt;&gt;closeAllToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeAllToolStripMenuItem</value>
+  </data>
+  <data name="ui_menuFile_extractFile.Text" xml:space="preserve">
+    <value>%Extract file</value>
+  </data>
+  <data name="ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 22</value>
+  </data>
+  <data name="ui_progressBar0_down.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ui_tabLeft_page2_listView_columnHeader_Name.Text" xml:space="preserve">
+    <value>%Name</value>
+  </data>
+  <data name="ui_menuOhmsExport.Text" xml:space="preserve">
+    <value>%[OHMS]Export</value>
+  </data>
+  <data name="ui_menuExport_separator0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>292, 6</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_arknights_sceneBundle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitter1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_extractFile.Name" xml:space="preserve">
+    <value>ui_menuFile_extractFile</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_tab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_dumpJson.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuOhmsExport_allAssets.Text" xml:space="preserve">
+    <value>%All assets</value>
+  </data>
+  <data name="ui_menuModel_separator0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>425, 6</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_specifyUnityVersion.Name" xml:space="preserve">
+    <value>ui_menuOptions_specifyUnityVersion</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2.Parent" xml:space="preserve">
+    <value>ui_tabLeft_tab</value>
+  </data>
+  <data name="ui_menuOhmsExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="ui_menuOhmsExport_displayedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 6</value>
+  </data>
+  <data name="ui_tabLeft_page2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 609</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_All.Text" xml:space="preserve">
+    <value>%All assets</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0_treeSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel_separator0.Name" xml:space="preserve">
+    <value>ui_menuModel_separator0</value>
+  </data>
+  <data name="ui_menuOptions_enablePreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Raw_filteredAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_Raw_filteredAssets</value>
+  </data>
+  <data name="ui_statusLabel0_down.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_statusStrip0_down.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetsListToXml.Name" xml:space="preserve">
+    <value>ui_menuExport_assetsListToXml</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredJsonList_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_exportSelectedAssets.Name" xml:space="preserve">
+    <value>ui_conMenu_exportSelectedAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_dumpJson_selectedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_selectedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_conMenu_goToSceneHierarchy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_tab.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ui_menuDebug_exportClassStructures.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile.Name" xml:space="preserve">
+    <value>ui_menuFile</value>
+  </data>
+  <data name="ui_menuOptions_displayAllAssets.Text" xml:space="preserve">
+    <value>%Display all assets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_assetListToJson_allAssets.Text" xml:space="preserve">
+    <value>%All assets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Raw_slectedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_dumpJson.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_selected.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_StructXml_selected</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_allAssets.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_structuredJsonList_allAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_displayedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_separator0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Raw_slectedAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_Raw_slectedAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_separator2.Name" xml:space="preserve">
+    <value>ui_menuExport_separator2</value>
+  </data>
+  <data name="ui_menuExport_assetListToJson.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_createANewFolder.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_createANewFolder</value>
+  </data>
+  <data name="ui_conMenu_copyText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="ui_menuExport_Dump_selectedAssets.Text" xml:space="preserve">
+    <value>%Selected assets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetsListToXml_filteredAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_separator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_filteredAssets.Text" xml:space="preserve">
+    <value>%Filtered assets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_dumpJson_selectedAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_dumpJson_selectedAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_allAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2.Name" xml:space="preserve">
+    <value>ui_tabLeft_page2</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_filtered.Text" xml:space="preserve">
+    <value>%Displayed assets</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Raw.Name" xml:space="preserve">
+    <value>ui_menuExport_Raw</value>
+  </data>
+  <data name="ui_menuExport_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="ui_tabLeft_page2_listView_columnHeader_ID.Text" xml:space="preserve">
+    <value>%ID</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport.Name" xml:space="preserve">
+    <value>ui_menuExport</value>
+  </data>
+  <data name="ui_menuOptions_separator0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 6</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_exportAnimatorAndSelectedAnimationClips.Name" xml:space="preserve">
+    <value>ui_menuExport_exportAnimatorAndSelectedAnimationClips</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_separator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_TEST_ToolStripMenuItem.Name" xml:space="preserve">
+    <value>ui_TEST_ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Type.Name" xml:space="preserve">
+    <value>ui_tabLeft_page1_listView_columnHeader_Type</value>
+  </data>
+  <data name="ui_menuExport_Raw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_allAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_allAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_selectedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_tabLeft_page1_listSearch.PlaceholderText" xml:space="preserve">
+    <value>%Filter%</value>
+  </data>
+  <data name="ui_menuFilter.Text" xml:space="preserve">
+    <value>%Filter</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Container.Name" xml:space="preserve">
+    <value>ui_tabLeft_page1_listView_columnHeader_Container</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_goToSceneHierarchy.Name" xml:space="preserve">
+    <value>ui_conMenu_goToSceneHierarchy</value>
+  </data>
+  <data name="ui_menuOptions_enablePreview.ToolTipText" xml:space="preserve">
+    <value>Toggle the loading and preview of readable assets, such as images, sounds, text, etc.
+Disable preview if you have performance or compatibility issues.</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_dumpJson_allAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_dumpJson_allAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_progressBar0_down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_assetListToJson_selectedAssets.Text" xml:space="preserve">
+    <value>%Selected assets</value>
+  </data>
+  <data name="ui_tabLeft_page1_listSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_enablePreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Name.Name" xml:space="preserve">
+    <value>ui_tabLeft_page1_listView_columnHeader_Name</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_arknights.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_arknights</value>
+  </data>
+  <data name="closeAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct_XML.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct_XML.Name" xml:space="preserve">
+    <value>ui_conMenu_OHMS_ExportSelected_Struct_XML</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Text" xml:space="preserve">
+    <value>%Size</value>
+  </data>
+  <data name="closeAllToolStripMenuItem.Text" xml:space="preserve">
+    <value>%Close All</value>
+  </data>
+  <data name="ui_menuDebug_showErrorMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_clear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_conMenu_OHMS_ExportSelected_Struct.Text" xml:space="preserve">
+    <value>%[OHMS] Export selected assets (Structured)</value>
+  </data>
+  <data name="ui_menuOhmsExport_separator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 6</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsWithAnimationClip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_dumpJson_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 22</value>
   </data>
-  <data name="&gt;&gt;previewsToolStripMenuItem.Name" xml:space="preserve">
-    <value>previewsToolStripMenuItem</value>
+  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_All.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_StructXml_All</value>
   </data>
-  <data name="&gt;&gt;ui_statusStrip0_down.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_separator1.Name" xml:space="preserve">
+    <value>ui_menuFile_separator1</value>
+  </data>
+  <data name="&gt;&gt;splitter1.Name" xml:space="preserve">
+    <value>splitter1</value>
+  </data>
+  <data name="ui_menuOhmsExport_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ui_menuExport_assetListToJson.Text" xml:space="preserve">
+    <value>%Asset list to JSON</value>
+  </data>
+  <data name="ui_conMenu_exportAnimatorAndSelectedAnimationClips.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_PathID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Raw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuOptions_enablePreview.Text" xml:space="preserve">
+    <value>%Enable preview</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_enablePreview.Name" xml:space="preserve">
+    <value>ui_menuOptions_enablePreview</value>
+  </data>
+  <data name="ui_tabLeft_page2_listView_columnHeader_ID.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;ui_menuFile_loadFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuModel_exportAllObjectsSplit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuDebug_showErrorMessage.Name" xml:space="preserve">
+    <value>ui_menuDebug_showErrorMessage</value>
+  </data>
+  <data name="ui_menuDebug_exportClassStructures.Text" xml:space="preserve">
+    <value>%Export class structures</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_tabLeft_page1_listSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_charartBundle.Text" xml:space="preserve">
+    <value>%CharArt Bundle</value>
+  </data>
+  <data name="ui_tabLeft_page2_classesListView.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ui_statusStrip0_down.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_All.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="ui_menuFile_loadFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="ui_tabLeft_page0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_goToSceneHierarchy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_openFileDialog0.Filter" xml:space="preserve">
+    <value>%All types|*.*</value>
+  </data>
+  <data name="ui_conMenu_showOriginalFile.Text" xml:space="preserve">
+    <value>%Show original file</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listSearch.Name" xml:space="preserve">
+    <value>ui_tabLeft_page1_listSearch</value>
+  </data>
+  <data name="ui_menuOhmsExport_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetsListToXml.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Container.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_displayedAssets.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_displayedAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuStrip0_up.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Dump_selectedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0.Parent" xml:space="preserve">
+    <value>ui_tabLeft_tab</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights.Text" xml:space="preserve">
+    <value>%[Arknights]</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_structuredJsonList</value>
+  </data>
+  <data name="ui_menuOhmsExport_StructXml_filtered.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView.Name" xml:space="preserve">
+    <value>ui_tabLeft_page1_listView</value>
   </data>
   <data name="&gt;&gt;ui_menuFile_loadFolder.Name" xml:space="preserve">
     <value>ui_menuFile_loadFolder</value>
@@ -891,789 +1522,179 @@
   <data name="&gt;&gt;ui_menuExport_assetListToJson_filteredAssets.Name" xml:space="preserve">
     <value>ui_menuExport_assetListToJson_filteredAssets</value>
   </data>
-  <data name="ui_menuOptions_displayAllAssets.Text" xml:space="preserve">
-    <value>%Display all assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_exportAllObjectsSplit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsWithAnimationClip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Container.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="ui_menuOptions.Text" xml:space="preserve">
-    <value>%Options</value>
-  </data>
-  <data name="ui_menuDebug_showErrorMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="ui_menuExport_separator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 6</value>
-  </data>
-  <data name="ui_menuExport_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_enablePreview.Name" xml:space="preserve">
-    <value>ui_menuOptions_enablePreview</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_dumpJson.Name" xml:space="preserve">
-    <value>ui_menuExport_dumpJson</value>
-  </data>
-  <data name="ui_conMenu_separator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 6</value>
-  </data>
-  <data name="ui_menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 21</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetsListToXml_filteredAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page1_listSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 23</value>
-  </data>
-  <data name="ui_statusStrip0_down.Size" type="System.Drawing.Size, System.Drawing">
-    <value>649, 22</value>
-  </data>
-  <data name="ui_menuExport_dumpJson_filteredAssets.Text" xml:space="preserve">
-    <value>%Filtered assets</value>
-  </data>
-  <data name="ui_conMenu_showOriginalFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetsListToXml.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_TEST_ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_progressBar0_down.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 639</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Dump_allAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_Dump_allAssets</value>
-  </data>
-  <data name="ui_menuExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 21</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetsListToXml_allAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_assetsListToXml_allAssets</value>
-  </data>
-  <data name="ui_menuOptions_enablePreview.Text" xml:space="preserve">
-    <value>%Enable preview</value>
-  </data>
-  <data name="ui_menuOptions_displayInfo.Text" xml:space="preserve">
-    <value>%Display asset infromation</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 586</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_exportSelectedAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport.Text" xml:space="preserve">
-    <value>%Export</value>
-  </data>
-  <data name="&gt;&gt;splitter1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_filteredAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredXmlList.Text" xml:space="preserve">
-    <value>%Structured(XML list)</value>
-  </data>
-  <data name="ui_menuOhmsExport_displayedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_allAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_statusLabel0_down.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFilter_0_all.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_assetsListToXml.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_conMenu_OHMS_ExportSelected_Struct_JSON.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_progressBar0_down.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1.Parent" xml:space="preserve">
-    <value>ui_tabLeft_tab</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsSplit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_separator0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page2_listView_columnHeader_ID.DisplayIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ui_menuFile_loadFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page0.Text" xml:space="preserve">
-    <value>%Scene Hierarchy</value>
-  </data>
-  <data name="ui_menuModel_exportSelectedObjectsMerge.Text" xml:space="preserve">
-    <value>%Export selected objects (merge)</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_separator0.Name" xml:space="preserve">
-    <value>ui_menuExport_separator0</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetsListToXml_allAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_Raw_allAssets.Text" xml:space="preserve">
-    <value>%All assets</value>
-  </data>
-  <data name="ui_menuOptions_enablePreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_PathID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Dump_selectedAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0.Name" xml:space="preserve">
-    <value>ui_tabLeft_page0</value>
-  </data>
-  <data name="ui_menuExport_assetsListToXml_allAssets.Text" xml:space="preserve">
-    <value>%All assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_selectedAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_selectedAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Size.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport_StructXml_selected.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2_classesListView.Name" xml:space="preserve">
-    <value>ui_tabLeft_page2_classesListView</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_dumpJson_filteredAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_dumpJson_filteredAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0_treeView.Type" xml:space="preserve">
-    <value>AssetStudioGUI.GOHierarchy, AssetStudioGUI, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="ui_conMenu_OHMS_ExportSelected_Struct_JSON.Text" xml:space="preserve">
-    <value>%JSON list</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Type.Text" xml:space="preserve">
-    <value>%Type</value>
-  </data>
-  <data name="ui_contextMenuStrip0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 164</value>
-  </data>
-  <data name="&gt;&gt;ui_menuStrip0_up.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splitter1.Name" xml:space="preserve">
-    <value>splitter1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Name" xml:space="preserve">
-    <value>ui_menuOptions_specifyUnityVersion_specifyUnityVersion</value>
-  </data>
-  <data name="ui_menuFile_separator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 6</value>
-  </data>
-  <data name="ui_tabLeft_page1_listSearch.PlaceholderText" xml:space="preserve">
-    <value>%Filter%</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_structuredJsonList</value>
-  </data>
-  <data name="ui_menuModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 21</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_dumpJson_allAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuFile_loadFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_allAssets.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_allAssets</value>
-  </data>
-  <data name="ui_menuExport_assetListToJson.Text" xml:space="preserve">
-    <value>%Asset list to JSON</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_exportAnimatorAndSelectedAnimationClips.Name" xml:space="preserve">
-    <value>ui_conMenu_exportAnimatorAndSelectedAnimationClips</value>
-  </data>
-  <data name="ui_menuExport_Raw.Text" xml:space="preserve">
-    <value>%Raw</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0_treeSearch.Parent" xml:space="preserve">
-    <value>ui_tabLeft_page0</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Raw.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2_classesListView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ui_menuOptions_specifyUnityVersion.Text" xml:space="preserve">
-    <value>%Specify Unity version</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_arknights_sceneBundle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_assetListToJson_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ui_progressBar0_down.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 17</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Dump.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Dump_allAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1.Name" xml:space="preserve">
-    <value>ui_tabLeft_page1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetListToJson_allAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 21</value>
-  </data>
-  <data name="&gt;&gt;ui_progressBar0_down.Name" xml:space="preserve">
-    <value>ui_progressBar0_down</value>
-  </data>
-  <data name="ui_tabLeft_page2_listView_columnHeader_ID.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_allAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2_listView_columnHeader_Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView_columnHeader_Size.Text" xml:space="preserve">
-    <value>%Size</value>
-  </data>
-  <data name="ui_menuOptions_enablePreview.ToolTipText" xml:space="preserve">
-    <value>Toggle the loading and preview of readable assets, such as images, sounds, text, etc.
-Disable preview if you have performance or compatibility issues.</value>
-  </data>
-  <data name="ui_menuModel_exportSelectedObjectsMergeWithAnimationClips.Size" type="System.Drawing.Size, System.Drawing">
-    <value>428, 22</value>
-  </data>
-  <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>3, 656</value>
-  </data>
-  <data name="ui_conMenu_exportSelectedAssets.Text" xml:space="preserve">
-    <value>%Export selected assets</value>
-  </data>
-  <data name="ui_TEST_ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_copyText.Name" xml:space="preserve">
-    <value>ui_conMenu_copyText</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0_treeSearch.ZOrder" xml:space="preserve">
+  <data name="ui_tabLeft_page1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_clear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;previewsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_createANewFolder.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_createANewFolder</value>
-  </data>
-  <data name="ui_tabLeft_page1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 609</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_dumpJson_selectedAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_dumpJson_selectedAssets</value>
-  </data>
-  <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>612, 25</value>
-  </data>
-  <data name="ui_menuFile_clear.Text" xml:space="preserve">
-    <value>%Clear</value>
-  </data>
-  <data name="ui_menuOhmsExport_createANewFolder.Text" xml:space="preserve">
-    <value>%Create a new folder</value>
-  </data>
-  <data name="ui_menuExport_assetsListToXml_selectedAssets.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetsListToXml.Name" xml:space="preserve">
-    <value>ui_menuExport_assetsListToXml</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct_XML.Name" xml:space="preserve">
-    <value>ui_conMenu_OHMS_ExportSelected_Struct_XML</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2.Parent" xml:space="preserve">
-    <value>ui_tabLeft_tab</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Raw_slectedAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ui_menuFile_extractFolder.Name" xml:space="preserve">
     <value>ui_menuFile_extractFolder</value>
   </data>
-  <data name="ui_openFileDialog0.Filter" xml:space="preserve">
-    <value>%All types|*.*</value>
+  <data name="&gt;&gt;ui_menuOptions_displayAllAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_separator0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ui_tabLeft_tab.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>17, 3</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct_JSON.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsSplit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ui_menuExport_Raw_allAssets.Name" xml:space="preserve">
     <value>ui_menuExport_Raw_allAssets</value>
   </data>
-  <data name="&gt;&gt;ui_tabLeft_page0.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="ui_menuOhmsExport_createANewFolder.Text" xml:space="preserve">
+    <value>%Create a new folder</value>
   </data>
-  <data name="ui_menuOhmsExport_separator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 6</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetListToJson_selectedAssets.Type" xml:space="preserve">
+  <data name="&gt;&gt;ui_menuExport_Dump_allAssets.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_StructXml_All.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_StructXml_All</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList_allAssets.Text" xml:space="preserve">
-    <value>%All assets</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_exportSelectedAssets.Name" xml:space="preserve">
-    <value>ui_conMenu_exportSelectedAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Raw_slectedAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_Raw_slectedAssets</value>
-  </data>
-  <data name="ui_tabLeft_page1_listSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_tab.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page1_listView.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ui_menuExport_Raw_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_selectedAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuDebug_exportClassStructures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_allAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_exportAnimatorAndSelectedAnimationClips.Text" xml:space="preserve">
-    <value>%Animator + selected AnimationClips</value>
-  </data>
-  <data name="ui_menuExport_Dump_filteredAssets.Text" xml:space="preserve">
-    <value>%Filtered assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_separator0.Name" xml:space="preserve">
-    <value>ui_menuModel_separator0</value>
-  </data>
-  <data name="ui_menuOhmsExport_selectedAssets.Text" xml:space="preserve">
-    <value>%Selected assets</value>
-  </data>
-  <data name="&gt;&gt;ui_contextMenuStrip0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport_arknights_sceneBundle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="ui_menuExport_assetsListToXml.Text" xml:space="preserve">
-    <value>%Asset list to XML</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport_selectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="ui_menuExport_Raw_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuDebug.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ui_menuFile_extractFolder.Text" xml:space="preserve">
-    <value>%Extract folder</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel.Name" xml:space="preserve">
-    <value>ui_menuModel</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_dumpJson.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuExport_Dump_allAssets.Text" xml:space="preserve">
-    <value>%All assets</value>
-  </data>
-  <data name="ui_progressBar0_down.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2.Name" xml:space="preserve">
-    <value>ui_tabLeft_page2</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0_treeView.Parent" xml:space="preserve">
-    <value>ui_tabLeft_page0</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_separator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_arknights_charartBundle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuModel_exportAllObjectsSplit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>428, 22</value>
-  </data>
-  <data name="ui_menuOptions_separator0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 6</value>
-  </data>
-  <data name="ui_menuExport_separator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 6</value>
-  </data>
-  <data name="ui_tabLeft_page2_listView_columnHeader_Name.DisplayIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0.Parent" xml:space="preserve">
-    <value>ui_tabLeft_tab</value>
-  </data>
-  <data name="ui_tabLeft_page2.Text" xml:space="preserve">
-    <value>%Asset Classes</value>
-  </data>
-  <data name="ui_conMenu_showOriginalFile.Text" xml:space="preserve">
-    <value>%Show original file</value>
-  </data>
-  <data name="ui_menuOhmsExport_StructXml_All.Text" xml:space="preserve">
-    <value>%All assets</value>
-  </data>
-  <data name="ui_menuStrip0_up.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 25</value>
-  </data>
-  <data name="ui_menuOhmsExport_StructXml_filtered.Text" xml:space="preserve">
-    <value>%Displayed assets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsMerge.Name" xml:space="preserve">
-    <value>ui_menuModel_exportSelectedObjectsMerge</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_separator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuModel.Text" xml:space="preserve">
-    <value>%Model</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_separator1.Name" xml:space="preserve">
-    <value>ui_menuFile_separator1</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_arknights_charartBundle.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_arknights_charartBundle</value>
-  </data>
-  <data name="ui_conMenu_goToSceneHierarchy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_PathID.Name" xml:space="preserve">
-    <value>ui_tabLeft_page1_listView_columnHeader_PathID</value>
-  </data>
-  <data name="ui_conMenu_copyText.Text" xml:space="preserve">
-    <value>%Copy text</value>
-  </data>
-  <data name="ui_statusLabel0_down.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_showOriginalFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 609</value>
-  </data>
-  <data name="ui_menuExport_dumpJson.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredXmlList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOptions_language.Text" xml:space="preserve">
-    <value>%Language</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_assetListToJson.Name" xml:space="preserve">
-    <value>ui_menuExport_assetListToJson</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_separator0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_statusLabel0_down.Size" type="System.Drawing.Size, System.Drawing">
-    <value>634, 17</value>
-  </data>
-  <data name="ui_tabLeft_page2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 609</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_exportAllObjectsSplit.Name" xml:space="preserve">
-    <value>ui_menuModel_exportAllObjectsSplit</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_goToSceneHierarchy.Name" xml:space="preserve">
-    <value>ui_conMenu_goToSceneHierarchy</value>
-  </data>
-  <data name="ui_tabLeft_page1.Text" xml:space="preserve">
-    <value>%Asset List</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuDebug.Name" xml:space="preserve">
-    <value>ui_menuDebug</value>
-  </data>
-  <data name="&gt;&gt;tESTToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Type.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_loadFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOptions_displayAllAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_showOriginalFile.Name" xml:space="preserve">
-    <value>ui_conMenu_showOriginalFile</value>
-  </data>
-  <data name="&gt;&gt;ui_conMenu_separator0.Name" xml:space="preserve">
-    <value>ui_conMenu_separator0</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tESTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="previewsToolStripMenuItem.Text" xml:space="preserve">
-    <value>%Previews</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_enablePreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_displayedAssets.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_structuredJsonList_displayedAssets</value>
-  </data>
-  <data name="ui_tabLeft_page0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="ui_menuFile_extractFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="ui_menuOptions_exportOptions.Text" xml:space="preserve">
-    <value>%Export options</value>
-  </data>
-  <data name="&gt;&gt;ui_contextMenuStrip0.Name" xml:space="preserve">
-    <value>ui_contextMenuStrip0</value>
-  </data>
-  <data name="ui_tabLeft_page0.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_arknights.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuStrip0_up.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="ui_tabLeft_page2_classesListView.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsSplit.Name" xml:space="preserve">
-    <value>ui_menuModel_exportSelectedObjectsSplit</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Container.Name" xml:space="preserve">
-    <value>ui_tabLeft_page1_listView_columnHeader_Container</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_separator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_tabLeft_page2_listView_columnHeader_Name.Text" xml:space="preserve">
-    <value>%Name</value>
-  </data>
-  <data name="ui_menuOhmsExport_StructXml_selected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 22</value>
-  </data>
-  <data name="ui_menuExport_Dump_allAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_displayedAssets.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_displayedAssets</value>
-  </data>
-  <data name="ui_conMenu_exportSelectedAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
-  </data>
-  <data name="&gt;&gt;tESTToolStripMenuItem.Name" xml:space="preserve">
-    <value>tESTToolStripMenuItem</value>
-  </data>
-  <data name="ui_menuFilter_0_all.Text" xml:space="preserve">
-    <value>%All</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_exportAnimatorAndSelectedAnimationClips.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuFile_clear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Raw.Name" xml:space="preserve">
-    <value>ui_menuExport_Raw</value>
-  </data>
-  <data name="ui_menuFile_separator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 6</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Raw_filteredAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_Raw_filteredAssets</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_dumpJson_selectedAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredJsonList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuExport_Dump_filteredAssets.Name" xml:space="preserve">
-    <value>ui_menuExport_Dump_filteredAssets</value>
-  </data>
-  <data name="ui_menuExport_dumpJson_filteredAssets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ui_menuOhmsExport.Text" xml:space="preserve">
-    <value>%[OHMS]Export</value>
-  </data>
-  <data name="ui_conMenu_copyText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
-  </data>
-  <data name="ui_menuStrip0_up.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ui_tabLeft_page0_treeView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 23</value>
-  </data>
-  <data name="ui_menuOptions_displayInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_displayAllAssets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabLeft_page0_treeView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ui_menuOhmsExport_structuredXmlList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="ui_menuOhmsExport_arknights_sceneBundle.Text" xml:space="preserve">
-    <value>%Scene Bundle</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOptions_separator0.Name" xml:space="preserve">
-    <value>ui_menuOptions_separator0</value>
-  </data>
-  <data name="&gt;&gt;ui_menuFile_separator0.Name" xml:space="preserve">
-    <value>ui_menuFile_separator0</value>
-  </data>
-  <data name="ui_menuOptions_specifyUnityVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="&gt;&gt;ui_menuOhmsExport_structuredJsonList_allAssets.Name" xml:space="preserve">
-    <value>ui_menuOhmsExport_structuredJsonList_allAssets</value>
   </data>
   <data name="&gt;&gt;ui_menuOhmsExport_StructXml_selected.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="ui_statusStrip0_down.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>370, 20</value>
+  <data name="ui_tabLeft_tab.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page1_listView_columnHeader_Size.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>620, 372</value>
+  </data>
+  <data name="ui_menuOptions_specifyUnityVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="ui_menuOptions_exportOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="ui_menuModel_exportSelectedObjectsWithAnimationClip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>428, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetListToJson_allAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_assetListToJson_allAssets</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions_language.Name" xml:space="preserve">
+    <value>ui_menuOptions_language</value>
+  </data>
+  <data name="ui_menuExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 21</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuDebug.Name" xml:space="preserve">
+    <value>ui_menuDebug</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Dump.Name" xml:space="preserve">
+    <value>ui_menuExport_Dump</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_PathID.Width" type="System.Int32, mscorlib">
+    <value>180</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_allAssets.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_allAssets</value>
+  </data>
+  <data name="ui_menuOhmsExport_separator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 6</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetListToJson_allAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_openFileDialog0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page2_listView_columnHeader_Name.Name" xml:space="preserve">
+    <value>ui_tabLeft_page2_listView_columnHeader_Name</value>
+  </data>
+  <data name="ui_tabLeft_page0_treeView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_separator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>612, 25</value>
+  </data>
+  <data name="ui_conMenu_OHMS_ExportSelected_Struct_XML.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_createANewFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredJsonList_selectedAssets.Text" xml:space="preserve">
+    <value>%Selected assets</value>
+  </data>
+  <data name="ui_statusStrip0_down.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ui_tabLeft_page0_treeView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ui_menuOhmsExport_arknights_sceneBundle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuDebug.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_OHMS_ExportSelected_Struct_JSON.Name" xml:space="preserve">
+    <value>ui_conMenu_OHMS_ExportSelected_Struct_JSON</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_Dump_filteredAssets.Name" xml:space="preserve">
+    <value>ui_menuExport_Dump_filteredAssets</value>
+  </data>
+  <data name="ui_menuExport_Raw.Text" xml:space="preserve">
+    <value>%Raw</value>
+  </data>
+  <data name="&gt;&gt;ui_menuOhmsExport_arknights_sceneBundle.Name" xml:space="preserve">
+    <value>ui_menuOhmsExport_arknights_sceneBundle</value>
+  </data>
+  <data name="&gt;&gt;ui_menuModel_exportSelectedObjectsMerge.Name" xml:space="preserve">
+    <value>ui_menuModel_exportSelectedObjectsMerge</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 23</value>
+  </data>
+  <data name="ui_progressBar0_down.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="ui_conMenu_exportAnimatorAndSelectedAnimationClips.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ui_menuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 21</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_showOriginalFile.Name" xml:space="preserve">
+    <value>ui_conMenu_showOriginalFile</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 6</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Name.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="ui_tabLeft_page1_listView_columnHeader_Container.Text" xml:space="preserve">
+    <value>%Container</value>
+  </data>
+  <data name="ui_menuOhmsExport_structuredXmlList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="&gt;&gt;ui_menuExport_assetsListToXml_selectedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ui_menuExport_Dump_filteredAssets.Text" xml:space="preserve">
+    <value>%Filtered assets</value>
+  </data>
+  <data name="ui_menuExport_dumpJson_filteredAssets.Text" xml:space="preserve">
+    <value>%Filtered assets</value>
+  </data>
+  <data name="ui_menuExport_Raw_allAssets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="&gt;&gt;ui_conMenu_exportSelectedAssets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="ui_menuStrip0_up.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>39, 18</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1681,8 +1702,8 @@ Disable preview if you have performance or compatibility issues.</value>
   <metadata name="ui_openFileDialog0.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>545, 19</value>
   </metadata>
-  <metadata name="ui_menuStrip0_up.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>39, 18</value>
+  <metadata name="ui_statusStrip0_down.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>370, 20</value>
   </metadata>
   <metadata name="ui_contextMenuStrip0.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>193, 19</value>

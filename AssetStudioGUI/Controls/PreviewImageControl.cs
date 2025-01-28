@@ -1,13 +1,6 @@
-﻿using AssetStudio;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using AssetStudio;
 
 namespace AssetStudioGUI.Controls {
 	public partial class PreviewImageControl : UserControl, IPreviewControl {
@@ -16,7 +9,7 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private DirectBitmap m_image;
-		private static char[] m_textureChannelNames = ['B', 'G', 'R', 'A'];
+		private static readonly char[] m_textureChannelNames = ['B', 'G', 'R', 'A'];
 		private bool[] m_textureChannels = [true, true, true, true];
 
 		internal void PreviewTexture2D(AssetItem assetItem, Texture2D texture) {
@@ -115,8 +108,8 @@ namespace AssetStudioGUI.Controls {
 			m_image = null;
 		}
 
-		private void Preview(DirectBitmap bitmap) {
-			pictureBox1.Image = m_image.Bitmap;
+		private void Preview(DirectBitmap img) {
+			pictureBox1.Image = img.Bitmap;
 			/*if (m_imageTexture.Width > ui_tabRight_page0.Width || m_imageTexture.Height > ui_tabRight_page0.Height)
 				ui_tabRight_page0.BackgroundImageLayout = ImageLayout.Zoom;
 			else

@@ -1,19 +1,14 @@
-﻿using AssetStudio;
-using AssetStudioGUI.Controls;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Text;
+﻿using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
+using System.Drawing;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Font = AssetStudio.Font;
+using AssetStudio;
 
 namespace AssetStudioGUI {
 
@@ -23,23 +18,36 @@ namespace AssetStudioGUI {
 		private string tempClipboard;
 		private readonly GUILogger m_logger;
 
+		private readonly string m_defaultGuiTitle;
+
+		private class Flag(bool init_val) {
+			private bool _flag = init_val;
+			public bool Active {
+				get {
+					return _flag;
+				}
+			}
+
+			public void Set() {
+				_flag = true;
+			}
+			public void Reset() {
+				_flag = false;
+			}
+		}
+		private readonly Flag m_usingStudio = new(false);
+
+		private string openDirectoryBackup = string.Empty;
+		private string saveDirectoryBackup = string.Empty;
+
 		#region Member_LeftView
 		//asset list sorting
 		private int sortColumn = -1;
 		private bool reverseSort;
 
-		//asset list filter
-		private readonly System.Timers.Timer m_delayFilterTimer;
-		private bool enableFiltering;
-
 		//tree search
 		private int nextGObject;
 		private List<TreeNode> treeSrcResults = [];
-
-		private string openDirectoryBackup = string.Empty;
-		private string saveDirectoryBackup = string.Empty;
-
-		private string m_defaultGuiTitle;
 		#endregion
 
 		public AssetStudioGUIForm() {
@@ -51,10 +59,6 @@ namespace AssetStudioGUI {
 			/// 计算窗口默认标题。
 			m_defaultGuiTitle = $"AssetStudio v1.{Application.ProductVersion}";
 			Text = m_defaultGuiTitle;
-
-			/// 筛选列表时的延迟timer。
-			m_delayFilterTimer = new System.Timers.Timer(800);
-			m_delayFilterTimer.Elapsed += new ElapsedEventHandler(m_delayTimer_Elapsed);
 
 			/// 将设置值应用到UI。
 			ui_menuOptions_displayAllAssets.Checked = Properties.Settings.Default.displayAll;
@@ -71,7 +75,34 @@ namespace AssetStudioGUI {
 			StatusStripUpdate(Properties.Strings.Status_Ready);
 		}
 
+		private void SetProgressBarValue(int value) {
+			void f(int newvalue) {
+				ui_progressBar0_down.Value = newvalue;
+			}
+			if (InvokeRequired) {
+				var r = BeginInvoke(f, value);
+				EndInvoke(r);
+			}
+			else {
+				f(value);
+			}
+		}
+
+		private void StatusStripUpdate(string statusText) {
+			void f(string text) {
+				ui_statusLabel0_down.Text = text;
+			}
+			if (InvokeRequired) {
+				var r = BeginInvoke(f, statusText);
+				EndInvoke(r);
+			}
+			else {
+				f(statusText);
+			}
+		}
+
 		#region Process
+
 		private async void BuildAssetStructures() {
 			if (StudioCore.m_studio.assetsManager.assetsFileList.Count == 0) {
 				//StatusStripUpdate("No Unity file can be loaded.");
@@ -79,8 +110,8 @@ namespace AssetStudioGUI {
 				return;
 			}
 
-			(var productName, var treeNodeCollection) = await Task.Run(() => StudioCore.m_studio.BuildAssetData());
-			var typeMap = await Task.Run(() => StudioCore.m_studio.BuildClassStructure());
+			(var productName, var treeNodeCollection) = await Task.Run(StudioCore.m_studio.BuildAssetData);
+			var typeMap = await Task.Run(StudioCore.m_studio.BuildClassStructure);
 
 			Text = m_defaultGuiTitle +
 				$" - {(string.IsNullOrEmpty(productName) ? Properties.Strings.Load_NoProductName : productName)}" +
@@ -132,7 +163,11 @@ namespace AssetStudioGUI {
 		}
 
 		private void ResetForm() {
-			Text = this.m_defaultGuiTitle;
+			foreach (var previewForm in MdiChildren) {
+				previewForm.Close();
+			}
+
+			Text = m_defaultGuiTitle;
 
 			// Studio things
 			StudioCore.m_studio.assetsManager.Clear();
@@ -146,12 +181,9 @@ namespace AssetStudioGUI {
 			ui_tabLeft_page2_classesListView.Items.Clear();
 			ui_tabLeft_page2_classesListView.Groups.Clear();
 
-			/////////////////previewPanel1.PreviewAsset(null);
-
 			lastSelectedItem = null;
 			sortColumn = -1;
 			reverseSort = false;
-			enableFiltering = false;
 			ui_tabLeft_page1_listSearch.Text = null;
 			ui_tabLeft_page0_treeSearch.Text = null;
 
@@ -161,32 +193,6 @@ namespace AssetStudioGUI {
 			}
 
 			StatusStripUpdate(Properties.Strings.Status_Ready);
-		}
-
-		private void SetProgressBarValue(int value) {
-			void f(int newvalue) {
-				ui_progressBar0_down.Value = newvalue;
-			}
-			if (InvokeRequired) {
-				var r = BeginInvoke(f, value);
-				EndInvoke(r);
-			}
-			else {
-				f(value);
-			}
-		}
-
-		private void StatusStripUpdate(string statusText) {
-			void f(string text) {
-				ui_statusLabel0_down.Text = text;
-			}
-			if (InvokeRequired) {
-				var r = BeginInvoke(f, statusText);
-				EndInvoke(r);
-			}
-			else {
-				f(statusText);
-			}
 		}
 
 		private List<AssetItem> GetSelectedAssets() {
@@ -232,10 +238,14 @@ namespace AssetStudioGUI {
 				TreeNodeSearch(node);
 			}
 		}
+
 		#endregion // Process
 
 		#region Export
 		private void ExportObjects(bool animation) {
+			lock (m_usingStudio) {
+				m_usingStudio.Set();
+			}
 			if (ui_tabLeft_page0_treeView.Nodes.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = saveDirectoryBackup;
@@ -256,9 +266,15 @@ namespace AssetStudioGUI {
 				//StatusStripUpdate("No Objects available for export");
 				StatusStripUpdate(Properties.Strings.Export_Object_Nothing);
 			}
+			lock (m_usingStudio) {
+				m_usingStudio.Reset();
+			}
 		}
 
 		private void ExportMergeObjects(bool animation) {
+			lock (m_usingStudio) {
+				m_usingStudio.Set();
+			}
 			if (ui_tabLeft_page0_treeView.Nodes.Count > 0) {
 				var gameObjects = new List<GameObject>();
 				StudioCore.GetSelectedParentNode(ui_tabLeft_page0_treeView.Nodes, gameObjects);
@@ -286,9 +302,15 @@ namespace AssetStudioGUI {
 					StatusStripUpdate(Properties.Strings.Export_Object_Nothing_Selected);
 				}
 			}
+			lock (m_usingStudio) {
+				m_usingStudio.Reset();
+			}
 		}
 
 		private void ExportAssets(ExportFilter type, ExportType exportType) {
+			lock (m_usingStudio) {
+				m_usingStudio.Set();
+			}
 			if (StudioCore.m_studio.exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
 				saveFolderDialog.InitialFolder = saveDirectoryBackup;
@@ -314,10 +336,16 @@ namespace AssetStudioGUI {
 				//StatusStripUpdate("No exportable assets loaded");
 				StatusStripUpdate(Properties.Strings.Export_Nothing);
 			}
+			lock (m_usingStudio) {
+				m_usingStudio.Reset();
+			}
 		}
 
 		private void ExportAssetsList(ExportFilter type, ExportListType filetype) {
 			// XXX: Only exporting as XML for now, but would JSON(/CSV/other) be useful too?
+			lock (m_usingStudio) {
+				m_usingStudio.Set();
+			}
 
 			if (StudioCore.m_studio.exportableAssets.Count > 0) {
 				var saveFolderDialog = new OpenFolderDialog();
@@ -344,9 +372,16 @@ namespace AssetStudioGUI {
 				//StatusStripUpdate("No exportable assets loaded");
 				StatusStripUpdate(Properties.Strings.Export_Nothing);
 			}
+			lock (m_usingStudio) {
+				m_usingStudio.Reset();
+			}
 		}
 
 		private void ExportAnimatorAndSelectedAnimationClips() {
+			lock (m_usingStudio) {
+				m_usingStudio.Set();
+			}
+
 			AssetItem animator = null;
 			List<AssetItem> animationList = new List<AssetItem>();
 			var selectedAssets = GetSelectedAssets();
@@ -368,9 +403,14 @@ namespace AssetStudioGUI {
 					StudioCore.ExportAnimatorWithAnimationClip(animator, animationList, exportPath);
 				}
 			}
+
+			lock (m_usingStudio) {
+				m_usingStudio.Reset();
+			}
 		}
 		#endregion // Export
 
+		#region Form
 
 		private void AssetStudioGUIForm_DragEnter(object sender, DragEventArgs e) {
 			if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
@@ -379,16 +419,28 @@ namespace AssetStudioGUI {
 		}
 
 		private async void AssetStudioGUIForm_DragDrop(object sender, DragEventArgs e) {
+			lock (m_usingStudio) {
+				if (m_usingStudio.Active) {
+					MessageBox.Show(this, Properties.Strings.Studio_UsingStudio);
+					return;
+				}
+			}
 			var paths = (string[])e.Data.GetData(DataFormats.FileDrop);
 			if (paths.Length > 0) {
 				ResetForm();
 				StudioCore.m_studio.assetsManager.SpecifyUnityVersion = ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Text;
-
+				lock (m_usingStudio) {
+					m_usingStudio.Set();
+				}
 				await Task.Run(() => StudioCore.m_studio.assetsManager.LoadDropIn(paths));
 				BuildAssetStructures();
+				lock (m_usingStudio) {
+					m_usingStudio.Reset();
+				}
 			}
 		}
 
+		#endregion // Form
 
 		#region ContextMenu
 		private void Ui_conMenu_copyText_Click(object sender, EventArgs e) {
@@ -433,25 +485,49 @@ namespace AssetStudioGUI {
 
 		#region Menu_File
 		private async void ui_menuFile_loadFile_Click(object sender, EventArgs e) {
+			lock (m_usingStudio) {
+				if (m_usingStudio.Active) {
+					MessageBox.Show(this, Properties.Strings.Studio_UsingStudio);
+					return;
+				}
+			}
 			ui_openFileDialog0.InitialDirectory = openDirectoryBackup;
 			if (ui_openFileDialog0.ShowDialog(this) == DialogResult.OK) {
 				ResetForm();
 				openDirectoryBackup = Path.GetDirectoryName(ui_openFileDialog0.FileNames[0]);
 				StudioCore.m_studio.assetsManager.SpecifyUnityVersion = ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Text;
+				lock (m_usingStudio) {
+					m_usingStudio.Set();
+				}
 				await Task.Run(() => StudioCore.m_studio.assetsManager.LoadFiles(ui_openFileDialog0.FileNames));
 				BuildAssetStructures();
+				lock (m_usingStudio) {
+					m_usingStudio.Reset();
+				}
 			}
 		}
 
 		private async void ui_menuFile_loadFolder_Click(object sender, EventArgs e) {
+			lock (m_usingStudio) {
+				if (m_usingStudio.Active) {
+					MessageBox.Show(this, Properties.Strings.Studio_UsingStudio);
+					return;
+				}
+			}
 			var openFolderDialog = new OpenFolderDialog();
 			openFolderDialog.InitialFolder = openDirectoryBackup;
 			if (openFolderDialog.ShowDialog(this) == DialogResult.OK) {
 				ResetForm();
 				openDirectoryBackup = openFolderDialog.Folder;
 				StudioCore.m_studio.assetsManager.SpecifyUnityVersion = ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Text;
+				lock (m_usingStudio) {
+					m_usingStudio.Set();
+				}
 				await Task.Run(() => StudioCore.m_studio.assetsManager.LoadFolder(openFolderDialog.Folder));
 				BuildAssetStructures();
+				lock (m_usingStudio) {
+					m_usingStudio.Reset();
+				}
 			}
 		}
 
@@ -462,9 +538,15 @@ namespace AssetStudioGUI {
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					var fileNames = ui_openFileDialog0.FileNames;
 					var savePath = saveFolderDialog.Folder;
+					lock (m_usingStudio) {
+						m_usingStudio.Set();
+					}
 					var extractedCount = await Task.Run(() => StudioCore.ExtractFile(fileNames, savePath));
 					//StatusStripUpdate($"Finished extracting {extractedCount} files.");
 					StatusStripUpdate(String.Format(Properties.Strings.Export_FinishExtracting, extractedCount));
+					lock (m_usingStudio) {
+						m_usingStudio.Reset();
+					}
 				}
 			}
 		}
@@ -478,14 +560,26 @@ namespace AssetStudioGUI {
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					var path = openFolderDialog.Folder;
 					var savePath = saveFolderDialog.Folder;
+					lock (m_usingStudio) {
+						m_usingStudio.Set();
+					}
 					var extractedCount = await Task.Run(() => StudioCore.ExtractFolder(path, savePath));
 					//StatusStripUpdate($"Finished extracting {extractedCount} files.");
 					StatusStripUpdate(String.Format(Properties.Strings.Export_FinishExtracting, extractedCount));
+					lock (m_usingStudio) {
+						m_usingStudio.Reset();
+					}
 				}
 			}
 		}
 
 		private void ui_menuFile_clear_Click(object sender, EventArgs e) {
+			lock (m_usingStudio) {
+				if (m_usingStudio.Active) {
+					MessageBox.Show(this, Properties.Strings.Studio_UsingStudio);
+					return;
+				}
+			}
 			ResetForm();
 		}
 		#endregion // Menu_File
@@ -677,6 +771,12 @@ namespace AssetStudioGUI {
 
 		private void ui_TEST_ToolStripMenuItem_Click(object sender, EventArgs e) {
 		}
+
+		private void tESTToolStripMenuItem_Click(object sender, EventArgs e) {
+			var test = new Studio_Special_Arknights();
+			test.ShowDialog(this);
+		}
+
 		#endregion Menu_Debug
 
 		#region Menu_OHMS_Export
@@ -748,20 +848,20 @@ namespace AssetStudioGUI {
 		}
 
 		private void ui_tabLeft_page0_treeSearch_KeyDown(object sender, KeyEventArgs e) {
-			if (e.KeyCode == Keys.Enter) {
-				if (treeSrcResults.Count == 0) {
-					foreach (TreeNode node in ui_tabLeft_page0_treeView.Nodes) {
-						TreeNodeSearch(node);
-					}
+			if (e.KeyCode != Keys.Enter)
+				return;
+			if (treeSrcResults.Count == 0) {
+				foreach (TreeNode node in ui_tabLeft_page0_treeView.Nodes) {
+					TreeNodeSearch(node);
 				}
-				if (treeSrcResults.Count > 0) {
-					if (nextGObject >= treeSrcResults.Count) {
-						nextGObject = 0;
-					}
-					treeSrcResults[nextGObject].EnsureVisible();
-					ui_tabLeft_page0_treeView.SelectedNode = treeSrcResults[nextGObject];
-					nextGObject++;
+			}
+			if (treeSrcResults.Count > 0) {
+				if (nextGObject >= treeSrcResults.Count) {
+					nextGObject = 0;
 				}
+				treeSrcResults[nextGObject].EnsureVisible();
+				ui_tabLeft_page0_treeView.SelectedNode = treeSrcResults[nextGObject];
+				nextGObject++;
 			}
 		}
 
@@ -772,15 +872,12 @@ namespace AssetStudioGUI {
 		}
 
 		private void ui_tabLeft_page1_ListSearchTextChanged(object sender, EventArgs e) {
-			if (enableFiltering) {
-				if (m_delayFilterTimer.Enabled) {
-					m_delayFilterTimer.Stop();
-					m_delayFilterTimer.Start();
-				}
-				else {
-					m_delayFilterTimer.Start();
-				}
-			}
+		}
+
+		private void Ui_tabLeft_page1_listSearch_KeyDown(object sender, KeyEventArgs e) {
+			if (e.KeyCode != Keys.Enter)
+				return;
+			FilterAssetList();
 		}
 
 		[DllImport("Shlwapi.dll", CharSet = CharSet.Unicode)]
@@ -853,6 +950,19 @@ namespace AssetStudioGUI {
 			}
 		}
 
+		private void Ui_tabLeft_page1_listView_MouseDoubleClick(object sender, MouseEventArgs e) {
+			if (lastSelectedItem != null) {
+				var previewForm = new PreviewForm(lastSelectedItem) {
+					MdiParent = this,
+					WindowState = ActiveMdiChild == null ? FormWindowState.Maximized : FormWindowState.Normal
+				};
+				if (ActiveMdiChild?.WindowState == FormWindowState.Maximized) {
+					ActiveMdiChild.WindowState = FormWindowState.Normal;
+				}
+				previewForm.Show();
+			}
+		}
+
 		private void ui_tabLeft_page1_listView_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
 			e.Item = StudioCore.m_studio.visibleAssets[e.ItemIndex];
 		}
@@ -862,20 +972,10 @@ namespace AssetStudioGUI {
 		}
 
 		private void ui_tabLeft_page2_classesListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
-			StatusStripUpdate("");
-
+			//StatusStripUpdate("");
 		}
 
-		private void m_delayTimer_Elapsed(object sender, ElapsedEventArgs e) {
-			m_delayFilterTimer.Stop();
-			Invoke(new Action(FilterAssetList));
-		}
 		#endregion LeftTabPage
-
-		private void tESTToolStripMenuItem_Click(object sender, EventArgs e) {
-			var test = new Studio_Special_Arknights();
-			test.ShowDialog(this);
-		}
 
 		#region OHMS
 		private bool GetANewFolder(string iDir, out string oDir) {
@@ -1063,12 +1163,9 @@ namespace AssetStudioGUI {
 
 		#endregion OHMS
 
-		private void Ui_tabLeft_page1_listView_MouseDoubleClick(object sender, MouseEventArgs e) {
-			if (lastSelectedItem != null) {
-				var previewForm = new PreviewForm(lastSelectedItem) {
-					MdiParent = this
-				};
-				previewForm.Show();
+		private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e) {
+			foreach (var previewForm in MdiChildren) {
+				previewForm.Close();
 			}
 		}
 	}

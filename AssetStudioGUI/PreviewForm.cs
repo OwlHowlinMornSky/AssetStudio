@@ -82,7 +82,7 @@ namespace AssetStudioGUI {
 				case VideoClip _:
 				case MovieTexture _:
 					//StatusStripUpdate("Only supported export.");
-					//StatusStripUpdate(Properties.Strings.Preview_OnlyExport);
+					Logger.Default.Log(LoggerEvent.Info, Properties.Strings.Preview_OnlyExport);
 					break;
 				case Sprite m_Sprite: {
 					var prev = new PreviewImageControl();
@@ -92,11 +92,11 @@ namespace AssetStudioGUI {
 				}
 				case Animator _:
 					//StatusStripUpdate("Can be exported to FBX file.");
-					//StatusStripUpdate(Properties.Strings.Preview_OnlyExport_FBX);
+					Logger.Default.Log(LoggerEvent.Info, Properties.Strings.Preview_OnlyExport_FBX);
 					break;
 				case AnimationClip _:
 					//StatusStripUpdate("Can be exported with Animator or Objects");
-					//StatusStripUpdate(Properties.Strings.Preview_OnlyExport_Animator);
+					Logger.Default.Log(LoggerEvent.Info, Properties.Strings.Preview_OnlyExport_Animator);
 					break;
 				default:
 					//PreviewText(m_studio.DumpAsset(assetItem.Asset));

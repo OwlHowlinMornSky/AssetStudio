@@ -540,5 +540,14 @@ namespace AssetStudioGUI.Properties {
                 return ResourceManager.GetString("Studio_SelectAssemblyFolder", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 %Please Wait% 的本地化字符串。
+        /// </summary>
+        internal static string Studio_UsingStudio {
+            get {
+                return ResourceManager.GetString("Studio_UsingStudio", resourceCulture);
+            }
+        }
     }
 }

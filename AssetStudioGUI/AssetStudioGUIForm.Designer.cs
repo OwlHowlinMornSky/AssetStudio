@@ -111,6 +111,8 @@ namespace AssetStudioGUI {
 			ui_menuOhmsExport_arknights_sceneBundle = new ToolStripMenuItem();
 			ui_menuOhmsExport_arknights_charartBundle = new ToolStripMenuItem();
 			previewsToolStripMenuItem = new ToolStripMenuItem();
+			closeAllToolStripMenuItem = new ToolStripMenuItem();
+			toolStripSeparator2 = new ToolStripSeparator();
 			ui_openFileDialog0 = new OpenFileDialog();
 			ui_contextMenuStrip0 = new ContextMenuStrip(components);
 			ui_conMenu_copyText = new ToolStripMenuItem();
@@ -659,7 +661,19 @@ namespace AssetStudioGUI {
 			// previewsToolStripMenuItem
 			// 
 			resources.ApplyResources(previewsToolStripMenuItem, "previewsToolStripMenuItem");
+			previewsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { closeAllToolStripMenuItem, toolStripSeparator2 });
 			previewsToolStripMenuItem.Name = "previewsToolStripMenuItem";
+			// 
+			// closeAllToolStripMenuItem
+			// 
+			resources.ApplyResources(closeAllToolStripMenuItem, "closeAllToolStripMenuItem");
+			closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
+			closeAllToolStripMenuItem.Click += CloseAllToolStripMenuItem_Click;
+			// 
+			// toolStripSeparator2
+			// 
+			resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
+			toolStripSeparator2.Name = "toolStripSeparator2";
 			// 
 			// ui_openFileDialog0
 			// 
@@ -771,7 +785,6 @@ namespace AssetStudioGUI {
 			// ui_tabLeft_page0_treeSearch
 			// 
 			resources.ApplyResources(ui_tabLeft_page0_treeSearch, "ui_tabLeft_page0_treeSearch");
-			ui_tabLeft_page0_treeSearch.ForeColor = System.Drawing.SystemColors.GrayText;
 			ui_tabLeft_page0_treeSearch.Name = "ui_tabLeft_page0_treeSearch";
 			ui_tabLeft_page0_treeSearch.TextChanged += ui_tabLeft_page0_treeSearch_TextChanged;
 			ui_tabLeft_page0_treeSearch.KeyDown += ui_tabLeft_page0_treeSearch_KeyDown;
@@ -823,9 +836,9 @@ namespace AssetStudioGUI {
 			// ui_tabLeft_page1_listSearch
 			// 
 			resources.ApplyResources(ui_tabLeft_page1_listSearch, "ui_tabLeft_page1_listSearch");
-			ui_tabLeft_page1_listSearch.ForeColor = System.Drawing.SystemColors.GrayText;
 			ui_tabLeft_page1_listSearch.Name = "ui_tabLeft_page1_listSearch";
 			ui_tabLeft_page1_listSearch.TextChanged += ui_tabLeft_page1_ListSearchTextChanged;
+			ui_tabLeft_page1_listSearch.KeyDown += Ui_tabLeft_page1_listSearch_KeyDown;
 			// 
 			// ui_tabLeft_page2
 			// 
@@ -1013,6 +1026,8 @@ namespace AssetStudioGUI {
 		private Splitter splitter1;
 		private ProgressBar ui_progressBar0_down;
 		private ToolStripMenuItem previewsToolStripMenuItem;
+		private ToolStripMenuItem closeAllToolStripMenuItem;
+		private ToolStripSeparator toolStripSeparator2;
 	}
 }
 

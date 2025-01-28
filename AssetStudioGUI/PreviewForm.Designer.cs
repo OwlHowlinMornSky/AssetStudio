@@ -39,9 +39,9 @@
 			// 
 			// ui_tabRight_page3
 			// 
+			resources.ApplyResources(ui_tabRight_page3, "ui_tabRight_page3");
 			ui_tabRight_page3.Controls.Add(ui_tabRight_page2_dumpJsonTextBox);
 			ui_tabRight_page3.Controls.Add(ui_tabRight_page0_assetInfoLabel);
-			resources.ApplyResources(ui_tabRight_page3, "ui_tabRight_page3");
 			ui_tabRight_page3.Name = "ui_tabRight_page3";
 			ui_tabRight_page3.UseVisualStyleBackColor = true;
 			// 
@@ -59,8 +59,8 @@
 			// 
 			// ui_tabRight_page1
 			// 
-			ui_tabRight_page1.Controls.Add(ui_tabRight_page1_dumpTextBox);
 			resources.ApplyResources(ui_tabRight_page1, "ui_tabRight_page1");
+			ui_tabRight_page1.Controls.Add(ui_tabRight_page1_dumpTextBox);
 			ui_tabRight_page1.Name = "ui_tabRight_page1";
 			ui_tabRight_page1.UseVisualStyleBackColor = true;
 			// 
@@ -77,11 +77,11 @@
 			// 
 			// ui_tabRight_tab
 			// 
+			resources.ApplyResources(ui_tabRight_tab, "ui_tabRight_tab");
 			ui_tabRight_tab.Controls.Add(tabPage_Preview);
 			ui_tabRight_tab.Controls.Add(ui_tabRight_page1);
 			ui_tabRight_tab.Controls.Add(ui_tabRight_page3);
 			ui_tabRight_tab.Controls.Add(tabPage_info);
-			resources.ApplyResources(ui_tabRight_tab, "ui_tabRight_tab");
 			ui_tabRight_tab.Name = "ui_tabRight_tab";
 			ui_tabRight_tab.SelectedIndex = 0;
 			// 

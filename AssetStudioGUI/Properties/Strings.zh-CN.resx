@@ -282,4 +282,7 @@ Mipmap偏移量: {1}</value>
   <data name="Studio_SelectAssemblyFolder" xml:space="preserve">
     <value>选择 Assembly 文件夹</value>
   </data>
+  <data name="Studio_UsingStudio" xml:space="preserve">
+    <value>请等待当前操作完成。</value>
+  </data>
 </root>

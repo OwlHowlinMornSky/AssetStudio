@@ -8,6 +8,7 @@ using AssetStudio;
 using Vector3 = OpenTK.Mathematics.Vector3;
 using Vector4 = OpenTK.Mathematics.Vector4;
 using Matrix4 = OpenTK.Mathematics.Matrix4;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AssetStudioGUI.Controls {
 
@@ -31,7 +32,7 @@ namespace AssetStudioGUI.Controls {
 			#region Vertices
 			if (mesh.m_Vertices == null || mesh.m_Vertices.Length == 0) {
 				//StatusStripUpdate("Mesh can't be previewed.");
-				label1.Text = Properties.Strings.Preview_GL_unable1;
+				//////////////////////label1.Text = Properties.Strings.Preview_GL_unable1;
 				return;
 			}
 			int count = 3;
@@ -154,8 +155,6 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private void PreviewGL_Load(object sender, EventArgs e) {
-			//if (ui_tabRight_page0_glPreview.IsDesignMode)
-			//	return;
 			GL_Init();
 		}
 
@@ -243,8 +242,6 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private void MyGlControl_Load(object sender, EventArgs e) {
-			if (myGlControl1.IsDesignMode)
-				return;
 			OpenTK_Init();
 		}
 
@@ -270,39 +267,36 @@ namespace AssetStudioGUI.Controls {
 			if (m_vao != 0) {
 				GL.BindVertexArray(m_vao);
 				switch (m_wireFrameMode) {
-				case 0:
-					GL.UseProgram(m_shadeMode == 0 ? m_programID : m_programColorID);
-					GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m_modelMatrixData);
-					GL.UniformMatrix4(m_programUniformViewMatrix, false, ref m_viewMatrixData);
-					GL.UniformMatrix4(m_programUniformProjMatrix, false, ref m_projMatrixData);
+				case 0: {
+					ShaderProgram shader = m_shadeMode == 0 ? m_pgNormal : m_pgColor;
+					GL.UseProgram(shader.Program);
+					shader.UpdateMatrices(ref m_projMatrixData, ref m_viewMatrixData, ref m_modelMatrixData);
 					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 					GL.DrawElements(BeginMode.Triangles, m_indiceData.Length, DrawElementsType.UnsignedInt, 0);
 					break;
+				}
 				case 1:
-					GL.UseProgram(m_programBlackID);
-					GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m_modelMatrixData);
-					GL.UniformMatrix4(m_programUniformViewMatrix, false, ref m_viewMatrixData);
-					GL.UniformMatrix4(m_programUniformProjMatrix, false, ref m_projMatrixData);
+					GL.UseProgram(m_pgBlack.Program);
+					m_pgBlack.UpdateMatrices(ref m_projMatrixData, ref m_viewMatrixData, ref m_modelMatrixData);
 					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
 					GL.DrawElements(BeginMode.Triangles, m_indiceData.Length, DrawElementsType.UnsignedInt, 0);
 					break;
-				case 2:
+				case 2: {
 					GL.Enable(EnableCap.PolygonOffsetFill);
 					GL.PolygonOffset(1, 1);
-					GL.UseProgram(m_shadeMode == 0 ? m_programID : m_programColorID);
-					GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m_modelMatrixData);
-					GL.UniformMatrix4(m_programUniformViewMatrix, false, ref m_viewMatrixData);
-					GL.UniformMatrix4(m_programUniformProjMatrix, false, ref m_projMatrixData);
+					ShaderProgram shader = m_shadeMode == 0 ? m_pgNormal : m_pgColor;
+					GL.UseProgram(shader.Program);
+					shader.UpdateMatrices(ref m_projMatrixData, ref m_viewMatrixData, ref m_modelMatrixData);
 					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 					GL.DrawElements(BeginMode.Triangles, m_indiceData.Length, DrawElementsType.UnsignedInt, 0);
+
 					GL.Disable(EnableCap.PolygonOffsetFill);
-					GL.UseProgram(m_programBlackID);
-					GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m_modelMatrixData);
-					GL.UniformMatrix4(m_programUniformViewMatrix, false, ref m_viewMatrixData);
-					GL.UniformMatrix4(m_programUniformProjMatrix, false, ref m_projMatrixData);
+					GL.UseProgram(m_pgBlack.Program);
+					m_pgBlack.UpdateMatrices(ref m_projMatrixData, ref m_viewMatrixData, ref m_modelMatrixData);
 					GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
 					GL.DrawElements(BeginMode.Triangles, m_indiceData.Length, DrawElementsType.UnsignedInt, 0);
 					break;
+				}
 				}
 
 				GL.BindVertexArray(0);
@@ -321,13 +315,108 @@ namespace AssetStudioGUI.Controls {
 		/// <summary>
 		/// For shader programs.
 		/// </summary>
-		private int m_programID, m_programColorID, m_programBlackID;
-		private int m_programAttributeVertexPosition;
-		private int m_programAttributeNormalDirection;
-		private int m_programAttributeVertexColor;
-		private int m_programUniformModelMatrix;
-		private int m_programUniformViewMatrix;
-		private int m_programUniformProjMatrix;
+		private ShaderProgram m_pgNormal, m_pgColor, m_pgBlack;
+		internal class ShaderProgram() : IDisposable {
+			private int m_programID = -1;
+
+			private int m_programAttributeVertexPosition = -1;
+			private int m_programAttributeNormalDirection = -1;
+			private int m_programAttributeVertexColor = -1;
+			private int m_programUniformModelMatrix = -1;
+			private int m_programUniformViewMatrix = -1;
+			private int m_programUniformProjMatrix = -1;
+
+			public int Program {
+				get {
+					return m_programID;
+				}
+			}
+
+			public int AttribVtxPos {
+				get {
+					return m_programAttributeVertexPosition;
+				}
+			}
+			public int AttribNmlDir {
+				get {
+					return m_programAttributeNormalDirection;
+				}
+			}
+			public int AttribVtxClr {
+				get {
+					return m_programAttributeVertexColor;
+				}
+			}
+
+			public int UniMatM {
+				get {
+					return m_programUniformModelMatrix;
+				}
+			}
+			public int UniMatV {
+				get {
+					return m_programUniformViewMatrix;
+				}
+			}
+			public int UniMatP {
+				get {
+					return m_programUniformProjMatrix;
+				}
+			}
+
+			public void Load(string vsName, string fsName) {
+				m_programID = GL.CreateProgram();
+				LoadShader(vsName, ShaderType.VertexShader, m_programID, out int vsId);
+				LoadShader(fsName, ShaderType.FragmentShader, m_programID, out int fsId);
+				GL.LinkProgram(m_programID);
+
+				GL.DetachShader(m_programID, vsId);
+				GL.DetachShader(m_programID, fsId);
+
+				m_programAttributeVertexPosition = GL.GetAttribLocation(m_programID, "vertexPosition");
+				m_programAttributeNormalDirection = GL.GetAttribLocation(m_programID, "normalDirection");
+				m_programAttributeVertexColor = GL.GetAttribLocation(m_programID, "vertexColor");
+
+				m_programUniformModelMatrix = GL.GetUniformLocation(m_programID, "modelMatrix");
+				m_programUniformViewMatrix = GL.GetUniformLocation(m_programID, "viewMatrix");
+				m_programUniformProjMatrix = GL.GetUniformLocation(m_programID, "projMatrix");
+			}
+
+			public void UpdateMatrices(ref Matrix4 p, ref Matrix4 v, ref Matrix4 m) {
+				GL.UniformMatrix4(m_programUniformModelMatrix, false, ref m);
+				GL.UniformMatrix4(m_programUniformViewMatrix, false, ref v);
+				GL.UniformMatrix4(m_programUniformProjMatrix, false, ref p);
+			}
+
+			private static void LoadShader(string filename, ShaderType type, int program, out int address) {
+				address = GL.CreateShader(type);
+				var str = (string)Properties.Resources.ResourceManager.GetObject(filename);
+				GL.ShaderSource(address, str);
+				GL.CompileShader(address);
+				GL.AttachShader(program, address);
+				GL.DeleteShader(address);
+			}
+
+			~ShaderProgram() {
+				Dispose(false);
+			}
+
+			public void Dispose() {
+				Dispose(true);
+				GC.SuppressFinalize(this);
+			}
+
+			private bool m_disposed = false;
+			protected virtual void Dispose(bool disposing) {
+				if (m_disposed)
+					return;
+				m_disposed = true;
+
+				if (m_programID != -1)
+					GL.DeleteProgram(m_programID);
+				m_programID = -1;
+			}
+		}
 
 		/// <summary>
 		/// For model.
@@ -360,36 +449,13 @@ namespace AssetStudioGUI.Controls {
 
 			GL_ChangeSize(myGlControl1.Size);
 			GL.ClearColor(System.Drawing.Color.CadetBlue);
-			m_programID = GL.CreateProgram();
-			GL_LoadShader("shader_vs", ShaderType.VertexShader, m_programID, out int vsID);
-			GL_LoadShader("shader_fs", ShaderType.FragmentShader, m_programID, out int fsID);
-			GL.LinkProgram(m_programID);
 
-			m_programColorID = GL.CreateProgram();
-			GL_LoadShader("shader_vs", ShaderType.VertexShader, m_programColorID, out vsID);
-			GL_LoadShader("shader_fsColor", ShaderType.FragmentShader, m_programColorID, out fsID);
-			GL.LinkProgram(m_programColorID);
-
-			m_programBlackID = GL.CreateProgram();
-			GL_LoadShader("shader_vs", ShaderType.VertexShader, m_programBlackID, out vsID);
-			GL_LoadShader("shader_fsBlack", ShaderType.FragmentShader, m_programBlackID, out fsID);
-			GL.LinkProgram(m_programBlackID);
-
-			m_programAttributeVertexPosition = GL.GetAttribLocation(m_programID, "vertexPosition");
-			m_programAttributeNormalDirection = GL.GetAttribLocation(m_programID, "normalDirection");
-			m_programAttributeVertexColor = GL.GetAttribLocation(m_programColorID, "vertexColor");
-			m_programUniformModelMatrix = GL.GetUniformLocation(m_programID, "modelMatrix");
-			m_programUniformViewMatrix = GL.GetUniformLocation(m_programID, "viewMatrix");
-			m_programUniformProjMatrix = GL.GetUniformLocation(m_programID, "projMatrix");
-		}
-
-		private static void GL_LoadShader(string filename, ShaderType type, int program, out int address) {
-			address = GL.CreateShader(type);
-			var str = (string)Properties.Resources.ResourceManager.GetObject(filename);
-			GL.ShaderSource(address, str);
-			GL.CompileShader(address);
-			GL.AttachShader(program, address);
-			GL.DeleteShader(address);
+			m_pgNormal ??= new ShaderProgram();
+			m_pgNormal.Load("shader_vs", "shader_fs");
+			m_pgColor ??= new ShaderProgram();
+			m_pgColor.Load("shader_vs", "shader_fsColor");
+			m_pgBlack ??= new ShaderProgram();
+			m_pgBlack.Load("shader_vs", "shader_fsBlack");
 		}
 
 		private void GL_Init() {
@@ -403,6 +469,13 @@ namespace AssetStudioGUI.Controls {
 		private void GL_Reset() {
 			if (myGlControl1.IsDesignMode)
 				return;
+
+			m_pgNormal?.Dispose();
+			m_pgNormal = null;
+			m_pgColor?.Dispose();
+			m_pgColor = null;
+			m_pgBlack?.Dispose();
+			m_pgBlack = null;
 
 			if (m_vao != 0)
 				GL.DeleteVertexArray(m_vao);
@@ -425,19 +498,22 @@ namespace AssetStudioGUI.Controls {
 			GL.DeleteVertexArray(m_vao);
 			GL.GenVertexArrays(1, out m_vao);
 			GL.BindVertexArray(m_vao);
-			GL_CreateVBO(out _, m_vertexData, m_programAttributeVertexPosition);
+			GL_CreateVBO(out _, m_vertexData, m_pgNormal.AttribVtxPos);
 			if (m_normalMode == 0) {
-				GL_CreateVBO(out _, m_normal2Data, m_programAttributeNormalDirection);
+				GL_CreateVBO(out _, m_normal2Data, m_pgNormal.AttribNmlDir);
 			}
 			else {
 				if (m_normalData != null)
-					GL_CreateVBO(out _, m_normalData, m_programAttributeNormalDirection);
+					GL_CreateVBO(out _, m_normalData, m_pgNormal.AttribNmlDir);
 			}
-			GL_CreateVBO(out _, m_colorData, m_programAttributeVertexColor);
-			GL_CreateVBO(out _, m_modelMatrixData, m_programUniformModelMatrix);
-			GL_CreateVBO(out _, m_viewMatrixData, m_programUniformViewMatrix);
-			GL_CreateVBO(out _, m_projMatrixData, m_programUniformProjMatrix);
+			GL_CreateVBO(out _, m_colorData, m_pgNormal.AttribVtxClr);
+
+			GL_CreateVBO(out _, m_modelMatrixData, m_pgNormal.UniMatM);
+			GL_CreateVBO(out _, m_viewMatrixData, m_pgNormal.UniMatV);
+			GL_CreateVBO(out _, m_projMatrixData, m_pgNormal.UniMatP);
+
 			GL_CreateEBO(out _, m_indiceData);
+
 			GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
 			GL.BindVertexArray(0);
 		}
