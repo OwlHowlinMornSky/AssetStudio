@@ -11,8 +11,9 @@ Skin::~Skin() {
 	_this = nullptr;
 }
 
-void Skin::MeshSkinAddCluster(ClusterArray^ pClusterArray, int index, float* pBoneMatrix) {
-	AsFbxMeshSkinAddCluster(_this, pClusterArray->GetPtr(), index, pBoneMatrix);
+void Skin::MeshSkinAddCluster(ClusterArray^ pClusterArray, int index, array<float>^ pBoneMatrix) {
+	pin_ptr<float> mat = &pBoneMatrix[0];
+	AsFbxMeshSkinAddCluster(_this, pClusterArray->GetPtr(), index, mat);
 }
 
 void Skin::MeshAddDeformer(Mesh^ pMesh) {

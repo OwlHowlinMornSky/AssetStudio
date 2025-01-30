@@ -17,7 +17,7 @@ public:
 	~Skin();
 
 public:
-	void MeshSkinAddCluster(ClusterArray^ pClusterArray, int index, float* pBoneMatrix);
+	void MeshSkinAddCluster(ClusterArray^ pClusterArray, int index, array<float>^ pBoneMatrix);
 	void MeshAddDeformer(Mesh^ pMesh);
 
 internal:

@@ -344,38 +344,24 @@ namespace AssetStudioFBX {
 			if (hasBones) {
 				Skin pSkinContext = _pContext.MeshCreateSkinContext(frameNode);
 
-				unsafe {
-					var boneMatrix = stackalloc float[16];
-
-					for (var j = 0; j < totalBoneCount; j += 1) {
+				for (var j = 0; j < totalBoneCount; j += 1) {
 					if (!pClusterArray.ClusterArray_HasItemAt(j))
-							continue;
+						continue;
 
-						var m = boneList[j].Matrix;
+					var m = boneList[j].Matrix;
 
-						CopyMatrix4x4(in m, boneMatrix);
+					float[] array = [
+						m[0], m[1], m[2], m[3],
+						m[4], m[5], m[6], m[7],
+						m[8], m[9], m[10], m[11],
+						m[12], m[13], m[14], m[15]
+					];
 
-						pSkinContext.MeshSkinAddCluster(pClusterArray, j, boneMatrix);
-					}
+					pSkinContext.MeshSkinAddCluster(pClusterArray, j, array);
 				}
 
 				pSkinContext.MeshAddDeformer(mesh);
 			}
-		}
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private static unsafe void CopyMatrix4x4(in Matrix4x4 matrix, float* buffer) {
-			for (var m = 0; m < 4; m += 1) {
-				for (var n = 0; n < 4; n += 1) {
-					var index = IndexFrom4x4(m, n);
-					buffer[index] = matrix[m, n];
-				}
-			}
-		}
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private static int IndexFrom4x4(int m, int n) {
-			return 4 * m + n;
 		}
 
 		internal void ExportAnimations(ImportedFrame rootFrame, List<ImportedKeyframedAnimation> animationList, bool eulerFilter, float filterPrecision) {
@@ -396,7 +382,7 @@ namespace AssetStudioFBX {
 					takeName = $"Take{i}";
 				}
 
-				_pContext.AnimPrepareStackAndLayer(pAnimContext, takeName);
+				pAnimContext.AnimPrepareStackAndLayer(_pContext, takeName);
 
 				ExportKeyframedAnimation(rootFrame, importedAnimation, pAnimContext, filterPrecision);
 			}
@@ -442,25 +428,25 @@ namespace AssetStudioFBX {
 				if (blendShape == null)
 					continue;
 
-					var channelCount = pAnimContext.AnimGetCurrentBlendShapeChannelCount(pNode);
+				var channelCount = pAnimContext.AnimGetCurrentBlendShapeChannelCount(pNode);
 
 				if (channelCount <= 0)
 					continue;
 
-						for (var channelIndex = 0; channelIndex < channelCount; channelIndex += 1) {
+				for (var channelIndex = 0; channelIndex < channelCount; channelIndex += 1) {
 					if (!pAnimContext.AnimIsBlendShapeChannelMatch(channelIndex, blendShape.ChannelName))
-								continue;
+						continue;
 
-							pAnimContext.AnimBeginBlendShapeAnimCurve(channelIndex);
+					pAnimContext.AnimBeginBlendShapeAnimCurve(channelIndex);
 
-							foreach (var keyframe in blendShape.Keyframes) {
-								pAnimContext.AnimAddBlendShapeKeyframe(keyframe.time, keyframe.value);
-							}
-
-							pAnimContext.AnimEndBlendShapeAnimCurve();
-						}
+					foreach (var keyframe in blendShape.Keyframes) {
+						pAnimContext.AnimAddBlendShapeKeyframe(keyframe.time, keyframe.value);
 					}
+
+					pAnimContext.AnimEndBlendShapeAnimCurve();
 				}
+			}
+		}
 
 		internal void ExportMorphs(ImportedFrame rootFrame, List<ImportedMorph> morphList) {
 			if (morphList == null || morphList.Count == 0) {
@@ -497,16 +483,16 @@ namespace AssetStudioFBX {
 						if (!keyframe.hasNormals)
 							continue;
 
-							pMorphContext.MorphCopyBlendShapeControlPointsNormal();
+						pMorphContext.MorphCopyBlendShapeControlPointsNormal();
 
-							foreach (var vertex in keyframe.VertexList) {
-								var v = vertex.Vertex.Normal;
-								pMorphContext.MorphSetBlendShapeVertexNormal(vertex.Index, v.X, v.Y, v.Z);
-							}
+						foreach (var vertex in keyframe.VertexList) {
+							var v = vertex.Vertex.Normal;
+							pMorphContext.MorphSetBlendShapeVertexNormal(vertex.Index, v.X, v.Y, v.Z);
 						}
 					}
 				}
 			}
+		}
 
 	}
 }
