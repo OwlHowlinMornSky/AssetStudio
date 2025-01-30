@@ -2,7 +2,7 @@
 
 using namespace System;
 
-namespace FbxNative {
+namespace FbxInterop {
 
 public ref class Fbx {
 public:

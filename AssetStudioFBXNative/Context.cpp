@@ -96,11 +96,11 @@ Texture^ Context::CreateTexture(String^ strMatTexName) {
 	return gcnew Texture(AsFbxCreateTexture(_this, cstr.c_str()));
 }
 
-Cluster^ Context::MeshCreateCluster(Node^ boneNode) {
+Cluster^ Context::CreateCluster(Node^ boneNode) {
 	return gcnew Cluster(AsFbxMeshCreateCluster(_this, boneNode->GetPtr()));
 }
 
-Mesh^ Context::MeshCreateMesh(Node^ frameNode) {
+Mesh^ Context::CreateMesh(Node^ frameNode) {
 	return gcnew Mesh(AsFbxMeshCreateMesh(_this, frameNode->GetPtr()));
 }
 
@@ -117,7 +117,7 @@ Material^ Context::CreateMaterial(String^ pMatName, float diffuseR, float diffus
 	));
 }
 
-Skin^ Context::MeshCreateSkinContext(Node^ frameNode) {
+Skin^ Context::CreateSkinContext(Node^ frameNode) {
 	return gcnew Skin(_this, frameNode->GetPtr());
 }
 

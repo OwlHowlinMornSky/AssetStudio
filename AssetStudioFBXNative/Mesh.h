@@ -3,6 +3,7 @@
 #include "api.h"
 
 #include "Cluster.h"
+#include "Skin.h"
 
 using namespace System;
 using namespace fbxsdk;
@@ -19,31 +20,20 @@ public:
 	~Mesh();
 
 public:
-	void MeshInitControlPoints(int vertexCount);
-
-	void MeshCreateElementNormal();
-
-	void MeshCreateDiffuseUV(int uv);
-
-	void MeshCreateNormalMapUV(int uv);
-
-	void MeshCreateElementTangent();
-
-	void MeshCreateElementVertexColor();
-
-	void MeshCreateElementMaterial();
-
-	void MeshSetControlPoint(int index, float x, float y, float z);
-
-	void MeshAddPolygon(int materialIndex, int index0, int index1, int index2);
-
-	void MeshElementNormalAdd(int elementIndex, float x, float y, float z);
-
-	void MeshElementUVAdd(int elementIndex, float u, float v);
-
-	void MeshElementTangentAdd(int elementIndex, float x, float y, float z, float w);
-
-	void MeshElementVertexColorAdd(int elementIndex, float r, float g, float b, float a);
+	void InitControlPoints(int vertexCount);
+	void CreateElementNormal();
+	void CreateDiffuseUV(int uv);
+	void CreateNormalMapUV(int uv);
+	void CreateElementTangent();
+	void CreateElementVertexColor();
+	void CreateElementMaterial();
+	void SetControlPoint(int index, float x, float y, float z);
+	void AddPolygon(int materialIndex, int index0, int index1, int index2);
+	void AddDeformer(Skin^ skin);
+	void ElementAddNormal(int elementIndex, float x, float y, float z);
+	void ElementAddUV(int elementIndex, float u, float v);
+	void ElementAddTangent(int elementIndex, float x, float y, float z, float w);
+	void ElementAddVertexColor(int elementIndex, float r, float g, float b, float a);
 
 internal:
 	FbxMesh* GetPtr();

@@ -2,7 +2,7 @@
 
 #include "api.h"
 
-#include "Mesh.h"
+#include "Cluster.h"
 
 using namespace System;
 
@@ -17,8 +17,7 @@ public:
 	~Skin();
 
 public:
-	void MeshSkinAddCluster(ClusterArray^ pClusterArray, int index, array<float>^ pBoneMatrix);
-	void MeshAddDeformer(Mesh^ pMesh);
+	void AddCluster(ClusterArray^ pClusterArray, int index, array<float>^ pBoneMatrix);
 
 internal:
 	AsFbxSkinContext* GetPtr();

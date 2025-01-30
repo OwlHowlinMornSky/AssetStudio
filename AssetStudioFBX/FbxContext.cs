@@ -17,4 +17,16 @@ namespace AssetStudioFBX {
 
 	}
 
+	public static class Utils {
+		public static Vector3 QuaternionToEuler(Quaternion q) {
+			Fbx.AsUtilQuaternionToEuler(q.X, q.Y, q.Z, q.W, out var x, out var y, out var z);
+			return new Vector3(x, y, z);
+		}
+
+		public static Quaternion EulerToQuaternion(Vector3 v) {
+			Fbx.AsUtilEulerToQuaternion(v.X, v.Y, v.Z, out var x, out var y, out var z, out var w);
+			return new Quaternion(x, y, z, w);
+		}
+	}
+
 }

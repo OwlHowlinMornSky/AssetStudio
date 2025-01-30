@@ -29,9 +29,9 @@ public:
 	~ClusterArray();
 
 public:
-	void MeshAddCluster(Cluster^ cluster);
-	void MeshSetBoneWeight(int boneIndex, int vertexIndex, float weight);
-	bool ClusterArray_HasItemAt(int index);
+	void AddCluster(Cluster^ cluster);
+	void SetBoneWeight(int boneIndex, int vertexIndex, float weight);
+	bool HasItemAt(int index);
 
 internal:
 	FbxArray<fbxsdk::FbxCluster*>* GetPtr();

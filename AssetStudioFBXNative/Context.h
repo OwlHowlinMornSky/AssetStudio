@@ -3,7 +3,7 @@
 #include "api.h"
 
 #include "Node.h"
-#include "Skin.h"
+#include "Mesh.h"
 
 using namespace System;
 
@@ -47,9 +47,9 @@ public:
 
 	Texture^ CreateTexture(String^ strMatTexName);
 
-	Cluster^ MeshCreateCluster(Node^ boneNode);
+	Cluster^ CreateCluster(Node^ boneNode);
 
-	Mesh^ MeshCreateMesh(Node^ frameNode);
+	Mesh^ CreateMesh(Node^ frameNode);
 
 	Material^ CreateMaterial(
 		String^ pMatName,
@@ -61,7 +61,7 @@ public:
 		float shininess, float transparency
 	);
 
-	Skin^ MeshCreateSkinContext(Node^ frameNode);
+	Skin^ CreateSkinContext(Node^ frameNode);
 
 internal:
 	AsFbxContext* GetPtr();

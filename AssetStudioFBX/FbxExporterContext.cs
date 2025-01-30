@@ -193,22 +193,22 @@ namespace AssetStudioFBX {
 						var frame = rootFrame.FindFrameByPath(bone.Path);
 						var boneNode = _frameToNode[frame];
 
-						var cluster = _pContext.MeshCreateCluster(boneNode);
+						var cluster = _pContext.CreateCluster(boneNode);
 
-						pClusterArray.MeshAddCluster(cluster);
+						pClusterArray.AddCluster(cluster);
 					}
 					else {
-						pClusterArray.MeshAddCluster(null);
+						pClusterArray.AddCluster(null);
 					}
 				}
 			}
 
-			var mesh = _pContext.MeshCreateMesh(frameNode);
+			var mesh = _pContext.CreateMesh(frameNode);
 
-			mesh.MeshInitControlPoints(importedMesh.VertexList.Count);
+			mesh.InitControlPoints(importedMesh.VertexList.Count);
 
 			if (importedMesh.hasNormal) {
-				mesh.MeshCreateElementNormal();
+				mesh.CreateElementNormal();
 			}
 
 			for (int i = 0; i < importedMesh.hasUV.Length; i++) {
@@ -217,22 +217,22 @@ namespace AssetStudioFBX {
 				}
 
 				if (i == 1 && !exportAllUvsAsDiffuseMaps) {
-					mesh.MeshCreateNormalMapUV(1);
+					mesh.CreateNormalMapUV(1);
 				}
 				else {
-					mesh.MeshCreateDiffuseUV(i);
+					mesh.CreateDiffuseUV(i);
 				}
 			}
 
 			if (importedMesh.hasTangent) {
-				mesh.MeshCreateElementTangent();
+				mesh.CreateElementTangent();
 			}
 
 			if (importedMesh.hasColor) {
-				mesh.MeshCreateElementVertexColor();
+				mesh.CreateElementVertexColor();
 			}
 
-			mesh.MeshCreateElementMaterial();
+			mesh.CreateElementMaterial();
 
 			foreach (var meshObj in importedMesh.SubmeshList) {
 				var materialIndex = 0;
@@ -291,7 +291,7 @@ namespace AssetStudioFBX {
 					var index1 = face.VertexIndices[1] + meshObj.BaseVertex;
 					var index2 = face.VertexIndices[2] + meshObj.BaseVertex;
 
-					mesh.MeshAddPolygon(materialIndex, index0, index1, index2);
+					mesh.AddPolygon(materialIndex, index0, index1, index2);
 				}
 			}
 
@@ -303,28 +303,28 @@ namespace AssetStudioFBX {
 				var importedVertex = vertexList[j];
 
 				var vertex = importedVertex.Vertex;
-				mesh.MeshSetControlPoint(j, vertex.X, vertex.Y, vertex.Z);
+				mesh.SetControlPoint(j, vertex.X, vertex.Y, vertex.Z);
 
 				if (importedMesh.hasNormal) {
 					var normal = importedVertex.Normal;
-					mesh.MeshElementNormalAdd(0, normal.X, normal.Y, normal.Z);
+					mesh.ElementAddNormal(0, normal.X, normal.Y, normal.Z);
 				}
 
 				for (var uvIndex = 0; uvIndex < importedMesh.hasUV.Length; uvIndex += 1) {
 					if (importedMesh.hasUV[uvIndex]) {
 						var uv = importedVertex.UV[uvIndex];
-						mesh.MeshElementUVAdd(uvIndex, uv[0], uv[1]);
+						mesh.ElementAddUV(uvIndex, uv[0], uv[1]);
 					}
 				}
 
 				if (importedMesh.hasTangent) {
 					var tangent = importedVertex.Tangent;
-					mesh.MeshElementTangentAdd(0, tangent.X, tangent.Y, tangent.Z, tangent.W);
+					mesh.ElementAddTangent(0, tangent.X, tangent.Y, tangent.Z, tangent.W);
 				}
 
 				if (importedMesh.hasColor) {
 					var color = importedVertex.Color;
-					mesh.MeshElementVertexColorAdd(0, color.R, color.G, color.B, color.A);
+					mesh.ElementAddVertexColor(0, color.R, color.G, color.B, color.A);
 				}
 
 				if (hasBones && importedVertex.BoneIndices != null && pClusterArray != null) {
@@ -333,7 +333,7 @@ namespace AssetStudioFBX {
 
 					for (var k = 0; k < 4; k += 1) {
 						if (boneIndices[k] < totalBoneCount && boneWeights[k] > 0) {
-							pClusterArray.MeshSetBoneWeight(boneIndices[k], j, boneWeights[k]);
+							pClusterArray.SetBoneWeight(boneIndices[k], j, boneWeights[k]);
 						}
 					}
 				}
@@ -341,10 +341,10 @@ namespace AssetStudioFBX {
 
 
 			if (hasBones) {
-				Skin pSkinContext = _pContext.MeshCreateSkinContext(frameNode);
+				Skin pSkinContext = _pContext.CreateSkinContext(frameNode);
 
 				for (var j = 0; j < totalBoneCount; j += 1) {
-					if (!pClusterArray.ClusterArray_HasItemAt(j))
+					if (!pClusterArray.HasItemAt(j))
 						continue;
 
 					var m = boneList[j].Matrix;
@@ -356,10 +356,10 @@ namespace AssetStudioFBX {
 						m[12], m[13], m[14], m[15]
 					];
 
-					pSkinContext.MeshSkinAddCluster(pClusterArray, j, array);
+					pSkinContext.AddCluster(pClusterArray, j, array);
 				}
 
-				pSkinContext.MeshAddDeformer(mesh);
+				mesh.AddDeformer(pSkinContext);
 			}
 		}
 
@@ -381,7 +381,7 @@ namespace AssetStudioFBX {
 					takeName = $"Take{i}";
 				}
 
-				pAnimContext.AnimPrepareStackAndLayer(_pContext, takeName);
+				pAnimContext.PrepareStackAndLayer(_pContext, takeName);
 
 				ExportKeyframedAnimation(rootFrame, importedAnimation, pAnimContext, filterPrecision);
 			}
@@ -399,50 +399,50 @@ namespace AssetStudioFBX {
 
 				var pNode = _frameToNode[frame];
 
-				pAnimContext.AnimLoadCurves(pNode);
+				pAnimContext.LoadCurves(pNode);
 
-				pAnimContext.AnimBeginKeyModify();
+				pAnimContext.BeginKeyModify();
 
 				foreach (var scaling in track.Scalings) {
 					var value = scaling.value;
-					pAnimContext.AnimAddScalingKey(scaling.time, value.X, value.Y, value.Z);
+					pAnimContext.AddScalingKey(scaling.time, value.X, value.Y, value.Z);
 				}
 
 				foreach (var rotation in track.Rotations) {
 					var value = rotation.value;
-					pAnimContext.AnimAddRotationKey(rotation.time, value.X, value.Y, value.Z);
+					pAnimContext.AddRotationKey(rotation.time, value.X, value.Y, value.Z);
 				}
 
 				foreach (var translation in track.Translations) {
 					var value = translation.value;
-					pAnimContext.AnimAddTranslationKey(translation.time, value.X, value.Y, value.Z);
+					pAnimContext.AddTranslationKey(translation.time, value.X, value.Y, value.Z);
 				}
 
-				pAnimContext.AnimEndKeyModify();
+				pAnimContext.EndKeyModify();
 
-				pAnimContext.AnimApplyEulerFilter(filterPrecision);
+				pAnimContext.ApplyEulerFilter(filterPrecision);
 
 				var blendShape = track.BlendShape;
 
 				if (blendShape == null)
 					continue;
 
-				var channelCount = pAnimContext.AnimGetCurrentBlendShapeChannelCount(pNode);
+				var channelCount = pAnimContext.GetCurrentBlendShapeChannelCount(pNode);
 
 				if (channelCount <= 0)
 					continue;
 
 				for (var channelIndex = 0; channelIndex < channelCount; channelIndex += 1) {
-					if (!pAnimContext.AnimIsBlendShapeChannelMatch(channelIndex, blendShape.ChannelName))
+					if (!pAnimContext.IsBlendShapeChannelMatch(channelIndex, blendShape.ChannelName))
 						continue;
 
-					pAnimContext.AnimBeginBlendShapeAnimCurve(channelIndex);
+					pAnimContext.BeginBlendShapeAnimCurve(channelIndex);
 
 					foreach (var keyframe in blendShape.Keyframes) {
-						pAnimContext.AnimAddBlendShapeKeyframe(keyframe.time, keyframe.value);
+						pAnimContext.AddBlendShapeKeyframe(keyframe.time, keyframe.value);
 					}
 
-					pAnimContext.AnimEndBlendShapeAnimCurve();
+					pAnimContext.EndBlendShapeAnimCurve();
 				}
 			}
 		}
@@ -462,31 +462,31 @@ namespace AssetStudioFBX {
 
 				var pMorphContext = new Morph();
 
-				pMorphContext.MorphInitializeContext(_pContext, pNode);
+				pMorphContext.Initialize(_pContext, pNode);
 
 				foreach (var channel in morph.Channels) {
-					pMorphContext.MorphAddBlendShapeChannel(_pContext, channel.Name);
+					pMorphContext.AddBlendShapeChannel(_pContext, channel.Name);
 
 					for (var i = 0; i < channel.KeyframeList.Count; i++) {
 						var keyframe = channel.KeyframeList[i];
 
-						pMorphContext.MorphAddBlendShapeChannelShape(_pContext, keyframe.Weight, i == 0 ? channel.Name : $"{channel.Name}_{i + 1}");
+						pMorphContext.AddBlendShapeChannelShape(_pContext, keyframe.Weight, i == 0 ? channel.Name : $"{channel.Name}_{i + 1}");
 
-						pMorphContext.MorphCopyBlendShapeControlPoints();
+						pMorphContext.CopyBlendShapeControlPoints();
 
 						foreach (var vertex in keyframe.VertexList) {
 							var v = vertex.Vertex.Vertex;
-							pMorphContext.MorphSetBlendShapeVertex(vertex.Index, v.X, v.Y, v.Z);
+							pMorphContext.SetBlendShapeVertex(vertex.Index, v.X, v.Y, v.Z);
 						}
 
 						if (!keyframe.hasNormals)
 							continue;
 
-						pMorphContext.MorphCopyBlendShapeControlPointsNormal();
+						pMorphContext.CopyBlendShapeControlPointsNormal();
 
 						foreach (var vertex in keyframe.VertexList) {
 							var v = vertex.Vertex.Normal;
-							pMorphContext.MorphSetBlendShapeVertexNormal(vertex.Index, v.X, v.Y, v.Z);
+							pMorphContext.SetBlendShapeVertexNormal(vertex.Index, v.X, v.Y, v.Z);
 						}
 					}
 				}

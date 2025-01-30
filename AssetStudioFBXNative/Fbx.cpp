@@ -2,7 +2,7 @@
 
 #include "api.h"
 
-namespace FbxNative {
+namespace FbxInterop {
 
 void Fbx::AsUtilQuaternionToEuler(float qx, float qy, float qz, float qw, float% vx, float% vy, float% vz) {
 	float rx = 0;

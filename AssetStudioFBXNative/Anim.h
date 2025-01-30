@@ -17,19 +17,19 @@ public:
 	~Anim();
 
 public:
-	void AnimPrepareStackAndLayer(Context^ context, String^ strTakeName);
-	void AnimLoadCurves(Node^ pNode);
-	void AnimBeginKeyModify();
-	void AnimEndKeyModify();
-	void AnimAddScalingKey(float time, float x, float y, float z);
-	void AnimAddRotationKey(float time, float x, float y, float z);
-	void AnimAddTranslationKey(float time, float x, float y, float z);
-	void AnimApplyEulerFilter(float filterPrecision);
-	int AnimGetCurrentBlendShapeChannelCount(Node^ pNode);
-	bool AnimIsBlendShapeChannelMatch(int channelIndex, String^ strChannelName);
-	void AnimBeginBlendShapeAnimCurve(int channelIndex);
-	void AnimEndBlendShapeAnimCurve();
-	void AnimAddBlendShapeKeyframe(float time, float value);
+	void PrepareStackAndLayer(Context^ context, String^ strTakeName);
+	void LoadCurves(Node^ pNode);
+	void BeginKeyModify();
+	void EndKeyModify();
+	void AddScalingKey(float time, float x, float y, float z);
+	void AddRotationKey(float time, float x, float y, float z);
+	void AddTranslationKey(float time, float x, float y, float z);
+	void ApplyEulerFilter(float filterPrecision);
+	int GetCurrentBlendShapeChannelCount(Node^ pNode);
+	bool IsBlendShapeChannelMatch(int channelIndex, String^ strChannelName);
+	void BeginBlendShapeAnimCurve(int channelIndex);
+	void EndBlendShapeAnimCurve();
+	void AddBlendShapeKeyframe(float time, float value);
 
 internal:
 	AsFbxAnimContext* GetPtr();

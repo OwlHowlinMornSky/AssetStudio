@@ -18,13 +18,13 @@ public:
 	~Morph();
 
 public:
-	void MorphInitializeContext(Context^ pContext, Node^ pNode);
-	void MorphAddBlendShapeChannel(Context^ pContext, String^ strChannelName);
-	void MorphAddBlendShapeChannelShape(Context^ pContext, float weight, String^ shapeName);
-	void MorphCopyBlendShapeControlPoints();
-	void MorphSetBlendShapeVertex(unsigned int index, float x, float y, float z);
-	void MorphCopyBlendShapeControlPointsNormal();
-	void MorphSetBlendShapeVertexNormal(unsigned int index, float x, float y, float z);
+	void Initialize(Context^ pContext, Node^ pNode);
+	void AddBlendShapeChannel(Context^ pContext, String^ strChannelName);
+	void AddBlendShapeChannelShape(Context^ pContext, float weight, String^ shapeName);
+	void CopyBlendShapeControlPoints();
+	void SetBlendShapeVertex(unsigned int index, float x, float y, float z);
+	void CopyBlendShapeControlPointsNormal();
+	void SetBlendShapeVertexNormal(unsigned int index, float x, float y, float z);
 
 internal:
 	AsFbxMorphContext* GetPtr();

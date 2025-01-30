@@ -23,15 +23,15 @@ ClusterArray::~ClusterArray() {
 	_this = nullptr;
 }
 
-void ClusterArray::MeshAddCluster(Cluster^ cluster) {
+void ClusterArray::AddCluster(Cluster^ cluster) {
 	AsFbxMeshAddCluster(_this, cluster != nullptr ? cluster->GetPtr() : nullptr);
 }
 
-void ClusterArray::MeshSetBoneWeight(int boneIndex, int vertexIndex, float weight) {
+void ClusterArray::SetBoneWeight(int boneIndex, int vertexIndex, float weight) {
 	AsFbxMeshSetBoneWeight(_this, boneIndex, vertexIndex, weight);
 }
 
-bool ClusterArray::ClusterArray_HasItemAt(int index) {
+bool ClusterArray::HasItemAt(int index) {
 	return FbxClusterArray_HasItemAt(_this, index);
 }
 
