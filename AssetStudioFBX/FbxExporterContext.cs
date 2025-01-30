@@ -10,19 +10,12 @@ using Texture = FbxInterop.Texture;
 using Material = FbxInterop.Material;
 
 namespace AssetStudioFBX {
-	public sealed partial class FbxExporterContext : IDisposable {
+	public sealed class FbxExporterContext() : IDisposable {
 
-		private readonly ContextS _pContext;
-		private readonly Dictionary<ImportedFrame, Node> _frameToNode;
-		private readonly List<KeyValuePair<string, Material>> _createdMaterials;
-		private readonly Dictionary<string, Texture> _createdTextures;
-
-		public FbxExporterContext() {
-			_pContext = new();
-			_frameToNode = [];
-			_createdMaterials = [];
-			_createdTextures = [];
-		}
+		private readonly ContextS _pContext = new();
+		private readonly Dictionary<ImportedFrame, Node> _frameToNode = [];
+		private readonly List<KeyValuePair<string, Material>> _createdMaterials = [];
+		private readonly Dictionary<string, Texture> _createdTextures = [];
 
 		~FbxExporterContext() {
 			Dispose(false);
@@ -355,9 +348,8 @@ namespace AssetStudioFBX {
 					var boneMatrix = stackalloc float[16];
 
 					for (var j = 0; j < totalBoneCount; j += 1) {
-						if (!pClusterArray.ClusterArray_HasItemAt(j)) {
+					if (!pClusterArray.ClusterArray_HasItemAt(j))
 							continue;
-						}
 
 						var m = boneList[j].Matrix;
 
@@ -401,7 +393,7 @@ namespace AssetStudioFBX {
 					takeName = importedAnimation.Name;
 				}
 				else {
-					takeName = $"Take{i.ToString()}";
+					takeName = $"Take{i}";
 				}
 
 				_pContext.AnimPrepareStackAndLayer(pAnimContext, takeName);
@@ -412,15 +404,13 @@ namespace AssetStudioFBX {
 
 		private void ExportKeyframedAnimation(ImportedFrame rootFrame, ImportedKeyframedAnimation parser, Anim pAnimContext, float filterPrecision) {
 			foreach (var track in parser.TrackList) {
-				if (track.Path == null) {
+				if (track.Path == null)
 					continue;
-				}
 
 				var frame = rootFrame.FindFrameByPath(track.Path);
 
-				if (frame == null) {
+				if (frame == null)
 					continue;
-				}
 
 				var pNode = _frameToNode[frame];
 
@@ -449,14 +439,17 @@ namespace AssetStudioFBX {
 
 				var blendShape = track.BlendShape;
 
-				if (blendShape != null) {
+				if (blendShape == null)
+					continue;
+
 					var channelCount = pAnimContext.AnimGetCurrentBlendShapeChannelCount(pNode);
 
-					if (channelCount > 0) {
+				if (channelCount <= 0)
+					continue;
+
 						for (var channelIndex = 0; channelIndex < channelCount; channelIndex += 1) {
-							if (!pAnimContext.AnimIsBlendShapeChannelMatch(channelIndex, blendShape.ChannelName)) {
+					if (!pAnimContext.AnimIsBlendShapeChannelMatch(channelIndex, blendShape.ChannelName))
 								continue;
-							}
 
 							pAnimContext.AnimBeginBlendShapeAnimCurve(channelIndex);
 
@@ -468,8 +461,6 @@ namespace AssetStudioFBX {
 						}
 					}
 				}
-			}
-		}
 
 		internal void ExportMorphs(ImportedFrame rootFrame, List<ImportedMorph> morphList) {
 			if (morphList == null || morphList.Count == 0) {
@@ -479,9 +470,8 @@ namespace AssetStudioFBX {
 			foreach (var morph in morphList) {
 				var frame = rootFrame.FindFrameByPath(morph.Path);
 
-				if (frame == null) {
+				if (frame == null)
 					continue;
-				}
 
 				var pNode = _frameToNode[frame];
 
@@ -504,7 +494,9 @@ namespace AssetStudioFBX {
 							pMorphContext.MorphSetBlendShapeVertex(vertex.Index, v.X, v.Y, v.Z);
 						}
 
-						if (keyframe.hasNormals) {
+						if (!keyframe.hasNormals)
+							continue;
+
 							pMorphContext.MorphCopyBlendShapeControlPointsNormal();
 
 							foreach (var vertex in keyframe.VertexList) {
@@ -515,7 +507,6 @@ namespace AssetStudioFBX {
 					}
 				}
 			}
-		}
 
 	}
 }

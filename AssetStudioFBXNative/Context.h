@@ -1,16 +1,9 @@
 ﻿#pragma once
 
-#include <fbxsdk.h>
-#define OHMS_CLR_TEMPORARY
 #include "api.h"
 
 #include "Node.h"
-#include "Texture.h"
-#include "Cluster.h"
 #include "Skin.h"
-#include "Anim.h"
-#include "Mesh.h"
-#include "Material.h"
 
 using namespace System;
 

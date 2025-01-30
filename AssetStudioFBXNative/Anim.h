@@ -1,11 +1,8 @@
 ﻿#pragma once
 
-#include <fbxsdk.h>
-#define OHMS_CLR_TEMPORARY
 #include "api.h"
 
 #include "Context.h"
-#include "Node.h"
 
 using namespace System;
 

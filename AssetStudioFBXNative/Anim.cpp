@@ -1,6 +1,5 @@
 ﻿#include "Anim.h"
 
-#include "asfbx_anim_context.h"
 #include "StringConvert.h"
 
 namespace FbxInterop {

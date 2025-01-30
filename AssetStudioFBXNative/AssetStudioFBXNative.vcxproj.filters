@@ -39,9 +39,6 @@
     <ClCompile Include="Fbx.cpp">
       <Filter>CLR Files</Filter>
     </ClCompile>
-    <ClCompile Include="FbxContent.cpp">
-      <Filter>CLR Files</Filter>
-    </ClCompile>
     <ClCompile Include="Context.cpp">
       <Filter>CLR Files</Filter>
     </ClCompile>
@@ -102,9 +99,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fbx.h">
-      <Filter>CLR Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FbxContent.h">
       <Filter>CLR Files</Filter>
     </ClInclude>
     <ClInclude Include="Context.h">

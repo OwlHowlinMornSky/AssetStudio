@@ -2,24 +2,11 @@
 
 #include "dllexport.h"
 #include "bool32_t.h"
-
-namespace fbxsdk
-{
-	class FbxNode;
-	class FbxFileTexture;
-#ifndef OHMS_CLR_TEMPORARY
-	template<typename T, const int Alignment = 16>
-	class FbxArray;
-#endif
-	class FbxCluster;
-	class FbxMesh;
-	class FbxSurfacePhong;
-}
-
-struct AsFbxContext;
-struct AsFbxSkinContext;
-struct AsFbxAnimContext;
-struct AsFbxMorphContext;
+#include <fbxsdk.h>
+#include "asfbx_context.h"
+#include "asfbx_skin_context.h"
+#include "asfbx_anim_context.h"
+#include "asfbx_morph_context.h"
 
 AS_API(void) AsUtilQuaternionToEuler(float qx, float qy, float qz, float qw, float* vx, float* vy, float* vz);
 

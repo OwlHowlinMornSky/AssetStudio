@@ -1,10 +1,7 @@
 ﻿#pragma once
 
-#include <fbxsdk.h>
-#define OHMS_CLR_TEMPORARY
 #include "api.h"
 
-#include "Cluster.h"
 #include "Mesh.h"
 
 using namespace System;

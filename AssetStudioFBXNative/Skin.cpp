@@ -1,7 +1,5 @@
 ﻿#include "Skin.h"
 
-#include "asfbx_skin_context.h"
-
 namespace FbxInterop {
 
 Skin::Skin(AsFbxContext* context, FbxNode* node) {

@@ -1,11 +1,5 @@
 ﻿#include "Context.h"
 
-#include "asfbx_context.h"
-#include "asfbx_skin_context.h"
-#include "asfbx_anim_context.h"
-#include "asfbx_morph_context.h"
-#include "utils.h"
-
 #include "StringConvert.h"
 
 namespace FbxInterop {

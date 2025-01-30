@@ -219,7 +219,6 @@
     <ClCompile Include="Cluster.cpp" />
     <ClCompile Include="Context.cpp" />
     <ClCompile Include="Fbx.cpp" />
-    <ClCompile Include="FbxContent.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Morph.cpp" />
@@ -246,7 +245,6 @@
     <ClInclude Include="dllexport.h" />
     <ClInclude Include="Context.h" />
     <ClInclude Include="Fbx.h" />
-    <ClInclude Include="FbxContent.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Morph.h" />

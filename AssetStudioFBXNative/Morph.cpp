@@ -1,7 +1,5 @@
 ﻿#include "Morph.h"
 
-#include "asfbx_morph_context.h"
-
 #include "StringConvert.h"
 
 namespace FbxInterop {
