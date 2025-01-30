@@ -97,13 +97,13 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Texture2DDecoderNative.rc" />
+    <ResourceCompile Include="Texture2DDecoder.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{29356642-c46e-4144-83d8-22dc09d0d7fd}</ProjectGuid>
-    <RootNamespace>Texture2DDecoderNative</RootNamespace>
+    <RootNamespace>Texture2DDecoder</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <TargetFramework>net8.0</TargetFramework>
     <WindowsTargetPlatformMinVersion>7.0</WindowsTargetPlatformMinVersion>

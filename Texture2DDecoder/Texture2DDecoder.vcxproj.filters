@@ -118,7 +118,7 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Texture2DDecoderNative.rc">
+    <ResourceCompile Include="Texture2DDecoder.rc">
       <Filter>Resources</Filter>
     </ResourceCompile>
   </ItemGroup>
