@@ -57,7 +57,7 @@ namespace AssetStudioGUI {
 			ui_menuDebug.Visible = Debugger.IsAttached;
 
 			/// 计算窗口默认标题。
-			m_defaultGuiTitle = $"AssetStudio v1.{Application.ProductVersion}";
+			m_defaultGuiTitle = $"AssetStudio v{Application.ProductVersion}";
 			Text = m_defaultGuiTitle;
 
 			/// 将设置值应用到UI。
