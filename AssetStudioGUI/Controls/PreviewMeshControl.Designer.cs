@@ -39,7 +39,6 @@ namespace AssetStudioGUI.Controls {
 			myGlControl1.Name = "myGlControl1";
 			myGlControl1.Profile = OpenTK.Windowing.Common.ContextProfile.Core;
 			myGlControl1.VSync = false;
-			myGlControl1.Load += MyGlControl_Load;
 			myGlControl1.Paint += MyGlControl_Paint;
 			myGlControl1.MouseWheel += PreviewGL_MouseWheel;
 			myGlControl1.Resize += MyGlControl_Resize;
@@ -50,7 +49,6 @@ namespace AssetStudioGUI.Controls {
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			Controls.Add(myGlControl1);
 			Name = "PreviewMeshControl";
-			Load += PreviewGL_Load;
 			KeyDown += PreviewGL_KeyDown;
 			MouseDown += PreviewGL_MouseDown;
 			MouseMove += PreviewGL_MouseMove;

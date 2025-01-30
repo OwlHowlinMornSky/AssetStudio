@@ -4,11 +4,10 @@ using System.Windows.Forms;
 using OpenTK;
 using OpenTK.WinForms;
 using OpenTK.Graphics.OpenGL;
-using AssetStudio;
 using Vector3 = OpenTK.Mathematics.Vector3;
 using Vector4 = OpenTK.Mathematics.Vector4;
 using Matrix4 = OpenTK.Mathematics.Matrix4;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using AssetStudio;
 
 namespace AssetStudioGUI.Controls {
 
@@ -29,6 +28,9 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		public void Preview(Mesh mesh) {
+			OpenTK_Init();
+			GL_Init();
+
 			#region Vertices
 			if (mesh.m_Vertices == null || mesh.m_Vertices.Length == 0) {
 				//StatusStripUpdate("Mesh can't be previewed.");
@@ -154,10 +156,6 @@ namespace AssetStudioGUI.Controls {
 			GL_InitMatrices();
 		}
 
-		private void PreviewGL_Load(object sender, EventArgs e) {
-			GL_Init();
-		}
-
 		private void PreviewGL_MouseWheel(object sender, MouseEventArgs e) {
 			if (myGlControl1.Visible) {
 				Vector4 front = new(0, 0, -1, 0);
@@ -241,12 +239,8 @@ namespace AssetStudioGUI.Controls {
 			}
 		}
 
-		private void MyGlControl_Load(object sender, EventArgs e) {
-			OpenTK_Init();
-		}
-
 		private void MyGlControl_Resize(object sender, EventArgs e) {
-			GL_ChangeSize(myGlControl1.Size);
+			GL_ChangeSize(myGlControl1.ClientSize);
 			myGlControl1.Invalidate();
 		}
 
@@ -255,6 +249,8 @@ namespace AssetStudioGUI.Controls {
 				return;
 
 			myGlControl1.MakeCurrent();
+
+			GL.Viewport(0, 0, myGlControl1.ClientSize.Width, myGlControl1.ClientSize.Height);
 
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 			GL.Enable(EnableCap.DepthTest);
@@ -495,7 +491,8 @@ namespace AssetStudioGUI.Controls {
 			if (myGlControl1.IsDesignMode)
 				return;
 
-			GL.DeleteVertexArray(m_vao);
+			if (m_vao != 0)
+				GL.DeleteVertexArray(m_vao);
 			GL.GenVertexArrays(1, out m_vao);
 			GL.BindVertexArray(m_vao);
 			GL_CreateVBO(out _, m_vertexData, m_pgNormal.AttribVtxPos);
@@ -564,7 +561,6 @@ namespace AssetStudioGUI.Controls {
 			if (myGlControl1.IsDesignMode)
 				return;
 
-			GL.Viewport(0, 0, size.Width, size.Height);
 			GL_UpdateProjMatrix(size);
 		}
 
@@ -594,7 +590,6 @@ namespace AssetStudioGUI.Controls {
 			}
 			Matrix4.CreatePerspectiveFieldOfView(m_cameraFOV, k, 0.25f, 256.0f, out m_projMatrixData);
 		}
-
 	}
 
 	public class MyGLControl : GLControl {

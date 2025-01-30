@@ -12,11 +12,6 @@ namespace AssetStudioGUI {
 			InitializeComponent();
 		}
 
-		internal PreviewForm(AssetItem assetItem) {
-			InitializeComponent();
-			Preview(assetItem);
-		}
-
 		internal void Preview(AssetItem assetItem) {
 			if (assetItem == null)
 				return;
@@ -75,8 +70,10 @@ namespace AssetStudioGUI {
 				}
 				case Mesh m_Mesh: {
 					var prev = new PreviewMeshControl();
+					//control = prev;
+					prev.Dock = DockStyle.Fill;
+					tabPage_Preview.Controls.Add(prev);
 					prev.Preview(m_Mesh);
-					control = prev;
 					break;
 				}
 				case VideoClip _:
@@ -110,8 +107,10 @@ namespace AssetStudioGUI {
 					ui_tabRight_page0_assetInfoLabel.Text = null;
 					ui_tabRight_page0_assetInfoLabel.Visible = false;
 				}*/
-				control.Dock = DockStyle.Fill;
-				tabPage_Preview.Controls.Add(control);
+				if (control != null) {
+					control.Dock = DockStyle.Fill;
+					tabPage_Preview.Controls.Add(control);
+				}
 			}
 			catch (Exception e) {
 				//MessageBox.Show($"Preview {assetItem.Type}:{assetItem.Text} error\r\n{e.Message}\r\n{e.StackTrace}");
@@ -121,8 +120,11 @@ namespace AssetStudioGUI {
 					);
 			}
 
-			ui_tabRight_page1_dumpTextBox.Text = StudioCore.m_studio.DumpAsset(assetItem.Asset);
-			ui_tabRight_page2_dumpJsonTextBox.Text = StudioCore.m_studio.DumpAssetJson(assetItem.Asset);
+			string xmlDump = StudioCore.m_studio.DumpAsset(assetItem.Asset);
+			string jsonDump = StudioCore.m_studio.DumpAssetJson(assetItem.Asset);
+
+			ui_tabRight_page1_dumpTextBox.Text = xmlDump.Length < ui_tabRight_page1_dumpTextBox.MaxLength ? xmlDump : "[Dump is too long to show. Please try export the dump.]";
+			ui_tabRight_page2_dumpJsonTextBox.Text = jsonDump.Length < ui_tabRight_page2_dumpJsonTextBox.MaxLength ? jsonDump : "[Dump is too long to show. Please try export the dump.]";
 		}
 
 		private void PreviewForm_FormClosing(object sender, FormClosingEventArgs e) {

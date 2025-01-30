@@ -953,7 +953,7 @@ namespace AssetStudioGUI {
 		private void Ui_tabLeft_page1_listView_MouseDoubleClick(object sender, MouseEventArgs e) {
 			if (lastSelectedItem != null) {
 				SuspendLayout();
-				var previewForm = new PreviewForm(lastSelectedItem) {
+				var previewForm = new PreviewForm() {
 					MdiParent = this,
 					WindowState = ActiveMdiChild == null ? FormWindowState.Maximized : FormWindowState.Normal
 				};
@@ -961,7 +961,7 @@ namespace AssetStudioGUI {
 					ActiveMdiChild.WindowState = FormWindowState.Normal;
 				}
 				previewForm.Show();
-				//LayoutMdi(MdiLayout.TileHorizontal);
+				previewForm.Preview(lastSelectedItem);
 				ResumeLayout(true);
 			}
 		}
