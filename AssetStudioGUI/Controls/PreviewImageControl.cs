@@ -110,10 +110,7 @@ namespace AssetStudioGUI.Controls {
 
 		private void Preview(DirectBitmap img) {
 			pictureBox1.Image = img.Bitmap;
-			/*if (m_imageTexture.Width > ui_tabRight_page0.Width || m_imageTexture.Height > ui_tabRight_page0.Height)
-				ui_tabRight_page0.BackgroundImageLayout = ImageLayout.Zoom;
-			else
-				ui_tabRight_page0.BackgroundImageLayout = ImageLayout.Center;*/
+			pictureBox1.ClientSize = new System.Drawing.Size(img.Width, img.Height);
 			//SwitchPreviewPage(PreviewType.None);
 		}
 
@@ -142,6 +139,12 @@ namespace AssetStudioGUI.Controls {
 					Preview(m_image);
 				}
 			}*/
+		}
+
+		private void PreviewImageControl_ClientSizeChanged(object sender, EventArgs e) {
+			var sz = ClientSize - pictureBox1.Size;
+			sz /= 2;
+			pictureBox1.Location = (System.Drawing.Point)sz;
 		}
 	}
 }

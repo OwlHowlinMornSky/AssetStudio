@@ -30,10 +30,10 @@
 			// 
 			// pictureBox1
 			// 
-			pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
 			pictureBox1.Location = new System.Drawing.Point(0, 0);
 			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new System.Drawing.Size(531, 451);
+			pictureBox1.Size = new System.Drawing.Size(120, 90);
+			pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
 			// 
@@ -42,18 +42,19 @@
 			label1.AutoSize = true;
 			label1.Location = new System.Drawing.Point(3, 0);
 			label1.Name = "label1";
-			label1.Size = new System.Drawing.Size(43, 17);
+			label1.Size = new System.Drawing.Size(20, 17);
 			label1.TabIndex = 1;
-			label1.Text = "label1";
+			label1.Text = "   ";
 			// 
-			// PreviewImage
+			// PreviewImageControl
 			// 
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			Controls.Add(label1);
 			Controls.Add(pictureBox1);
-			Name = "PreviewImage";
-			Size = new System.Drawing.Size(531, 451);
+			Name = "PreviewImageControl";
+			Size = new System.Drawing.Size(120, 90);
+			ClientSizeChanged += PreviewImageControl_ClientSizeChanged;
 			KeyDown += PreviewImage_KeyDown;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			ResumeLayout(false);
