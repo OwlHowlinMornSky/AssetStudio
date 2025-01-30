@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.CompilerServices;
 using AssetStudio;
 using FbxInterop;
 using Node = FbxInterop.Node;

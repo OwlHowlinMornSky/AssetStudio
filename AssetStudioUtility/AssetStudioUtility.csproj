@@ -9,6 +9,7 @@
     <DebugType>embedded</DebugType>
     <PlatformTarget>x64</PlatformTarget>
 	<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
