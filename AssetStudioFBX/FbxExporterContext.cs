@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 
 namespace AssetStudio.FbxInterop {
-	internal sealed partial class FbxExporterContext : IDisposable {
+	public sealed partial class FbxExporterContext : IDisposable {
 
 		private IntPtr _pContext;
 		private readonly Dictionary<ImportedFrame, IntPtr> _frameToNode;
@@ -13,7 +13,7 @@ namespace AssetStudio.FbxInterop {
 		private readonly Dictionary<string, IntPtr> _createdTextures;
 
 		public FbxExporterContext() {
-			_pContext = AsFbxCreateContext();
+			_pContext = FbxNative.FbxContent.CreateContext();
 			_frameToNode = new Dictionary<ImportedFrame, IntPtr>();
 			_createdMaterials = new List<KeyValuePair<string, IntPtr>>();
 			_createdTextures = new Dictionary<string, IntPtr>();
@@ -36,12 +36,12 @@ namespace AssetStudio.FbxInterop {
 
 		private void Dispose(bool disposing) {
 			IsDisposed = true;
-
+			
 			_frameToNode.Clear();
 			_createdMaterials.Clear();
 			_createdTextures.Clear();
 
-			AsFbxDisposeContext(ref _pContext);
+			FbxNative.FbxContent.DisposeContext(ref _pContext);
 		}
 
 		private void EnsureNotDisposed() {
@@ -53,7 +53,7 @@ namespace AssetStudio.FbxInterop {
 		internal void Initialize(string fileName, float scaleFactor, int versionIndex, bool isAscii, bool is60Fps) {
 			EnsureNotDisposed();
 
-			var b = AsFbxInitializeContext(_pContext, fileName, scaleFactor, versionIndex, isAscii, is60Fps, out var errorMessage);
+			var b = FbxNative.FbxContent.InitializeContext(_pContext, fileName, scaleFactor, versionIndex, isAscii, is60Fps, out var errorMessage);
 
 			if (!b) {
 				var fullMessage = $"Failed to initialize FbxExporter: {errorMessage}";
@@ -71,17 +71,17 @@ namespace AssetStudio.FbxInterop {
 			var framePathList = new List<string>(framePaths);
 			var framePathArray = framePathList.ToArray();
 
-			AsFbxSetFramePaths(_pContext, framePathArray);
+			FbxNative.FbxContent.SetFramePaths(_pContext, framePathArray);
 		}
 
 		internal void ExportScene() {
 			EnsureNotDisposed();
 
-			AsFbxExportScene(_pContext);
+			FbxNative.FbxContent.ExportScene(_pContext);
 		}
 
 		internal void ExportFrame(List<ImportedMesh> meshList, List<ImportedFrame> meshFrames, ImportedFrame rootFrame) {
-			var rootNode = AsFbxGetSceneRootNode(_pContext);
+			var rootNode = FbxNative.FbxContent.GetSceneRootNode(_pContext);
 
 			Debug.Assert(rootNode != IntPtr.Zero);
 
@@ -122,16 +122,16 @@ namespace AssetStudio.FbxInterop {
 					Debug.Assert(node != IntPtr.Zero);
 
 					if (castToBone) {
-						AsFbxSetJointsNode_CastToBone(_pContext, node, boneSize);
+						FbxNative.FbxContent.SetJointsNode_CastToBone(_pContext, node, boneSize);
 					}
 					else {
 						Debug.Assert(bonePaths != null);
 
 						if (bonePaths.Contains(frame.Path)) {
-							AsFbxSetJointsNode_BoneInPath(_pContext, node, boneSize);
+							FbxNative.FbxContent.SetJointsNode_BoneInPath(_pContext, node, boneSize);
 						}
 						else {
-							AsFbxSetJointsNode_Generic(_pContext, node);
+							FbxNative.FbxContent.SetJointsNode_Generic(_pContext, node);
 						}
 					}
 				}
@@ -143,7 +143,7 @@ namespace AssetStudio.FbxInterop {
 		}
 
 		internal void PrepareMaterials(int materialCount, int textureCount) {
-			AsFbxPrepareMaterials(_pContext, materialCount, textureCount);
+			FbxNative.FbxContent.PrepareMaterials(_pContext, materialCount, textureCount);
 		}
 
 		internal void ExportMeshFromFrame(ImportedFrame rootFrame, ImportedFrame meshFrame, List<ImportedMesh> meshList, List<ImportedMaterial> materialList, List<ImportedTexture> textureList, bool exportSkins, bool exportAllUvsAsDiffuseMaps) {
@@ -162,7 +162,7 @@ namespace AssetStudio.FbxInterop {
 				return _createdTextures[texture.Name];
 			}
 
-			var pTex = AsFbxCreateTexture(_pContext, texture.Name);
+			var pTex = FbxNative.FbxContent.CreateTexture(_pContext, texture.Name);
 
 			_createdTextures.Add(texture.Name, pTex);
 
@@ -188,51 +188,51 @@ namespace AssetStudio.FbxInterop {
 
 			try {
 				if (hasBones) {
-					pClusterArray = AsFbxMeshCreateClusterArray(totalBoneCount);
+					pClusterArray = FbxNative.FbxContent.MeshCreateClusterArray(totalBoneCount);
 
 					foreach (var bone in boneList) {
 						if (bone.Path != null) {
 							var frame = rootFrame.FindFrameByPath(bone.Path);
 							var boneNode = _frameToNode[frame];
 
-							var cluster = AsFbxMeshCreateCluster(_pContext, boneNode);
+							var cluster = FbxNative.FbxContent.MeshCreateCluster(_pContext, boneNode);
 
-							AsFbxMeshAddCluster(pClusterArray, cluster);
+							FbxNative.FbxContent.MeshAddCluster(pClusterArray, cluster);
 						}
 						else {
-							AsFbxMeshAddCluster(pClusterArray, IntPtr.Zero);
+							FbxNative.FbxContent.MeshAddCluster(pClusterArray, IntPtr.Zero);
 						}
 					}
 				}
 
-				var mesh = AsFbxMeshCreateMesh(_pContext, frameNode);
+				var mesh = FbxNative.FbxContent.MeshCreateMesh(_pContext, frameNode);
 
-				AsFbxMeshInitControlPoints(mesh, importedMesh.VertexList.Count);
+				FbxNative.FbxContent.MeshInitControlPoints(mesh, importedMesh.VertexList.Count);
 
 				if (importedMesh.hasNormal) {
-					AsFbxMeshCreateElementNormal(mesh);
+					FbxNative.FbxContent.MeshCreateElementNormal(mesh);
 				}
 
 				for (int i = 0; i < importedMesh.hasUV.Length; i++) {
 					if (!importedMesh.hasUV[i]) { continue; }
 
 					if (i == 1 && !exportAllUvsAsDiffuseMaps) {
-						AsFbxMeshCreateNormalMapUV(mesh, 1);
+						FbxNative.FbxContent.MeshCreateNormalMapUV(mesh, 1);
 					}
 					else {
-						AsFbxMeshCreateDiffuseUV(mesh, i);
+						FbxNative.FbxContent.MeshCreateDiffuseUV(mesh, i);
 					}
 				}
 
 				if (importedMesh.hasTangent) {
-					AsFbxMeshCreateElementTangent(mesh);
+					FbxNative.FbxContent.MeshCreateElementTangent(mesh);
 				}
 
 				if (importedMesh.hasColor) {
-					AsFbxMeshCreateElementVertexColor(mesh);
+					FbxNative.FbxContent.MeshCreateElementVertexColor(mesh);
 				}
 
-				AsFbxMeshCreateElementMaterial(mesh);
+				FbxNative.FbxContent.MeshCreateElementMaterial(mesh);
 
 				foreach (var meshObj in importedMesh.SubmeshList) {
 					var materialIndex = 0;
@@ -257,7 +257,7 @@ namespace AssetStudio.FbxInterop {
 							_createdMaterials.Add(new KeyValuePair<string, IntPtr>(mat.Name, pMat));
 						}
 
-						materialIndex = AsFbxAddMaterialToFrame(frameNode, pMat);
+						materialIndex = FbxNative.FbxContent.AddMaterialToFrame(frameNode, pMat);
 
 						var hasTexture = false;
 
@@ -271,7 +271,7 @@ namespace AssetStudio.FbxInterop {
 								case 1:
 								case 2:
 								case 3: {
-									AsFbxLinkTexture(texture.Dest, pTexture, pMat, texture.Offset.X, texture.Offset.Y, texture.Scale.X, texture.Scale.Y);
+									FbxNative.FbxContent.LinkTexture(texture.Dest, pTexture, pMat, texture.Offset.X, texture.Offset.Y, texture.Scale.X, texture.Scale.Y);
 									hasTexture = true;
 									break;
 								}
@@ -282,7 +282,7 @@ namespace AssetStudio.FbxInterop {
 						}
 
 						if (hasTexture) {
-							AsFbxSetFrameShadingModeToTextureShading(frameNode);
+							FbxNative.FbxContent.SetFrameShadingModeToTextureShading(frameNode);
 						}
 					}
 
@@ -291,7 +291,7 @@ namespace AssetStudio.FbxInterop {
 						var index1 = face.VertexIndices[1] + meshObj.BaseVertex;
 						var index2 = face.VertexIndices[2] + meshObj.BaseVertex;
 
-						AsFbxMeshAddPolygon(mesh, materialIndex, index0, index1, index2);
+						FbxNative.FbxContent.MeshAddPolygon(mesh, materialIndex, index0, index1, index2);
 					}
 				}
 
@@ -303,28 +303,28 @@ namespace AssetStudio.FbxInterop {
 					var importedVertex = vertexList[j];
 
 					var vertex = importedVertex.Vertex;
-					AsFbxMeshSetControlPoint(mesh, j, vertex.X, vertex.Y, vertex.Z);
+					FbxNative.FbxContent.MeshSetControlPoint(mesh, j, vertex.X, vertex.Y, vertex.Z);
 
 					if (importedMesh.hasNormal) {
 						var normal = importedVertex.Normal;
-						AsFbxMeshElementNormalAdd(mesh, 0, normal.X, normal.Y, normal.Z);
+						FbxNative.FbxContent.MeshElementNormalAdd(mesh, 0, normal.X, normal.Y, normal.Z);
 					}
 
 					for (var uvIndex = 0; uvIndex < importedMesh.hasUV.Length; uvIndex += 1) {
 						if (importedMesh.hasUV[uvIndex]) {
 							var uv = importedVertex.UV[uvIndex];
-							AsFbxMeshElementUVAdd(mesh, uvIndex, uv[0], uv[1]);
+							FbxNative.FbxContent.MeshElementUVAdd(mesh, uvIndex, uv[0], uv[1]);
 						}
 					}
 
 					if (importedMesh.hasTangent) {
 						var tangent = importedVertex.Tangent;
-						AsFbxMeshElementTangentAdd(mesh, 0, tangent.X, tangent.Y, tangent.Z, tangent.W);
+						FbxNative.FbxContent.MeshElementTangentAdd(mesh, 0, tangent.X, tangent.Y, tangent.Z, tangent.W);
 					}
 
 					if (importedMesh.hasColor) {
 						var color = importedVertex.Color;
-						AsFbxMeshElementVertexColorAdd(mesh, 0, color.R, color.G, color.B, color.A);
+						FbxNative.FbxContent.MeshElementVertexColorAdd(mesh, 0, color.R, color.G, color.B, color.A);
 					}
 
 					if (hasBones && importedVertex.BoneIndices != null) {
@@ -333,7 +333,7 @@ namespace AssetStudio.FbxInterop {
 
 						for (var k = 0; k < 4; k += 1) {
 							if (boneIndices[k] < totalBoneCount && boneWeights[k] > 0) {
-								AsFbxMeshSetBoneWeight(pClusterArray, boneIndices[k], j, boneWeights[k]);
+								FbxNative.FbxContent.MeshSetBoneWeight(pClusterArray, boneIndices[k], j, boneWeights[k]);
 							}
 						}
 					}
@@ -344,13 +344,13 @@ namespace AssetStudio.FbxInterop {
 					IntPtr pSkinContext = IntPtr.Zero;
 
 					try {
-						pSkinContext = AsFbxMeshCreateSkinContext(_pContext, frameNode);
+						pSkinContext = FbxNative.FbxContent.MeshCreateSkinContext(_pContext, frameNode);
 
 						unsafe {
 							var boneMatrix = stackalloc float[16];
 
 							for (var j = 0; j < totalBoneCount; j += 1) {
-								if (!FbxClusterArray_HasItemAt(pClusterArray, j)) {
+								if (!FbxNative.FbxContent.ClusterArray_HasItemAt(pClusterArray, j)) {
 									continue;
 								}
 
@@ -358,19 +358,19 @@ namespace AssetStudio.FbxInterop {
 
 								CopyMatrix4x4(in m, boneMatrix);
 
-								AsFbxMeshSkinAddCluster(pSkinContext, pClusterArray, j, boneMatrix);
+								FbxNative.FbxContent.MeshSkinAddCluster(pSkinContext, pClusterArray, j, boneMatrix);
 							}
 						}
 
-						AsFbxMeshAddDeformer(pSkinContext, mesh);
+						FbxNative.FbxContent.MeshAddDeformer(pSkinContext, mesh);
 					}
 					finally {
-						AsFbxMeshDisposeSkinContext(ref pSkinContext);
+						FbxNative.FbxContent.MeshDisposeSkinContext(ref pSkinContext);
 					}
 				}
 			}
 			finally {
-				AsFbxMeshDisposeClusterArray(ref pClusterArray);
+				FbxNative.FbxContent.MeshDisposeClusterArray(ref pClusterArray);
 			}
 		}
 
@@ -397,7 +397,7 @@ namespace AssetStudio.FbxInterop {
 			var pAnimContext = IntPtr.Zero;
 
 			try {
-				pAnimContext = AsFbxAnimCreateContext(eulerFilter);
+				pAnimContext = FbxNative.FbxContent.AnimCreateContext(eulerFilter);
 
 				for (int i = 0; i < animationList.Count; i++) {
 					var importedAnimation = animationList[i];
@@ -410,13 +410,13 @@ namespace AssetStudio.FbxInterop {
 						takeName = $"Take{i.ToString()}";
 					}
 
-					AsFbxAnimPrepareStackAndLayer(_pContext, pAnimContext, takeName);
+					FbxNative.FbxContent.AnimPrepareStackAndLayer(_pContext, pAnimContext, takeName);
 
 					ExportKeyframedAnimation(rootFrame, importedAnimation, pAnimContext, filterPrecision);
 				}
 			}
 			finally {
-				AsFbxAnimDisposeContext(ref pAnimContext);
+				FbxNative.FbxContent.AnimDisposeContext(ref pAnimContext);
 			}
 		}
 
@@ -434,47 +434,47 @@ namespace AssetStudio.FbxInterop {
 
 				var pNode = _frameToNode[frame];
 
-				AsFbxAnimLoadCurves(pNode, pAnimContext);
+				FbxNative.FbxContent.AnimLoadCurves(pNode, pAnimContext);
 
-				AsFbxAnimBeginKeyModify(pAnimContext);
+				FbxNative.FbxContent.AnimBeginKeyModify(pAnimContext);
 
 				foreach (var scaling in track.Scalings) {
 					var value = scaling.value;
-					AsFbxAnimAddScalingKey(pAnimContext, scaling.time, value.X, value.Y, value.Z);
+					FbxNative.FbxContent.AnimAddScalingKey(pAnimContext, scaling.time, value.X, value.Y, value.Z);
 				}
 
 				foreach (var rotation in track.Rotations) {
 					var value = rotation.value;
-					AsFbxAnimAddRotationKey(pAnimContext, rotation.time, value.X, value.Y, value.Z);
+					FbxNative.FbxContent.AnimAddRotationKey(pAnimContext, rotation.time, value.X, value.Y, value.Z);
 				}
 
 				foreach (var translation in track.Translations) {
 					var value = translation.value;
-					AsFbxAnimAddTranslationKey(pAnimContext, translation.time, value.X, value.Y, value.Z);
+					FbxNative.FbxContent.AnimAddTranslationKey(pAnimContext, translation.time, value.X, value.Y, value.Z);
 				}
 
-				AsFbxAnimEndKeyModify(pAnimContext);
+				FbxNative.FbxContent.AnimEndKeyModify(pAnimContext);
 
-				AsFbxAnimApplyEulerFilter(pAnimContext, filterPrecision);
+				FbxNative.FbxContent.AnimApplyEulerFilter(pAnimContext, filterPrecision);
 
 				var blendShape = track.BlendShape;
 
 				if (blendShape != null) {
-					var channelCount = AsFbxAnimGetCurrentBlendShapeChannelCount(pAnimContext, pNode);
+					var channelCount = FbxNative.FbxContent.AnimGetCurrentBlendShapeChannelCount(pAnimContext, pNode);
 
 					if (channelCount > 0) {
 						for (var channelIndex = 0; channelIndex < channelCount; channelIndex += 1) {
-							if (!AsFbxAnimIsBlendShapeChannelMatch(pAnimContext, channelIndex, blendShape.ChannelName)) {
+							if (!FbxNative.FbxContent.AnimIsBlendShapeChannelMatch(pAnimContext, channelIndex, blendShape.ChannelName)) {
 								continue;
 							}
 
-							AsFbxAnimBeginBlendShapeAnimCurve(pAnimContext, channelIndex);
+							FbxNative.FbxContent.AnimBeginBlendShapeAnimCurve(pAnimContext, channelIndex);
 
 							foreach (var keyframe in blendShape.Keyframes) {
-								AsFbxAnimAddBlendShapeKeyframe(pAnimContext, keyframe.time, keyframe.value);
+								FbxNative.FbxContent.AnimAddBlendShapeKeyframe(pAnimContext, keyframe.time, keyframe.value);
 							}
 
-							AsFbxAnimEndBlendShapeAnimCurve(pAnimContext);
+							FbxNative.FbxContent.AnimEndBlendShapeAnimCurve(pAnimContext);
 						}
 					}
 				}
@@ -498,38 +498,38 @@ namespace AssetStudio.FbxInterop {
 				var pMorphContext = IntPtr.Zero;
 
 				try {
-					pMorphContext = AsFbxMorphCreateContext();
+					pMorphContext = FbxNative.FbxContent.MorphCreateContext();
 
-					AsFbxMorphInitializeContext(_pContext, pMorphContext, pNode);
+					FbxNative.FbxContent.MorphInitializeContext(_pContext, pMorphContext, pNode);
 
 					foreach (var channel in morph.Channels) {
-						AsFbxMorphAddBlendShapeChannel(_pContext, pMorphContext, channel.Name);
+						FbxNative.FbxContent.MorphAddBlendShapeChannel(_pContext, pMorphContext, channel.Name);
 
 						for (var i = 0; i < channel.KeyframeList.Count; i++) {
 							var keyframe = channel.KeyframeList[i];
 
-							AsFbxMorphAddBlendShapeChannelShape(_pContext, pMorphContext, keyframe.Weight, i == 0 ? channel.Name : $"{channel.Name}_{i + 1}");
+							FbxNative.FbxContent.MorphAddBlendShapeChannelShape(_pContext, pMorphContext, keyframe.Weight, i == 0 ? channel.Name : $"{channel.Name}_{i + 1}");
 
-							AsFbxMorphCopyBlendShapeControlPoints(pMorphContext);
+							FbxNative.FbxContent.MorphCopyBlendShapeControlPoints(pMorphContext);
 
 							foreach (var vertex in keyframe.VertexList) {
 								var v = vertex.Vertex.Vertex;
-								AsFbxMorphSetBlendShapeVertex(pMorphContext, vertex.Index, v.X, v.Y, v.Z);
+								FbxNative.FbxContent.MorphSetBlendShapeVertex(pMorphContext, vertex.Index, v.X, v.Y, v.Z);
 							}
 
 							if (keyframe.hasNormals) {
-								AsFbxMorphCopyBlendShapeControlPointsNormal(pMorphContext);
+								FbxNative.FbxContent.MorphCopyBlendShapeControlPointsNormal(pMorphContext);
 
 								foreach (var vertex in keyframe.VertexList) {
 									var v = vertex.Vertex.Normal;
-									AsFbxMorphSetBlendShapeVertexNormal(pMorphContext, vertex.Index, v.X, v.Y, v.Z);
+									FbxNative.FbxContent.MorphSetBlendShapeVertexNormal(pMorphContext, vertex.Index, v.X, v.Y, v.Z);
 								}
 							}
 						}
 					}
 				}
 				finally {
-					AsFbxMorphDisposeContext(ref pMorphContext);
+					FbxNative.FbxContent.MorphDisposeContext(ref pMorphContext);
 				}
 			}
 		}

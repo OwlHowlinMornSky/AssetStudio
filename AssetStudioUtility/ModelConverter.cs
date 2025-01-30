@@ -190,7 +190,7 @@ namespace AssetStudio {
 
 		private static void SetFrame(ImportedFrame frame, Vector3 t, Quaternion q, Vector3 s) {
 			frame.LocalPosition = new Vector3(-t.X, t.Y, t.Z);
-			frame.LocalRotation = Fbx.QuaternionToEuler(new Quaternion(q.X, -q.Y, -q.Z, q.W));
+			frame.LocalRotation = QuaternionToEuler(new Quaternion(q.X, -q.Y, -q.Z, q.W));
 			frame.LocalScale = s;
 		}
 
@@ -669,14 +669,14 @@ namespace AssetStudio {
 
 						for (int i = 0; i < numKeys; i++) {
 							var quat = quats[i];
-							var value = Fbx.QuaternionToEuler(new Quaternion(quat.X, -quat.Y, -quat.Z, quat.W));
+							var value = QuaternionToEuler(new Quaternion(quat.X, -quat.Y, -quat.Z, quat.W));
 							track.Rotations.Add(new ImportedKeyframe<Vector3>(times[i], value));
 						}
 					}
 					foreach (var m_RotationCurve in animationClip.m_RotationCurves) {
 						var track = iAnim.FindTrack(FixBonePath(animationClip, m_RotationCurve.path));
 						foreach (var m_Curve in m_RotationCurve.curve.m_Curve) {
-							var value = Fbx.QuaternionToEuler(new Quaternion(m_Curve.value.X, -m_Curve.value.Y, -m_Curve.value.Z, m_Curve.value.W));
+							var value = QuaternionToEuler(new Quaternion(m_Curve.value.X, -m_Curve.value.Y, -m_Curve.value.Z, m_Curve.value.W));
 							track.Rotations.Add(new ImportedKeyframe<Vector3>(m_Curve.time, value));
 						}
 					}
@@ -796,7 +796,7 @@ namespace AssetStudio {
 					)));
 					break;
 				case 2:
-					var value = Fbx.QuaternionToEuler(new Quaternion
+					var value = QuaternionToEuler(new Quaternion
 						(
 							data[curveIndex++ + offset],
 							-data[curveIndex++ + offset],
@@ -920,5 +920,16 @@ namespace AssetStudio {
 				return null;
 			}
 		}
+
+		private static Vector3 QuaternionToEuler(Quaternion q) {
+			FbxNative.Fbx.AsUtilQuaternionToEuler(q.X, q.Y, q.Z, q.W, out var x, out var y, out var z);
+			return new Vector3(x, y, z);
+		}
+
+		private static Quaternion EulerToQuaternion(Vector3 v) {
+			FbxNative.Fbx.AsUtilEulerToQuaternion(v.X, v.Y, v.Z, out var x, out var y, out var z, out var w);
+			return new Quaternion(x, y, z, w);
+		}
+
 	}
 }

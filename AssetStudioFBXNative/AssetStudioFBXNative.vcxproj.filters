@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="CLR Files">
+      <UniqueIdentifier>{10f2aeef-cbf7-4e22-b8a5-abf63c4ee713}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="utils.cpp">
@@ -32,6 +35,12 @@
     </ClCompile>
     <ClCompile Include="asfbx_morph_context.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fbx.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FbxContent.cpp">
+      <Filter>CLR Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +70,15 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fbx.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FbxContent.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExporterCore.h">
+      <Filter>CLR Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

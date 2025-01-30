@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "dllexport.h"
 #include "bool32_t.h"
@@ -7,8 +7,10 @@ namespace fbxsdk
 {
 	class FbxNode;
 	class FbxFileTexture;
+#ifndef OHMS_CLR_TEMPORARY
 	template<typename T, const int Alignment = 16>
 	class FbxArray;
+#endif
 	class FbxCluster;
 	class FbxMesh;
 	class FbxSurfacePhong;
