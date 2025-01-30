@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AssetStudio.PInvoke\AssetStudio.PInvoke.csproj" />
-    <ProjectReference Include="..\AssetStudioFBXWrapper\AssetStudioFBXWrapper.csproj" />
+    <ProjectReference Include="..\AssetStudioFBX\AssetStudioFBX.csproj" />
     <ProjectReference Include="..\AssetStudio\AssetStudio.csproj" />
     <ProjectReference Include="..\Texture2DDecoder\Texture2DDecoder.vcxproj" />
   </ItemGroup>

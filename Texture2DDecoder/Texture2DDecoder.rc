@@ -44,7 +44,7 @@ BEGIN
             VALUE "FileDescription", "Texture2DDecoderNative"
             VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "Texture2DDecoderNative.dll"
-            VALUE "LegalCopyright", "Copyright (C) Perfare 2020; Copyright (C) hozuki 2020"
+            VALUE "LegalCopyright", "Copyright (c) 2023-2025 Tyler Parret True; Copyright (C) Perfare 2020; Copyright (C) hozuki 2020"
             VALUE "OriginalFilename", "Texture2DDecoderNative.dll"
             VALUE "ProductName", "Texture2DDecoderNative"
             VALUE "ProductVersion", "1.0.0.1"

@@ -75,14 +75,14 @@
     <ClInclude Include="bool32_t.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TextureDecoder.h">
       <Filter>CLR Files</Filter>
     </ClInclude>
     <ClInclude Include="dllmain.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
