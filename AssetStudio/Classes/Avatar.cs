@@ -79,13 +79,13 @@ namespace AssetStudio {
 	}
 
 	public class SkeletonPose {
-		public xform[] m_X;
+		public Xform[] m_X;
 
 		public SkeletonPose(ObjectReader reader) {
 			int numXforms = reader.ReadInt32();
-			m_X = new xform[numXforms];
+			m_X = new Xform[numXforms];
 			for (int i = 0; i < numXforms; i++) {
-				m_X[i] = new xform(reader);
+				m_X[i] = new Xform(reader);
 			}
 		}
 	}
@@ -99,19 +99,19 @@ namespace AssetStudio {
 	}
 
 	public class Handle {
-		public xform m_X;
+		public Xform m_X;
 		public uint m_ParentHumanIndex;
 		public uint m_ID;
 
 		public Handle(ObjectReader reader) {
-			m_X = new xform(reader);
+			m_X = new Xform(reader);
 			m_ParentHumanIndex = reader.ReadUInt32();
 			m_ID = reader.ReadUInt32();
 		}
 	}
 
 	public class Collider {
-		public xform m_X;
+		public Xform m_X;
 		public uint m_Type;
 		public uint m_XMotionType;
 		public uint m_YMotionType;
@@ -122,7 +122,7 @@ namespace AssetStudio {
 		public float m_MaxLimitZ;
 
 		public Collider(ObjectReader reader) {
-			m_X = new xform(reader);
+			m_X = new Xform(reader);
 			m_Type = reader.ReadUInt32();
 			m_XMotionType = reader.ReadUInt32();
 			m_YMotionType = reader.ReadUInt32();
@@ -135,7 +135,7 @@ namespace AssetStudio {
 	}
 
 	public class Human {
-		public xform m_RootX;
+		public Xform m_RootX;
 		public Skeleton m_Skeleton;
 		public SkeletonPose m_SkeletonPose;
 		public Hand m_LeftHand;
@@ -159,7 +159,7 @@ namespace AssetStudio {
 
 		public Human(ObjectReader reader) {
 			var version = reader.version;
-			m_RootX = new xform(reader);
+			m_RootX = new Xform(reader);
 			m_Skeleton = new Skeleton(reader);
 			m_SkeletonPose = new SkeletonPose(reader);
 			m_LeftHand = new Hand(reader);
@@ -216,7 +216,7 @@ namespace AssetStudio {
 		public int[] m_HumanSkeletonIndexArray;
 		public int[] m_HumanSkeletonReverseIndexArray;
 		public int m_RootMotionBoneIndex;
-		public xform m_RootMotionBoneX;
+		public Xform m_RootMotionBoneX;
 		public Skeleton m_RootMotionSkeleton;
 		public SkeletonPose m_RootMotionSkeletonPose;
 		public int[] m_RootMotionSkeletonIndexArray;
@@ -243,7 +243,7 @@ namespace AssetStudio {
 			}
 
 			m_RootMotionBoneIndex = reader.ReadInt32();
-			m_RootMotionBoneX = new xform(reader);
+			m_RootMotionBoneX = new Xform(reader);
 
 			if (version[0] > 4 || (version[0] == 4 && version[1] >= 3)) //4.3 and up
 			{
