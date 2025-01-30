@@ -5,8 +5,6 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetStudio", "AssetStudio\AssetStudio.csproj", "{422FEC21-EF60-4F29-AA56-95DFDA23C913}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetStudio.PInvoke", "AssetStudio.PInvoke\AssetStudio.PInvoke.csproj", "{0B2BE613-3049-4021-85D1-21C325F729F4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetStudioGUI", "AssetStudioGUI\AssetStudioGUI.csproj", "{29EAD018-1C67-497A-AB8E-727D595AD756}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetStudioUtility", "AssetStudioUtility\AssetStudioUtility.csproj", "{65EAFFA3-01D3-4EF5-B092-8B4647E9A1FF}"
@@ -39,18 +37,6 @@ Global
 		{422FEC21-EF60-4F29-AA56-95DFDA23C913}.Release|x64.Build.0 = Release|Any CPU
 		{422FEC21-EF60-4F29-AA56-95DFDA23C913}.Release|x86.ActiveCfg = Release|Any CPU
 		{422FEC21-EF60-4F29-AA56-95DFDA23C913}.Release|x86.Build.0 = Release|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Debug|x64.Build.0 = Debug|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Debug|x86.Build.0 = Debug|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Release|x64.ActiveCfg = Release|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Release|x64.Build.0 = Release|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Release|x86.ActiveCfg = Release|Any CPU
-		{0B2BE613-3049-4021-85D1-21C325F729F4}.Release|x86.Build.0 = Release|Any CPU
 		{29EAD018-1C67-497A-AB8E-727D595AD756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{29EAD018-1C67-497A-AB8E-727D595AD756}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29EAD018-1C67-497A-AB8E-727D595AD756}.Debug|x64.ActiveCfg = Debug|Any CPU

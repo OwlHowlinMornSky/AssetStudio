@@ -1,10 +1,9 @@
-/* ========================================================================================== */
+﻿/* ========================================================================================== */
 /*                                                                                            */
 /* FMOD Studio - C# Wrapper . Copyright (c), Firelight Technologies Pty, Ltd. 2004-2016.      */
 /*                                                                                            */
 /* ========================================================================================== */
 
-using AssetStudio.PInvoke;
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -1542,7 +1541,7 @@ namespace FMOD {
 	public class Factory {
 
 		static Factory() {
-			DllLoader.PreloadDll(VERSION.dll);
+			AssetStudioUtility.DllLoader.PreloadDll(VERSION.dll);
 		}
 
 		public static RESULT System_Create(out System system) {

@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AssetStudio.PInvoke\AssetStudio.PInvoke.csproj" />
     <ProjectReference Include="..\AssetStudioFBXNative\AssetStudioFBXNative.vcxproj" />
     <ProjectReference Include="..\AssetStudioFBX\AssetStudioFBX.csproj" />
     <ProjectReference Include="..\AssetStudio\AssetStudio.csproj" />
