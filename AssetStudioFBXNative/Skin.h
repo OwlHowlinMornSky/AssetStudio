@@ -17,7 +17,7 @@ public:
 	~Skin();
 
 public:
-	void AddCluster(ClusterArray^ pClusterArray, int index, array<float>^ pBoneMatrix);
+	void AddCluster(ClusterArray^ clusterArray, int index, array<float>^ boneMatrix);
 
 internal:
 	AsFbxSkinContext* GetPtr();

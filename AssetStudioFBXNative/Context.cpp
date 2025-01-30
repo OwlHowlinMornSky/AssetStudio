@@ -59,13 +59,13 @@ Node^ Context::GetSceneRootNode() {
 }
 
 Node^ Context::ExportSingleFrame(
-	Node^ parentNode, String^ strFramePath, String^ strFrameName,
+	Node^ parentNode, String^ framePath, String^ frameName,
 	float localPositionX, float localPositionY, float localPositionZ,
 	float localRotationX, float localRotationY, float localRotationZ,
 	float localScaleX, float localScaleY, float localScaleZ
 ) {
-	std::string cstr0 = StringToUnmanagedUtf8(strFramePath);
-	std::string cstr1 = StringToUnmanagedUtf8(strFrameName);
+	std::string cstr0 = StringToUnmanagedUtf8(framePath);
+	std::string cstr1 = StringToUnmanagedUtf8(frameName);
 	return gcnew Node(AsFbxExportSingleFrame(
 		_this, parentNode->GetPtr(),
 		cstr0.c_str(), cstr1.c_str(),
@@ -91,8 +91,8 @@ void Context::PrepareMaterials(int materialCount, int textureCount) {
 	return AsFbxPrepareMaterials(_this, materialCount, textureCount);
 }
 
-Texture^ Context::CreateTexture(String^ strMatTexName) {
-	std::string cstr = StringToUnmanagedUtf8(strMatTexName);
+Texture^ Context::CreateTexture(String^ matTexName) {
+	std::string cstr = StringToUnmanagedUtf8(matTexName);
 	return gcnew Texture(AsFbxCreateTexture(_this, cstr.c_str()));
 }
 
@@ -104,8 +104,16 @@ Mesh^ Context::CreateMesh(Node^ frameNode) {
 	return gcnew Mesh(AsFbxMeshCreateMesh(_this, frameNode->GetPtr()));
 }
 
-Material^ Context::CreateMaterial(String^ pMatName, float diffuseR, float diffuseG, float diffuseB, float ambientR, float ambientG, float ambientB, float emissiveR, float emissiveG, float emissiveB, float specularR, float specularG, float specularB, float reflectR, float reflectG, float reflectB, float shininess, float transparency) {
-	std::string cstr = StringToUnmanagedUtf8(pMatName);
+Material^ Context::CreateMaterial(
+	String^ matName,
+	float diffuseR, float diffuseG, float diffuseB,
+	float ambientR, float ambientG, float ambientB,
+	float emissiveR, float emissiveG, float emissiveB,
+	float specularR, float specularG, float specularB,
+	float reflectR, float reflectG, float reflectB,
+	float shininess, float transparency
+) {
+	std::string cstr = StringToUnmanagedUtf8(matName);
 	return gcnew Material(AsFbxCreateMaterial(
 		_this, cstr.c_str(),
 		diffuseR, diffuseG, diffuseB,
@@ -122,7 +130,7 @@ Skin^ Context::CreateSkinContext(Node^ frameNode) {
 }
 
 AsFbxContext* Context::GetPtr() {
-    return _this;
+	return _this;
 }
 
 }

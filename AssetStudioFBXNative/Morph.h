@@ -18,9 +18,9 @@ public:
 	~Morph();
 
 public:
-	void Initialize(Context^ pContext, Node^ pNode);
-	void AddBlendShapeChannel(Context^ pContext, String^ strChannelName);
-	void AddBlendShapeChannelShape(Context^ pContext, float weight, String^ shapeName);
+	void Initialize(Context^ context, Node^ node);
+	void AddBlendShapeChannel(Context^ context, String^ channelName);
+	void AddBlendShapeChannelShape(Context^ context, float weight, String^ shapeName);
 	void CopyBlendShapeControlPoints();
 	void SetBlendShapeVertex(unsigned int index, float x, float y, float z);
 	void CopyBlendShapeControlPointsNormal();

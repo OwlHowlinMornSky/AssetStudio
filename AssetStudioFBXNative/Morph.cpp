@@ -13,18 +13,18 @@ Morph::~Morph() {
 	_this = nullptr;
 }
 
-void Morph::Initialize(Context^ pContext, Node^ pNode) {
-	AsFbxMorphInitializeContext(pContext->GetPtr(), _this, pNode->GetPtr());
+void Morph::Initialize(Context^ context, Node^ node) {
+	AsFbxMorphInitializeContext(context->GetPtr(), _this, node->GetPtr());
 }
 
-void Morph::AddBlendShapeChannel(Context^ pContext, String^ strChannelName) {
-	std::string cstr = StringToUnmanagedUtf8(strChannelName);
-	AsFbxMorphAddBlendShapeChannel(pContext->GetPtr(), _this, cstr.c_str());
+void Morph::AddBlendShapeChannel(Context^ context, String^ channelName) {
+	std::string cstr = StringToUnmanagedUtf8(channelName);
+	AsFbxMorphAddBlendShapeChannel(context->GetPtr(), _this, cstr.c_str());
 }
 
-void Morph::AddBlendShapeChannelShape(Context^ pContext, float weight, String^ shapeName) {
+void Morph::AddBlendShapeChannelShape(Context^ context, float weight, String^ shapeName) {
 	std::string cstr = StringToUnmanagedUtf8(shapeName);
-	AsFbxMorphAddBlendShapeChannelShape(pContext->GetPtr(), _this, weight, cstr.c_str());
+	AsFbxMorphAddBlendShapeChannelShape(context->GetPtr(), _this, weight, cstr.c_str());
 }
 
 void Morph::CopyBlendShapeControlPoints() {

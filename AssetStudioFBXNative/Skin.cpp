@@ -11,13 +11,13 @@ Skin::~Skin() {
 	_this = nullptr;
 }
 
-void Skin::AddCluster(ClusterArray^ pClusterArray, int index, array<float>^ pBoneMatrix) {
-	pin_ptr<float> mat = &pBoneMatrix[0];
-	AsFbxMeshSkinAddCluster(_this, pClusterArray->GetPtr(), index, mat);
+void Skin::AddCluster(ClusterArray^ clusterArray, int index, array<float>^ boneMatrix) {
+	pin_ptr<float> mat = &boneMatrix[0];
+	AsFbxMeshSkinAddCluster(_this, clusterArray->GetPtr(), index, mat);
 }
 
 AsFbxSkinContext* Skin::GetPtr() {
-    return _this;
+	return _this;
 }
 
 }

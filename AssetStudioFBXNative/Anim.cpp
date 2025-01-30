@@ -13,13 +13,13 @@ Anim::~Anim() {
 	_this = nullptr;
 }
 
-void Anim::PrepareStackAndLayer(Context^ context, String^ strTakeName) {
-	std::string cstr = StringToUnmanagedUtf8(strTakeName);
+void Anim::PrepareStackAndLayer(Context^ context, String^ stackName) {
+	std::string cstr = StringToUnmanagedUtf8(stackName);
 	AsFbxAnimPrepareStackAndLayer(context->GetPtr(), _this, cstr.c_str());
 }
 
-void Anim::LoadCurves(Node^ pNode) {
-	AsFbxAnimLoadCurves(pNode->GetPtr(), _this);
+void Anim::LoadCurves(Node^ node) {
+	AsFbxAnimLoadCurves(node->GetPtr(), _this);
 }
 
 void Anim::BeginKeyModify() {
@@ -31,40 +31,28 @@ void Anim::EndKeyModify() {
 }
 
 void Anim::AddScalingKey(float time, float x, float y, float z) {
-	AsFbxAnimAddScalingKey(
-		_this,
-		time, x, y, z
-	);
+	AsFbxAnimAddScalingKey(_this, time, x, y, z);
 }
 
 void Anim::AddRotationKey(float time, float x, float y, float z) {
-	AsFbxAnimAddRotationKey(
-		_this,
-		time, x, y, z
-	);
+	AsFbxAnimAddRotationKey(_this, time, x, y, z);
 }
 
 void Anim::AddTranslationKey(float time, float x, float y, float z) {
-	AsFbxAnimAddTranslationKey(
-		_this,
-		time, x, y, z
-	);
+	AsFbxAnimAddTranslationKey(_this, time, x, y, z);
 }
 
 void Anim::ApplyEulerFilter(float filterPrecision) {
 	AsFbxAnimApplyEulerFilter(_this, filterPrecision);
 }
 
-int Anim::GetCurrentBlendShapeChannelCount(Node^ pNode) {
-	return AsFbxAnimGetCurrentBlendShapeChannelCount(_this, pNode->GetPtr());
+int Anim::GetCurrentBlendShapeChannelCount(Node^ node) {
+	return AsFbxAnimGetCurrentBlendShapeChannelCount(_this, node->GetPtr());
 }
 
-bool Anim::IsBlendShapeChannelMatch(int channelIndex, String^ strChannelName) {
-	std::string cstr = StringToUnmanagedUtf8(strChannelName);
-	return AsFbxAnimIsBlendShapeChannelMatch(
-		_this,
-		channelIndex, cstr.c_str()
-	);
+bool Anim::IsBlendShapeChannelMatch(int channelIndex, String^ channelName) {
+	std::string cstr = StringToUnmanagedUtf8(channelName);
+	return AsFbxAnimIsBlendShapeChannelMatch(_this, channelIndex, cstr.c_str());
 }
 
 void Anim::BeginBlendShapeAnimCurve(int channelIndex) {

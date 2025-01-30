@@ -31,7 +31,7 @@ public:
 	Node^ GetSceneRootNode();
 
 	Node^ ExportSingleFrame(
-		Node^ parentNode, String^ strFramePath, String^ strFrameName,
+		Node^ parentNode, String^ framePath, String^ frameName,
 		float localPositionX, float localPositionY, float localPositionZ,
 		float localRotationX, float localRotationY, float localRotationZ,
 		float localScaleX, float localScaleY, float localScaleZ
@@ -45,14 +45,14 @@ public:
 
 	void PrepareMaterials(int materialCount, int textureCount);
 
-	Texture^ CreateTexture(String^ strMatTexName);
+	Texture^ CreateTexture(String^ matTexName);
 
 	Cluster^ CreateCluster(Node^ boneNode);
 
 	Mesh^ CreateMesh(Node^ frameNode);
 
 	Material^ CreateMaterial(
-		String^ pMatName,
+		String^ matName,
 		float diffuseR, float diffuseG, float diffuseB,
 		float ambientR, float ambientG, float ambientB,
 		float emissiveR, float emissiveG, float emissiveB,

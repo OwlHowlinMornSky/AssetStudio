@@ -11,10 +11,10 @@ using Material = FbxInterop.Material;
 namespace AssetStudioFBX {
 	public sealed class FbxExporterContext() : IDisposable {
 
-		private readonly ContextS _pContext = new();
-		private readonly Dictionary<ImportedFrame, Node> _frameToNode = [];
-		private readonly List<KeyValuePair<string, Material>> _createdMaterials = [];
-		private readonly Dictionary<string, Texture> _createdTextures = [];
+		private readonly ContextS m_context = new();
+		private readonly Dictionary<ImportedFrame, Node> m_frameToNode = [];
+		private readonly List<KeyValuePair<string, Material>> m_createdMaterials = [];
+		private readonly Dictionary<string, Texture> m_createdTextures = [];
 
 		~FbxExporterContext() {
 			Dispose(false);
@@ -31,11 +31,11 @@ namespace AssetStudioFBX {
 				return;
 			_disposed = true;
 
-			_frameToNode.Clear();
-			_createdMaterials.Clear();
-			_createdTextures.Clear();
+			m_frameToNode.Clear();
+			m_createdMaterials.Clear();
+			m_createdTextures.Clear();
 
-			_pContext.Dispose();
+			m_context.Dispose();
 		}
 
 		private void EnsureNotDisposed() {
@@ -45,9 +45,9 @@ namespace AssetStudioFBX {
 		internal void Initialize(string fileName, float scaleFactor, int versionIndex, bool isAscii, bool is60Fps) {
 			EnsureNotDisposed();
 
-			var b = _pContext.Initialize(fileName, scaleFactor, versionIndex, isAscii, is60Fps, out var errorMessage);
+			var res = m_context.Initialize(fileName, scaleFactor, versionIndex, isAscii, is60Fps, out var errorMessage);
 
-			if (!b) {
+			if (!res) {
 				var fullMessage = $"Failed to initialize FbxExporter: {errorMessage}";
 				throw new ApplicationException(fullMessage);
 			}
@@ -60,17 +60,17 @@ namespace AssetStudioFBX {
 				return;
 			}
 
-			_pContext.SetFramePaths([.. framePaths]);
+			m_context.SetFramePaths([.. framePaths]);
 		}
 
 		internal void ExportScene() {
 			EnsureNotDisposed();
 
-			_pContext.ExportScene();
+			m_context.ExportScene();
 		}
 
 		internal void ExportFrame(List<ImportedMesh> meshList, List<ImportedFrame> meshFrames, ImportedFrame rootFrame) {
-			var rootNode = _pContext.GetSceneRootNode();
+			var rootNode = m_context.GetSceneRootNode();
 
 #warning the way of checking here is not good.
 			Debug.Assert(rootNode.IsValid());
@@ -85,13 +85,13 @@ namespace AssetStudioFBX {
 				var parentNode = nodeStack.Pop();
 				var frame = frameStack.Pop();
 
-				var childNode = _pContext.ExportSingleFrame(parentNode, frame.Path, frame.Name, frame.LocalPosition, frame.LocalRotation, frame.LocalScale);
+				var childNode = m_context.ExportSingleFrame(parentNode, frame.Path, frame.Name, frame.LocalPosition, frame.LocalRotation, frame.LocalScale);
 
 				if (meshList != null && ImportedHelpers.FindMesh(frame.Path, meshList) != null) {
 					meshFrames.Add(frame);
 				}
 
-				_frameToNode.Add(frame, childNode);
+				m_frameToNode.Add(frame, childNode);
 
 				for (var i = frame.Count - 1; i >= 0; i -= 1) {
 					nodeStack.Push(childNode);
@@ -108,21 +108,21 @@ namespace AssetStudioFBX {
 			while (frameStack.Count > 0) {
 				var frame = frameStack.Pop();
 
-				if (_frameToNode.TryGetValue(frame, out var node)) {
+				if (m_frameToNode.TryGetValue(frame, out var node)) {
 #warning the way of checking here is not good.
 					Debug.Assert(node.IsValid());
 
 					if (castToBone) {
-						_pContext.SetJointsNode_CastToBone(node, boneSize);
+						m_context.SetJointsNode_CastToBone(node, boneSize);
 					}
 					else {
 						Debug.Assert(bonePaths != null);
 
 						if (bonePaths.Contains(frame.Path)) {
-							_pContext.SetJointsNode_BoneInPath(node, boneSize);
+							m_context.SetJointsNode_BoneInPath(node, boneSize);
 						}
 						else {
-							_pContext.SetJointsNode_Generic(node);
+							m_context.SetJointsNode_Generic(node);
 						}
 					}
 				}
@@ -134,36 +134,36 @@ namespace AssetStudioFBX {
 		}
 
 		internal void PrepareMaterials(int materialCount, int textureCount) {
-			_pContext.PrepareMaterials(materialCount, textureCount);
+			m_context.PrepareMaterials(materialCount, textureCount);
 		}
 
 		internal void ExportMeshFromFrame(ImportedFrame rootFrame, ImportedFrame meshFrame, List<ImportedMesh> meshList, List<ImportedMaterial> materialList, List<ImportedTexture> textureList, bool exportSkins, bool exportAllUvsAsDiffuseMaps) {
-			var meshNode = _frameToNode[meshFrame];
+			var meshNode = m_frameToNode[meshFrame];
 			var mesh = ImportedHelpers.FindMesh(meshFrame.Path, meshList);
 
 			ExportMesh(rootFrame, materialList, textureList, meshNode, mesh, exportSkins, exportAllUvsAsDiffuseMaps);
 		}
 
-		private Texture ExportTexture(ImportedTexture texture) {
-			if (texture == null) {
+		private Texture ExportTexture(ImportedTexture imTexture) {
+			if (imTexture == null) {
 				return null;
 			}
 
-			if (_createdTextures.TryGetValue(texture.Name, out Texture value)) {
+			if (m_createdTextures.TryGetValue(imTexture.Name, out Texture value)) {
 				return value;
 			}
 
-			var pTex = _pContext.CreateTexture(texture.Name);
+			var texture = m_context.CreateTexture(imTexture.Name);
 
-			_createdTextures.Add(texture.Name, pTex);
+			m_createdTextures.Add(imTexture.Name, texture);
 
-			var file = new FileInfo(texture.Name);
+			var file = new FileInfo(imTexture.Name);
 
 			using (var writer = new BinaryWriter(file.Create())) {
-				writer.Write(texture.Data);
+				writer.Write(imTexture.Data);
 			}
 
-			return pTex;
+			return texture;
 		}
 
 		private void ExportMesh(
@@ -183,27 +183,27 @@ namespace AssetStudioFBX {
 				hasBones = true;
 			}
 
-			ClusterArray pClusterArray = null;
+			ClusterArray clusterArray = null;
 
 			if (hasBones) {
-				pClusterArray = new(totalBoneCount);
+				clusterArray = new(totalBoneCount);
 
 				foreach (var bone in boneList) {
 					if (bone.Path != null) {
 						var frame = rootFrame.FindFrameByPath(bone.Path);
-						var boneNode = _frameToNode[frame];
+						var boneNode = m_frameToNode[frame];
 
-						var cluster = _pContext.CreateCluster(boneNode);
+						var cluster = m_context.CreateCluster(boneNode);
 
-						pClusterArray.AddCluster(cluster);
+						clusterArray.AddCluster(cluster);
 					}
 					else {
-						pClusterArray.AddCluster(null);
+						clusterArray.AddCluster(null);
 					}
 				}
 			}
 
-			var mesh = _pContext.CreateMesh(frameNode);
+			var mesh = m_context.CreateMesh(frameNode);
 
 			mesh.InitControlPoints(importedMesh.VertexList.Count);
 
@@ -236,42 +236,42 @@ namespace AssetStudioFBX {
 
 			foreach (var meshObj in importedMesh.SubmeshList) {
 				var materialIndex = 0;
-				var mat = ImportedHelpers.FindMaterial(meshObj.Material, materialList);
+				var imMat = ImportedHelpers.FindMaterial(meshObj.Material, materialList);
 
-				if (mat != null) {
-					var foundMat = _createdMaterials.FindIndex(kv => kv.Key == mat.Name);
-					Material pMat;
+				if (imMat != null) {
+					var foundMat = m_createdMaterials.FindIndex(kv => kv.Key == imMat.Name);
+					Material mat;
 
 					if (foundMat >= 0) {
-						pMat = _createdMaterials[foundMat].Value;
+						mat = m_createdMaterials[foundMat].Value;
 					}
 					else {
-						var diffuse = mat.Diffuse;
-						var ambient = mat.Ambient;
-						var emissive = mat.Emissive;
-						var specular = mat.Specular;
-						var reflection = mat.Reflection;
+						var diffuse = imMat.Diffuse;
+						var ambient = imMat.Ambient;
+						var emissive = imMat.Emissive;
+						var specular = imMat.Specular;
+						var reflection = imMat.Reflection;
 
-						pMat = _pContext.CreateMaterial(mat.Name, in diffuse, in ambient, in emissive, in specular, in reflection, mat.Shininess, mat.Transparency);
+						mat = m_context.CreateMaterial(imMat.Name, in diffuse, in ambient, in emissive, in specular, in reflection, imMat.Shininess, imMat.Transparency);
 
-						_createdMaterials.Add(KeyValuePair.Create(mat.Name, pMat));
+						m_createdMaterials.Add(KeyValuePair.Create(imMat.Name, mat));
 					}
 
-					materialIndex = frameNode.AddMaterialToFrame(pMat);
+					materialIndex = frameNode.AddMaterialToFrame(mat);
 
 					var hasTexture = false;
 
-					foreach (var texture in mat.Textures) {
-						var tex = ImportedHelpers.FindTexture(texture.Name, textureList);
-						var pTexture = ExportTexture(tex);
+					foreach (var imTexture in imMat.Textures) {
+						var imTex = ImportedHelpers.FindTexture(imTexture.Name, textureList);
+						var tex = ExportTexture(imTex);
 
-						if (pTexture.IsValid()) {
-							switch (texture.Dest) {
+						if (tex.IsValid()) {
+							switch (imTexture.Dest) {
 							case 0:
 							case 1:
 							case 2:
 							case 3: {
-								pMat.LinkTexture(texture.Dest, pTexture, texture.Offset.X, texture.Offset.Y, texture.Scale.X, texture.Scale.Y);
+								mat.LinkTexture(imTexture.Dest, tex, imTexture.Offset.X, imTexture.Offset.Y, imTexture.Scale.X, imTexture.Scale.Y);
 								hasTexture = true;
 								break;
 							}
@@ -327,13 +327,13 @@ namespace AssetStudioFBX {
 					mesh.ElementAddVertexColor(0, color.R, color.G, color.B, color.A);
 				}
 
-				if (hasBones && importedVertex.BoneIndices != null && pClusterArray != null) {
+				if (hasBones && importedVertex.BoneIndices != null && clusterArray != null) {
 					var boneIndices = importedVertex.BoneIndices;
 					var boneWeights = importedVertex.Weights;
 
 					for (var k = 0; k < 4; k += 1) {
 						if (boneIndices[k] < totalBoneCount && boneWeights[k] > 0) {
-							pClusterArray.SetBoneWeight(boneIndices[k], j, boneWeights[k]);
+							clusterArray.SetBoneWeight(boneIndices[k], j, boneWeights[k]);
 						}
 					}
 				}
@@ -341,10 +341,10 @@ namespace AssetStudioFBX {
 
 
 			if (hasBones) {
-				Skin pSkinContext = _pContext.CreateSkinContext(frameNode);
+				Skin skin = m_context.CreateSkinContext(frameNode);
 
 				for (var j = 0; j < totalBoneCount; j += 1) {
-					if (!pClusterArray.HasItemAt(j))
+					if (!clusterArray.HasItemAt(j))
 						continue;
 
 					var m = boneList[j].Matrix;
@@ -356,10 +356,10 @@ namespace AssetStudioFBX {
 						m[12], m[13], m[14], m[15]
 					];
 
-					pSkinContext.AddCluster(pClusterArray, j, array);
+					skin.AddCluster(clusterArray, j, array);
 				}
 
-				mesh.AddDeformer(pSkinContext);
+				mesh.AddDeformer(skin);
 			}
 		}
 
@@ -368,7 +368,7 @@ namespace AssetStudioFBX {
 				return;
 			}
 
-			var pAnimContext = new Anim(eulerFilter);
+			var anim = new Anim(eulerFilter);
 
 			for (int i = 0; i < animationList.Count; i++) {
 				var importedAnimation = animationList[i];
@@ -381,13 +381,13 @@ namespace AssetStudioFBX {
 					takeName = $"Take{i}";
 				}
 
-				pAnimContext.PrepareStackAndLayer(_pContext, takeName);
+				anim.PrepareStackAndLayer(m_context, takeName);
 
-				ExportKeyframedAnimation(rootFrame, importedAnimation, pAnimContext, filterPrecision);
+				ExportKeyframedAnimation(rootFrame, importedAnimation, anim, filterPrecision);
 			}
 		}
 
-		private void ExportKeyframedAnimation(ImportedFrame rootFrame, ImportedKeyframedAnimation parser, Anim pAnimContext, float filterPrecision) {
+		private void ExportKeyframedAnimation(ImportedFrame rootFrame, ImportedKeyframedAnimation parser, Anim anim, float filterPrecision) {
 			foreach (var track in parser.TrackList) {
 				if (track.Path == null)
 					continue;
@@ -397,52 +397,52 @@ namespace AssetStudioFBX {
 				if (frame == null)
 					continue;
 
-				var pNode = _frameToNode[frame];
+				var node = m_frameToNode[frame];
 
-				pAnimContext.LoadCurves(pNode);
+				anim.LoadCurves(node);
 
-				pAnimContext.BeginKeyModify();
+				anim.BeginKeyModify();
 
 				foreach (var scaling in track.Scalings) {
 					var value = scaling.value;
-					pAnimContext.AddScalingKey(scaling.time, value.X, value.Y, value.Z);
+					anim.AddScalingKey(scaling.time, value.X, value.Y, value.Z);
 				}
 
 				foreach (var rotation in track.Rotations) {
 					var value = rotation.value;
-					pAnimContext.AddRotationKey(rotation.time, value.X, value.Y, value.Z);
+					anim.AddRotationKey(rotation.time, value.X, value.Y, value.Z);
 				}
 
 				foreach (var translation in track.Translations) {
 					var value = translation.value;
-					pAnimContext.AddTranslationKey(translation.time, value.X, value.Y, value.Z);
+					anim.AddTranslationKey(translation.time, value.X, value.Y, value.Z);
 				}
 
-				pAnimContext.EndKeyModify();
+				anim.EndKeyModify();
 
-				pAnimContext.ApplyEulerFilter(filterPrecision);
+				anim.ApplyEulerFilter(filterPrecision);
 
 				var blendShape = track.BlendShape;
 
 				if (blendShape == null)
 					continue;
 
-				var channelCount = pAnimContext.GetCurrentBlendShapeChannelCount(pNode);
+				var channelCount = anim.GetCurrentBlendShapeChannelCount(node);
 
 				if (channelCount <= 0)
 					continue;
 
 				for (var channelIndex = 0; channelIndex < channelCount; channelIndex += 1) {
-					if (!pAnimContext.IsBlendShapeChannelMatch(channelIndex, blendShape.ChannelName))
+					if (!anim.IsBlendShapeChannelMatch(channelIndex, blendShape.ChannelName))
 						continue;
 
-					pAnimContext.BeginBlendShapeAnimCurve(channelIndex);
+					anim.BeginBlendShapeAnimCurve(channelIndex);
 
 					foreach (var keyframe in blendShape.Keyframes) {
-						pAnimContext.AddBlendShapeKeyframe(keyframe.time, keyframe.value);
+						anim.AddBlendShapeKeyframe(keyframe.time, keyframe.value);
 					}
 
-					pAnimContext.EndBlendShapeAnimCurve();
+					anim.EndBlendShapeAnimCurve();
 				}
 			}
 		}
@@ -452,41 +452,41 @@ namespace AssetStudioFBX {
 				return;
 			}
 
-			foreach (var morph in morphList) {
-				var frame = rootFrame.FindFrameByPath(morph.Path);
+			foreach (var imMorph in morphList) {
+				var frame = rootFrame.FindFrameByPath(imMorph.Path);
 
 				if (frame == null)
 					continue;
 
-				var pNode = _frameToNode[frame];
+				var node = m_frameToNode[frame];
 
-				var pMorphContext = new Morph();
+				var morph = new Morph();
 
-				pMorphContext.Initialize(_pContext, pNode);
+				morph.Initialize(m_context, node);
 
-				foreach (var channel in morph.Channels) {
-					pMorphContext.AddBlendShapeChannel(_pContext, channel.Name);
+				foreach (var channel in imMorph.Channels) {
+					morph.AddBlendShapeChannel(m_context, channel.Name);
 
 					for (var i = 0; i < channel.KeyframeList.Count; i++) {
 						var keyframe = channel.KeyframeList[i];
 
-						pMorphContext.AddBlendShapeChannelShape(_pContext, keyframe.Weight, i == 0 ? channel.Name : $"{channel.Name}_{i + 1}");
+						morph.AddBlendShapeChannelShape(m_context, keyframe.Weight, i == 0 ? channel.Name : $"{channel.Name}_{i + 1}");
 
-						pMorphContext.CopyBlendShapeControlPoints();
+						morph.CopyBlendShapeControlPoints();
 
 						foreach (var vertex in keyframe.VertexList) {
 							var v = vertex.Vertex.Vertex;
-							pMorphContext.SetBlendShapeVertex(vertex.Index, v.X, v.Y, v.Z);
+							morph.SetBlendShapeVertex(vertex.Index, v.X, v.Y, v.Z);
 						}
 
 						if (!keyframe.hasNormals)
 							continue;
 
-						pMorphContext.CopyBlendShapeControlPointsNormal();
+						morph.CopyBlendShapeControlPointsNormal();
 
 						foreach (var vertex in keyframe.VertexList) {
 							var v = vertex.Vertex.Normal;
-							pMorphContext.SetBlendShapeVertexNormal(vertex.Index, v.X, v.Y, v.Z);
+							morph.SetBlendShapeVertexNormal(vertex.Index, v.X, v.Y, v.Z);
 						}
 					}
 				}
