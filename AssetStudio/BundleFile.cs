@@ -59,11 +59,12 @@ namespace AssetStudio {
 		public StreamFile[] fileList;
 
 		public BundleFile(FileReader reader) {
-			m_Header = new Header();
-			m_Header.signature = reader.ReadStringToNull();
-			m_Header.version = reader.ReadUInt32();
-			m_Header.unityVersion = reader.ReadStringToNull();
-			m_Header.unityRevision = reader.ReadStringToNull();
+			m_Header = new Header {
+				signature = reader.ReadStringToNull(),
+				version = reader.ReadUInt32(),
+				unityVersion = reader.ReadStringToNull(),
+				unityRevision = reader.ReadStringToNull()
+			};
 			switch (m_Header.signature) {
 			case "UnityArchive":
 				break; //TODO
@@ -89,7 +90,7 @@ namespace AssetStudio {
 			}
 		}
 
-		private void ReadHeaderAndBlocksInfo(EndianBinaryReader reader) {
+		private void ReadHeaderAndBlocksInfo(FileReader reader) {
 			if (m_Header.version >= 4) {
 				var hash = reader.ReadBytes(16);
 				var crc = reader.ReadUInt32();
@@ -132,16 +133,14 @@ namespace AssetStudio {
 			return blocksStream;
 		}
 
-		private void ReadBlocksAndDirectory(EndianBinaryReader reader, Stream blocksStream) {
+		private void ReadBlocksAndDirectory(FileReader reader, Stream blocksStream) {
 			var isCompressed = m_Header.signature == "UnityWeb";
 			foreach (var blockInfo in m_BlocksInfo) {
 				var uncompressedBytes = reader.ReadBytes((int)blockInfo.compressedSize);
 				if (isCompressed) {
-					using (var memoryStream = new MemoryStream(uncompressedBytes)) {
-						using (var decompressStream = SevenZipHelper.StreamDecompress(memoryStream)) {
-							uncompressedBytes = decompressStream.ToArray();
-						}
-					}
+					using var memoryStream = new MemoryStream(uncompressedBytes);
+					using var decompressStream = SevenZipHelper.StreamDecompress(memoryStream);
+					uncompressedBytes = decompressStream.ToArray();
 				}
 				blocksStream.Write(uncompressedBytes, 0, uncompressedBytes.Length);
 			}
@@ -182,7 +181,7 @@ namespace AssetStudio {
 			}
 		}
 
-		private void ReadHeader(EndianBinaryReader reader) {
+		private void ReadHeader(FileReader reader) {
 			m_Header.size = reader.ReadInt64();
 			m_Header.compressedBlocksInfoSize = reader.ReadUInt32();
 			m_Header.uncompressedBlocksInfoSize = reader.ReadUInt32();
@@ -192,7 +191,7 @@ namespace AssetStudio {
 			}
 		}
 
-		private void ReadBlocksInfoAndDirectory(EndianBinaryReader reader) {
+		private void ReadBlocksInfoAndDirectory(FileReader reader) {
 			byte[] blocksInfoBytes;
 			if (m_Header.version >= 7) {
 				reader.AlignStream(16);
@@ -264,7 +263,7 @@ namespace AssetStudio {
 			}
 		}
 
-		private void ReadBlocks(EndianBinaryReader reader, Stream blocksStream) {
+		private void ReadBlocks(FileReader reader, Stream blocksStream) {
 			foreach (var blockInfo in m_BlocksInfo) {
 				var compressionType = (CompressionType)(blockInfo.flags & StorageBlockFlags.CompressionTypeMask);
 				switch (compressionType) {
