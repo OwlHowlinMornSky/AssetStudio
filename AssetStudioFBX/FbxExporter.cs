@@ -1,59 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using AssetStudio;
 
-namespace AssetStudio.FbxInterop {
-	public sealed class FbxExporter : IDisposable {
+namespace AssetStudioFBX {
+	public sealed class FbxExporter(string fileName, IImported imported, bool allNodes, bool exportSkins, bool castToBone, float boneSize, bool exportAllUvsAsDiffuseMaps, float scaleFactor, int versionIndex, bool isAscii) : IDisposable {
 
-		private FbxExporterContext _context;
+		private readonly FbxExporterContext _context = new();
 
-		private readonly string _fileName;
-		private readonly IImported _imported;
-		private readonly bool _allNodes;
-		private readonly bool _exportSkins;
-		private readonly bool _castToBone;
-		private readonly float _boneSize;
-		private readonly bool _exportAllUvsAsDiffuseMaps;
-		private readonly float _scaleFactor;
-		private readonly int _versionIndex;
-		private readonly bool _isAscii;
-
-		public FbxExporter(string fileName, IImported imported, bool allNodes, bool exportSkins, bool castToBone, float boneSize, bool exportAllUvsAsDiffuseMaps, float scaleFactor, int versionIndex, bool isAscii) {
-			_context = new FbxExporterContext();
-
-			_fileName = fileName;
-			_imported = imported;
-			_allNodes = allNodes;
-			_exportSkins = exportSkins;
-			_castToBone = castToBone;
-			_boneSize = boneSize;
-			_exportAllUvsAsDiffuseMaps = exportAllUvsAsDiffuseMaps;
-			_scaleFactor = scaleFactor;
-			_versionIndex = versionIndex;
-			_isAscii = isAscii;
-		}
+		private readonly string _fileName = fileName;
+		private readonly IImported _imported = imported;
+		private readonly bool _allNodes = allNodes;
+		private readonly bool _exportSkins = exportSkins;
+		private readonly bool _castToBone = castToBone;
+		private readonly float _boneSize = boneSize;
+		private readonly bool _exportAllUvsAsDiffuseMaps = exportAllUvsAsDiffuseMaps;
+		private readonly float _scaleFactor = scaleFactor;
+		private readonly int _versionIndex = versionIndex;
+		private readonly bool _isAscii = isAscii;
 
 		~FbxExporter() {
 			Dispose(false);
 		}
 
 		public void Dispose() {
-			if (IsDisposed) {
-				return;
-			}
-
 			Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		public bool IsDisposed { get; private set; }
-
+		private bool m_disposed = false;
 		private void Dispose(bool disposing) {
+			if (m_disposed)
+				return;
+			m_disposed = true;
 			if (disposing) {
 				_context.Dispose();
 			}
-
-			IsDisposed = true;
 		}
 
 		public void Initialize() {

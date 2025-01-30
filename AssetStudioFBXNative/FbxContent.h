@@ -6,7 +6,7 @@ namespace FbxNative {
 
 public ref class FbxContent {
 public:
-	static IntPtr CreateContext();
+	/*static IntPtr CreateContext();
 
 	static bool InitializeContext(
 		IntPtr context, String^ fileName, float scaleFactor,
@@ -40,19 +40,28 @@ public:
 
 	static IntPtr CreateTexture(IntPtr context, String^ strMatTexName);
 
-	static void LinkTexture(int dest, IntPtr texture, IntPtr material, float offsetX, float offsetY, float scaleX, float scaleY);
-
-	static IntPtr MeshCreateClusterArray(int boneCount);
-
-	static void MeshDisposeClusterArray(IntPtr% ppArray);
-
 	static IntPtr MeshCreateCluster(IntPtr context, IntPtr boneNode);
-
-	static void MeshAddCluster(IntPtr array, IntPtr cluster);
 
 	static IntPtr MeshCreateMesh(IntPtr context, IntPtr frameNode);
 
-	static void MeshInitControlPoints(IntPtr mesh, int vertexCount);
+	static IntPtr CreateMaterial(
+		IntPtr pContext, String^ pMatName,
+		float diffuseR, float diffuseG, float diffuseB,
+		float ambientR, float ambientG, float ambientB,
+		float emissiveR, float emissiveG, float emissiveB,
+		float specularR, float specularG, float specularB,
+		float reflectR, float reflectG, float reflectB,
+		float shininess, float transparency
+	);
+
+	static IntPtr MeshCreateSkinContext(IntPtr context, IntPtr frameNode);
+
+	static void AnimPrepareStackAndLayer(IntPtr pContext, IntPtr pAnimContext, String^ strTakeName);
+*/
+	//static void MeshDisposeSkinContext(IntPtr% ppSkinContext);
+
+
+	/*static void MeshInitControlPoints(IntPtr mesh, int vertexCount);
 
 	static void MeshCreateElementNormal(IntPtr mesh);
 
@@ -66,20 +75,6 @@ public:
 
 	static void MeshCreateElementMaterial(IntPtr mesh);
 
-	static IntPtr CreateMaterial(
-		IntPtr pContext, String^ pMatName,
-		float diffuseR, float diffuseG, float diffuseB,
-		float ambientR, float ambientG, float ambientB,
-		float emissiveR, float emissiveG, float emissiveB,
-		float specularR, float specularG, float specularB,
-		float reflectR, float reflectG, float reflectB,
-		float shininess, float transparency
-	);
-
-	static int AddMaterialToFrame(IntPtr frameNode, IntPtr material);
-
-	static void SetFrameShadingModeToTextureShading(IntPtr frameNode);
-
 	static void MeshSetControlPoint(IntPtr mesh, int index, float x, float y, float z);
 
 	static void MeshAddPolygon(IntPtr mesh, int materialIndex, int index0, int index1, int index2);
@@ -90,27 +85,32 @@ public:
 
 	static void MeshElementTangentAdd(IntPtr mesh, int elementIndex, float x, float y, float z, float w);
 
-	static void MeshElementVertexColorAdd(IntPtr mesh, int elementIndex, float r, float g, float b, float a);
+	static void MeshElementVertexColorAdd(IntPtr mesh, int elementIndex, float r, float g, float b, float a);*/
 
+
+	//
+	//static void LinkTexture(int dest, IntPtr texture, IntPtr material, float offsetX, float offsetY, float scaleX, float scaleY);
+
+	/*static int AddMaterialToFrame(IntPtr frameNode, IntPtr material);
+	static void SetFrameShadingModeToTextureShading(IntPtr frameNode);*/
+
+	//static IntPtr MeshCreateClusterArray(int boneCount);
+	//static void MeshDisposeClusterArray(IntPtr% ppArray);
+
+	/*static void MeshAddCluster(IntPtr array, IntPtr cluster);
 	static void MeshSetBoneWeight(IntPtr pClusterArray, int boneIndex, int vertexIndex, float weight);
+	static bool ClusterArray_HasItemAt(IntPtr pClusterArray, int index);*/
 
-	static IntPtr MeshCreateSkinContext(IntPtr context, IntPtr frameNode);
 
-	static void MeshDisposeSkinContext(IntPtr% ppSkinContext);
+	/*static void MeshSkinAddCluster(IntPtr pSkinContext, IntPtr pClusterArray, int index, float* pBoneMatrix);
+	static void MeshAddDeformer(IntPtr pSkinContext, IntPtr pMesh);*/
 
-	static bool ClusterArray_HasItemAt(IntPtr pClusterArray, int index);
+	//static IntPtr AnimCreateContext(bool eulerFilter);
+	//static void AnimDisposeContext(IntPtr% ppAnimContext);
 
-	static void MeshSkinAddCluster(IntPtr pSkinContext, IntPtr pClusterArray, int index, float* pBoneMatrix);
 
-	static void MeshAddDeformer(IntPtr pSkinContext, IntPtr pMesh);
 
-	static IntPtr AnimCreateContext(bool eulerFilter);
-
-	static void AnimDisposeContext(IntPtr% ppAnimContext);
-
-	static void AnimPrepareStackAndLayer(IntPtr pContext, IntPtr pAnimContext, String^ strTakeName);
-
-	static void AnimLoadCurves(IntPtr pNode, IntPtr pAnimContext);
+	/*static void AnimLoadCurves(IntPtr pNode, IntPtr pAnimContext);
 
 	static void AnimBeginKeyModify(IntPtr pAnimContext);
 
@@ -132,16 +132,16 @@ public:
 
 	static void AnimEndBlendShapeAnimCurve(IntPtr pAnimContext);
 
-	static void AnimAddBlendShapeKeyframe(IntPtr pAnimContext, float time, float value);
+	static void AnimAddBlendShapeKeyframe(IntPtr pAnimContext, float time, float value);*/
 
-	static IntPtr MorphCreateContext();
 
-	static void MorphInitializeContext(IntPtr pContext, IntPtr pMorphContext, IntPtr pNode);
+
+
+	/*static IntPtr MorphCreateContext();
 
 	static void MorphDisposeContext(IntPtr% ppMorphContext);
 
-
-
+	static void MorphInitializeContext(IntPtr pContext, IntPtr pMorphContext, IntPtr pNode);
 
 	static void MorphAddBlendShapeChannel(IntPtr pContext, IntPtr pMorphContext, String^ strChannelName);
 
@@ -153,7 +153,7 @@ public:
 
 	static void MorphCopyBlendShapeControlPointsNormal(IntPtr pMorphContext);
 
-	static void MorphSetBlendShapeVertexNormal(IntPtr pMorphContext, unsigned int index, float x, float y, float z);
+	static void MorphSetBlendShapeVertexNormal(IntPtr pMorphContext, unsigned int index, float x, float y, float z);*/
 
 
 };

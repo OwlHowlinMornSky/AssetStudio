@@ -185,6 +185,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Anim.cpp" />
     <ClCompile Include="asfbx_anim_context.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
@@ -215,8 +216,17 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="Cluster.cpp" />
+    <ClCompile Include="Context.cpp" />
     <ClCompile Include="Fbx.cpp" />
     <ClCompile Include="FbxContent.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Morph.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Skin.cpp" />
+    <ClCompile Include="StringConvert.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="utils.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
@@ -225,17 +235,26 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Anim.h" />
     <ClInclude Include="api.h" />
     <ClInclude Include="asfbx_anim_context.h" />
     <ClInclude Include="asfbx_context.h" />
     <ClInclude Include="asfbx_morph_context.h" />
     <ClInclude Include="asfbx_skin_context.h" />
     <ClInclude Include="bool32_t.h" />
+    <ClInclude Include="Cluster.h" />
     <ClInclude Include="dllexport.h" />
-    <ClInclude Include="ExporterCore.h" />
+    <ClInclude Include="Context.h" />
     <ClInclude Include="Fbx.h" />
     <ClInclude Include="FbxContent.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Morph.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Skin.h" />
+    <ClInclude Include="StringConvert.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>

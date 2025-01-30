@@ -42,6 +42,36 @@
     <ClCompile Include="FbxContent.cpp">
       <Filter>CLR Files</Filter>
     </ClCompile>
+    <ClCompile Include="Context.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cluster.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Skin.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Anim.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StringConvert.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Morph.cpp">
+      <Filter>CLR Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dllexport.h">
@@ -77,7 +107,34 @@
     <ClInclude Include="FbxContent.h">
       <Filter>CLR Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExporterCore.h">
+    <ClInclude Include="Context.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cluster.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Skin.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Anim.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringConvert.h">
+      <Filter>CLR Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Morph.h">
       <Filter>CLR Files</Filter>
     </ClInclude>
   </ItemGroup>

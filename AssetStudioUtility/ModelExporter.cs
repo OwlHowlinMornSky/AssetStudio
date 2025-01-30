@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using AssetStudioFBX;
 
 namespace AssetStudio {
 	public static class ModelExporter {
@@ -16,7 +17,7 @@ namespace AssetStudio {
 
 			var name = Path.GetFileName(path);
 
-			using (var exporter = new FbxInterop.FbxExporter(name, imported, allNodes, skins, castToBone, boneSize, exportAllUvsAsDiffuseMaps, scaleFactor, versionIndex, isAscii)) {
+			using (var exporter = new FbxExporter(name, imported, allNodes, skins, castToBone, boneSize, exportAllUvsAsDiffuseMaps, scaleFactor, versionIndex, isAscii)) {
 				exporter.Initialize();
 				exporter.ExportAll(blendShape, animation, eulerFilter, filterPrecision);
 			}
