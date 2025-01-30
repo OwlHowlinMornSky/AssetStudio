@@ -14,6 +14,11 @@ Anim::~Anim() {
 	_this = nullptr;
 }
 
+void Anim::AnimPrepareStackAndLayer(Context^ context, String^ strTakeName) {
+	std::string cstr = StringToUnmanagedUtf8(strTakeName);
+	AsFbxAnimPrepareStackAndLayer(context->GetPtr(), _this, cstr.c_str());
+}
+
 void Anim::AnimLoadCurves(Node^ pNode) {
 	AsFbxAnimLoadCurves(pNode->GetPtr(), _this);
 }

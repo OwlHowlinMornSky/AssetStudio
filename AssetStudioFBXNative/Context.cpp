@@ -127,11 +127,6 @@ Skin^ Context::MeshCreateSkinContext(Node^ frameNode) {
 	return gcnew Skin(_this, frameNode->GetPtr());
 }
 
-void Context::AnimPrepareStackAndLayer(Anim^ pAnimContext, String^ strTakeName) {
-	std::string cstr = StringToUnmanagedUtf8(strTakeName);
-	AsFbxAnimPrepareStackAndLayer(_this, pAnimContext->GetPtr(), cstr.c_str());
-}
-
 AsFbxContext* Context::GetPtr() {
     return _this;
 }

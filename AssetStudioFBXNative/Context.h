@@ -70,8 +70,6 @@ public:
 
 	Skin^ MeshCreateSkinContext(Node^ frameNode);
 
-	void AnimPrepareStackAndLayer(Anim^ pAnimContext, String^ strTakeName);
-
 internal:
 	AsFbxContext* GetPtr();
 };

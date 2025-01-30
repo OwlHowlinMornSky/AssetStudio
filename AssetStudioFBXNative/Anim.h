@@ -4,6 +4,7 @@
 #define OHMS_CLR_TEMPORARY
 #include "api.h"
 
+#include "Context.h"
 #include "Node.h"
 
 using namespace System;
@@ -19,6 +20,7 @@ public:
 	~Anim();
 
 public:
+	void AnimPrepareStackAndLayer(Context^ context, String^ strTakeName);
 	void AnimLoadCurves(Node^ pNode);
 	void AnimBeginKeyModify();
 	void AnimEndKeyModify();
