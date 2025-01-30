@@ -1,4 +1,5 @@
 ﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Advanced;
 using SixLabors.ImageSharp.Drawing;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
@@ -8,7 +9,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace AssetStudio {
 	public static class SpriteHelper {
@@ -77,22 +77,19 @@ namespace AssetStudio {
 							var matrix = Matrix3x2.CreateScale(m_Sprite.m_PixelsToUnits);
 							matrix *= Matrix3x2.CreateTranslation(m_Sprite.m_Rect.width * m_Sprite.m_Pivot.X - textureRectOffset.X, m_Sprite.m_Rect.height * m_Sprite.m_Pivot.Y - textureRectOffset.Y);
 							path = path.Transform(matrix);
-							var graphicsOptions = new GraphicsOptions
-							{
+							var graphicsOptions = new GraphicsOptions {
 								Antialias = false,
 								AlphaCompositionMode = PixelAlphaCompositionMode.DestOut
 							};
-							var options = new DrawingOptions
-							{
+							var options = new DrawingOptions {
 								GraphicsOptions = graphicsOptions
 							};
-							using (var mask = new Image<Bgra32>(rect.Width, rect.Height, SixLabors.ImageSharp.Color.Black)) {
-								mask.Mutate(x => x.Fill(options, SixLabors.ImageSharp.Color.Red, path));
-								var bursh = new ImageBrush(mask);
-								spriteImage.Mutate(x => x.Fill(graphicsOptions, bursh));
-								spriteImage.Mutate(x => x.Flip(FlipMode.Vertical));
-								return spriteImage;
-							}
+							using var mask = new Image<Bgra32>(rect.Width, rect.Height, SixLabors.ImageSharp.Color.Black);
+							mask.Mutate(x => x.Fill(options, SixLabors.ImageSharp.Color.Red, path));
+							var bursh = new ImageBrush(mask);
+							spriteImage.Mutate(x => x.Fill(options, bursh));
+							spriteImage.Mutate(x => x.Flip(FlipMode.Vertical));
+							return spriteImage;
 						}
 						catch {
 							// ignored
@@ -130,37 +127,37 @@ namespace AssetStudio {
 				var m_Channel = m_VertexData.m_Channels[0]; //kShaderChannelVertex
 				var m_Stream = m_VertexData.m_Streams[m_Channel.stream];
 				using (var vertexReader = new BinaryReader(new MemoryStream(m_VertexData.m_DataSize))) {
-					using (var indexReader = new BinaryReader(new MemoryStream(m_RD.m_IndexBuffer))) {
-						foreach (var subMesh in m_RD.m_SubMeshes) {
-							vertexReader.BaseStream.Position = m_Stream.offset + subMesh.firstVertex * m_Stream.stride + m_Channel.offset;
+					using var indexReader = new BinaryReader(new MemoryStream(m_RD.m_IndexBuffer));
+					foreach (var subMesh in m_RD.m_SubMeshes) {
+						vertexReader.BaseStream.Position = m_Stream.offset + subMesh.firstVertex * m_Stream.stride + m_Channel.offset;
 
-							var vertices = new Vector2[subMesh.vertexCount];
-							for (int v = 0; v < subMesh.vertexCount; v++) {
-								vertices[v] = vertexReader.ReadVector3();
-								vertexReader.BaseStream.Position += m_Stream.stride - 12;
-							}
+						var vertices = new Vector2[subMesh.vertexCount];
+						for (int v = 0; v < subMesh.vertexCount; v++) {
+							vertices[v] = vertexReader.ReadVector3();
+							vertexReader.BaseStream.Position += m_Stream.stride - 12;
+						}
 
-							indexReader.BaseStream.Position = subMesh.firstByte;
+						indexReader.BaseStream.Position = subMesh.firstByte;
 
-							var triangleCount = subMesh.indexCount / 3u;
-							for (int i = 0; i < triangleCount; i++) {
-								var first = indexReader.ReadUInt16() - subMesh.firstVertex;
-								var second = indexReader.ReadUInt16() - subMesh.firstVertex;
-								var third = indexReader.ReadUInt16() - subMesh.firstVertex;
-								var triangle = new[] { vertices[first], vertices[second], vertices[third] };
-								triangles.Add(triangle);
-							}
+						var triangleCount = subMesh.indexCount / 3u;
+						for (int i = 0; i < triangleCount; i++) {
+							var first = indexReader.ReadUInt16() - subMesh.firstVertex;
+							var second = indexReader.ReadUInt16() - subMesh.firstVertex;
+							var third = indexReader.ReadUInt16() - subMesh.firstVertex;
+							var triangle = new[] { vertices[first], vertices[second], vertices[third] };
+							triangles.Add(triangle);
 						}
 					}
 				}
-				return triangles.ToArray();
+				return [.. triangles];
 			}
 		}
 
 		private static Image<Bgra32> CombineChannelA(Image<Bgra32> im0, Image<Bgra32> im1) {
+			Configuration.Default.PreferContiguousImageBuffers = true;
 			for (int j = 0, m = Math.Min(im0.Width, im1.Width), n = Math.Min(im0.Height, im1.Height); j < n; ++j) {
-				var r0 = im0.GetPixelRowSpan(j);
-				var r1 = im1.GetPixelRowSpan(j);
+				var r0 = im0.DangerousGetPixelRowMemory(j).Span;
+				var r1 = im1.DangerousGetPixelRowMemory(j).Span;
 				for (int i = 0; i < m; ++i) {
 					r0[i].A = r1[i].R;
 				}

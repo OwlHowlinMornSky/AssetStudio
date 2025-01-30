@@ -8,14 +8,15 @@ namespace AssetStudioGUI.Controls {
 			InitializeComponent();
 		}
 
-		private DirectBitmap m_image;
+		private SixLabors.ImageSharp.Image<SixLabors.ImageSharp.PixelFormats.Bgra32> m_image;
+		private DirectBitmap m_bitmap;
 		private static readonly char[] m_textureChannelNames = ['B', 'G', 'R', 'A'];
 		private bool[] m_textureChannels = [true, true, true, true];
 
 		internal void PreviewTexture2D(AssetItem assetItem, Texture2D texture) {
-			using var image = texture.ConvertToImage(true);
-			if (image != null) {
-				var bitmap = new DirectBitmap(image.ConvertToBytes(), texture.m_Width, texture.m_Height);
+			m_image = texture.ConvertToImage(true);
+			if (m_image != null) {
+				m_bitmap = new DirectBitmap(m_image.ConvertToBytes(), texture.m_Width, texture.m_Height);
 
 				assetItem.InfoText = String.Format(Properties.Strings.Preview_Tex2D_info,
 					texture.m_Width, texture.m_Height, texture.m_TextureFormat);
@@ -64,10 +65,10 @@ namespace AssetStudioGUI.Controls {
 					//assetItem.InfoText += "None";
 					assetItem.InfoText += Properties.Strings.Preview_Tex2D_info_channels_none;
 				if (validChannel != 4) {
-					var bytes = bitmap.Bits;
-					for (int i = 0; i < bitmap.Height; i++) {
-						int offset = Math.Abs(bitmap.Stride) * i;
-						for (int j = 0; j < bitmap.Width; j++) {
+					var bytes = m_bitmap.Bits;
+					for (int i = 0; i < m_bitmap.Height; i++) {
+						int offset = Math.Abs(m_bitmap.Stride) * i;
+						for (int j = 0; j < m_bitmap.Width; j++) {
 							bytes[offset] = m_textureChannels[0] ? bytes[offset] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
 							bytes[offset + 1] = m_textureChannels[1] ? bytes[offset + 1] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
 							bytes[offset + 2] = m_textureChannels[2] ? bytes[offset + 2] : validChannel == 1 && m_textureChannels[3] ? byte.MaxValue : byte.MinValue;
@@ -76,7 +77,7 @@ namespace AssetStudioGUI.Controls {
 						}
 					}
 				}
-				Preview(bitmap);
+				Preview(m_bitmap);
 
 				//StatusStripUpdate("'Ctrl' + 'R'/'G'/'B'/'A' " + "for Channel Toggle");
 				//StatusStripUpdate("'Ctrl' + 'R'/'G'/'B'/'A' " + Properties.Strings.Preview_Tex2D_Channel_Toggle);

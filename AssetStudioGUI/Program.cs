@@ -10,6 +10,8 @@ namespace AssetStudioGUI {
 		/// </summary>
 		[STAThread]
 		static void Main() {
+			SixLabors.ImageSharp.Configuration.Default.PreferContiguousImageBuffers = true;
+
 #if !NETFRAMEWORK
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
 #endif
