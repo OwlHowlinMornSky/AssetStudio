@@ -104,9 +104,13 @@ namespace AssetStudioGUI.Controls {
 			}
 		}
 
+		private bool _reset = false;
 		public void ResetPreview() {
+			_reset = true;
 			m_image?.Dispose();
 			m_image = null;
+			m_bitmap?.Dispose();
+			m_bitmap = null;
 		}
 
 		private void Preview(DirectBitmap img) {
@@ -143,6 +147,8 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		private void PreviewImageControl_ClientSizeChanged(object sender, EventArgs e) {
+			if (_reset)
+				return;
 			var sz = ClientSize - pictureBox1.Size;
 			sz /= 2;
 			pictureBox1.Location = (System.Drawing.Point)sz;
