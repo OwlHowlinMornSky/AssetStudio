@@ -23,19 +23,8 @@
 		/// 使用代码编辑器修改此方法的内容。
 		/// </summary>
 		private void InitializeComponent() {
-			pictureBox1 = new System.Windows.Forms.PictureBox();
 			label1 = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
-			// 
-			// pictureBox1
-			// 
-			pictureBox1.Location = new System.Drawing.Point(0, 0);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new System.Drawing.Size(120, 90);
-			pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			pictureBox1.TabIndex = 0;
-			pictureBox1.TabStop = false;
 			// 
 			// label1
 			// 
@@ -51,19 +40,16 @@
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			Controls.Add(label1);
-			Controls.Add(pictureBox1);
+			DoubleBuffered = true;
 			Name = "PreviewImageControl";
 			Size = new System.Drawing.Size(120, 90);
 			ClientSizeChanged += PreviewImageControl_ClientSizeChanged;
 			KeyDown += PreviewImage_KeyDown;
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
-
-		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label1;
 	}
 }
