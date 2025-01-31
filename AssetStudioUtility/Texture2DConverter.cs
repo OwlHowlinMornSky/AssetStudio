@@ -27,7 +27,7 @@ namespace AssetStudio {
 				return false;
 			}
 			var flag = false;
-			var buff = BigArrayPool<byte>.Shared.Rent(reader.Size);
+			using TempBuffer<byte> buff = new(reader.Size);
 			reader.GetData(buff);
 			switch (m_TextureFormat) {
 			case TextureFormat.Alpha8: //test pass
@@ -203,7 +203,6 @@ namespace AssetStudio {
 				flag = DecodeRGBA64(buff, bytes);
 				break;
 			}
-			BigArrayPool<byte>.Shared.Return(buff);
 			return flag;
 		}
 

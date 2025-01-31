@@ -7,20 +7,15 @@ namespace AssetStudio {
 	public static class Texture2DExtensions {
 		public static Image<Bgra32> ConvertToImage(this Texture2D m_Texture2D, bool flip) {
 			var converter = new Texture2DConverter(m_Texture2D);
-			var buff = BigArrayPool<byte>.Shared.Rent(m_Texture2D.m_Width * m_Texture2D.m_Height * 4);
-			try {
-				if (converter.DecodeTexture2D(buff)) {
-					var image = Image.LoadPixelData<Bgra32>(buff, m_Texture2D.m_Width, m_Texture2D.m_Height);
-					if (flip) {
-						image.Mutate(x => x.Flip(FlipMode.Vertical));
-					}
-					return image;
+			using TempBuffer<byte> buff = new(m_Texture2D.m_Width * m_Texture2D.m_Height * 4);
+			if (converter.DecodeTexture2D(buff)) {
+				var image = Image.LoadPixelData<Bgra32>((byte[])buff, m_Texture2D.m_Width, m_Texture2D.m_Height);
+				if (flip) {
+					image.Mutate(x => x.Flip(FlipMode.Vertical));
 				}
-				return null;
+				return image;
 			}
-			finally {
-				BigArrayPool<byte>.Shared.Return(buff);
-			}
+			return null;
 		}
 
 		public static MemoryStream ConvertToStream(this Texture2D m_Texture2D, ImageFormat imageFormat, bool flip) {

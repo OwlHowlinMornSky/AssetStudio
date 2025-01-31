@@ -6,7 +6,7 @@ namespace AssetStudio {
 
 		public static int CopyTo(this Stream source, Stream destination, int size) {
 			int sz = int.Min(BufferSize, size);
-			var buffer = new byte[sz];
+			using TempBuffer<byte> buffer = new(sz);
 			int cnt = 0;
 			for (int left = size, read = 1; left > 0 && read != 0;) {
 				int toRead = int.Min(left, sz);
