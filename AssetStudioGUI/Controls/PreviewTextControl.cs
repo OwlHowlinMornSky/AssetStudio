@@ -11,7 +11,10 @@ namespace AssetStudioGUI.Controls {
 		}
 
 		public void PreviewText(string text) {
-			textBox1.Text = text;
+			if (text.Length < textBox1.MaxLength)
+				textBox1.Text = text;
+			else
+				textBox1.Text = "[The content of this text file is too long to preview. Please try to export it.]";
 		}
 
 	}

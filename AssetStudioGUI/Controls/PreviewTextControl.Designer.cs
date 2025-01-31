@@ -31,6 +31,7 @@
 			// 
 			resources.ApplyResources(textBox1, "textBox1");
 			textBox1.Name = "textBox1";
+			textBox1.ReadOnly = true;
 			// 
 			// PreviewTextControl
 			// 
