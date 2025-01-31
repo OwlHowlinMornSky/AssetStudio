@@ -247,11 +247,11 @@ namespace AssetStudioGUI {
 				m_usingStudio.Set();
 			}
 			if (ui_tabLeft_page0_treeView.Nodes.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = saveDirectoryBackup;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					saveDirectoryBackup = saveFolderDialog.Folder;
-					var exportPath = Path.Combine(saveFolderDialog.Folder, "GameObject") + Path.DirectorySeparatorChar;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
+					var exportPath = Path.Combine(saveFolderDialog.SelectedPath, "GameObject") + Path.DirectorySeparatorChar;
 					List<AssetItem> animationList = null;
 					if (animation) {
 						animationList = GetSelectedAssets().Where(x => x.Type == ClassIDType.AnimationClip).ToList();
@@ -312,11 +312,11 @@ namespace AssetStudioGUI {
 				m_usingStudio.Set();
 			}
 			if (StudioCore.m_studio.exportableAssets.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = saveDirectoryBackup;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					//ui_tabRight_page0_FMODtimer.Stop();
-					saveDirectoryBackup = saveFolderDialog.Folder;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
 					List<AssetItem> toExportAssets = null;
 					switch (type) {
 					case ExportFilter.All:
@@ -329,7 +329,7 @@ namespace AssetStudioGUI {
 						toExportAssets = StudioCore.m_studio.visibleAssets;
 						break;
 					}
-					StudioCore.ExportAssets(saveFolderDialog.Folder, toExportAssets, exportType);
+					StudioCore.ExportAssets(saveFolderDialog.SelectedPath, toExportAssets, exportType);
 				}
 			}
 			else {
@@ -346,13 +346,12 @@ namespace AssetStudioGUI {
 			lock (m_usingStudio) {
 				m_usingStudio.Set();
 			}
-
 			if (StudioCore.m_studio.exportableAssets.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = saveDirectoryBackup;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					//ui_tabRight_page0_FMODtimer.Stop();
-					saveDirectoryBackup = saveFolderDialog.Folder;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
 					List<AssetItem> toExportAssets = null;
 					switch (type) {
 					case ExportFilter.All:
@@ -365,7 +364,7 @@ namespace AssetStudioGUI {
 						toExportAssets = StudioCore.m_studio.visibleAssets;
 						break;
 					}
-					StudioCore.ExportAssetsList(saveFolderDialog.Folder, toExportAssets, filetype);
+					StudioCore.ExportAssetsList(saveFolderDialog.SelectedPath, toExportAssets, filetype);
 				}
 			}
 			else {
@@ -395,11 +394,11 @@ namespace AssetStudioGUI {
 			}
 
 			if (animator != null) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = saveDirectoryBackup;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					saveDirectoryBackup = saveFolderDialog.Folder;
-					var exportPath = Path.Combine(saveFolderDialog.Folder, "Animator") + Path.DirectorySeparatorChar;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
+					var exportPath = Path.Combine(saveFolderDialog.SelectedPath, "Animator") + Path.DirectorySeparatorChar;
 					StudioCore.ExportAnimatorWithAnimationClip(animator, animationList, exportPath);
 				}
 			}
@@ -514,16 +513,16 @@ namespace AssetStudioGUI {
 					return;
 				}
 			}
-			var openFolderDialog = new OpenFolderDialog();
-			openFolderDialog.InitialFolder = openDirectoryBackup;
+			var openFolderDialog = folderBrowserDialog1;
+			openFolderDialog.InitialDirectory = openDirectoryBackup;
 			if (openFolderDialog.ShowDialog(this) == DialogResult.OK) {
 				ResetForm();
-				openDirectoryBackup = openFolderDialog.Folder;
+				openDirectoryBackup = openFolderDialog.SelectedPath;
 				StudioCore.m_studio.assetsManager.SpecifyUnityVersion = ui_menuOptions_specifyUnityVersion_specifyUnityVersion.Text;
 				lock (m_usingStudio) {
 					m_usingStudio.Set();
 				}
-				await Task.Run(() => StudioCore.m_studio.assetsManager.LoadFolder(openFolderDialog.Folder));
+				await Task.Run(() => StudioCore.m_studio.assetsManager.LoadFolder(openFolderDialog.SelectedPath));
 				BuildAssetStructures();
 				lock (m_usingStudio) {
 					m_usingStudio.Reset();
@@ -533,11 +532,11 @@ namespace AssetStudioGUI {
 
 		private async void ui_menuFile_extractFile_Click(object sender, EventArgs e) {
 			if (ui_openFileDialog0.ShowDialog(this) == DialogResult.OK) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.Title = Properties.Strings.Export_SaveFolderDialog_Title;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.Description = Properties.Strings.Export_SaveFolderDialog_Title;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					var fileNames = ui_openFileDialog0.FileNames;
-					var savePath = saveFolderDialog.Folder;
+					var savePath = saveFolderDialog.SelectedPath;
 					lock (m_usingStudio) {
 						m_usingStudio.Set();
 					}
@@ -552,14 +551,14 @@ namespace AssetStudioGUI {
 		}
 
 		private async void ui_menuFile_extractFolder_Click(object sender, EventArgs e) {
-			var openFolderDialog = new OpenFolderDialog();
+			var openFolderDialog = folderBrowserDialog1;
 			if (openFolderDialog.ShowDialog(this) == DialogResult.OK) {
-				var saveFolderDialog = new OpenFolderDialog();
+				var saveFolderDialog = folderBrowserDialog1;
 				//saveFolderDialog.Title = "Select the save folder";
-				saveFolderDialog.Title = Properties.Strings.Export_SaveFolderDialog_Title;
+				saveFolderDialog.Description = Properties.Strings.Export_SaveFolderDialog_Title;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					var path = openFolderDialog.Folder;
-					var savePath = saveFolderDialog.Folder;
+					var path = openFolderDialog.SelectedPath;
+					var savePath = saveFolderDialog.SelectedPath;
 					lock (m_usingStudio) {
 						m_usingStudio.Set();
 					}
@@ -632,11 +631,11 @@ namespace AssetStudioGUI {
 		#region Menu_Model
 		private void ui_menuModel_exportAllObjectsSplit_Click(object sender, EventArgs e) {
 			if (ui_tabLeft_page0_treeView.Nodes.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = saveDirectoryBackup;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = saveDirectoryBackup;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					saveDirectoryBackup = saveFolderDialog.Folder;
-					var savePath = saveFolderDialog.Folder + Path.DirectorySeparatorChar;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
+					var savePath = saveFolderDialog.SelectedPath + Path.DirectorySeparatorChar;
 					StudioCore.ExportSplitObjects(savePath, ui_tabLeft_page0_treeView.Nodes);
 				}
 			}
@@ -747,9 +746,9 @@ namespace AssetStudioGUI {
 
 		private void ui_menuDebug_exportClassStructures_Click(object sender, EventArgs e) {
 			if (ui_tabLeft_page2_classesListView.Items.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
+				var saveFolderDialog = folderBrowserDialog1;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
-					var savePath = saveFolderDialog.Folder;
+					var savePath = saveFolderDialog.SelectedPath;
 					var count = ui_tabLeft_page2_classesListView.Items.Count;
 					int i = 0;
 					Progress.Reset();
@@ -1012,22 +1011,22 @@ namespace AssetStudioGUI {
 
 		private void ExportAssetsStructured(ExportFilter type, ExportListType listType) {
 			if (StudioCore.m_studio.exportableAssets.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					//ui_tabRight_page0_FMODtimer.Stop();
-					saveDirectoryBackup = saveFolderDialog.Folder;
-					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
+					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.SelectedPath;
 					Properties.SettingsOHMS.Default.Save();
 
 					string outdir;
 					if (Properties.SettingsOHMS.Default.ohmsCreateNew) {
-						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+						if (!GetANewFolder(saveFolderDialog.SelectedPath, out outdir)) {
 							return;
 						}
 					}
 					else {
-						outdir = saveFolderDialog.Folder;
+						outdir = saveFolderDialog.SelectedPath;
 					}
 
 					List<AssetItem> toExportAssets = null;
@@ -1052,22 +1051,22 @@ namespace AssetStudioGUI {
 
 		private void ExportAssetsArknights(ExportArknightsFilter type, ExportListType listType) {
 			if (StudioCore.m_studio.exportableAssets.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					//ui_tabRight_page0_FMODtimer.Stop();
-					saveDirectoryBackup = saveFolderDialog.Folder;
-					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
+					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.SelectedPath;
 					Properties.SettingsOHMS.Default.Save();
 
 					string outdir;
 					if (Properties.SettingsOHMS.Default.ohmsCreateNew) {
-						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+						if (!GetANewFolder(saveFolderDialog.SelectedPath, out outdir)) {
 							return;
 						}
 					}
 					else {
-						outdir = saveFolderDialog.Folder;
+						outdir = saveFolderDialog.SelectedPath;
 					}
 					switch (type) {
 					case ExportArknightsFilter.Scene:
@@ -1086,22 +1085,22 @@ namespace AssetStudioGUI {
 
 		private void ExportAssetsSprites(ExportFilter type) {
 			if (StudioCore.m_studio.exportableAssets.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					//ui_tabRight_page0_FMODtimer.Stop();
-					saveDirectoryBackup = saveFolderDialog.Folder;
-					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
+					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.SelectedPath;
 					Properties.SettingsOHMS.Default.Save();
 
 					string outdir;
 					if (Properties.SettingsOHMS.Default.ohmsCreateNew) {
-						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+						if (!GetANewFolder(saveFolderDialog.SelectedPath, out outdir)) {
 							return;
 						}
 					}
 					else {
-						outdir = saveFolderDialog.Folder;
+						outdir = saveFolderDialog.SelectedPath;
 					}
 
 					List<AssetItem> toExportAssets = null;
@@ -1126,22 +1125,22 @@ namespace AssetStudioGUI {
 
 		private void ExportAssetsOHMS(ExportFilter type) {
 			if (StudioCore.m_studio.exportableAssets.Count > 0) {
-				var saveFolderDialog = new OpenFolderDialog();
-				saveFolderDialog.InitialFolder = Properties.SettingsOHMS.Default.ohmsLastFolder;
+				var saveFolderDialog = folderBrowserDialog1;
+				saveFolderDialog.InitialDirectory = Properties.SettingsOHMS.Default.ohmsLastFolder;
 				if (saveFolderDialog.ShowDialog(this) == DialogResult.OK) {
 					//ui_tabRight_page0_FMODtimer.Stop();
-					saveDirectoryBackup = saveFolderDialog.Folder;
-					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.Folder;
+					saveDirectoryBackup = saveFolderDialog.SelectedPath;
+					Properties.SettingsOHMS.Default.ohmsLastFolder = saveFolderDialog.SelectedPath;
 					Properties.SettingsOHMS.Default.Save();
 
 					string outdir;
 					if (Properties.SettingsOHMS.Default.ohmsCreateNew) {
-						if (!GetANewFolder(saveFolderDialog.Folder, out outdir)) {
+						if (!GetANewFolder(saveFolderDialog.SelectedPath, out outdir)) {
 							return;
 						}
 					}
 					else {
-						outdir = saveFolderDialog.Folder;
+						outdir = saveFolderDialog.SelectedPath;
 					}
 
 					List<AssetItem> toExportAssets = null;

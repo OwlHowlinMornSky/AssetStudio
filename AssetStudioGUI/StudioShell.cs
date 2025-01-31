@@ -370,7 +370,7 @@ namespace AssetStudioGUI {
 
 		public TypeTree MonoBehaviourToTypeTree(MonoBehaviour m_MonoBehaviour) {
 			if (!assemblyLoader.Loaded) {
-				var openFolderDialog = new OpenFolderDialog();
+				/*var openFolderDialog = new OpenFolderDialog();
 				//openFolderDialog.Title = "Select Assembly Folder";
 				openFolderDialog.Title = Properties.Strings.Studio_SelectAssemblyFolder;
 				if (openFolderDialog.ShowDialog() == DialogResult.OK) {
@@ -378,7 +378,8 @@ namespace AssetStudioGUI {
 				}
 				else {
 					assemblyLoader.Loaded = true;
-				}
+				}*/
+				return null;
 			}
 			return m_MonoBehaviour.ConvertToTypeTree(assemblyLoader);
 		}
