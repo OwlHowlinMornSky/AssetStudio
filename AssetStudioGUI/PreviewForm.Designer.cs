@@ -32,9 +32,11 @@
 			tabPage_Preview = new System.Windows.Forms.TabPage();
 			ui_tabRight_tab = new System.Windows.Forms.TabControl();
 			tabPage_info = new System.Windows.Forms.TabPage();
+			textBox_info = new System.Windows.Forms.TextBox();
 			ui_tabRight_page3.SuspendLayout();
 			ui_tabRight_page1.SuspendLayout();
 			ui_tabRight_tab.SuspendLayout();
+			tabPage_info.SuspendLayout();
 			SuspendLayout();
 			// 
 			// ui_tabRight_page3
@@ -89,9 +91,16 @@
 			// 
 			// tabPage_info
 			// 
+			tabPage_info.Controls.Add(textBox_info);
 			resources.ApplyResources(tabPage_info, "tabPage_info");
 			tabPage_info.Name = "tabPage_info";
 			tabPage_info.UseVisualStyleBackColor = true;
+			// 
+			// textBox_info
+			// 
+			resources.ApplyResources(textBox_info, "textBox_info");
+			textBox_info.Name = "textBox_info";
+			textBox_info.ReadOnly = true;
 			// 
 			// PreviewForm
 			// 
@@ -107,6 +116,8 @@
 			ui_tabRight_page1.ResumeLayout(false);
 			ui_tabRight_page1.PerformLayout();
 			ui_tabRight_tab.ResumeLayout(false);
+			tabPage_info.ResumeLayout(false);
+			tabPage_info.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -120,5 +131,6 @@
 		private System.Windows.Forms.TabPage tabPage_Preview;
 		private System.Windows.Forms.TabControl ui_tabRight_tab;
 		private System.Windows.Forms.TabPage tabPage_info;
+		private System.Windows.Forms.TextBox textBox_info;
 	}
 }

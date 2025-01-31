@@ -17,6 +17,13 @@ namespace AssetStudioGUI {
 				return;
 
 			Text = $"{assetItem.Text} {{{assetItem.m_PathID}}}";
+			textBox_info.Text =
+				$"Name: '{assetItem.Text}'." + Environment.NewLine +
+				$"PathID: {assetItem.m_PathID}." + Environment.NewLine +
+				$"Type: {assetItem.TypeString}." + Environment.NewLine +
+				$"Container: {assetItem.Container}." + Environment.NewLine +
+				$"Size: {assetItem.FullSize} byte(s)."
+				;
 
 			try {
 				Control control = null;
