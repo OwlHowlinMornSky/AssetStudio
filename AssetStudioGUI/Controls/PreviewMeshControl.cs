@@ -428,6 +428,8 @@ namespace AssetStudioGUI.Controls {
 		private Matrix4 m_projMatrixData;
 		private Matrix4 m_viewRotMatrix;
 
+		private int vboPositions, vboNormals, vboColors, vboModelMatrix, vboViewMatrix, vboProjMatrix, eboElements;
+
 		private float m_modelScale;
 		private Vector3 m_modelRot;
 		private Vector3 m_cameraPos;
@@ -473,6 +475,11 @@ namespace AssetStudioGUI.Controls {
 			m_pgBlack?.Dispose();
 			m_pgBlack = null;
 
+			GL.DeleteBuffers(
+				7,
+				[vboPositions, vboNormals, vboColors, vboModelMatrix, vboViewMatrix, vboProjMatrix, eboElements]
+			);
+
 			if (m_vao != 0)
 				GL.DeleteVertexArray(m_vao);
 		}
@@ -495,21 +502,21 @@ namespace AssetStudioGUI.Controls {
 				GL.DeleteVertexArray(m_vao);
 			GL.GenVertexArrays(1, out m_vao);
 			GL.BindVertexArray(m_vao);
-			GL_CreateVBO(out _, m_vertexData, m_pgNormal.AttribVtxPos);
+
+			GL_CreateVBO(out vboPositions, m_vertexData, m_pgNormal.AttribVtxPos);
 			if (m_normalMode == 0) {
-				GL_CreateVBO(out _, m_normal2Data, m_pgNormal.AttribNmlDir);
+				GL_CreateVBO(out vboNormals, m_normal2Data, m_pgNormal.AttribNmlDir);
 			}
-			else {
-				if (m_normalData != null)
-					GL_CreateVBO(out _, m_normalData, m_pgNormal.AttribNmlDir);
+			else if (m_normalData != null) {
+				GL_CreateVBO(out vboNormals, m_normalData, m_pgNormal.AttribNmlDir);
 			}
-			GL_CreateVBO(out _, m_colorData, m_pgNormal.AttribVtxClr);
+			GL_CreateVBO(out vboColors, m_colorData, m_pgNormal.AttribVtxClr);
 
-			GL_CreateVBO(out _, m_modelMatrixData, m_pgNormal.UniMatM);
-			GL_CreateVBO(out _, m_viewMatrixData, m_pgNormal.UniMatV);
-			GL_CreateVBO(out _, m_projMatrixData, m_pgNormal.UniMatP);
+			GL_CreateVBO(out vboModelMatrix, m_modelMatrixData, m_pgNormal.UniMatM);
+			GL_CreateVBO(out vboViewMatrix, m_viewMatrixData, m_pgNormal.UniMatV);
+			GL_CreateVBO(out vboProjMatrix, m_projMatrixData, m_pgNormal.UniMatP);
 
-			GL_CreateEBO(out _, m_indiceData);
+			GL_CreateEBO(out eboElements, m_indiceData);
 
 			GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
 			GL.BindVertexArray(0);
