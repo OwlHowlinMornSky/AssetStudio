@@ -117,67 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;ui_tabRight_page2_dumpJsonTextBox.Name" xml:space="preserve">
-    <value>ui_tabRight_page2_dumpJsonTextBox</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page2_dumpJsonTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page2_dumpJsonTextBox.Parent" xml:space="preserve">
-    <value>ui_tabRight_page3</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page2_dumpJsonTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page0_assetInfoLabel.Name" xml:space="preserve">
-    <value>ui_tabRight_page0_assetInfoLabel</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page0_assetInfoLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page0_assetInfoLabel.Parent" xml:space="preserve">
-    <value>ui_tabRight_page3</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page0_assetInfoLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ui_tabRight_page3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ui_tabRight_page3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="ui_tabRight_page3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>856, 494</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ui_tabRight_page3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ui_tabRight_page3.Text" xml:space="preserve">
-    <value>%Dump (JSON)</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page3.Name" xml:space="preserve">
-    <value>ui_tabRight_page3</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page3.Parent" xml:space="preserve">
-    <value>ui_tabRight_tab</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ui_tabRight_page2_dumpJsonTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ui_tabRight_page2_dumpJsonTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ui_tabRight_page2_dumpJsonTextBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -232,6 +180,55 @@
   <data name="&gt;&gt;ui_tabRight_page0_assetInfoLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="ui_tabRight_page3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ui_tabRight_page3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="ui_tabRight_page3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>856, 494</value>
+  </data>
+  <data name="ui_tabRight_page3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ui_tabRight_page3.Text" xml:space="preserve">
+    <value>%Dump (JSON)</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page3.Name" xml:space="preserve">
+    <value>ui_tabRight_page3</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page3.Parent" xml:space="preserve">
+    <value>ui_tabRight_tab</value>
+  </data>
+  <data name="&gt;&gt;ui_tabRight_page3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ui_tabRight_page1_dumpTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ui_tabRight_page1_dumpTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="ui_tabRight_page1_dumpTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ui_tabRight_page1_dumpTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <data name="ui_tabRight_page1_dumpTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>850, 488</value>
+  </data>
+  <data name="ui_tabRight_page1_dumpTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ui_tabRight_page1_dumpTextBox.Text" xml:space="preserve">
+    <value>%[Empty]%</value>
+  </data>
   <data name="&gt;&gt;ui_tabRight_page1_dumpTextBox.Name" xml:space="preserve">
     <value>ui_tabRight_page1_dumpTextBox</value>
   </data>
@@ -271,39 +268,6 @@
   <data name="&gt;&gt;ui_tabRight_page1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ui_tabRight_page1_dumpTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="ui_tabRight_page1_dumpTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="ui_tabRight_page1_dumpTextBox.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ui_tabRight_page1_dumpTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Both</value>
-  </data>
-  <data name="ui_tabRight_page1_dumpTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>850, 488</value>
-  </data>
-  <data name="ui_tabRight_page1_dumpTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ui_tabRight_page1_dumpTextBox.Text" xml:space="preserve">
-    <value>%[Empty]%</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page1_dumpTextBox.Name" xml:space="preserve">
-    <value>ui_tabRight_page1_dumpTextBox</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page1_dumpTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page1_dumpTextBox.Parent" xml:space="preserve">
-    <value>ui_tabRight_page1</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_page1_dumpTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="tabPage_Preview.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
@@ -331,40 +295,22 @@
   <data name="&gt;&gt;tabPage_Preview.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tabPage_info.Name" xml:space="preserve">
-    <value>tabPage_info</value>
-  </data>
-  <data name="&gt;&gt;tabPage_info.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage_info.Parent" xml:space="preserve">
-    <value>ui_tabRight_tab</value>
-  </data>
-  <data name="&gt;&gt;tabPage_info.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ui_tabRight_tab.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="textBox_info.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="ui_tabRight_tab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="textBox_info.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="ui_tabRight_tab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>864, 524</value>
+  <data name="textBox_info.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="ui_tabRight_tab.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="textBox_info.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
   </data>
-  <data name="&gt;&gt;ui_tabRight_tab.Name" xml:space="preserve">
-    <value>ui_tabRight_tab</value>
+  <data name="textBox_info.Size" type="System.Drawing.Size, System.Drawing">
+    <value>850, 488</value>
   </data>
-  <data name="&gt;&gt;ui_tabRight_tab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_tab.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ui_tabRight_tab.ZOrder" xml:space="preserve">
+  <data name="textBox_info.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;textBox_info.Name" xml:space="preserve">
@@ -406,34 +352,28 @@
   <data name="&gt;&gt;tabPage_info.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="textBox_info.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="ui_tabRight_tab.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="textBox_info.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="ui_tabRight_tab.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="textBox_info.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="ui_tabRight_tab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>864, 524</value>
   </data>
-  <data name="textBox_info.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Both</value>
+  <data name="ui_tabRight_tab.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="textBox_info.Size" type="System.Drawing.Size, System.Drawing">
-    <value>850, 488</value>
+  <data name="&gt;&gt;ui_tabRight_tab.Name" xml:space="preserve">
+    <value>ui_tabRight_tab</value>
   </data>
-  <data name="textBox_info.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;ui_tabRight_tab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox_info.Name" xml:space="preserve">
-    <value>textBox_info</value>
+  <data name="&gt;&gt;ui_tabRight_tab.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBox_info.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_info.Parent" xml:space="preserve">
-    <value>tabPage_info</value>
-  </data>
-  <data name="&gt;&gt;textBox_info.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ui_tabRight_tab.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

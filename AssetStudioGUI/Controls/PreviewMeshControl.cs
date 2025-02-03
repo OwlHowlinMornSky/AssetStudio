@@ -161,7 +161,7 @@ namespace AssetStudioGUI.Controls {
 				Vector4 front = new(0, 0, -1, 0);
 				front *= m_viewRotMatrix.Inverted();
 
-				if ((ModifierKeys & System.Windows.Forms.Keys.Control) == System.Windows.Forms.Keys.Control)
+				if ((ModifierKeys & Keys.Control) == Keys.Control)
 					m_cameraPos += front.Xyz * e.Delta / 50.0f;
 				else
 					m_cameraPos += front.Xyz * e.Delta / 200.0f;
@@ -180,6 +180,7 @@ namespace AssetStudioGUI.Controls {
 			if (e.Button == MouseButtons.Right) {
 				m_mouseRightDown = true;
 			}
+			myGlControl1.Focus();
 		}
 
 		private void PreviewGL_MouseMove(object sender, MouseEventArgs e) {
