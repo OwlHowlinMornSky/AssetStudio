@@ -232,6 +232,15 @@ namespace AssetStudio {
 				blocksInfoUncompresseddStream = new MemoryStream(uncompressedBytes);
 				break;
 			}
+			case CompressionType.Lzham: {
+				var uncompressedBytes = new byte[uncompressedSize];
+				var numWrite = LzhamHelper.Decode.DecodeBuffer(ref blocksInfoBytes, ref uncompressedBytes);
+				if (numWrite != uncompressedSize) {
+					throw new IOException($"Lzham decompression error, write {numWrite} bytes but expected {uncompressedSize} bytes");
+				}
+				blocksInfoUncompresseddStream = new MemoryStream(uncompressedBytes);
+				break;
+			}
 			default:
 				throw new IOException($"Unsupported compression type {compressionType}");
 			}
@@ -285,6 +294,19 @@ namespace AssetStudio {
 					var numWrite = LZ4Codec.Decode(compressedBytes, 0, compressedSize, uncompressedBytes, 0, uncompressedSize);
 					if (numWrite != uncompressedSize) {
 						throw new IOException($"Lz4 decompression error, write {numWrite} bytes but expected {uncompressedSize} bytes");
+					}
+					blocksStream.Write(uncompressedBytes, 0, uncompressedSize);
+					break;
+				}
+				case CompressionType.Lzham: {
+					var compressedSize = (int)blockInfo.compressedSize;
+					var compressedBytes = new byte[compressedSize];
+					reader.Read(compressedBytes, 0, compressedSize);
+					var uncompressedSize = (int)blockInfo.uncompressedSize;
+					var uncompressedBytes = new byte[uncompressedSize];
+					var numWrite = LzhamHelper.Decode.DecodeBuffer(ref compressedBytes, compressedSize, ref uncompressedBytes);
+					if (numWrite != uncompressedSize) {
+						throw new IOException($"Lzham decompression error, write {numWrite} bytes but expected {uncompressedSize} bytes");
 					}
 					blocksStream.Write(uncompressedBytes, 0, uncompressedSize);
 					break;
