@@ -24,7 +24,8 @@ namespace AssetStudio {
 		Lzma,
 		Lz4,
 		Lz4HC,
-		Lzham
+		Lzham,
+		AK1
 	}
 
 	public class BundleFile {
@@ -232,15 +233,6 @@ namespace AssetStudio {
 				blocksInfoUncompresseddStream = new MemoryStream(uncompressedBytes);
 				break;
 			}
-			case CompressionType.Lzham: {
-				var uncompressedBytes = new byte[uncompressedSize];
-				var numWrite = LzhamHelper.Decode.DecodeBuffer(ref blocksInfoBytes, ref uncompressedBytes);
-				if (numWrite != uncompressedSize) {
-					throw new IOException($"Lzham decompression error, write {numWrite} bytes but expected {uncompressedSize} bytes");
-				}
-				blocksInfoUncompresseddStream = new MemoryStream(uncompressedBytes);
-				break;
-			}
 			default:
 				throw new IOException($"Unsupported compression type {compressionType}");
 			}
@@ -298,13 +290,70 @@ namespace AssetStudio {
 					blocksStream.Write(uncompressedBytes, 0, uncompressedSize);
 					break;
 				}
-				case CompressionType.Lzham: {
+				case CompressionType.Lzham:
+				case CompressionType.AK1: {
 					var compressedSize = (int)blockInfo.compressedSize;
-					var compressedBytes = new byte[compressedSize];
+					using TempBuffer<byte> compressedBytes = new(compressedSize);
 					reader.Read(compressedBytes, 0, compressedSize);
+					byte[] compressed_data = compressedBytes;
 					var uncompressedSize = (int)blockInfo.uncompressedSize;
-					var uncompressedBytes = new byte[uncompressedSize];
-					var numWrite = LzhamHelper.Decode.DecodeBuffer(ref compressedBytes, compressedSize, ref uncompressedBytes);
+
+					int ip = 0;
+					int dataCnt = 0;
+					while (true) {
+						// Restore token.
+						byte tokenBelied = compressed_data[ip];
+						byte realHi4 = (byte)(tokenBelied & 0x0F);
+						byte realLo4 = (byte)((tokenBelied >> 4) & 0x0F);
+						byte token = (byte)((realHi4 << 4) | realLo4);
+						compressed_data[ip] = token;
+						ip++;
+
+						// Get literal length.
+						int literalLength = realHi4;
+						if (realHi4 == 0x0F) {
+							while (true) {
+								byte b = compressed_data[ip];
+								ip++;
+								literalLength += b;
+								if (b != 0xFF)
+									break;
+							}
+						}
+
+						// Skip literals.
+						ip += literalLength;
+						dataCnt += literalLength;
+
+						if (uncompressedSize - dataCnt < 12) { // MFLIMIT end of block 
+							break;
+						}
+
+						// Restore offset.
+						byte realHi8 = compressed_data[ip];
+						byte realLo8 = compressed_data[ip + 1];
+						compressed_data[ip] = realLo8;
+						compressed_data[ip + 1] = realHi8;
+						//short offset = (short)((realHi8 << 8) | realLo8);
+						ip += 2;
+
+						// Get match length.
+						int matchLength = realLo4 + 4; // MINMATCH
+						if (realLo4 == 0x0F) {
+							while (true) {
+								byte b = compressed_data[ip];
+								ip++;
+								matchLength += b;
+								if (b != 0xFF)
+									break;
+							}
+						}
+
+						dataCnt += matchLength;
+					}
+
+					using TempBuffer<byte> uncompressedBytes = new(uncompressedSize);
+					var numWrite = LZ4Codec.Decode(compressedBytes, 0, compressedSize, uncompressedBytes, 0, uncompressedSize);
 					if (numWrite != uncompressedSize) {
 						throw new IOException($"Lzham decompression error, write {numWrite} bytes but expected {uncompressedSize} bytes");
 					}
