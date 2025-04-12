@@ -82,7 +82,7 @@ namespace AssetStudioGUI {
 					break;
 				}
 			}
-			if (mainTexID == 0 || alphaTexID == 0) {
+			if (mainTexID == 0 && alphaTexID == 0) {
 				return false;
 			}
 			return true;
@@ -149,15 +149,15 @@ namespace AssetStudioGUI {
 					if (mainTexs.Count != 1) {
 						continue;
 					}
+					ExportTexture2D(mainTexs[0], savePath);
 					var alphaTexs = allAssets.FindAll(x => x.m_PathID == alphaTexID && x.Type == ClassIDType.Texture2D);
 					if (alphaTexs.Count != 1) {
 						continue;
 					}
-					//ExportTexture2D(mainTexs[0], savePath);
-					//ExportTexture2D(alphaTexs[0], savePath);
-					if (!Export_Textures_CombineRGBA(in savePath, mainTexs[0], alphaTexs[0])) {
-						MessageBox.Show("Error");
-					}
+					ExportTexture2D(alphaTexs[0], savePath);
+					//if (!Export_Textures_CombineRGBA(in savePath, mainTexs[0], alphaTexs[0])) {
+					//	MessageBox.Show("Error");
+					//}
 				}
 			}
 			return true;
@@ -308,53 +308,36 @@ namespace AssetStudioGUI {
 			return true;
 		}
 
-		private static bool Export_CharArt_Battle_ForCharacterAnimator(in string savePath, in List<AssetItem> allAssets) {
-			var CharAnimatorItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "CharacterAnimator"));
-			if (CharAnimatorItems.Count < 1) {
+		private static bool Export_CharArt_Battle_ForFrontAnimator(in string savePath, in List<AssetItem> allAssets) {
+			var SpineObjects = allAssets.FindAll(x => (x.Type == ClassIDType.GameObject && x.Text == "Front"));
+			if (SpineObjects.Count < 1) {
 				return false;
 			}
-			foreach (var CharAnimatorItem in CharAnimatorItems) {
-				//var CharAnimatorItem = CharAnimatorItems[0];
-				//MessageBox.Show("VCharacter, m_PathID: " + VCharacterItem.m_PathID.ToString());
-				if (!Export_CharArt_Battle_ForCharacterAnimator_ForTwoFace(in CharAnimatorItem, out var frontID, out var backID)) {
-					return false;
+			foreach (var SpineObject in SpineObjects) {
+				var spineAsset = (GameObject)SpineObject.Asset;
+				foreach (var pcomponent in spineAsset.m_Components) {
+					if (!Export_CharArt_Building_ForSkeletonAnimation(Path.Combine(savePath, "Battle-Front"), in allAssets, pcomponent.m_PathID)) {
+						;
+					}
 				}
-				var frontres = Export_CharArt_Building_ForSkeletonAnimation(Path.Combine(savePath, "Battle-Front"), in allAssets, frontID);
-				var backres = Export_CharArt_Building_ForSkeletonAnimation(Path.Combine(savePath, "Battle-Back"), in allAssets, backID);
 			}
 			return true;
-			//frontres || backres;
 		}
 
-		private static bool Export_CharArt_Battle_ForSingleSpineAnimator(in string savePath, in List<AssetItem> allAssets) {
-			var SingleAnimatorItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "SingleSpineAnimator"));
-			if (SingleAnimatorItems.Count < 1) {
+		private static bool Export_CharArt_Battle_ForBackAnimator(in string savePath, in List<AssetItem> allAssets) {
+			var SpineObjects = allAssets.FindAll(x => (x.Type == ClassIDType.GameObject && x.Text == "Back"));
+			if (SpineObjects.Count < 1) {
 				return false;
 			}
-			foreach (var SingleAnimatorItem in SingleAnimatorItems) {
-				//var SingleAnimatorItem = SingleAnimatorItems[0];
-				var SingleAnimatorAsset = (MonoBehaviour)SingleAnimatorItem.Asset;
-				var SingleAnimator = SingleAnimatorAsset.ToType();
-				var SingleAnimator_skeleton0 = SingleAnimator["_skeleton"];
-				if (SingleAnimator_skeleton0 == null) {
-					return false;
+			foreach (var SpineObject in SpineObjects) {
+				var spineAsset = (GameObject)SpineObject.Asset;
+				foreach (var pcomponent in spineAsset.m_Components) {
+					if (!Export_CharArt_Building_ForSkeletonAnimation(Path.Combine(savePath, "Battle-Back"), in allAssets, pcomponent.m_PathID)) {
+						;
+					}
 				}
-				if (!SingleAnimator_skeleton0.GetType().Equals(typeof(OrderedDictionary))) {
-					return false;
-				}
-				var SingleAnimator_skeleton = (OrderedDictionary)SingleAnimator_skeleton0;
-				var SingleAnimator_skeleton_pathid0 = SingleAnimator_skeleton["m_PathID"];
-				if (SingleAnimator_skeleton_pathid0 == null) {
-					return false;
-				}
-				if (!SingleAnimator_skeleton_pathid0.GetType().Equals(typeof(long))) {
-					return false;
-				}
-				var SingleAnimator_skeleton_pathid = (long)SingleAnimator_skeleton_pathid0;
-				//MessageBox.Show("SkeletonAnimation, m_PathID: " + VCharacter_skeleton_m_PathID.ToString());
-				Export_CharArt_Building_ForSkeletonAnimation(Path.Combine(savePath, "Battle"), in allAssets, SingleAnimator_skeleton_pathid);
 			}
-			return true; //Export_CharArt_Building_ForSkeletonAnimation(Path.Combine(savePath, "Battle"), in allAssets, SingleAnimator_skeleton_pathid);
+			return true;
 		}
 
 		private static bool Export_CharArt_Illust_ForOneIllustGetIDs(in AssetItem imageItem, out long material_pathid, out long sprite_pathid) {
@@ -401,9 +384,9 @@ namespace AssetStudioGUI {
 				}
 				sprite_pathid = (long)image_sprite_pathid0;
 			}
-			//if (material_pathid == 0 || sprite_pathid == 0) {
-			//	return false;
-			//}
+			if (material_pathid == 0 && sprite_pathid == 0) {
+				return false;
+			}
 			return true;
 		}
 
@@ -419,36 +402,26 @@ namespace AssetStudioGUI {
 			return true;
 		}
 
-		public static bool Export_CharArt_Building(in string savePath, in List<AssetItem> allAssets) {
-			StudioCore.StatusStripUpdate("Exporting The Spine Animations of Building.");
-			var VCharacterItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "VCharacter"));
-			if (VCharacterItems.Count < 1) {
+		public static bool Export_CharArt_Spine(in string savePath, in List<AssetItem> allAssets) {
+			StudioCore.StatusStripUpdate("Exporting The Spine Animations which have single faces.");
+			var SpineObjects = allAssets.FindAll(x => (x.Type == ClassIDType.GameObject && x.Text == "Spine"));
+			if (SpineObjects.Count < 1) {
 				return false;
 			}
-			foreach (var VCharacterItem in VCharacterItems) {
-				//var VCharacterItem = VCharacterItems[0];
-				//MessageBox.Show("VCharacter, m_PathID: " + VCharacterItem.m_PathID.ToString());
-				var VCharacterAsset = (MonoBehaviour)VCharacterItem.Asset;
-				var VCharacter = VCharacterAsset.ToType();
-				var VCharacter_skeleton0 = VCharacter["_skeleton"];
-				if (VCharacter_skeleton0 == null) {
-					return false;
-				}
-				if (!VCharacter_skeleton0.GetType().Equals(typeof(OrderedDictionary))) {
-					return false;
-				}
-				var VCharacter_skeleton = (OrderedDictionary)VCharacter_skeleton0;
-				var VCharacter_skeleton_m_PathID0 = VCharacter_skeleton["m_PathID"];
-				if (VCharacter_skeleton_m_PathID0 == null) {
-					return false;
-				}
-				if (!VCharacter_skeleton_m_PathID0.GetType().Equals(typeof(long))) {
-					return false;
-				}
-				var skeleton_pathid = (long)VCharacter_skeleton_m_PathID0;
-				//MessageBox.Show("SkeletonAnimation, m_PathID: " + VCharacter_skeleton_m_PathID.ToString());
-				if (!Export_CharArt_Building_ForSkeletonAnimation(Path.Combine(savePath, "Building"), in allAssets, skeleton_pathid)) {
-
+			foreach (var SpineObject in SpineObjects) {
+				var spineAsset = (GameObject)SpineObject.Asset;
+				foreach (var pcomponent in spineAsset.m_Components) {
+					string name = "E";
+					if (SpineObject.Container.Contains("/battle/")) {
+						name = "Battle";
+					}
+					else if (SpineObject.Container.Contains("/building/")) {
+						name = "Building";
+					}
+					//MessageBox.Show("SkeletonAnimation, m_PathID: " + VCharacter_skeleton_m_PathID.ToString());
+					if (!Export_CharArt_Building_ForSkeletonAnimation(Path.Combine(savePath, name), in allAssets, pcomponent.m_PathID)) {
+						;
+					}
 				}
 			}
 			return true;
@@ -458,16 +431,34 @@ namespace AssetStudioGUI {
 			StudioCore.StatusStripUpdate("Exporting The Spine Animations of Battle.");
 			//return Export_CharArt_Battle_ForCharacterAnimator(in savePath, in allAssets) ||
 			//	Export_CharArt_Battle_ForSingleSpineAnimator(in savePath, in allAssets);
-			Export_CharArt_Battle_ForCharacterAnimator(in savePath, in allAssets);
-			Export_CharArt_Battle_ForSingleSpineAnimator(in savePath, in allAssets);
+			Export_CharArt_Battle_ForFrontAnimator(in savePath, in allAssets);
+			Export_CharArt_Battle_ForBackAnimator(in savePath, in allAssets);
 			return true;
 		}
-
 		public static bool Export_CharArt_Pictures(in string outPath, in List<AssetItem> allAssets) {
 			StudioCore.StatusStripUpdate("Exporting Pictures.");
 			string savePath = Path.Combine(outPath, "Illust");
-			var IllustsItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.Text == "Image"));
+			var IllustObjects = allAssets.FindAll(x => (x.Type == ClassIDType.GameObject && x.Text.StartsWith("illust_")));
+
 			int i = 0;
+			int n = IllustObjects.Count;
+			foreach (var obj in IllustObjects) {
+				var asset = (GameObject)obj.Asset;
+				foreach (var com in asset.m_Components) {
+					Export_CharArt_Picture(savePath, allAssets, com.m_PathID);
+				}
+				Progress.Report(++i + n, n + n);
+			}
+			return true;
+		}
+
+		public static int Export_CharArt_Picture(in string savePath, in List<AssetItem> allAssets, long id) {
+			var IllustsItems = allAssets.FindAll(x => (x.Type == ClassIDType.MonoBehaviour && x.m_PathID == id));
+			if (IllustsItems.Count < 1) {
+				return 0;
+			}
+
+			//int i = 0;
 			int n = IllustsItems.Count;
 			foreach (var illust in IllustsItems) {
 				if (!Export_CharArt_Illust_ForOneIllustGetIDs(illust, out var material_pathid, out var sprite_pathid)) {
@@ -524,13 +515,11 @@ namespace AssetStudioGUI {
 					}
 					var alphaTex = alphaTexs[0];
 					if (!Export_Textures_CombineRGBA(in savePath, in mainTex, in alphaTex)) {
-						MessageBox.Show("Error");
+						//	MessageBox.Show("Error");
 					}
 				}
-
-				Progress.Report(++i + n, n + n);
 			}
-			return true;
+			return n;
 		}
 		#endregion CharArt
 
@@ -651,5 +640,7 @@ namespace AssetStudioGUI {
 			return true;
 		}
 		#endregion Scene
+
+
 	}
 }

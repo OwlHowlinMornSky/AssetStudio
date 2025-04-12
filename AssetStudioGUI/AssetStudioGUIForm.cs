@@ -982,20 +982,20 @@ namespace AssetStudioGUI {
 		#region OHMS
 		private bool GetANewFolder(string iDir, out string oDir) {
 			if (StudioCore.m_studio.assetsManager.m_lastOpenPaths.Length == 1) {
-				oDir = Path.Combine(iDir, Path.GetFileName(StudioCore.m_studio.assetsManager.m_lastOpenPaths[0]));
-				if (Directory.Exists(oDir)) {
+				oDir = Path.Combine(iDir, Path.ChangeExtension(Path.GetFileName(StudioCore.m_studio.assetsManager.m_lastOpenPaths[0]), null));
+				if (File.Exists(oDir) || Directory.Exists(oDir)) {
 					oDir += DateTime.Now.ToString(" yyyyMMdd-HHmmss");
 				}
 			}
 			else {
 				oDir = Path.Combine(iDir, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
 			}
-			if (Directory.Exists(oDir)) {
+			if (File.Exists(oDir) || Directory.Exists(oDir)) {
 				oDir += " #";
 				string t = null;
 				for (uint i = 0; i < 1024; ++i) {
 					var tt = oDir + i;
-					if (!Directory.Exists(tt)) {
+					if (!File.Exists(tt) && !Directory.Exists(tt)) {
 						t = tt;
 					}
 				}
