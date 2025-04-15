@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -37,25 +37,24 @@ namespace AssetStudio {
 
 			MergeSplitAssets(path);
 			var toReadFile = ProcessingSplitFiles(files.ToList());
-			Load(toReadFile.ToList());
+			Load([.. toReadFile]);
 		}
 
 		public void LoadFolder(string path) {
-
 			m_lastLoadType = LastLoadType.Folder;
-			m_lastOpenPaths = new string[] { Path.GetFullPath(path) };
+			m_lastOpenPaths = [Path.GetFullPath(path)];
 
 			MergeSplitAssets(path, true);
 			var files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories).ToList();
 			var toReadFile = ProcessingSplitFiles(files);
-			Load(toReadFile.ToList());
+			Load([.. toReadFile]);
 		}
 
 		public void LoadDropIn(params string[] paths) {
 			m_lastLoadType = LastLoadType.File;
-			m_lastOpenPaths = paths.Select(x => Path.GetFullPath(x)).ToArray();
+			m_lastOpenPaths = [.. paths.Select(Path.GetFullPath)];
 
-			List<string> toReadFiles = new();
+			List<string> toReadFiles = [];
 
 			foreach (var path in paths) {
 				if (Directory.Exists(path)) {

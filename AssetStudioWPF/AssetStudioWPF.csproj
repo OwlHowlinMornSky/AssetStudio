@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>$(SolutionName)</AssemblyName>
+    <ApplicationIcon>as.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="as.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="as.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="as.ico" />
+  </ItemGroup>
+
+</Project>
