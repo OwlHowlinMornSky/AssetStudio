@@ -308,12 +308,13 @@ namespace AssetStudioGUI {
 			try {
 				await System.Threading.Tasks.Task.Run(() => {
 					Progress.Reset();
-					Studio_OHMS.Export_CharArt_Spine(in savePath, in allAssets);
-					Progress.Report(1, 4);
-					Studio_OHMS.Export_CharArt_Battle(in savePath, in allAssets);
-					Progress.Report(2, 4);
-					Studio_OHMS.Export_CharArt_Pictures(in savePath, in allAssets);
-					Progress.Report(4, 4);
+					ExporterArknightsCharArt e = new(allAssets);
+					StatusStripUpdate("Exporting Spine Animations.");
+					e.ExportAllSpineAnimations(savePath);
+					Progress.Report(1, 2);
+					StudioCore.StatusStripUpdate("Exporting Illustrations.");
+					e.ExportAllIllustrations(savePath);
+					Progress.Report(2, 2);
 				});
 			}
 			catch (Exception ex) {
